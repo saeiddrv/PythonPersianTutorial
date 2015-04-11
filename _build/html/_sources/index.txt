@@ -11,7 +11,7 @@
 .. toctree::
    :maxdepth: 6
 
-   lessons/01-آشنایی-با-پایتون
+   lessons/l01
 
 شاخص‌ها
 ==========
