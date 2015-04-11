@@ -12,6 +12,7 @@
    :maxdepth: 6
 
    lessons/l01
+   lessons/l02
 
 شاخص‌ها
 ==========
