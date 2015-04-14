@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>درس دوم: نصب و راه‌اندازی پایتون در ویندوز &mdash; آموزش فارسی پایتون 1.0 documentation</title>
+  <title>درس دوم: نصب و راه‌اندازی پایتون &mdash; آموزش فارسی پایتون 1.0 documentation</title>
   
 
   
@@ -67,7 +67,13 @@
 <li class="toctree-l2"><a class="reference internal" href="l01.html#id15">پی‌نوشت</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">درس دوم: نصب و راه‌اندازی پایتون در ویندوز</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">درس دوم: نصب و راه‌اندازی پایتون</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">دانلود پایتون</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">نصب پایتون در ویندوز</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">نصب پایتون در گنولینوکس</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">سیستم مدیریت بسته پایتون</a></li>
+</ul>
+</li>
 </ul>
 
           
@@ -92,7 +98,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">برگه‌ها</a> &raquo;</li>
       
-    <li>درس دوم: نصب و راه‌اندازی پایتون در ویندوز</li>
+    <li>درس دوم: نصب و راه‌اندازی پایتون</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../_sources/lessons/l02.txt" rel="nofollow"> View page source</a>
@@ -104,7 +110,220 @@
           <div role="main" class="document">
             
   <div class="section" id="id1">
-<h1>درس دوم: نصب و راه‌اندازی پایتون در ویندوز<a class="headerlink" href="#id1" title="لینک ثابت به این سر مقاله">¶</a></h1>
+<h1>درس دوم: نصب و راه‌اندازی پایتون<a class="headerlink" href="#id1" title="لینک ثابت به این سر مقاله">¶</a></h1>
+<p>در این درس به چگونگی نصب و راه‌اندازی پایتون در دو سیستم عامل ویندوز و گنولینوکس پرداخته شده است.</p>
+<p>〉 مرجع این نوشته در کدرز</p>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>دانلود پایتون<a class="headerlink" href="#id2" title="لینک ثابت به این سر مقاله">¶</a></h2>
+<p>برای ترجمه و اجرای سورس کد ایجاد شده به زبان پایتون لازم است «بسته نصبی پایتون» (همان CPython یا اگر ساده بگوییم: پایتون) که شامل مفسر، کتابخانه استاندارد، برنامه <a class="reference external" href="http://en.wikipedia.org/wiki/IDLE_%28Python%29">IDLE</a> (ویرایشگر پیش‌فرض پایتون) و... است را دانلود و بر روی سیستم عامل نصب نماییم.</p>
+<div class="admonition note">
+<p class="first admonition-title">توجه</p>
+<p class="last">پایتون (Python) نام یک زبان برنامه‌نویسی است. به این معنی که ساختاری برای بیان ایده‌ها یا فرمان‌های برنامه‌نویس به ماشین می‌باشد. برای فهماندن فرمان‌های پایتونی به ماشین مانند هر زبان سطح بالای دیگری نیاز به یک «پردازنده‌ زبان» (Language Processor) است. برنامه‌ CPython پردازنده استاندارد زبان پایتون است که از آن به صورت ساده با همان نام Python یاد می‌شود.</p>
+</div>
+<p>در هر سیستم عاملی ممکن است پایتون از پیش نصب باشد (خصوصا در گنولینوکس) که در صورت رضایت از نسخه‌ موجود، دیگر لزومی به دانلود و نصب آن نخواهد بود؛ برای آگاهی یافتن از این موضوع می‌توانید دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">--version</span></code> را در خط فرمان سیستم عامل وارد نمایید؛ البته در ویندوز به دلیل اینکه عملکرد این دستور وابسته به دستکاری متغیر Path می‌باشد، بهتر است از مسیر Control Panel &gt;‌ Programs and Features اقدام نمایید.</p>
+<div class="admonition tip">
+<p class="first admonition-title">نکته</p>
+<p class="last"><a class="reference external" href="http://en.wikipedia.org/wiki/PATH_(variable)">Path</a> یکی از «متغیر‌های محیطی» (<a class="reference external" href="http://en.wikipedia.org/wiki/Environment_variable">Environment Variables</a>) سیستم عامل است. این متغیر حاوی فهرست دایرکتوری‌هایی می‌باشد که سیستم عامل در آن‌ها به دنبال یک فایل اجرایی هم نام با دستور وارد شده در خط فرمان می‌گردد.</p>
+</div>
+<p>هم اکنون این بسته بر پایه دو نسخه‌ متفاوت پایتون (2x و 3x) از <a class="reference external" href="http://www.python.org/downloads">صفحه‌ دانلود آن</a>، متناسب با نوع سیستم عامل و معماری پردازنده قابل دانلود است (اندازه:‌ تقریبا بین ۱۲ تا ۲۵ مگابایت) که برای نصب در ویندوز به شکل یک <a class="reference external" href="http://www.python.org/downloads/windows/">فایل نصبی</a> (با قالب msi) و متناسب با دو معماری 32 (x86) و 64 (AMD64 ،EM64T ،x64 ،x86-64) بیتی منتشر می‌گردد و در صورت نیاز برای نصب آن در گنو‌لینوکس می‌بایست <a class="reference external" href="http://www.python.org/downloads/source/">سورس کد آن</a> (که به زبان C است) را دانلود نمایید.</p>
+<div class="admonition note">
+<p class="first admonition-title">توجه</p>
+<p class="last">امکان نصب نسخه‌های متفاوت پایتون (حتی از یک شاخه) در کنار یکدیگر وجود دارد.</p>
+</div>
+<p>در هنگام تهیه‌ این مجموعه آموزشی دو نسخه‌ 2.7.9 و 3.4.2 جدیدترین نسخه‌های منتشر یافته‌ پایتون هستند. برای دسترسی به جدید‌ترین ویژگی‌ها، پیشنهاد می‌شود همیشه جدیدترین نسخه‌ موجود از پایتون را دانلود نمایید.</p>
+</div>
+<div class="section" id="id6">
+<h2>نصب پایتون در ویندوز<a class="headerlink" href="#id6" title="لینک ثابت به این سر مقاله">¶</a></h2>
+<p>درست به مانند هر برنامه‌ دیگری در ویندوز، نصب به راحتی تنها با چند بار کلیک بر روی دکمه‌ Next به پایان می‌رسد. پیشنهاد می‌شود مسیر پیش‌فرض نصب (مثلا برای نصب نسخه‌ 3.4.2:‌ \C:\Python34) را تغییر ندهید.</p>
+<p>در هنگام نصب نسخه‌‌ای که قصد دارید از آن به صورت نسخه‌ پیش‌فرض پایتون خود استفاده نمایید، به این نکته توجه داشته باشید که در مرحله‌ سفارشی‌سازی (Customize) گزینه‌ افزودن خودکار مسیر مفسر پایتون به متغیر Path ویندوز را فعال نمایید (همانند تصویر پایین). در این صورت با وارد کردن دستور <code class="docutils literal"><span class="pre">python</span></code> در خط فرمان ویندوز، مفسر پایتون (این نسخه) فراخوانی می‌شود. برای شروع، با وارد کردن دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">–V</span></code> یا <code class="docutils literal"><span class="pre">python</span> <span class="pre">--version</span></code> می‌توانید از نسخه‌ پایتون نصب شده آگاهی یابید:</p>
+<img alt="../_images/l02-install-python-on-windows.png" src="../_images/l02-install-python-on-windows.png" />
+<div class="code highlight-python"><div class="highlight"><pre>&gt; python --version
+python 3.4.2
+</pre></div>
+</div>
+<p>در صورت تنظیم نبودن متغیر Path می‌بایست از طریق پنجره خط فرمان و دستور <code class="docutils literal"><span class="pre">cd</span></code> به مسیر نصب مفسر پایتون وارد شوید:</p>
+<div class="code highlight-python"><div class="highlight"><pre>&gt; python --version
+&#39;python&#39; is not recognized as an internal or external command, operable program or batch file.
+
+&gt; cd C:\Python34\
+
+&gt; python --version
+python 3.4.2
+</pre></div>
+</div>
+<p>البته امکان دستکاری Path در هر زمانی وجود دارد:</p>
+<p>مسیر Control Panel &gt; System &gt; Advanced system settings &gt; Advanced را طی کرده و سپس با کلیک بر روی Environment Variables پنجره‌ جدیدی باز می‌گردد که در قسمت System variables آن Path را پیدا و انتخاب نمایید. بر روی Edit در پایین همان پنجره کلیک کرده و عبارت <code class="docutils literal"><span class="pre">;C:\Python34;C:\Python34\Scripts</span></code> (برای نسخه 3.4) یا <code class="docutils literal"><span class="pre">;C:\Python27;C:\Python27\Scripts</span></code> (برای نسخه 2.7) را به ابتدای متن موجود در قسمت Variable value پنجره‌ جدید وارد و سپس بر روی دکمه‌ OK کلیک نمایید. :)</p>
+<img alt="../_images/l02-add-path-on-windows.png" src="../_images/l02-add-path-on-windows.png" />
+<div class="admonition caution">
+<p class="first admonition-title">ملاحظه</p>
+<p class="last">در ویندوز از کاراکتر نقطه‌ ویرگول (سمی‌کالن Semicolon) یا <code class="docutils literal"><span class="pre">;</span></code> برای جدا‌سازی مسیر دایرکتوری‌ها در متغیر path استفاده می‌گردد. <code class="docutils literal"><span class="pre">C:\Python34</span></code> از عبارت یاد شده، مشخص کننده‌‌ مسیر مفسر پایتون (python.exe) است و با توجه به افزوده شدن pip (سیستم مدیریت بسته‌‌ پایتون) به بسته نصبی پایتون از نسخه‌ 3.4 به بعد، <code class="docutils literal"><span class="pre">C:\Python34\Scripts</span></code> نیز به منظور ایجاد امکان دسترسی و فراخوانی آن (pip.exe یا pip3.exe یا pip3.4.exe - فرقی ندارند) افزوده می‌شود.</p>
+</div>
+<p>اگر بخواهیم بر روی یک ویندوز از هر دو شاخه پایتون نسخه‌ای یا حتی چند نسخه‌ متفاوت از هر یک به مانند نسخه‌های 2.6، 2.7، 3.3 و 3.4 را نصب نماییم؛ یک راه خوب برای فراخوانی مفسر پایتونِ هر یک از آن‌ها در خط فرمان ویندوز، استفاده از راه‌انداز پایتون (Python Launcher) می‌باشد. در این راهکار نیازی به دستکاری متغیر Path نیست و از دستور <code class="docutils literal"><span class="pre">py</span></code> به جای دستور <code class="docutils literal"><span class="pre">python</span></code> استفاده می‌شود؛ به این صورت که با دستور <code class="docutils literal"><span class="pre">py</span></code> یا <code class="docutils literal"><span class="pre">py</span> <span class="pre">-2</span></code> مفسر آخرین نسخه‌ موجود از شاخه 2x پایتون و با دستور <code class="docutils literal"><span class="pre">py</span> <span class="pre">-3</span></code> نیز مفسر آخرین نسخه‌ موجود از شاخه 3x پایتون فراخوانی می‌گردد. برای فراخوانی مفسر دیگر نسخه‌ها هم می‌بایست نسخه‌ آن‌ها به صراحت ذکر گردد (مانند: <code class="docutils literal"><span class="pre">py</span> <span class="pre">-3.3</span></code> و <code class="docutils literal"><span class="pre">py</span> <span class="pre">-2.6</span></code>):</p>
+<div class="code highlight-python"><div class="highlight"><pre>&gt; py --version
+2.7.9
+&gt; py -2 --version
+2.7.9
+&gt; py -2.6 --version
+2.6.6
+&gt; py -3 --version
+3.4.2
+&gt; py -3.3 --version
+3.3.5
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>نصب پایتون در گنولینوکس<a class="headerlink" href="#id7" title="لینک ثابت به این سر مقاله">¶</a></h2>
+<p>پایتون معمولا در توزیع‌های گنولینوکس از پیش نصب می‌باشد (بر روی برخی نیز از هر دو شاخه آن نسخه‌ایی نصب است؛ به مانند: Ubuntu و Fedora). برای اطمینان کافی است دستورات <code class="docutils literal"><span class="pre">python2</span> <span class="pre">--version</span></code> (برای نسخه 2x) و <code class="docutils literal"><span class="pre">python3</span> <span class="pre">--version</span></code> (برای نسخه 3x) را در خط فرمان سیستم عامل وارد نمایید؛ به عنوان نمونه وضعیت نسخه‌های پایتون در Ubuntu 14.04 به صورت پایین است:</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ python --version
+python 2.7.6
+
+$ python2 --version
+python 2.7.6
+
+$ python3 --version
+python 3.4.0
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">توجه</p>
+<p>از آنجا که هنوز (اوایل ۲۰۱۵) نسخه‌ 2x، نسخه‌ پیش‌فرض پایتون در توزیع‌های گنولینوکس است، بنابراین دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">--version</span></code> نیز موجب فراخوانی مفسر پایتون نسخه‌ 2x و نمایش نسخه‌ آن می‌شود.</p>
+<p class="last">در دستورات یاد شده به جای <code class="docutils literal"><span class="pre">version--</span></code> می‌توان از <code class="docutils literal"><span class="pre">V-</span></code> (حرف v بزرگ انگلیسی) نیز استفاده نمود.</p>
+</div>
+<p>اکنون با فرض اینکه توزیع مورد استفاده‌‌، از پیش فاقد نسخه‌ 3x بوده یا اینکه نسخه‌ نصب شده آنقدر قدیمی است که می‌بایست آن را ارتقا (Upgrade) داد؛ پس از دانلود سورس کد نسخه‌ جدید (در این زمان فایل: Python-3.4.2.tar.xz) به صورت زیر عمل خواهیم کرد (نصب نسخه‌ 2x نیز به همین شکل است):</p>
+<p>نخست می‌بایست تمام بسته‌های پیش‌نیاز در سیستم عامل نصب گردند. برای این منظور می‌توانید دستورات پایین را (متناسب با نوع توزیع خود) در خط فرمان سیستم عامل وارد نمایید:</p>
+<div class="code highlight-python"><div class="highlight"><pre># fedora
+
+$ sudo yum update
+$ sudo yum install make automake autoconf pkgconfig glibc-devel gcc gcc-c++ bzip2 bzip2-devel tar tcl tcl-devel tix tix-devel tk tk-devel zlib-devel ncurses-devel sqlite-devel openssl-devel openssl readline-devel gdbm-devel db4-devel expat-devel libGL-devel libffi-devel gmp-devel valgrind-devel systemtap-sdt-devel xz-devel libX11-devel findutils libpcap-devel
+</pre></div>
+</div>
+<div class="code highlight-python"><div class="highlight"><pre># ubuntu
+
+$ sudo apt-get update
+$ sudo apt-get install build-essential
+$ sudo apt-get install make automake autoconf pkg-config libc6-dev gcc g++ bzip2 libbz2-dev tar tcl tcl-dev tix-dev tk tk-dev zlib1g-dev libncursesw5-dev libsqlite3-dev libssl-dev openssl libreadline-dev libgdbm-dev db4.8-util libexpat1-dev libgl-dev libffi-dev libgmp3-dev valgrind systemtap-sdt-dev xz-utils libX11-dev findutils libpcap-dev
+</pre></div>
+</div>
+<p>پس از اطمینان از نصب بسته‌های پیش‌نیاز به مسیری که سورس کد پایتون (پس از دانلود) در آن قرار دارد رفته (در اینجا: دایرکتوری Downloads) و فایل سورس کد را از حالت فشرده خارج نمایید. حاصل کار یک دایرکتوری جدید با نامی مشابه Python-3.4.2 است که اکنون می‌بایست از طریق خط فرمان و دستور <code class="docutils literal"><span class="pre">cd</span></code> وارد مسیر آن شوید.</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ cd Downloads/
+$ ls
+Python-3.4.2.tar.xz
+
+$ tar xf Python-3.4.2.tar.xz
+
+$ ls
+Python-3.4.2  Python-3.4.2.tar.xz
+
+$ cd Python-3.4.2/
+</pre></div>
+</div>
+<p>در پایان با استفاده از دستور <code class="docutils literal"><span class="pre">su</span></code> به سطح دسترسی root رسیده و دستورات پایین را به ترتیب وارد نمایید:</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ ./configure
+$ make
+$ make install
+</pre></div>
+</div>
+<p>اگر پیش از این نسخه‌ای از شاخه 3x پایتون نصب باشد (مانند 3.3)، دستور سطر سوم موجب جایگزین شدن نسخه‌ جدید (3.4) با آن می‌شود؛ این دستور در مواقع ارتقا نسخه پایتون مفید است. چنانچه قصد دارید همچنان به نسخه‌ پیشین نیز دسترسی داشته باشید، دستور <code class="docutils literal"><span class="pre">make</span> <span class="pre">altinstall</span></code> را جایگزین <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> نمایید. به عنوان نمونه وضعیت نسخه‌ 3x پایتون، در زمان‌ قبل و بعد از نصب نسخه‌ جدید به همراه مسیر نصب آن در Fedora 20 آورده شده است. به تفاوت عملکرد دو دستور <code class="docutils literal"><span class="pre">make</span> <span class="pre">altinstall</span></code> و <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> توجه نمایید:</p>
+<div class="code highlight-python"><div class="highlight"><pre># default
+
+$ python --version
+Python 2.7.5
+$ python2 --version
+Python 2.7.5
+$ python3 --version
+Python 3.3.2
+</pre></div>
+</div>
+<div class="code highlight-python"><div class="highlight"><pre># make altinstall
+
+$ which python3
+/usr/bin/python3
+
+$ which python3.4
+/usr/local/bin/python3.4
+
+$ python3 --version
+Python 3.3.2
+
+$ python3.4 --version
+Python 3.4.2
+</pre></div>
+</div>
+<div class="code highlight-python"><div class="highlight"><pre># make install
+
+$ which python3
+/usr/local/bin/python3
+
+$ which python3.4
+/usr/local/bin/python3.4
+
+$ python3 --version
+Python 3.4.2
+
+$ python3.4 --version
+Python 3.4.2
+</pre></div>
+</div>
+<p>در روشی دیگر برای نصب کردن چندین نسخه‌ متفاوت از یک شاخه پایتون، می‌توان هر یک را در محل مشخصی از دیسک نصب نمود. برای این منظور می‌بایست از دستوراتی مشابه پایین استفاده نمایید:</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ ./configure --prefix=/opt/python3.4
+$ make
+$ make install
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="first admonition-title">ملاحظه</p>
+<p class="last">عبارت opt/python3.4/ در سطر یکم، مشخص کننده‌‌ محل نصب پایتون است که به دلخواه خود کاربر تعیین می‌گردد.</p>
+</div>
+<p>در صورت استفاده از این روش، مفسر پایتون نسخه نصب شده را می‌توان مشابه هر یک از دو دستور زیر (با ذکر مسیر نصب - در اینجا: opt/python3.4/)‌ فراخوانی نمود:</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ /opt/python3.4/bin/python3 --version
+Python 3.4.2
+$ /opt/python3.4/bin/python3.4 --version
+Python 3.4.2
+</pre></div>
+</div>
+<p>برای راحتی در فراخوانی می‌توانید نشانی دایرکتوری مفسر پایتون را به متغیر محیطی Path سیستم عامل اضافه نمایید. برای این کار فایل پنهان bashrc. موجود در دایرکتوری home (مسیر ~) را توسط یک ویرایشگر متن، باز نموده و عبارتی مشابه پایین را در آن وارد و سپس تغییر ایجاد شده را ذخیره (Save) نمایید:</p>
+<div class="code highlight-python"><div class="highlight"><pre>export PATH=$PATH:/opt/python3.4/bin
+</pre></div>
+</div>
+<p>اکنون برای فراخوانی پایتون نصب شده دیگر نیازی به وارد کردن مسیر آن نمی‌باشد ولی به خاطر داشته باشید به دلیل وجود نسخه 3x ای که از پیش نصب بوده (در اینجا: 3.3.2) لازم است نسخه جدید را با ذکر صریح نسخه فراخوانی نمایید:</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ python3 --version
+Python 3.3.2
+$ python3.4 --version
+Python 3.4.2
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">توجه</p>
+<p class="last">به صورت کلی برای فراخوانی پایتون نسخه 3x از یکی از دستورات <code class="docutils literal"><span class="pre">python3.4</span></code> ،<code class="docutils literal"><span class="pre">python3</span></code> یا <code class="docutils literal"><span class="pre">python3.x</span></code> که x بیانگر بخش جزیی نسخه پایتون می‌باشد. برای نسخه 2x نیز از دستورات <code class="docutils literal"><span class="pre">python2.7</span></code> ،<code class="docutils literal"><span class="pre">python2</span></code> ،<code class="docutils literal"><span class="pre">python</span></code> یا <code class="docutils literal"><span class="pre">python2.x</span></code> استفاده می‌گردد. در این راستا چنانچه پایتون در مسیری خاص نصب گردد لازم است مسیر آن به متغیر Path اضافه شود. برای فراخوانی pip و IDLE هر نسخه نیز از همین رویه پیروی می‌شود.</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>سیستم مدیریت بسته پایتون<a class="headerlink" href="#id8" title="لینک ثابت به این سر مقاله">¶</a></h2>
+<p><a class="reference external" href="http://pip.pypa.io/en/stable/">pip</a> (بخوانید: پِپ) سیستم مدیریت بسته‌‌ پایتون است. pip ابزاری است مبتنی بر خط فرمان که از آن برای نصب، حذف و در کل مدیریت بسته‌های (یا کتابخانه‌ها‌ی) پایتون استفاده می‌گردد. برنامه‌نویس پس از یافتن بسته‌ مورد نیاز خود در PyPI یا وب‌سایت‌ها و سرویس‌های دیگری به مانند github.com و bitbucket.com می‌تواند به وسیله دستور pip در خط فرمان، اقدام به نصب آن در پایتون نماید.</p>
+<div class="admonition tip">
+<p class="first admonition-title">نکته</p>
+<p class="last"><a class="reference external" href="http://pypi.python.org/pypi">PyPI</a> (بخوانید: پای‌پِ) یا مخزن بسته‌های پایتون (Python Package Index) محلی است که بسیاری از کتابخانه‌ها یا برنامه‌های شخص ثالث پایتون در آن نگه داری می‌شود و ابزاری است برای تمامی کاربران پایتون تا اقدام به جستجو و همچنین دانلود بسته‌های مورد نیاز خود نمایند.</p>
+</div>
+<p>به عنوان نمونه برای نصب <a class="reference external" href="http://bottlepy.org/">Bottle</a> که یک وب فریم‌ورک (Web Framework) برای پایتون است از دستور <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">bottle</span></code> استفاده می‌گردد. با وارد کردن این دستور، Bottle در PyPI (به عنوان مخزن پیش‌فرض pip) جستجو می‌شود و پس از یافتن، دانلود، نصب و به پایتون افزوده می‌شود (درون دایرکتوری site-packages).</p>
+<p>برای کسب دانش بیشتر از چگونگی استفاده pip به <a class="reference external" href="http://pip.pypa.io/en/stable/">اسناد آن</a> مراجعه نمایید.</p>
+<p>pip از زمان انتشار نسخه‌ 3.4 به بسته‌ نصبی پایتون افزوده شده است و به همراه آن نصب می‌شود ولی در صورت نیاز به pip برای نسخه‌های قدیمی‌تر، می‌بایست آن را به صورت جداگانه‌ نصب نمایید.</p>
+<div class="admonition note">
+<p class="first admonition-title">توجه</p>
+<p class="last">نسخه 2.7.9 پایتون پس از نسخه 3.4 منتشر شده است؛ بنابراین با نصب آن نیز pip در دسترس خواهد بود.</p>
+</div>
+<p>برای نصب pip لازم است تا فایل <a class="reference external" href="http://bootstrap.pypa.io/get-pip.py">get-pip.py</a> را دانلود نمایید.</p>
+<p>سپس به وسیله‌ دستوری مشابه <code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code> در خط فرمان، با سطح کاربری Administrator (در ویندوز) یا root (در گنولینوکس) می‌توانید اقدام به نصب pip نمایید. فراموش نشود، در زمان نصب نیاز به اتصال اینترنت می‌باشد.</p>
+<div class="admonition note">
+<p class="first admonition-title">توجه</p>
+<p class="last">منظور از <code class="docutils literal"><span class="pre">python</span></code> در دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code>، فراخوانی مفسر پایتون نسخه‌ایست که قصد داریم pip را در آن نصب کنیم.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>با آرزوی کامیابی ;)</p>
+</div>
 </div>
 
 

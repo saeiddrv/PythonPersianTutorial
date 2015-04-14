@@ -16,10 +16,4 @@
    lessons/l01
    lessons/l02
 
-شاخص‌ها
-==========
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
