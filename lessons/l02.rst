@@ -143,7 +143,7 @@
 
 .. code::
 
-    # default
+    --- default
     
     $ python --version
     Python 2.7.5
@@ -154,7 +154,7 @@
 
 .. code::
 
-    # make altinstall
+    --- make altinstall
     
     $ which python3
     /usr/bin/python3
@@ -170,7 +170,7 @@
 
 .. code::
 
-    # make install
+    --- make install
     
     $ which python3
     /usr/local/bin/python3
@@ -233,7 +233,7 @@
 
 به عنوان نمونه برای نصب `Bottle <http://bottlepy.org/>`_ که یک وب فریم‌ورک (Web Framework) برای پایتون است از دستور ``pip install bottle`` استفاده می‌گردد. با وارد کردن این دستور، Bottle در PyPI (به عنوان مخزن پیش‌فرض pip) جستجو می‌شود و پس از یافتن، دانلود، سپس نصب و به پایتون افزوده می‌شود (درون دایرکتوری site-packages).
 
-برای کسب دانش بیشتر از چگونگی استفاده‌ی pip به `اسناد آن <http://pip.pypa.io/en/stable/>`_ مراجعه نمایید.
+برای کسب دانش بیشتر از چگونگی استفاده‌ pip به `اسناد آن <http://pip.pypa.io/en/stable/>`_ مراجعه نمایید.
 
 pip از زمان انتشار نسخه‌ 3.4 به بسته‌ نصبی پایتون افزوده شده است و به همراه آن نصب می‌شود ولی در صورت نیاز به pip برای نسخه‌های قدیمی‌تر، می‌بایست آن را به صورت جداگانه‌ نصب نمایید.
 

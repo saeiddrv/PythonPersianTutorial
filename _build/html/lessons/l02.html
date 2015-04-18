@@ -225,7 +225,7 @@ $ make install
 </pre></div>
 </div>
 <p>اگر پیش از این نسخه‌ای از شاخه 3x پایتون نصب باشد (مانند 3.3)، دستور سطر سوم موجب جایگزین شدن نسخه‌ جدید (3.4) با آن می‌شود؛ این دستور در مواقع ارتقا نسخه پایتون مفید است. چنانچه قصد دارید همچنان به نسخه‌ پیشین نیز دسترسی داشته باشید، دستور <code class="docutils literal"><span class="pre">make</span> <span class="pre">altinstall</span></code> را جایگزین <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> نمایید. به عنوان نمونه وضعیت نسخه‌ 3x پایتون، در زمان‌ قبل و بعد از نصب نسخه‌ جدید به همراه مسیر نصب آن در Fedora 20 آورده شده است. به تفاوت عملکرد دو دستور <code class="docutils literal"><span class="pre">make</span> <span class="pre">altinstall</span></code> و <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> توجه نمایید:</p>
-<div class="code highlight-python"><div class="highlight"><pre># default
+<div class="code highlight-python"><div class="highlight"><pre>--- default
 
 $ python --version
 Python 2.7.5
@@ -235,7 +235,7 @@ $ python3 --version
 Python 3.3.2
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre># make altinstall
+<div class="code highlight-python"><div class="highlight"><pre>--- make altinstall
 
 $ which python3
 /usr/bin/python3
@@ -250,7 +250,7 @@ $ python3.4 --version
 Python 3.4.2
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre># make install
+<div class="code highlight-python"><div class="highlight"><pre>--- make install
 
 $ which python3
 /usr/local/bin/python3
@@ -306,7 +306,7 @@ Python 3.4.2
 <p class="last"><a class="reference external" href="http://pypi.python.org/pypi">PyPI</a> (بخوانید: پای‌پِ) یا مخزن بسته‌های پایتون (Python Package Index) محلی است که بسیاری از کتابخانه‌ها یا برنامه‌های شخص ثالث پایتون در آن نگه داری می‌شود و ابزاری است برای تمامی کاربران پایتون تا اقدام به جستجو و همچنین دانلود بسته‌های مورد نیاز خود نمایند.</p>
 </div>
 <p>به عنوان نمونه برای نصب <a class="reference external" href="http://bottlepy.org/">Bottle</a> که یک وب فریم‌ورک (Web Framework) برای پایتون است از دستور <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">bottle</span></code> استفاده می‌گردد. با وارد کردن این دستور، Bottle در PyPI (به عنوان مخزن پیش‌فرض pip) جستجو می‌شود و پس از یافتن، دانلود، سپس نصب و به پایتون افزوده می‌شود (درون دایرکتوری site-packages).</p>
-<p>برای کسب دانش بیشتر از چگونگی استفاده‌ی pip به <a class="reference external" href="http://pip.pypa.io/en/stable/">اسناد آن</a> مراجعه نمایید.</p>
+<p>برای کسب دانش بیشتر از چگونگی استفاده‌ pip به <a class="reference external" href="http://pip.pypa.io/en/stable/">اسناد آن</a> مراجعه نمایید.</p>
 <p>pip از زمان انتشار نسخه‌ 3.4 به بسته‌ نصبی پایتون افزوده شده است و به همراه آن نصب می‌شود ولی در صورت نیاز به pip برای نسخه‌های قدیمی‌تر، می‌بایست آن را به صورت جداگانه‌ نصب نمایید.</p>
 <div class="admonition note">
 <p class="first admonition-title">توجه</p>
