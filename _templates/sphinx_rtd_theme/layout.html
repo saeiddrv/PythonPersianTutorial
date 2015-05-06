@@ -144,6 +144,12 @@
   {% if not READTHEDOCS %}
     <script type="text/javascript" src="{{ pathto('_static/js/theme.js', 1) }}"></script>
   {% endif %}
+  
+  <script type="text/javascript">
+      $( document ).ready(function() {
+           jQuery('.wy-menu.rst-pro').html('');
+      });
+  </script>
 
   {# STICKY NAVIGATION #}
   {% if theme_sticky_navigation %}
