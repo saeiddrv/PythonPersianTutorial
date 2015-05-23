@@ -45,8 +45,8 @@ dl dd{margin:0 0 12px 24px}
 #page-body{width:100%;position:relative;padding-left:32px}
 @media(min-width:768px){#page.toggled #page-body{position:relative;padding-left:0}}
 @media(max-width:768px){#page.toggled #page-body{display:none}}
-#page-sidebar{z-index:1000;position:fixed;left:-300px;width:300px;min-height:100%;background-color:#5C6BC0;overflow:hidden}
-#page.toggled #page-sidebar{left:0;margin-left:0}
+#page-sidebar{z-index:1000;position:fixed;left:-300px;width:332px;min-height:100%;background-color:transparent;overflow:hidden}
+#page.toggled #page-sidebar{left:0;margin-left:0;width:300px;background-color:#5C6BC0}
 #sidebar-top{width:300px;top:0!important;left:-300px;position:fixed;z-index:1000;background-color:#5C6BC0}
 #page.toggled #sidebar-top{left:0}
 #page,#page-sidebar,#sidebar-top{-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;-ms-transition:all 0.5s ease;transition:all 0.5s ease}

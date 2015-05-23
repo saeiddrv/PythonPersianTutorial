@@ -22,7 +22,7 @@ $( document ).ready(function() {
     });
 
     var sth = $("#sidebar-top").height();
-    $("#sidebar-bottom").css("margin-top", sth + "px");
+    $("#sidebar-bottom").css("margin-top", (sth - 1) + "px");
     $("#sidebar-bottom").height($(window).height() - sth);
 
     $("div[class^='highlight-']").wrap( "<div class='h-scroll'></div>");
