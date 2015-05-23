@@ -1,5 +1,5 @@
-.. PythonPersianTutorial documentation master file, created by
-   sphinx-quickstart on Fri Apr 10 21:44:04 2015.
+.. Minoo documentation master file, created by
+   sphinx-quickstart on Fri May  8 10:38:56 2015.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -21,11 +21,10 @@
 
 |
 
-|
-
-
 .. note::
-    یک پوزش از این جهت که هنوز آموزش در حال تکمیل است! :emoji-size:`😅`.
+    آموزش هنوز در حال تکمیل است!.
+
+
 
 
 

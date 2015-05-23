@@ -1,0 +1,99 @@
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{ metatags }}
+
+{%- block htmltitle %}
+    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+{%- endblock %}
+
+{% if favicon %}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+{% endif %}
+
+{% if not embedded %}
+    {% if use_opensearch %}
+        <link rel="search" type="application/opensearchdescription+xml" title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}" href="{{ pathto('_static/opensearch.xml', 1) }}">
+    {% endif %}
+{% endif %}
+
+{% for cssfile in css_files %}
+    <link rel="stylesheet" type=text/css href="{{ pathto(cssfile, 1) }}">
+{% endfor %}
+{% for cssfile in extra_css_files %}
+    <link rel="stylesheet" type=text/css href="{{ pathto(cssfile, 1) }}">
+{% endfor %}
+
+<link rel="stylesheet" type=text/css href="{{ pathto('_static/bootstrap.min.css', 1) }}">
+<link rel="stylesheet" type=text/css href="{{ pathto('_static/font-awesome.min.css', 1) }}">
+<link rel="stylesheet" type=text/css href="{{ pathto('_static/pygment_trac.css', 1) }}">
+
+{% if theme_direction == "ltr" %}
+    <link rel="stylesheet" type=text/css href="{{ pathto('_static/minoo-ltr.css', 1) }}">
+{% else %}
+    <link rel="stylesheet" type=text/css href="{{ pathto('_static/minoo-rtl.css', 1) }}">
+{% endif %} 
+
+{%- block linktags %}
+    {%- if hasdoc('about') %}
+        <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
+    {%- endif %}
+    {%- if hasdoc('genindex') %}
+        <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+    {%- endif %}
+    {%- if hasdoc('search') %}
+        <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+    {%- endif %}
+    {%- if hasdoc('copyright') %}
+        <link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}" />
+    {%- endif %}
+        <link rel="top" title="{{ docstitle|e }}" href="{{ pathto(master_doc) }}" />
+    {%- if parents %}
+        <link rel="up" title="{{ parents[-1].title|striptags|e }}" href="{{ parents[-1].link|e }}" />
+    {%- endif %}
+    {%- if next %}
+        <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+    {%- endif %}
+    {%- if prev %}
+        <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+    {%- endif %}
+{%- endblock %}
+
+
+{% if not embedded %}
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'{{ url_root }}',
+            VERSION:'{{ release|e }}',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'{{ '' if no_search_suffix else file_suffix }}',
+            HAS_SOURCE:  {{ has_source|lower }}
+        };
+    </script>
+
+    {% set script_files = script_files + ['_static/searchtools.js'] %}
+
+    {%- for scriptfile in script_files %}
+        <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {%- endfor %}
+{% endif %}
+
+{% if theme_analytics_id %}
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '{{ theme_analytics_id }}' ]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+{% endif %}
+
+<script type="text/javascript" src="{{ pathto('_static/bootstrap.min.js', 1) }}"></script>
+<script type="text/javascript" src="{{ pathto('_static/minoo.js', 1) }}"></script>
+<script type="text/javascript" src="{{ pathto('_static/modernizr.min.js', 1) }}"></script>
+

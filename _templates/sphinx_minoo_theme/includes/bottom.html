@@ -1,0 +1,60 @@
+{% import "glossary.html" as glossary %}
+
+<div class="row">
+    <div class="col-lg-12">
+        {% if next or prev %}
+            <div id="body-btn">
+                {% if theme_direction == "ltr" %}
+                    {% if prev %}
+                    <a href="{{ prev.link|e }}" style="float:left;" title="{{ prev.title|striptags|e }}" accesskey="p"><i class="fa fa-chevron-left"></i>&nbsp; {{glossary.btn_previous}}</a>
+                    {% endif %} 
+                    {% if next %}
+                    <a href="{{ next.link|e }}" style="float:right;" title="{{ next.title|striptags|e }}" accesskey="n">{{glossary.btn_next}} &nbsp;<i class="fa fa-chevron-right"></i></a>
+                    {% endif %}
+                {% else %}
+                    {% if prev %}
+                    <a href="{{ prev.link|e }}" style="float:right;" title="{{ prev.title|striptags|e }}" accesskey="p"><i class="fa fa-chevron-right"></i>&nbsp; {{glossary.btn_previous}}</a>
+                    {% endif %}
+                    {% if next %}
+                    <a href="{{ next.link|e }}" style="float:left;" title="{{ next.title|striptags|e }}" accesskey="n">{{glossary.btn_next}} &nbsp;<i class="fa fa-chevron-left"></i></a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div id="body-footer">  
+            <p>
+                {%- if show_copyright %}
+                    {%- if hasdoc('copyright') %}
+                        {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+                    {%- else %}
+                        {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+                    {%- endif %}
+                {%- endif %}
+            </p>
+            {%- if last_updated %}
+                <p style="font-size: 13px;">
+                    {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+                </p>
+            {%- endif %}
+            {%- if show_sphinx %}
+                <p style="font-size: 13px;">
+                    {% trans sphinx_version=sphinx_version|e %}
+                        Created using <a href="http://sphinx-doc.org/">Sphinx</a> ({{ sphinx_version }}) with <a href="https://github.com/saeiddrv/SphinxMinooTheme">Minoo</a> (Beta 0.9.1) theme.
+                    {% endtrans %}
+                </p>
+            {%- endif %}
+            {% if READTHEDOCS %}
+                <p style="font-size: 13px;">
+                    {% trans %}Document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>.{% endtrans %}
+                </p>
+            {%- endif %}
+            <p style="font-size: 13px;">
+                {%- block footer %} {% endblock %}
+           </p>
+        </div> 
+    </div>
+</div>

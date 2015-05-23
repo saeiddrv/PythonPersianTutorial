@@ -1,0 +1,67 @@
+{% import "glossary.html" as glossary %}
+
+<div id="page-sidebar-w">
+<div id="sidebar-top">
+    <div id="sidebar-top-image">
+        <span style="background-image: url('{{ pathto('_static/avatar.jpg', 1) }}');"></span>
+    </div>
+    <div id="sidebar-top-links">
+        {% if theme_website %}
+            <a href={{ theme_website|e }} target="_blank"><i class="fa fa-globe" style="font-size:23px;"></i></a>
+        {% endif %}
+        {% if theme_facebook %}
+            <a href={{ theme_facebook|e }} target="_blank"><i class="fa fa-facebook-official" style="font-size:23px;"></i></a>
+        {% endif %}
+        {% if theme_googleplus %}
+            <a href={{ theme_googleplus|e }} target="_blank"><i class="fa fa-google-plus-square" style="font-size:23px;"></i></a>
+        {% endif %}
+        {% if theme_linkedin %}
+            <a href={{ theme_linkedin|e }} target="_blank"><i class="fa fa-linkedin-square" style="font-size:23px;"></i></a>
+        {% endif %}
+        {% if theme_twitter %}
+            <a href={{ theme_twitter|e }} target="_blank"><i class="fa fa-twitter-square" style="font-size:23px;"></i></a>
+        {% endif %}
+        {% if theme_github %}
+            <a href={{ theme_github|e }} target="_blank"><i class="fa fa-github-square" style="font-size:23px;"></i></a>
+        {% endif %}
+        {% if theme_bitbucket %}
+            <a href={{ theme_bitbucket|e }} target="_blank"><i class="fa fa-bitbucket-square" style="font-size:23px;"></i></a>
+        {% endif %}
+    </div>
+    <div id="sidebar-navigation">
+        <span id="navigation-toggle"><i class="fa {% if theme_direction == 'ltr' %} fa-angle-double-right {% else %} fa-angle-double-left {% endif %}" id="sidebar-toggle-icon" style="font-size: 27px;"></i></span>
+        <span id="navigation-search">
+            {%- if builder != 'singlehtml' %}
+                <form action="{{ pathto('search') }}" method="get">
+                    <input id="input-search" type="text" name="q"  placeholder="{{glossary.search_text}}">
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+           {%- endif %}
+        </span>
+    </div>
+    <div id="sidebar-top-title">
+        <a href="{{ pathto(master_doc) }}">{{ project }}</a>
+    </div>
+</div>
+
+<div id="sidebar-bottom">
+    <div id="sidebar-bottom-list">
+        {% set toctree = toctree(maxdepth=2,collapse=False, includehidden=True) %}
+        {% if toctree %}
+            <div id="tree-toc">
+            {{ toctree }}
+            </div>
+        {% else %}
+            <div id="local-toc">
+                {{ toc }}
+            </div>
+        {% endif %}
+   </div>
+   <div id="sidebar-bottom-versions">
+      {% include "includes/versions.html" %}
+   </div>
+</div>
+</div>
+
+

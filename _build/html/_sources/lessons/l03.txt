@@ -6,8 +6,6 @@
 
 :emoji-size:`✔` سطح: پایه
 
-:emoji-size:`✔` `زادگاه این نوشته - بیان دیدگاه‌‌ و سوال <http://coderz.ir/python-tutorial-create-project/>`_
-
 ----
 
 ساختار پروژه
@@ -39,7 +37,7 @@
     .
     ├── sample_project.py
     ├── module_one.py
-    └── pakage
+    └── pakage/
         ├── __init__.py
         ├── module_two.py
         └── module_three.py
@@ -59,20 +57,20 @@
     
     SampleProject
     .
-    ├── docs
+    ├── docs/
     ├── LICENSE.txt
     ├── MANIFEST.in
     ├── README.rst
     ├── requirements.txt
-    ├── sampleproject
+    ├── sampleproject/
     │   ├── __init__.py
     │   ├── module_one.py
-    │   ├── pakage
+    │   ├── pakage/
     │   │   ├── __init__.py
     │   │   ├── module_two.py
     │   │   └── module_three.py
     │   ├── sample_project.py
-    │   └── test
+    │   └── test/
     ├── setup.cfg
     └── setup.py
 
@@ -174,7 +172,7 @@ test: این دایرکتوری محل نگهداری برنامه تست پرو
 
 .. code::
     
-    $ python
+    user> python
     Python 2.7.9 (default, Jan 12 2015, 12:41:47) 
     [GCC 4.9.2 20141101 (Red Hat 4.9.2-1)] on linux2
     Type "help", "copyright", "credits" or "license" for more information.
@@ -191,12 +189,12 @@ test: این دایرکتوری محل نگهداری برنامه تست پرو
 
 در پایین می‌توانید نتیجه اجرای اسکریپتی که در بخش پیش ایجاد نمودیم را در گنولینوکس مشاهده نمایید:
 
-.. code::
+.. code:: 
     
-    $ python Documents/FirstProject/first_project_2x.py
+    user> python Documents/FirstProject/first_project_2x.py
     (50-5×6)÷4 = 5
     
-    $ python3 Documents/FirstProject/first_project_3x.py
+    user> python3 Documents/FirstProject/first_project_3x.py
     (50-5×6)÷4 = 5.0
 
 اگر به حاصل عبارت ``4÷(6×5-50)`` در خروجی دو اسکریپت دقت کرده باشید حتما متوجه تفاوت آن شده‌اید. پایتون 2x حاصل تقسیم دو عدد صحیح (Integer) را به صورت یک عدد صحیح محاسبه و از مقدار بعد از ممیز (در صورت وجود) صرف نظر می‌کند ولی پایتون 3x همواره حاصل تقسیم را به صورت یک عدد اعشاری (Floating Point) و با دقتی بیشتر بر می‌گرداند. باز هم در این مورد صحبت خواهیم کرد.
@@ -215,7 +213,8 @@ test: این دایرکتوری محل نگهداری برنامه تست پرو
 
 معمولا در گنولینوکس سطری به مانند پایین به ابتدای اسکریپت‌های پایتون (فقط در سطر یکم) اضافه می‌کنند، در این صورت به هنگام اجرا دیگر نیازی به فراخوانی مفسر پایتون نبوده و تنها می‌بایست پس از تغییر حالت (Mode) اسکریپت مورد نظر به حالت اجرا (توسط دستور `chmod <http://en.wikipedia.org/wiki/Chmod#Symbolic_modes>`_)، آن را به روش معمول در یونیکس اجرا نماییم:
 
-.. code::
+.. code-block:: python
+    :linenos:
     
     #!/usr/bin/env python3
 
@@ -239,13 +238,13 @@ test: این دایرکتوری محل نگهداری برنامه تست پرو
 
 .. code::
     
-    $ chmod +x Documents/FirstProject/first_project_2x.py
+    user> chmod +x Documents/FirstProject/first_project_2x.py
     
-    $ Documents/FirstProject/first_project_2x.py
+    user> Documents/FirstProject/first_project_2x.py
     (50-5×6)÷4 = 5
     
-    $ cd Documents/FirstProject
-    $ ./first_project_2x.py
+    user> cd Documents/FirstProject/
+    user> ./first_project_2x.py
     (50-5×6)÷4 = 5
 
 .. note::
@@ -278,7 +277,6 @@ test: این دایرکتوری محل نگهداری برنامه تست پرو
 
 |
 
-|
 
 `لطفا دیدگاه و سوال‌های مرتبط با این درس خود را در کدرز مطرح نمایید. <http://coderz.ir/python-tutorial-create-project/>`_
 

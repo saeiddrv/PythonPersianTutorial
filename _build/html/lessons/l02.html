@@ -1,133 +1,179 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>درس ۰۲: نصب و راه‌اندازی &mdash; آموزش فارسی پایتون 1.0 documentation</title>
-  
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fa" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fa" > <!--<![endif]-->
+<html dir="rtl" lang="fa">
+    <head>
+        
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
-  
 
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <title>درس ۰۲: نصب و راه‌اندازی &mdash; آموزش فارسی پایتون 1.0 documentation</title>
 
-  
-  
+
+
+
     
 
-  
 
-  
 
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="top" title="آموزش فارسی پایتون 1.0 documentation" href="../index.html"/>
-        <link rel="next" title="درس ۰۳: ایجاد و اجرای پروژه" href="l03.html"/>
-        <link rel="prev" title="درس ۰۱: آشنایی" href="l01.html"/> 
 
-  
-  <script src="static/js/modernizr.min.js"></script>
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<link rel="stylesheet" type=text/css href="../_static/bootstrap.min.css">
+<link rel="stylesheet" type=text/css href="../_static/font-awesome.min.css">
+<link rel="stylesheet" type=text/css href="../_static/pygment_trac.css">
 
-  <div class="wy-grid-for-nav">
+
+    <link rel="stylesheet" type=text/css href="../_static/minoo-rtl.css">
+
+        <link rel="top" title="آموزش فارسی پایتون 1.0 documentation" href="../index.html" />
+        <link rel="next" title="درس ۰۳: ایجاد و اجرای پروژه" href="l03.html" />
+        <link rel="prev" title="درس ۰۱: آشنایی" href="l01.html" />
+
+
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
 
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="../_static/searchtools.js"></script>
+
+
+
+
+<script type="text/javascript" src="../_static/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/minoo.js"></script>
+<script type="text/javascript" src="../_static/modernizr.min.js"></script>
+
+    </head>
+    <body>
+        <div id="page">
+            <div id="page-sidebar">
+                
+
+<div id="page-sidebar-w">
+<div id="sidebar-top">
+    <div id="sidebar-top-image">
+        <span style="background-image: url('../_static/avatar.jpg');"></span>
+    </div>
+    <div id="sidebar-top-links">
         
-          <a href="../index.html" class="fa fa-home"> آموزش فارسی پایتون</a>
+            <a href=http://coderz.ir/python target="_blank"><i class="fa fa-globe" style="font-size:23px;"></i></a>
         
         
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="جستجو..." />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+        
+        
+        
+            <a href=https://twitter.com/saeiddrv target="_blank"><i class="fa fa-twitter-square" style="font-size:23px;"></i></a>
+        
+        
+            <a href=https://github.com/saeiddrv target="_blank"><i class="fa fa-github-square" style="font-size:23px;"></i></a>
+        
+        
+    </div>
+    <div id="sidebar-navigation">
+        <span id="navigation-toggle"><i class="fa  fa-angle-double-left " id="sidebar-toggle-icon" style="font-size: 27px;"></i></span>
+        <span id="navigation-search">
+                <form action="../search.html" method="get">
+                    <input id="input-search" type="text" name="q"  placeholder="جستجو">
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+        </span>
+    </div>
+    <div id="sidebar-top-title">
+        <a href="../index.html">آموزش فارسی پایتون</a>
+    </div>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<div id="sidebar-bottom">
+    <div id="sidebar-bottom-list">
         
-          
-          
-              <ul class="current">
+        
+            <div id="tree-toc">
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="l01.html">درس ۰۱: آشنایی</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="l01.html#id3">تاریخچه</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l01.html#id6">توصیفی کوتاه</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l01.html#id8">ویژگی‌ها</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l01.html#id12">کارایی</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l01.html#id16">نسخه‌ها</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l01.html#id18">پی‌نوشت</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l01.html#id2">تاریخچه</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l01.html#id8">توصیفی کوتاه</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l01.html#id12">ویژگی‌ها</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l01.html#id23">کارایی</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l01.html#id27">نسخه‌ها</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l01.html#id30">پی‌نوشت</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">درس ۰۲: نصب و راه‌اندازی</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id3">دانلود</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">نصب در ویندوز</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">نصب در گنولینوکس</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">سیستم مدیریت بسته</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">دانلود</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">نصب در ویندوز</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">نصب در گنولینوکس</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">سیستم مدیریت بسته</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="l03.html">درس ۰۳: ایجاد و اجرای پروژه</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="l03.html#id3">ساختار پروژه</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l03.html#id7">ایجاد سورس کد</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l03.html#id8">اجرای سورس کد</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l03.html#id9">پشت صحنه اجرا</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l03.html#id2">ساختار پروژه</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l03.html#id6">ایجاد سورس کد</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l03.html#id7">اجرای سورس کد</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l03.html#id8">پشت صحنه اجرا</a></li>
 </ul>
 </li>
 </ul>
 
-          
+            </div>
         
-      </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
+   </div>
+   <div id="sidebar-bottom-versions">
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">آموزش فارسی پایتون</a>
-      </nav>
 
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">برگه‌ها</a> &raquo;</li>
-      
-    <li>درس ۰۲: نصب و راه‌اندازی</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          <a href="../_sources/lessons/l02.txt" rel="nofollow"> View page source</a>
-        
-      </li>
-  </ul>
-  <hr/>
+   </div>
 </div>
-          <div role="main" class="document">
-            
+</div>
+
+
+            </div>
+            <div id="page-body">
+                <div class="container-fluid">
+                        <div id="body-content" style="max-width: 800px">
+                            
+
+<div id="body-top">
+    
+    
+        <a href="../index.html"><i class="fa fa-folder-o"></i>&nbsp; اسناد</a>&nbsp;
+        <a><i class="fa  fa-angle-left"></i></a>&nbsp;
+        <a><i class="fa fa-folder-open-o"></i>&nbsp; درس ۰۲: نصب و راه‌اندازی</a>
+    
+    
+        
+            <a href="../_sources/lessons/l02.txt" rel="nofollow" id="top-src"><i class="fa fa-code"></i>&nbsp; سورس</a>
+        
+    
+</div>
+                            <div class="row">
+			        <div class="col-lg-12">
+				    
   <div class="section" id="id1">
 <h1>درس ۰۲: نصب و راه‌اندازی<a class="headerlink" href="#id1" title="لینک ثابت به این سر مقاله">¶</a></h1>
-<p>در این درس به چگونگی نصب و راه‌اندازی پایتون در دو سیستم عامل ویندوز و گنولینوکس پرداخته شده است.</p>
+<p>در این درس به چگونگی نصب و راه‌اندازی پایتون در دو سیستم عامل ویندوز و گنولینوکس پرداخته و در پایان نیز توضیح مختصری از «سیستم مدیریت بسته» پایتون ارائه شده است.</p>
 <p><span class="emoji-size">✔</span> سطح: پایه</p>
-<p><span class="emoji-size">✔</span> <a class="reference external" href="http://coderz.ir/python-tutorial-installation/">زادگاه این نوشته - بیان دیدگاه‌‌ و سوال</a></p>
 <hr class="docutils" />
-<div class="section" id="id3">
-<h2>دانلود<a class="headerlink" href="#id3" title="لینک ثابت به این سر مقاله">¶</a></h2>
+<div class="section" id="id2">
+<h2>دانلود<a class="headerlink" href="#id2" title="لینک ثابت به این سر مقاله">¶</a></h2>
 <p>برای ترجمه و اجرای سورس کد ایجاد شده به زبان پایتون لازم است «بسته نصبی پایتون» (همان CPython یا اگر ساده بگوییم: پایتون) که شامل مفسر، کتابخانه استاندارد، برنامه <a class="reference external" href="http://en.wikipedia.org/wiki/IDLE_%28Python%29">IDLE</a> (ویرایشگر پیش‌فرض پایتون) و... است را دانلود و بر روی سیستم عامل نصب نماییم.</p>
 <div class="admonition note">
 <p class="first admonition-title">توجه</p>
-<p class="last">پایتون (Python) نام یک زبان برنامه‌نویسی است. به این معنی که ساختاری برای بیان ایده‌ها یا فرمان‌های برنامه‌نویس به ماشین می‌باشد. برای فهماندن فرمان‌های پایتونی به ماشین مانند هر زبان سطح بالای دیگری نیاز به یک «پردازنده‌ زبان» (Language Processor) است. برنامه‌ CPython پردازنده استاندارد زبان پایتون است که از آن به صورت ساده با همان نام Python یاد می‌شود.</p>
+<p class="last">پایتون (Python) نام یک زبان برنامه‌نویسی است. به این معنی که ساختاری برای بیان ایده‌ها یا فرمان‌های برنامه‌نویس به ماشین می‌باشد. برای فهماندن فرمان‌های پایتونی به ماشین، مانند هر زبان سطح بالای دیگری نیاز به یک «پردازنده‌ زبان» (Language Processor) است. برنامه‌ CPython پردازنده استاندارد زبان پایتون است که از آن به صورت ساده با همان نام Python یاد می‌شود.</p>
 </div>
 <p>در هر سیستم عاملی ممکن است پایتون از پیش نصب باشد (خصوصا در گنولینوکس) که در صورت رضایت از نسخه‌ موجود، دیگر لزومی به دانلود و نصب آن نخواهد بود؛ برای آگاهی یافتن از این موضوع می‌توانید دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">--version</span></code> را در خط فرمان سیستم عامل وارد نمایید؛ البته در ویندوز به دلیل اینکه عملکرد این دستور وابسته به دستکاری متغیر Path می‌باشد، بهتر است از مسیر Control Panel &gt;‌ Programs and Features اقدام نمایید.</p>
 <div class="admonition tip">
@@ -141,8 +187,8 @@
 </div>
 <p>در هنگام تهیه‌ این مجموعه آموزشی دو نسخه‌ 2.7.9 و 3.4.2 جدیدترین نسخه‌های منتشر یافته‌ پایتون هستند. برای دسترسی به جدید‌ترین ویژگی‌ها، پیشنهاد می‌شود همیشه جدیدترین نسخه‌ موجود از پایتون را دانلود نمایید.</p>
 </div>
-<div class="section" id="id7">
-<h2>نصب در ویندوز<a class="headerlink" href="#id7" title="لینک ثابت به این سر مقاله">¶</a></h2>
+<div class="section" id="id6">
+<h2>نصب در ویندوز<a class="headerlink" href="#id6" title="لینک ثابت به این سر مقاله">¶</a></h2>
 <p>درست به مانند هر برنامه‌ دیگری در ویندوز، نصب به راحتی تنها با چند بار کلیک بر روی دکمه‌ Next به پایان می‌رسد. پیشنهاد می‌شود مسیر پیش‌فرض نصب (مثلا برای نصب نسخه‌ 3.4.2:‌ \C:\Python34) را تغییر ندهید.</p>
 <p>در هنگام نصب نسخه‌‌ای که قصد دارید از آن به صورت نسخه‌ پیش‌فرض پایتون خود استفاده نمایید، به این نکته توجه داشته باشید که در مرحله‌ سفارشی‌سازی (Customize) گزینه‌ افزودن خودکار مسیر مفسر پایتون به متغیر Path ویندوز را فعال نمایید (همانند تصویر پایین). در این صورت با وارد کردن دستور <code class="docutils literal"><span class="pre">python</span></code> در خط فرمان ویندوز، مفسر پایتون (این نسخه) فراخوانی می‌شود. برای شروع، با وارد کردن دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">–V</span></code> یا <code class="docutils literal"><span class="pre">python</span> <span class="pre">--version</span></code> می‌توانید از نسخه‌ پایتون نصب شده آگاهی یابید:</p>
 <img alt="../_images/l02-install-python-on-windows.png" class="align-center" src="../_images/l02-install-python-on-windows.png" />
@@ -181,16 +227,16 @@ python 3.4.2
 </pre></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2>نصب در گنولینوکس<a class="headerlink" href="#id8" title="لینک ثابت به این سر مقاله">¶</a></h2>
+<div class="section" id="id7">
+<h2>نصب در گنولینوکس<a class="headerlink" href="#id7" title="لینک ثابت به این سر مقاله">¶</a></h2>
 <p>پایتون معمولا در توزیع‌های گنولینوکس از پیش نصب می‌باشد (بر روی برخی نیز از هر دو شاخه آن نسخه‌ایی نصب است؛ به مانند: Ubuntu و Fedora). برای اطمینان کافی است دستورات <code class="docutils literal"><span class="pre">python2</span> <span class="pre">--version</span></code> (برای نسخه 2x) و <code class="docutils literal"><span class="pre">python3</span> <span class="pre">--version</span></code> (برای نسخه 3x) را در خط فرمان سیستم عامل وارد نمایید؛ به عنوان نمونه وضعیت نسخه‌های پایتون در Ubuntu 14.04 به صورت پایین است:</p>
-<div class="code highlight-python"><div class="highlight"><pre>$ python --version
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; python --version
 python 2.7.6
 
-$ python2 --version
+user&gt; python2 --version
 python 2.7.6
 
-$ python3 --version
+user&gt; python3 --version
 python 3.4.0
 </pre></div>
 </div>
@@ -201,93 +247,90 @@ python 3.4.0
 </div>
 <p>اکنون با فرض اینکه توزیع مورد استفاده‌‌، از پیش فاقد نسخه‌ 3x بوده یا اینکه نسخه‌ نصب شده آنقدر قدیمی است که می‌بایست آن را ارتقا (Upgrade) داد؛ پس از دانلود سورس کد نسخه‌ جدید (در این زمان فایل: Python-3.4.2.tar.xz) به صورت زیر عمل خواهیم کرد (نصب نسخه‌ 2x نیز به همین شکل است):</p>
 <p>نخست می‌بایست تمام بسته‌های پیش‌نیاز در سیستم عامل نصب گردند. برای این منظور می‌توانید دستورات پایین را (متناسب با نوع توزیع خود) در خط فرمان سیستم عامل وارد نمایید:</p>
-<div class="code highlight-python"><div class="highlight"><pre>--- fedora
-
-$ sudo yum update
-$ sudo yum install make automake autoconf pkgconfig glibc-devel gcc gcc-c++ bzip2 bzip2-devel tar tcl tcl-devel tix tix-devel tk tk-devel zlib-devel ncurses-devel sqlite-devel openssl-devel openssl readline-devel gdbm-devel db4-devel expat-devel libGL-devel libffi-devel gmp-devel valgrind-devel systemtap-sdt-devel xz-devel libX11-devel findutils libpcap-devel
+<p><strong>Fedora:</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; sudo yum update
+user&gt; sudo yum install make automake autoconf pkgconfig glibc-devel gcc gcc-c++ bzip2 bzip2-devel tar tcl tcl-devel tix tix-devel tk tk-devel zlib-devel ncurses-devel sqlite-devel openssl-devel openssl readline-devel gdbm-devel db4-devel expat-devel libGL-devel libffi-devel gmp-devel valgrind-devel systemtap-sdt-devel xz-devel libX11-devel findutils libpcap-devel
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>--- ubuntu
-
-$ sudo apt-get update
-$ sudo apt-get install build-essential
-$ sudo apt-get install make automake autoconf pkg-config libc6-dev gcc g++ bzip2 libbz2-dev tar tcl tcl-dev tix-dev tk tk-dev zlib1g-dev libncursesw5-dev libsqlite3-dev libssl-dev openssl libreadline-dev libgdbm-dev db4.8-util libexpat1-dev libgl-dev libffi-dev libgmp3-dev valgrind systemtap-sdt-dev xz-utils libX11-dev findutils libpcap-dev
+<p><strong>Ubuntu:</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; sudo apt-get update
+user&gt; sudo apt-get install build-essential
+user&gt; sudo apt-get install make automake autoconf pkg-config libc6-dev gcc g++ bzip2 libbz2-dev tar tcl tcl-dev tix-dev tk tk-dev zlib1g-dev libncursesw5-dev libsqlite3-dev libssl-dev openssl libreadline-dev libgdbm-dev db4.8-util libexpat1-dev libgl-dev libffi-dev libgmp3-dev valgrind systemtap-sdt-dev xz-utils libX11-dev findutils libpcap-dev
 </pre></div>
 </div>
 <p>پس از اطمینان از نصب بسته‌های پیش‌نیاز به مسیری که سورس کد پایتون (پس از دانلود) در آن قرار دارد رفته (در اینجا: دایرکتوری Downloads) و فایل سورس کد را از حالت فشرده خارج نمایید. حاصل کار یک دایرکتوری جدید با نامی مشابه Python-3.4.2 است که اکنون می‌بایست از طریق خط فرمان و دستور <code class="docutils literal"><span class="pre">cd</span></code> وارد مسیر آن شوید.</p>
-<div class="code highlight-python"><div class="highlight"><pre>$ cd Downloads/
-$ ls
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; cd Downloads/
+user&gt; ls
 Python-3.4.2.tar.xz
 
-$ tar xf Python-3.4.2.tar.xz
+user&gt; tar xf Python-3.4.2.tar.xz
 
-$ ls
+user&gt; ls
 Python-3.4.2  Python-3.4.2.tar.xz
 
-$ cd Python-3.4.2/
+user&gt; cd Python-3.4.2/
 </pre></div>
 </div>
 <p>در پایان با استفاده از دستور <code class="docutils literal"><span class="pre">-</span> <span class="pre">su</span></code> به سطح دسترسی root رسیده و دستورات پایین را به ترتیب وارد نمایید:</p>
-<div class="code highlight-python"><div class="highlight"><pre>$ ./configure
-$ make
-$ make install
+<div class="code highlight-python"><div class="highlight"><pre>root&gt; ./configure
+root&gt; make
+root&gt; make install
 </pre></div>
 </div>
 <p>اگر پیش از این نسخه‌ای از شاخه 3x پایتون نصب باشد (مانند 3.3)، دستور سطر سوم موجب جایگزین شدن نسخه‌ جدید (3.4) با آن می‌شود؛ این دستور در مواقع ارتقا نسخه پایتون مفید است. چنانچه قصد دارید همچنان به نسخه‌ پیشین نیز دسترسی داشته باشید، دستور <code class="docutils literal"><span class="pre">make</span> <span class="pre">altinstall</span></code> را جایگزین <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> نمایید. به عنوان نمونه وضعیت نسخه‌ 3x پایتون، در زمان‌ قبل و بعد از نصب نسخه‌ جدید به همراه مسیر نصب آن در Fedora 20 آورده شده است. به تفاوت عملکرد دو دستور <code class="docutils literal"><span class="pre">make</span> <span class="pre">altinstall</span></code> و <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> توجه نمایید:</p>
-<div class="code highlight-python"><div class="highlight"><pre>--- default
+<p>گرفتن نسخه‌های از پیش نصب:</p>
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; python --version
+Python 2.7.5
 
-$ python --version
+user&gt; python2 --version
 Python 2.7.5
-$ python2 --version
-Python 2.7.5
-$ python3 --version
+
+user&gt; python3 --version
 Python 3.3.2
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>--- make altinstall
-
-$ which python3
+<p>گرفتن مسیر و نسخه‌ پایتون 3x پس از نصب نسخه 3.4.2 با استفاده از دستور <code class="docutils literal"><span class="pre">make</span> <span class="pre">altinstall</span></code> :</p>
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; which python3
 /usr/bin/python3
 
-$ which python3.4
+user&gt; which python3.4
 /usr/local/bin/python3.4
 
-$ python3 --version
+user&gt; python3 --version
 Python 3.3.2
 
-$ python3.4 --version
+user&gt; python3.4 --version
 Python 3.4.2
 </pre></div>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>--- make install
-
-$ which python3
+<p>گرفتن مسیر و نسخه‌ پایتون 3x پس از نصب نسخه 3.4.2 با استفاده از دستور <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> :</p>
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; which python3
 /usr/local/bin/python3
 
-$ which python3.4
+user&gt; which python3.4
 /usr/local/bin/python3.4
 
-$ python3 --version
+user&gt; python3 --version
 Python 3.4.2
 
-$ python3.4 --version
+user&gt; python3.4 --version
 Python 3.4.2
 </pre></div>
 </div>
 <p>در روشی دیگر برای نصب کردن چندین نسخه‌ متفاوت از یک شاخه پایتون، می‌توان هر یک را در محل مشخصی از دیسک نصب نمود. برای این منظور می‌بایست از دستوراتی مشابه پایین استفاده نمایید:</p>
-<div class="code highlight-python"><div class="highlight"><pre>$ ./configure --prefix=/opt/python3.4
-$ make
-$ make install
+<div class="code highlight-python"><div class="highlight"><pre>root&gt; ./configure --prefix=/opt/python3.4
+root&gt; make
+root&gt; make install
 </pre></div>
 </div>
 <div class="admonition caution">
 <p class="first admonition-title">ملاحظه</p>
-<p class="last">عبارت opt/python3.4/ در سطر یکم، مشخص کننده‌‌ محل نصب پایتون است که به دلخواه خود کاربر تعیین می‌گردد.</p>
+<p class="last">عبارت <code class="docutils literal"><span class="pre">opt/python3.4/</span></code> در سطر یکم، مشخص کننده‌‌ محل نصب پایتون است که به دلخواه خود کاربر تعیین می‌گردد.</p>
 </div>
 <p>در صورت استفاده از این روش، مفسر پایتون نسخه نصب شده را می‌توان مشابه هر یک از دو دستور زیر (با ذکر مسیر نصب - در اینجا: opt/python3.4/)‌ فراخوانی نمود:</p>
-<div class="code highlight-python"><div class="highlight"><pre>$ /opt/python3.4/bin/python3 --version
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; /opt/python3.4/bin/python3 --version
 Python 3.4.2
-$ /opt/python3.4/bin/python3.4 --version
+user&gt; /opt/python3.4/bin/python3.4 --version
 Python 3.4.2
 </pre></div>
 </div>
@@ -296,9 +339,9 @@ Python 3.4.2
 </pre></div>
 </div>
 <p>اکنون برای فراخوانی پایتون نصب شده دیگر نیازی به وارد کردن مسیر آن نمی‌باشد ولی به خاطر داشته باشید به دلیل وجود نسخه 3x ای که از پیش نصب بوده (در اینجا: 3.3.2) لازم است نسخه جدید را با ذکر صریح نسخه فراخوانی نمایید:</p>
-<div class="code highlight-python"><div class="highlight"><pre>$ python3 --version
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; python3 --version
 Python 3.3.2
-$ python3.4 --version
+user&gt; python3.4 --version
 Python 3.4.2
 </pre></div>
 </div>
@@ -307,12 +350,12 @@ Python 3.4.2
 <p class="last">به صورت کلی برای فراخوانی پایتون نسخه 3x از یکی از دستورات <code class="docutils literal"><span class="pre">python3.4</span></code> ،<code class="docutils literal"><span class="pre">python3</span></code> یا <code class="docutils literal"><span class="pre">python3.x</span></code> که x بیانگر بخش جزئی نسخه پایتون می‌باشد. برای نسخه 2x نیز از دستورات <code class="docutils literal"><span class="pre">python2.7</span></code> ،<code class="docutils literal"><span class="pre">python2</span></code> ،<code class="docutils literal"><span class="pre">python</span></code> یا <code class="docutils literal"><span class="pre">python2.x</span></code> استفاده می‌گردد. در این راستا چنانچه پایتون در مسیری خاص نصب گردد لازم است مسیر آن به متغیر Path اضافه شود. برای فراخوانی pip و IDLE هر نسخه نیز از همین رویه پیروی می‌شود.</p>
 </div>
 </div>
-<div class="section" id="id9">
-<h2>سیستم مدیریت بسته<a class="headerlink" href="#id9" title="لینک ثابت به این سر مقاله">¶</a></h2>
-<p><a class="reference external" href="http://pip.pypa.io/en/stable/">pip</a> (پِپ) سیستم مدیریت بسته‌‌ پایتون است. pip ابزاری است مبتنی بر خط فرمان که از آن برای نصب، حذف و در کل مدیریت بسته‌های (یا کتابخانه‌ها‌ی) پایتون استفاده می‌گردد. برنامه‌نویس پس از یافتن بسته‌ مورد نیاز خود در PyPI یا وب‌سایت‌ها و سرویس‌های دیگری به مانند github.com و bitbucket.com می‌تواند به وسیله دستور pip در خط فرمان، اقدام به نصب آن در پایتون نماید. [pip در فارسی معمولا «پیپ» خوانده می‌شود]</p>
+<div class="section" id="id8">
+<h2>سیستم مدیریت بسته<a class="headerlink" href="#id8" title="لینک ثابت به این سر مقاله">¶</a></h2>
+<p><a class="reference external" href="http://pip.pypa.io/en/stable/">pip</a> (پِپ) سیستم مدیریت بسته‌‌ پایتون است. pip ابزاری است مبتنی بر خط فرمان که از آن برای نصب، حذف، به‌روز رسانی و در کل مدیریت بسته‌های (یا کتابخانه‌ها‌ی شخص ثالث) پایتون استفاده می‌گردد. برنامه‌نویس پس از یافتن بسته‌ مورد نیاز خود در PyPI یا وب‌سایت‌ها و سرویس‌های دیگری به مانند github.com و bitbucket.com می‌تواند به وسیله دستور pip در خط فرمان، اقدام به نصب آن در پایتون نماید.</p>
 <div class="admonition tip">
 <p class="first admonition-title">نکته</p>
-<p class="last"><a class="reference external" href="http://pypi.python.org/pypi">PyPI</a> (پای‌پِ) یا مخزن بسته‌های پایتون (Python Package Index) محلی است که بسیاری از کتابخانه‌ها یا برنامه‌های شخص ثالث پایتون در آن نگه داری می‌شود. کاربران پایتون می‌توانند از طریق PyPI پروژه خود را منتشر یا اقدام به جستجو و  دانلود بسته‌های مورد نیاز خود نمایند.</p>
+<p class="last"><a class="reference external" href="http://pypi.python.org/pypi">PyPI</a> (پای‌پِ) یا مخزن بسته‌های پایتون (Python Package Index) محلی است که بسیاری از کتابخانه‌ها یا برنامه‌های شخص ثالث پایتون در آن نگه داری می‌شود. کاربران پایتون می‌توانند از طریق PyPI پروژه (یا بسته) خود را منتشر یا اقدام به جستجو و  دانلود بسته‌های مورد نیاز خود نمایند.</p>
 </div>
 <p>pip از زمان انتشار نسخه‌ 3.4 به بسته‌ نصبی پایتون افزوده شده است و به همراه آن نصب می‌شود ولی در صورت نیاز به pip برای نسخه‌های قدیمی‌تر، می‌بایست آن را به صورت جداگانه‌ نصب نمایید.</p>
 <div class="admonition note">
@@ -325,11 +368,59 @@ Python 3.4.2
 <p class="first admonition-title">توجه</p>
 <p class="last">منظور از <code class="docutils literal"><span class="pre">python</span></code> در دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code>، فراخوانی مفسر پایتون نسخه‌ایست که قصد داریم pip را در آن نصب کنیم.</p>
 </div>
-<p>به عنوان نمونه برای نصب <a class="reference external" href="http://bottlepy.org/">Bottle</a> که یک وب فریم‌ورک (Web Framework) برای پایتون است از دستور <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">bottle</span></code> استفاده می‌گردد. با وارد کردن این دستور، Bottle در PyPI (به عنوان مخزن پیش‌فرض pip) جستجو می‌شود و پس از یافتن، ابتدا دانلود، سپس نصب و به دایرکتوری site-packages پایتون افزوده می‌شود.</p>
-<p>برای کسب دانش بیشتر از چگونگی استفاده‌ pip به <a class="reference external" href="http://pip.pypa.io/en/stable/">اسناد آن</a> مراجعه نمایید.</p>
-<div class="line-block">
-<div class="line"><br /></div>
+<p>کار با pip بسیار آسان است. به عنوان نمونه برای نصب <a class="reference external" href="http://bottlepy.org/">Bottle</a> که یک وب فریم‌ورک (Web Framework) برای پایتون است از دستور <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">bottle</span></code> استفاده می‌گردد. با وارد کردن این دستور، Bottle در PyPI (به عنوان مخزن پیش‌فرض pip) جستجو می‌شود و پس از یافتن، ابتدا دانلود، سپس نصب و به دایرکتوری site-packages پایتون افزوده می‌شود.</p>
+<p>در ادامه برخی از دستورات رایج pip آورده شده است و برای کسب دانش بیشتر از چگونگی استفاده‌ pip می‌توانید به <a class="reference external" href="http://pip.pypa.io/en/stable/">اسناد آن</a> مراجعه نمایید.</p>
+<ol class="arabic">
+<li><p class="first">نصب آخرین نسخه از یک بسته:</p>
+<div class="highlight-python"><div class="highlight"><pre># pip install [package name]
+
+root&gt; pip install SomePackage
+</pre></div>
 </div>
+</li>
+<li><p class="first">نصب یک نسخه خاص از یک بسته:</p>
+<div class="highlight-python"><div class="highlight"><pre># pip install [package name]==[version]
+
+root&gt; pip install SomePackage==1.0.4
+</pre></div>
+</div>
+</li>
+<li><p class="first">حذف یک بسته:</p>
+<div class="highlight-python"><div class="highlight"><pre># pip uninstall [package name]
+
+root&gt; pip uninstall SomePackage
+</pre></div>
+</div>
+</li>
+<li><p class="first">به‌روز رسانی یک بسته:</p>
+<div class="highlight-python"><div class="highlight"><pre># pip install --upgrade [package name]
+
+root&gt; pip install --upgrade SomePackage
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div>برای به‌روز رسانی خود pip نیز از همین الگو استفاده می‌شود: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pip</span></code></div></blockquote>
+<ol class="arabic" start="5">
+<li><p class="first">گرفتن فهرست تمام بسته‌های نصب شده:</p>
+<div class="highlight-python"><div class="highlight"><pre>user&gt; pip list
+</pre></div>
+</div>
+</li>
+<li><p class="first">گرفتن فهرست تمام بسته‌هایی که می‌بایست به‌روز رسانی شوند:</p>
+<div class="highlight-python"><div class="highlight"><pre>user&gt; pip list --outdated
+</pre></div>
+</div>
+</li>
+<li><p class="first">مشاهده جزییات یک بسته نصب شده:</p>
+<div class="highlight-python"><div class="highlight"><pre># pip show [package name]
+
+user&gt; pip show SomePackage
+</pre></div>
+</div>
+</li>
+</ol>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -339,74 +430,52 @@ Python 3.4.2
 </div>
 
 
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="l03.html" class="btn btn-neutral float-left" title="درس ۰۳: ایجاد و اجرای پروژه">بعدی <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="l01.html" class="btn btn-neutral" title="درس ۰۱: آشنایی"><span class="fa fa-arrow-circle-left"></span> قبلی</a>
-      
+			        </div>
+			    </div>
+                            
+
+<div class="row">
+    <div class="col-lg-12">
+        
+            <div id="body-btn">
+                
+                    
+                    <a href="l01.html" style="float:right;" title="درس ۰۱: آشنایی" accesskey="p"><i class="fa fa-chevron-right"></i>&nbsp; قبلی</a>
+                    
+                    
+                    <a href="l03.html" style="float:left;" title="درس ۰۳: ایجاد و اجرای پروژه" accesskey="n">بعدی &nbsp;<i class="fa fa-chevron-left"></i></a>
+                    
+                
+            </div>
+        
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo" dir="ltr">
-    <p>
-        &copy; Copyright 2015, Saeid Darvishi.
-
-    <a href="https://twitter.com/saeiddrv" target="_blank">@saeiddrv</a>
-    </p>
-  </div>
-
-<div dir="ltr">
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </div>
-  
-</footer>
+<div class="row">
+    <div class="col-lg-12">
+        <div id="body-footer">  
+            <p>
+                        &copy; Copyright 2015, Saeid Darvishi.
+            </p>
+                <p style="font-size: 13px;">
+                    . May 23, 2015  آخرین بروز رسانی در
+                </p>
+                <p style="font-size: 13px;">
+                    
+                        Created using <a href="http://sphinx-doc.org/">Sphinx</a> (1.3.1) with <a href="https://github.com/saeiddrv/SphinxMinooTheme">Minoo</a> (Beta 0.9.1) theme.
+                    
+                </p>
+            
+            <p style="font-size: 13px;"> 
+           </p>
+        </div> 
+    </div>
+</div>
+                        </div>
+                </div>
+            </div>
+            <span class="back-to-top">
+                <i class="fa fa-angle-up"></i>
+            </span>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+    </body>
 </html>

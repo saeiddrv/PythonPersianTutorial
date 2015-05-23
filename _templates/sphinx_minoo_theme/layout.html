@@ -1,0 +1,43 @@
+
+{%- set url_root = pathto('', 1) %}
+{%- if url_root == '#' %}
+    {% set url_root = '' %}
+{% endif %}
+{%- if not embedded and docstitle %}
+    {%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
+{%- else %}
+    {%- set titlesuffix = "" %}
+{%- endif %}
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="{{ theme_language }}" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ theme_language }}" > <!--<![endif]-->
+<html dir="{{ theme_direction }}" lang="{{ theme_language }}">
+    <head>
+        {% include "includes/header.html" %}
+        {%- block extrahead %}{% endblock %}
+    </head>
+    <body>
+        <div id="page">
+            <div id="page-sidebar">
+                {% include "includes/sidebar.html" %}
+            </div>
+            <div id="page-body">
+                <div class="container-fluid">
+                        <div id="body-content" style="max-width: {{ theme_body_max_width }}">
+                            {% include "includes/top.html" %}
+                            <div class="row">
+			        <div class="col-lg-12">
+				    {% block body %}{% endblock %}
+			        </div>
+			    </div>
+                            {% include "includes/bottom.html" %}
+                        </div>
+                </div>
+            </div>
+            <span class="back-to-top">
+                <i class="fa fa-angle-up"></i>
+            </span>
+        </div>
+    </body>
+</html>
