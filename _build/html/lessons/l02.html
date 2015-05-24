@@ -54,6 +54,18 @@
 
 
 
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-63332333-1' ]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
 
 <script type="text/javascript" src="../_static/bootstrap.min.js"></script>
 <script type="text/javascript" src="../_static/minoo.js"></script>
@@ -353,7 +365,7 @@ Python 3.4.2
 </div>
 <div class="section" id="id8">
 <h2>سیستم مدیریت بسته<a class="headerlink" href="#id8" title="لینک ثابت به این سر مقاله">¶</a></h2>
-<p><a class="reference external" href="http://pip.pypa.io/en/stable/">pip</a> (پِپ) سیستم مدیریت بسته‌‌ پایتون است. pip ابزاری است مبتنی بر خط فرمان که از آن برای نصب، حذف، به‌روز رسانی و در کل مدیریت بسته‌های (یا کتابخانه‌ها‌ی شخص ثالث) پایتون استفاده می‌گردد. برنامه‌نویس پس از یافتن بسته‌ مورد نیاز خود در PyPI یا وب‌سایت‌ها و سرویس‌های دیگری به مانند github.com و bitbucket.com می‌تواند به وسیله دستور pip در خط فرمان، اقدام به نصب آن در پایتون نماید.</p>
+<p><a class="reference external" href="http://pip.pypa.io/en/stable/">pip</a> (پِپ) سیستم مدیریت بسته‌‌ پایتون است. pip ابزاری است مبتنی بر خط فرمان که از آن برای نصب، حذف، بروز رسانی و در کل مدیریت بسته‌های (یا کتابخانه‌ها‌ی شخص ثالث) پایتون استفاده می‌گردد. برنامه‌نویس پس از یافتن بسته‌ مورد نیاز خود در PyPI یا وب‌سایت‌ها و سرویس‌های دیگری به مانند github.com و bitbucket.com می‌تواند به وسیله دستور pip در خط فرمان، اقدام به نصب آن در پایتون نماید.</p>
 <div class="admonition tip">
 <p class="first admonition-title">نکته</p>
 <p class="last"><a class="reference external" href="http://pypi.python.org/pypi">PyPI</a> (پای‌پِ) یا مخزن بسته‌های پایتون (Python Package Index) محلی است که بسیاری از کتابخانه‌ها یا برنامه‌های شخص ثالث پایتون در آن نگه داری می‌شود. کاربران پایتون می‌توانند از طریق PyPI پروژه (یا بسته) خود را منتشر یا اقدام به جستجو و  دانلود بسته‌های مورد نیاز خود نمایند.</p>
@@ -393,7 +405,7 @@ root&gt; pip uninstall SomePackage
 </pre></div>
 </div>
 </li>
-<li><p class="first">به‌روز رسانی یک بسته:</p>
+<li><p class="first">بروز رسانی یک بسته:</p>
 <div class="highlight-python"><div class="highlight"><pre># pip install --upgrade [package name]
 
 root&gt; pip install --upgrade SomePackage
@@ -402,14 +414,14 @@ root&gt; pip install --upgrade SomePackage
 </li>
 </ol>
 <blockquote>
-<div>برای به‌روز رسانی خود pip نیز از همین الگو استفاده می‌شود: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pip</span></code></div></blockquote>
+<div>برای بروز رسانی خود pip نیز از همین الگو استفاده می‌شود: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pip</span></code></div></blockquote>
 <ol class="arabic" start="5">
 <li><p class="first">گرفتن فهرست تمام بسته‌های نصب شده:</p>
 <div class="highlight-python"><div class="highlight"><pre>user&gt; pip list
 </pre></div>
 </div>
 </li>
-<li><p class="first">گرفتن فهرست تمام بسته‌هایی که می‌بایست به‌روز رسانی شوند:</p>
+<li><p class="first">گرفتن فهرست تمام بسته‌هایی که می‌بایست بروز رسانی شوند:</p>
 <div class="highlight-python"><div class="highlight"><pre>user&gt; pip list --outdated
 </pre></div>
 </div>
