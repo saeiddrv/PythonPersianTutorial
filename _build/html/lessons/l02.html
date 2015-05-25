@@ -260,12 +260,12 @@ python 3.4.0
 </div>
 <p>اکنون با فرض اینکه توزیع مورد استفاده‌‌، از پیش فاقد نسخه‌ 3x بوده یا اینکه نسخه‌ نصب شده آنقدر قدیمی است که می‌بایست آن را ارتقا (Upgrade) داد؛ پس از دانلود سورس کد نسخه‌ جدید (در این زمان فایل: Python-3.4.2.tar.xz) به صورت زیر عمل خواهیم کرد (نصب نسخه‌ 2x نیز به همین شکل است):</p>
 <p>نخست می‌بایست تمام بسته‌های پیش‌نیاز در سیستم عامل نصب گردند. برای این منظور می‌توانید دستورات پایین را (متناسب با نوع توزیع خود) در خط فرمان سیستم عامل وارد نمایید:</p>
-<p><strong>Fedora:</strong></p>
+<p>در <em>Fedora</em>:</p>
 <div class="code highlight-python"><div class="highlight"><pre>user&gt; sudo yum update
 user&gt; sudo yum install make automake autoconf pkgconfig glibc-devel gcc gcc-c++ bzip2 bzip2-devel tar tcl tcl-devel tix tix-devel tk tk-devel zlib-devel ncurses-devel sqlite-devel openssl-devel openssl readline-devel gdbm-devel db4-devel expat-devel libGL-devel libffi-devel gmp-devel valgrind-devel systemtap-sdt-devel xz-devel libX11-devel findutils libpcap-devel
 </pre></div>
 </div>
-<p><strong>Ubuntu:</strong></p>
+<p>در <em>Ubuntu</em>:</p>
 <div class="code highlight-python"><div class="highlight"><pre>user&gt; sudo apt-get update
 user&gt; sudo apt-get install build-essential
 user&gt; sudo apt-get install make automake autoconf pkg-config libc6-dev gcc g++ bzip2 libbz2-dev tar tcl tcl-dev tix-dev tk tk-dev zlib1g-dev libncursesw5-dev libsqlite3-dev libssl-dev openssl libreadline-dev libgdbm-dev db4.8-util libexpat1-dev libgl-dev libffi-dev libgmp3-dev valgrind systemtap-sdt-dev xz-utils libX11-dev findutils libpcap-dev
@@ -381,8 +381,32 @@ Python 3.4.2
 <p class="first admonition-title">توجه</p>
 <p class="last">منظور از <code class="docutils literal"><span class="pre">python</span></code> در دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code>، فراخوانی مفسر پایتون نسخه‌ایست که قصد داریم pip را در آن نصب کنیم.</p>
 </div>
+<p>برای نمونه؛ با فرض دانلود بودن <code class="docutils literal"><span class="pre">get-pip.py</span></code> و قرار داشتن آن در دایرکتوری Downloads سیستم عامل،‌ برای نصب pip در نسخه 3x پایتون به صورت پایین عمل می‌نماییم:</p>
+<p>در <em>گنولینوکس</em>:</p>
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; cd Downloads/
+user&gt; sudo python3 get-pip.py
+
+[...]
+Successfully installed [...]
+
+user&gt; pip3 --version
+pip 7.0.1 [...]
+</pre></div>
+</div>
+<p>در <em>ویندوز</em>:</p>
+<div class="code highlight-python"><div class="highlight"><pre>&gt; cd Downloads\
+&gt; python get-pip.py
+
+[...]
+Successfully installed [...]
+
+&gt; pip --version
+pip 7.0.1 [...]
+</pre></div>
+</div>
+<p><em>توجه داشته باشید که پیش از این، محل نصب پایتون نسخه 3x به ترتیبی که گفته شد به متغیر Path ویندوز افزوده بودیم و cmd نیز به صورت Administrator اجرا شده است.</em></p>
 <p>کار با pip بسیار آسان است. به عنوان نمونه برای نصب <a class="reference external" href="http://bottlepy.org/">Bottle</a> که یک وب فریم‌ورک (Web Framework) برای پایتون است از دستور <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">bottle</span></code> استفاده می‌گردد. با وارد کردن این دستور، Bottle در PyPI (به عنوان مخزن پیش‌فرض pip) جستجو می‌شود و پس از یافتن، ابتدا دانلود، سپس نصب و به دایرکتوری site-packages پایتون افزوده می‌شود.</p>
-<p>در ادامه برخی از دستورات رایج pip آورده شده است و برای کسب دانش بیشتر از چگونگی استفاده‌ pip می‌توانید به <a class="reference external" href="http://pip.pypa.io/en/stable/">اسناد آن</a> مراجعه نمایید.</p>
+<p>در ادامه برخی از دستورات رایج pip آورده شده است. برای کسب دانش بیشتر از چگونگی استفاده‌ pip می‌توانید به <a class="reference external" href="http://pip.pypa.io/en/stable/">اسناد آن</a> مراجعه نمایید.</p>
 <ol class="arabic">
 <li><p class="first">نصب آخرین نسخه از یک بسته:</p>
 <div class="highlight-python"><div class="highlight"><pre># pip install [package name]
@@ -414,7 +438,9 @@ root&gt; pip install --upgrade SomePackage
 </li>
 </ol>
 <blockquote>
-<div>برای بروز رسانی خود pip نیز از همین الگو استفاده می‌شود: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pip</span></code></div></blockquote>
+<div><p>برای بروز رسانی خود pip نیز از همین الگو استفاده می‌شود: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pip</span></code></p>
+<p>به جای <code class="docutils literal"><span class="pre">upgrade--</span></code> می توانید از <code class="docutils literal"><span class="pre">U-</span></code> نیز استفاده نمایید.</p>
+</div></blockquote>
 <ol class="arabic" start="5">
 <li><p class="first">گرفتن فهرست تمام بسته‌های نصب شده:</p>
 <div class="highlight-python"><div class="highlight"><pre>user&gt; pip list
@@ -470,14 +496,13 @@ user&gt; pip show SomePackage
                         &copy; Copyright 2015, Saeid Darvishi.
             </p>
                 <p style="font-size: 13px;">
-                    . May 24, 2015  آخرین بروز رسانی در
+                    . May 25, 2015  آخرین بروز رسانی در
                 </p>
                 <p style="font-size: 13px;">
                     
                         Created using <a href="http://sphinx-doc.org/">Sphinx</a> (1.3.1) with <a href="https://github.com/saeiddrv/SphinxMinooTheme">Minoo</a> (Beta 0.9.1) theme.
                     
                 </p>
-            
             <p style="font-size: 13px;"> 
            </p>
         </div> 
