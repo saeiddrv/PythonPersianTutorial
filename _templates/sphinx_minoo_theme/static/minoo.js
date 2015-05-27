@@ -78,6 +78,23 @@ $( document ).ready(function() {
         $("#" + id).find("ul").toggle();
     });
 
+    //index menu list
+
+    $(".toctree-wrapper li.toctree-l1").each(function(i) {
+        $(this).attr("id", "wrapper-toctree-l1-" + i);
+        if($(this).find("ul").length){
+            $(this).find("ul").hide();
+            $("#wrapper-toctree-l1-" + i).prepend("<i class='fa fa-plus-square-o'></i>");
+        }
+    }); 
+
+    $("li[id^='wrapper-toctree-l1-'] i").click(function(e) {
+        e.preventDefault();
+        var id = $(this).parents().attr("id");
+        $(this).toggleClass("fa-plus-square-o fa-minus-square-o");
+        $("#" + id).find("ul").toggle();
+    });
+
 
     // "Read the Docs" badge
 

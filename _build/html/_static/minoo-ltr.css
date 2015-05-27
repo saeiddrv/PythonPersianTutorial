@@ -12,7 +12,7 @@ box[note,attention[body:90CAF9,title:42A5F5]-tip,important[body:80CBC4,title:26A
 @font-face{font-family:"Inconsolata";font-style:normal;font-weight:400;src:local("Inconsolata"),url(fonts/Inconsolata.ttf) format("truetype")}@font-face{font-family:"Inconsolata";font-style:normal;font-weight:700;src:local("Inconsolata Bold"),local("Inconsolata-Bold"),url(fonts/Inconsolata-Bold.ttf) format("truetype")}@font-face{font-family:"Lato";font-style:normal;font-weight:400;src:local("Lato Regular"),local("Lato-Regular"),url(fonts/Lato-Regular.ttf) format("truetype")}@font-face{font-family:"Lato";font-style:normal;font-weight:700;src:local("Lato Bold"),local("Lato-Bold"),url(fonts/Lato-Bold.ttf) format("truetype")}@font-face{font-family:"Roboto Slab";font-style:normal;font-weight:400;src:local("Roboto Slab Regular"),local("RobotoSlab-Regular"),url(fonts/RobotoSlab-Regular.ttf) format("truetype")}@font-face{font-family:"Roboto Slab";font-style:normal;font-weight:700;src:local("Roboto Slab Bold"),local("RobotoSlab-Bold"),url(fonts/RobotoSlab-Bold.ttf) format("truetype")}
 
 /* HTML elements */
-body{font-family:"Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;font-weight:normal;color:#212121;min-height:100%;font-size:16px}
+body{font-family:"Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;font-weight:normal;color:#212121;min-height:100%;font-size:16px;overflow-x:hidden}
 html{height:100%}
 a,ul>li>a,ol>li>a{text-decoration:none!important;color:#5C6BC0;padding:0}
 a:hover,ul>li>a:hover,ol>li>a:hover{color:#66BB6A}
@@ -42,9 +42,9 @@ dl dd{margin:0 0 12px 24px}
 /* theme */
 #page{padding:0;margin:0;height:100%}
 #page.toggled{padding-left:300px}
-#page-body{width:100%;position:relative;padding-left:32px}
+#page-body{width:100%;position:relative;padding-left:32px;visibility:visible}
 @media(min-width:768px){#page.toggled #page-body{position:relative;padding-left:0}}
-@media(max-width:768px){#page.toggled #page-body{display:none}}
+@media(max-width:768px){#page.toggled #page-body{visibility:hidden}}
 #page-sidebar{z-index:1000;position:fixed;left:-300px;width:332px;min-height:100%;background-color:transparent;overflow:hidden}
 #page.toggled #page-sidebar{left:0;margin-left:0;width:300px;background-color:#5C6BC0}
 #sidebar-top{width:300px;top:0!important;left:-300px;position:fixed;z-index:1000;background-color:#5C6BC0}
@@ -151,8 +151,10 @@ table.docutils.footnote{white-space:normal}
 #sidebar-bottom-list #tree-toc ul li.current>ul>li>a:hover{color:#FFFFFF}
 #sidebar-bottom-list #tree-toc li a,.toctree-wrapper li>a,.contents.topic li>a{display:inline-block;margin:0;padding:2px 10px}
 #sidebar-bottom-list #tree-toc li,.toctree-wrapper li,.contents.topic li{margin-top:1px}
-#sidebar-bottom-list #tree-toc li.toctree-l1 i{margin-left:-24px; margin-right:9px;display:inline-block;vertical-align:top;padding-top:5px;cursor:pointer;color:#E8EAF6}
+#sidebar-bottom-list #tree-toc li.toctree-l1 i,.toctree-wrapper li.toctree-l1 i{margin-left:-24px; margin-right:9px;display:inline-block;vertical-align:top;padding-top:5px;cursor:pointer;color:#E8EAF6}
+.toctree-wrapper li.toctree-l1 i{color:#CE93D8!important}
 #sidebar-bottom-list #tree-toc li.toctree-l1 i:hover{color:#66BB6A}
+.toctree-wrapper li.toctree-l1 i:hover{color:#AB47BC!important}
 .admonition{display:inline-block;width:100%;padding:12px}
 .admonition-title{color:#FFFFFF;margin:-12px;padding:6px 12px}
 .note .admonition-title,.tip .admonition-title,.hint .admonition-title,.attention .admonition-title,.important .admonitionpri-title,.warning .admonition-title,.error .admonition-title,.danger .admonition-title,.caution .admonition-title,.admonition .admonition-title{font-weight:bold;margin-bottom:12px}
@@ -189,24 +191,25 @@ span.eqno{float:right}
 .sidebar p,.sidebar ul,.sidebar dl{font-size:90%}
 .sidebar .last,.admonition .last,table.highlighttable{margin-bottom:0}
 .sidebar .sidebar-title{display:block;font-weight:bold;background-color:#5C6BC0;padding:6px 12px;margin:-24px;margin-bottom:24px;font-size:100%;color:#FFFFFF;}
-#sidebar-bottom-versions{width:280px;display:block;position:absolute;bottom:10px}
+#sidebar-bottom-versions{display:block;position:absolute;bottom:20px;right:32px}
+#page.toggled #sidebar-bottom-versions{right:18px}
 #current-version{padding:8px;margin:0;display:block;color:#66BB6A}
 #current-version i{margin-left:5px}
 #versions{float:right;cursor:pointer;background-color:#424242;opacity:0.2}
 #versions:hover{opacity:1}
 #other-versions{display:none;position:relative;cursor:default}
-#other-versions.toggled{display:block;position:fixed;bottom:48px;left:10px;width:280px;height:auto;background-color:#424242;z-index:2000;padding:10px;font-size:90%}
+#other-versions.toggled{display:block;position:fixed;bottom:51px;left:10px;width:272px;height:auto;background-color:#424242;z-index:2000;padding:10px;font-size:90%}
 #other-versions hr{display:block;height:1px;border:0;margin:20px 0;padding:0;border-top:1px #212121 solid }
 #other-versions dd{display:inline-block;margin:0}
 #other-versions dd a{display:inline-block;padding:6px;color:#FAFAFA}
 .hlist td{padding:0 8px 0 0}
 table.docutils.footnote,table.docutils.citation{word-break:break-all;white-space:normal;display:table}
-
 @media screen and (max-width: 767px){
 .sidebar{width:100%}
 div[class^='highlight']{width:100%;display:inline-block}
 .table-responsive{border:1px solid #E8EAF6;border-top:none}
 .table{display:table;width:100%}}
+::selection{background-color:#5C6BC0;color:#E8EAF6}
 
 
 /* custome style */
