@@ -113,6 +113,10 @@ $( document ).ready(function() {
         $("#current-version i").toggleClass("fa-caret-up fa-caret-down");
     });
 
+    $('#other-versions').click(function(e) {
+        e.stopPropagation();
+    });
+
 });
 
 $( window ).resize(function() {
