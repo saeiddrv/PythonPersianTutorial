@@ -24,6 +24,7 @@
    lessons/l01
    lessons/l02
    lessons/l03
+   lessons/l04
 
 |
 

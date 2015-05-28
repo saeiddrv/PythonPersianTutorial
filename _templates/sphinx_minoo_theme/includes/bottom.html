@@ -1,6 +1,6 @@
 {% import "glossary.html" as glossary %}
 
-<div class="row">
+<div class="row-fluid">
     <div class="col-lg-12">
         {% if next or prev %}
             <div id="body-btn">
@@ -23,7 +23,7 @@
         {% endif %}
     </div>
 </div>
-<div class="row">
+<div class="row-fluid">
     <div class="col-lg-12">
         <div id="body-footer">  
             <p>
@@ -43,7 +43,7 @@
             {%- if show_sphinx %}
                 <p style="font-size: 13px;">
                     {% trans sphinx_version=sphinx_version|e %}
-                        Created using <a href="http://sphinx-doc.org/">Sphinx</a> ({{ sphinx_version }}) with <a href="https://github.com/saeiddrv/SphinxMinooTheme">Minoo</a> (Beta 0.9.1) theme.
+                        Created using <a href="http://sphinx-doc.org/">Sphinx</a> ({{ sphinx_version }}) with <a href="https://github.com/saeiddrv/SphinxMinooTheme">Minoo</a> (Beta 0.9.2) theme.
                     {% endtrans %}
                 </p>
             {%- endif %}

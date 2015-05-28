@@ -19,14 +19,14 @@
     </head>
     <body>
         <div id="page">
-            <div id="page-sidebar">
+            <div id="wrapper-page-sidebar">
                 {% include "includes/sidebar.html" %}
             </div>
             <div id="page-body">
                 <div class="container-fluid">
                         <div id="body-content" style="max-width: {{ theme_body_max_width }}">
                             {% include "includes/top.html" %}
-                            <div class="row">
+                            <div class="row-fluid">
 			        <div class="col-lg-12">
 				    {% block body %}{% endblock %}
 			        </div>

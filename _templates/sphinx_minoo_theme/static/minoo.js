@@ -1,20 +1,10 @@
 
 $( document ).ready(function() {
 
-    var navToggle = false;
-
     $("#navigation-toggle").click(function(e) {
         e.preventDefault();
         $("#page").toggleClass("toggled");
         $("#sidebar-toggle-icon").toggleClass("fa-angle-double-left fa-angle-double-right");
-        if(navToggle){
-            $("#page-sidebar").removeClass("notransition");
-        }else{
-            setTimeout(function(){
-                $("#page-sidebar").addClass("notransition");
-            }, 500); 
-        }
-        navToggle = ! navToggle;
         if($("#other-versions").hasClass("toggled")){
             $("#other-versions").toggleClass("toggled");
             $("#current-version i").toggleClass("fa-caret-up fa-caret-down");
@@ -22,8 +12,8 @@ $( document ).ready(function() {
     });
 
     var sth = $("#sidebar-top").height();
-    $("#sidebar-bottom").css("margin-top", (sth - 1) + "px");
-    $("#sidebar-bottom").height($(window).height() - sth);
+    $("#sidebar-bottom").css("top", (sth - 3) + "px");
+    $("#sidebar-bottom").height($(window).height() - (sth) + 3);
 
     $("div[class^='highlight-']").wrap( "<div class='h-scroll'></div>");
     $("div[class^='first highlight-']").wrap( "<div class='h-scroll'></div>");
