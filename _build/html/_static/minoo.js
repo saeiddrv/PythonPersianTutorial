@@ -11,9 +11,28 @@ $( document ).ready(function() {
         }
     });
 
+
+    $("#input-search").focus(function() {
+        if($(window).height() <= 480){
+            $("#sidebar-bottom-versions").hide();
+            $("#sidebar-top-links").hide();
+            $("#sidebar-top-image").hide();
+            $("#wrapper-sidebar-bottom").css("top", (sth - 133) + "px");
+        }
+    });
+    $("#input-search").focusout(function() {
+        if($(window).height() <= 480){
+            $("#sidebar-bottom-versions").show();
+            $("#sidebar-top-links").show();
+            $("#sidebar-top-image").show();
+            $("#wrapper-sidebar-bottom").css("top", (sth - 3) + "px");
+        }
+    });
+
     var sth = $("#sidebar-top").height();
-    $("#sidebar-bottom").css("top", (sth - 3) + "px");
-    $("#sidebar-bottom").height($(window).height() - (sth) + 3);
+
+    $("#wrapper-sidebar-bottom").css("top", (sth - 3) + "px");
+    $("#sidebar-bottom").height($(window).height() - (sth) - 35);
 
     $("div[class^='highlight-']").wrap( "<div class='h-scroll'></div>");
     $("div[class^='first highlight-']").wrap( "<div class='h-scroll'></div>");
@@ -21,12 +40,12 @@ $( document ).ready(function() {
     $("img").addClass("img-responsive");
     $("table").wrap("<div class='table-responsive'></div>");
 
-    $("table.hlist").unwrap()
-    $("table.docutils.footnote").unwrap()
-    $("table.docutils.citation").unwrap()
+    $("table.hlist").unwrap();
+    $("table.docutils.footnote").unwrap();
+    $("table.docutils.citation").unwrap();
     $("table.last").parents(".table-responsive").addClass("margin-b-z"); 
-    $("table.field-list").unwrap()
-    $("table.field-list").removeClass("table table-bordered")
+    $("table.field-list").unwrap();
+    $("table.field-list").removeClass("table table-bordered");
 
     // top button
 
@@ -88,7 +107,7 @@ $( document ).ready(function() {
 
     // "Read the Docs" badge
 
-    $('#current-version').click(function(e) {
+    $('#sidebar-bottom-versions').click(function(e) {
         e.preventDefault();
         $("#other-versions").toggleClass("toggled");
         $("#current-version i").toggleClass("fa-caret-up fa-caret-down");
@@ -100,9 +119,7 @@ $( document ).ready(function() {
 });
 
 $( window ).resize(function() {
-
-    $("#sidebar-bottom").height($(window).height() - $("#sidebar-top").height());
-
+    $("#sidebar-bottom").height($(window).height() - $("#sidebar-top").height() - 35);
 });
 
 
