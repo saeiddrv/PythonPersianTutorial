@@ -11,9 +11,6 @@
 
 :emoji-size:`✔` سطح: پایه
 
-.. raw:: html
-    
-    <g:plusone size="standard"></g:plusone>
 
 ----
 

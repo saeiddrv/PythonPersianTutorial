@@ -113,9 +113,6 @@ $( document ).ready(function() {
         $("#current-version i").toggleClass("fa-caret-up fa-caret-down");
     });
 
-
-    $("span.emoji-size:contains('✔')").parent().addClass("plevel");
-
 });
 
 $( window ).resize(function() {
