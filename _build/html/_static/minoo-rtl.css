@@ -75,8 +75,8 @@ dl dd{margin:0 24px 12px 0}
 #body-top>a:hover{color:#66BB6A}
 #body-top>span{width:auto;height:28px;line-height:16px;display:inline-block;vertical-align:top}
 #body-top>a>i,#body-top>span>i{display:inline-block;height:28px}
-#top-src{float:left;margin-left:24px}
-.top-src{float:left}
+#top-src{float:left}
+.top-src{float:left;margin-right:24px}
 @media(max-width:768px){#top-src{display:none!important}}
 #body-btn{width:100%;height:100px;padding:28px 0;border-top:3px #E8EAF6 solid;line-height:30px;display:block}
 #body-btn>a{width:auto;height:auto;display:inline-block;padding:5px 8px;color:#FFFFFF;background-color:#5C6BC0}
