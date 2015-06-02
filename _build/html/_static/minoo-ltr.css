@@ -51,7 +51,7 @@ dl dd{margin:0 0 12px 24px}
 #page.toggled #sidebar-top,#page.toggled #wrapper-sidebar-bottom,#page.toggled #wrapper-page-sidebar{left:0}
 #page,#wrapper-page-sidebar,#page-sidebar,#sidebar-top,#sidebar-bottom-versions,#wrapper-sidebar-bottom,#sidebar-bottom-versions{-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;-ms-transition:all 0.5s ease;transition:all 0.5s ease}
 #sidebar-top-image{width:300px;height:96px;display:block;text-align:center}
-#sidebar-top-image>span{width:86px;height:86px;background-repeat:no-repeat;background-size:cover;border:4px solid #E8EAF6;display:inline-block;margin-top:5px}
+#sidebar-top-image>span{width:86px;height:86px;background-repeat:no-repeat;background-size:cover;border:4px solid #E8EAF6;display:inline-block;margin-top:5px;-webkit-box-shadow:0 0 0 1px rgba(232,234,246,1);-moz-box-shadow:0 0 0 1px rgba(232,234,246,1);box-shadow:0 0 0 1px rgba(232,234,246,1)}
 #sidebar-top-links{width:300px;height:34px;display:block;text-align:center}
 #sidebar-top-links>a{display:inline-block;color: #E8EAF6}
 #sidebar-top-links>a:hover{color:#66BB6A}
