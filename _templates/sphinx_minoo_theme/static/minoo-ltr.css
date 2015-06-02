@@ -71,9 +71,9 @@ dl dd{margin:0 0 12px 24px}
 #wrapper-sidebar-bottom{left:-300px;position:fixed;z-index:1000;min-height:100%;width:300px;background-color:#5C6BC0}
 #body-content{margin-right:auto;margin-left:auto;}
 #body-top{width:100%;height:auto;padding:10px 0;display:inline-block;color:#5C6BC0;border-bottom:3px #E8EAF6 solid;margin-bottom:24px}
-#body-top>a{display:inline-block;height:auto;vertical-align:top;height:28px}
+#body-top>a{display:inline-block;height:auto;vertical-align:bottom;height:28px}
 #body-top>a:hover{color:#66BB6A}
-#body-top>span{width:auto;height:28px;line-height:16px;display:inline-block;vertical-align:top}
+#body-top>span{width:auto;height:28px;line-height:16px;display:inline-block;vertical-align:bottom}
 #body-top>a>i,#body-top>span>i{display:inline-block}
 #top-src{float:right}
 .top-src{float:right;margin-left:24px}
@@ -84,8 +84,8 @@ dl dd{margin:0 0 12px 24px}
 #body-btn>a>i{height:22px;display:inline-block;vertical-align:middle}
 #body-footer{width:100%;height:auto;padding:10px 0;background-color:#E8EAF6;line-height:30px;display:block;margin:0 0 24px 0}
 #body-footer>p{text-align:center;margin-bottom:0}
-.back-to-top{margin:10px;position:fixed;bottom:0;right:0;width:28px;height:28px;z-index:100;display:none;color:#E8EAF6;cursor:pointer}
-.back-to-top:hover{color:#66BB6A}
+.back-to-top{margin:10px;position:fixed;bottom:0;right:0;width:28px;height:28px;z-index:100;display:none;color:#66BB6A;cursor:pointer;opacity:0.7}
+.back-to-top:hover{opacity:1}
 .back-to-top>i{font-size:32px;line-height:28px;vertical-align:top}
 @media print{a[href^="http://"]:after,a[href^="https://"]:after{content:""}pre{overflow-wrap:break-word}#page-sidebar,.back-to-top,#body-footer,#body-btn,#top-src,#wrapper-page-sidebar{display:none;}pre,blockquote,tr,img,p.caption,h2,h3{page-break-inside:avoid}thead{display:table-header-group}img{max-width:100%!important}@page{margin:0.5cm}p,h2,h3,p.caption{orphans:3;widows:3}}
 
@@ -206,6 +206,7 @@ span.eqno{float:right}
 .hlist td{padding:0 8px 0 0}
 table.docutils.footnote,table.docutils.citation{word-break:break-all;white-space:normal;display:table}
 table.docutils.footnote td{word-break:normal;text-align:justify}
+table.docutils.citation tr td.label, table.docutils.footnote tr td.label{display:-moz-groupbox}
 @media screen and (max-width: 767px){
 .sidebar{width:100%}
 div[class^='highlight']{width:100%;display:inline-block}

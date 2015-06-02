@@ -51,7 +51,9 @@ dl dd{margin:0 24px 12px 0}
 #page.toggled #sidebar-top,#page.toggled #wrapper-sidebar-bottom,#page.toggled #wrapper-page-sidebar{right:0}
 #page,#wrapper-page-sidebar,#page-sidebar,#sidebar-top,#sidebar-bottom-versions,#wrapper-sidebar-bottom,#sidebar-bottom-versions{-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;-ms-transition:all 0.5s ease;transition:all 0.5s ease}
 #sidebar-top-image{width:300px;height:96px;display:block;text-align:center}
-#sidebar-top-image>span{width:86px;height:86px;background-repeat:no-repeat;background-size:cover;border:4px solid #E8EAF6;display:inline-block;margin-top:5px;-webkit-box-shadow:0 0 0 1px rgba(232,234,246,1);-moz-box-shadow:0 0 0 1px rgba(232,234,246,1);box-shadow:0 0 0 1px rgba(232,234,246,1)}
+#sidebar-top-image>span{width:86px;height:86px;background-repeat:no-repeat;background-size:cover;border:4px solid #E8EAF6;display:inline-block;margin-top:5px;-webkit-box-shadow: 0px 0px 1px 1px rgba(66,66,66,1);
+-moz-box-shadow: 0px 0px 1px 1px rgba(66,66,66,1);
+box-shadow: 0px 0px 1px 1px rgba(66,66,66,1);}
 #sidebar-top-links{width:300px;height:34px;display:block;text-align:center}
 #sidebar-top-links>a{display:inline-block;color: #E8EAF6}
 #sidebar-top-links>a:hover{color:#66BB6A}
@@ -71,10 +73,10 @@ dl dd{margin:0 24px 12px 0}
 #wrapper-sidebar-bottom{right:-300px;position:fixed;z-index:1000;min-height:100%;width:300px;background-color:#5C6BC0}
 #body-content{margin-right:auto;margin-left:auto;}
 #body-top{width:100%;height:auto;padding:10px 0;display:inline-block;color:#5C6BC0;border-bottom:3px #E8EAF6 solid;margin-bottom:24px}
-#body-top>a{display:inline-block;height:auto;vertical-align:top;height:28px}
+#body-top>a{display:inline-block;height:auto;vertical-align:bottom;height:28px}
 #body-top>a:hover{color:#66BB6A}
-#body-top>span{width:auto;height:28px;line-height:16px;display:inline-block;vertical-align:top}
-#body-top>a>i,#body-top>span>i{display:inline-block;height:28px}
+#body-top>span{width:auto;height:28px;line-height:16px;display:inline-block;vertical-align:bottom}
+#body-top>a>i,#body-top>span>i{display:inline-block}
 #top-src{float:left}
 .top-src{float:left;margin-right:24px}
 @media(max-width:768px){#top-src{display:none!important}}
@@ -84,8 +86,8 @@ dl dd{margin:0 24px 12px 0}
 #body-btn>a>i{height:22px;display:inline-block;vertical-align:middle}
 #body-footer{direction:ltr;width:100%;height:auto;padding:10px 0;background-color:#E8EAF6;line-height:30px;display:block;margin:0 0 24px 0}
 #body-footer>p{text-align:center;margin-bottom:0}
-.back-to-top{margin:10px;position:fixed;bottom:0;left:0;width:28px;height:28px;z-index:100;display:none;color:#E8EAF6;cursor:pointer}
-.back-to-top:hover{color:#66BB6A}
+.back-to-top{margin:10px;position:fixed;bottom:0;left:0;width:28px;height:28px;z-index:100;display:none;color:#66BB6A;cursor:pointer;opacity:0.7}
+.back-to-top:hover{opacity:1}
 .back-to-top>i{font-size:32px;line-height:28px;vertical-align:top}
 @media print{a[href^="http://"]:after,a[href^="https://"]:after{content:""}pre{overflow-wrap:break-word}#page-sidebar,.back-to-top,#body-footer,#body-btn,#top-src,#wrapper-page-sidebar{display:none;}pre,blockquote,tr,img,p.caption,h2,h3{page-break-inside:avoid}thead{display:table-header-group}img{max-width:100%!important}@page{margin:0.5cm}p,h2,h3,p.caption{orphans:3;widows:3}}
 
@@ -93,7 +95,7 @@ dl dd{margin:0 24px 12px 0}
 /* common */
 .fa{font-size:19px}
 .table{display:inline-block;width:auto;max-width:none;white-space:nowrap}
-.admonition,.figure,.h-scroll,.highlight,.table-responsive,table.field-list,dl,img,h1,h2,h3,h4,h5,h6,p,hr,ol,ul,ul.search>li,.contents.topic,.line-block,blockquote,blockquote ol:last-child,blockquote p:last-child,blockquote ul:last-child,table.hlist,table.docutils.footnote,table.docutils.citation,ol ol,ol ul,ul ol,ul ul{margin-bottom:24px}
+.admonition,.figure,.h-scroll,.highlight,.table-responsive,table.field-list,dl,img,h1,h2,h3,h4,h5,h6,p,hr,ol,ul,ul.search>li,.contents.topic,.line-blockack,blockquote,blockquote ol:last-child,blockquote p:last-child,blockquote ul:last-child,table.hlist,table.docutils.footnote,table.docutils.citation,ol ol,ol ul,ul ol,ul ul{margin-bottom:24px}
 .margin-b-z,ul li p:last-child,.figure img,.table,.last .highlight,.hlist  ul,div[class^='highlight'] .table-responsive{margin-bottom:0}/**/
 .code{width:100%}
 p.caption,h1,h2,h3,h4,h5,h6,table{margin-top:0}
@@ -207,6 +209,7 @@ span.eqno{float:right}
 .hlist td{padding:0 0 0 8px}
 table.docutils.footnote,table.docutils.citation{word-break:break-all;white-space:normal;display:table}
 table.docutils.footnote td{word-break:normal;text-align:justify}
+table.docutils.citation tr td.label, table.docutils.footnote tr td.label{display:-moz-groupbox}
 @media screen and (max-width: 767px){
 .sidebar{width:100%}
 div[class^='highlight']{width:100%;display:inline-block}
