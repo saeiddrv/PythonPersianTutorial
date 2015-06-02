@@ -1,6 +1,8 @@
 Python Book (Persian)
 =====
 
+[![Documentation Status](https://readthedocs.org/projects/pythonpersiantutorial/badge/?version=latest)](https://readthedocs.org/projects/pythonpersiantutorial/?badge=latest)
+
 A free, online python book in persian. This book currently is under development but every time you can read last release in :
 http://python.coderz.ir
 
