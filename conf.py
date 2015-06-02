@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'آموزش فارسی پایتون'
+project = u'کتاب آزاد آموزش پایتون'
 copyright = u'2015, Saeid Darvishi'
 author = u'Saeid Darvishi'
 

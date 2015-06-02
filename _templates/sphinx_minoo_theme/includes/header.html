@@ -6,7 +6,11 @@
 {{ metatags }}
 
 {%- block htmltitle %}
-    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    {% if pagename != "index" %}
+         <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    {% else %}
+         <title>{{ title|striptags|e }}</title>
+    {% endif %}
 {%- endblock %}
 
 {% if favicon %}
