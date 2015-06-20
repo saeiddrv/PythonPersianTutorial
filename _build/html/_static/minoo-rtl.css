@@ -225,3 +225,5 @@ h2{padding-top:24px}
 p{text-align:justify}
 body{font-size:16px}
 @font-face{font-family:'IranianSans';src:url('fonts/IranianSansWeb-Regular.woff');font-weight:normal;font-style:normal}
+.table-ltr{direction:ltr !important;float:left}
+.table-ltr th{text-align:left}
