@@ -216,14 +216,16 @@ div[class^='highlight']{width:100%;display:inline-block}
 .table-responsive{border:1px solid #E8EAF6;border-top:none}
 .table{display:table;width:100%}}
 ::selection{background-color:#5C6BC0;color:#E8EAF6}
+td{font-size:14px}
+tr.row-even{background-color:#F5F5F5;}
 
 
 /* custome style */
 h2{padding-top:24px}
 .red{color:#E65100}
 .emoji-size{font-size:20px;color:#E65100}
-p{text-align:justify}
+p,blockquote{text-align:justify}
 body{font-size:16px}
 @font-face{font-family:'IranianSans';src:url('fonts/IranianSansWeb-Regular.woff');font-weight:normal;font-style:normal}
-.table-ltr{direction:ltr !important;float:left}
-.table-ltr th{text-align:left}
+.table-ltr{direction:ltr !important;text-align:center;margin-bottom: -24px !important;}
+.table-ltr th{text-align:center !important}

@@ -19,6 +19,7 @@
    lessons/l03
    lessons/l04
    lessons/l05
+   lessons/l06
 
 |
 

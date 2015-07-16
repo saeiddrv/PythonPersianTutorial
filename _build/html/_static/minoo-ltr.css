@@ -213,7 +213,8 @@ div[class^='highlight']{width:100%;display:inline-block}
 .table-responsive{border:1px solid #E8EAF6;border-top:none}
 .table{display:table;width:100%}}
 ::selection{background-color:#5C6BC0;color:#E8EAF6}
-
+td{font-size:14px}
+tr.row-even{background-color:#F5F5F5;}
 
 /* custome style */
 
