@@ -17,7 +17,9 @@ html{height:100%}
 a,ul>li>a,ol>li>a{text-decoration:none!important;color:#5C6BC0;padding:0}
 a:hover,ul>li>a:hover,ol>li>a:hover{color:#66BB6A}
 i{vertical-align:middle}
-h1,h2,h3,h4,h5,h6{font-weight:bold;color:#000000}
+h1,h2,h3,h4,h5,h6{font-weight:bold;color:#000000;display:inline-block}
+h1,h2{padding:10px 15px 10px 0}
+h1{background-color:#5C6BC0;color:#FFFFFF;line-height:26px;border-right:5px #E8EAF6 solid}
 p{line-height:24px;margin:0;font-size:16px}
 h1{font-size:175%}
 h2{font-size:150%}
@@ -116,7 +118,8 @@ div[class^='highlight']{overflow-x:auto;direction:ltr}
 div[class^='highlight'] td.code{width:100%}
 div[class^='highlight-'] .highlight,div[class^='last highlight-'] .highlight{margin-bottom:0}
 a.headerlink{visibility:hidden;content:none}
-h1:hover a.headerlink:before,h2:hover a.headerlink:before,h3:hover a.headerlink:before,caption:hover a.headerlink:before{visibility:visible;display:inline-block;content:"\f13d";font-size:13px;color:#66BB6A;margin-right:5px}
+h3:hover a.headerlink:before,caption:hover a.headerlink:before{visibility:visible;display:inline-block;content:"\f13d";font-size:13px;color:#66BB6A;margin-right:5px;height:10px}
+h1:hover a.headerlink:before,h2:hover a.headerlink:before{visibility:visible;display:inline-block;content:"\f13d";font-size:13px;color:#FFFFFF;margin-right:5px;height:10px}
 p.rubric{margin-bottom:12px;font-weight:bold}
 .container{padding-right:0;padding-left:0;margin:0 0 24px 0;width:100%}
 .linenodiv pre{border-right:0;background-color:#5C6BC0;color:#FFFFFF}
@@ -147,7 +150,8 @@ table.docutils.footnote{white-space:normal}
 #sidebar-bottom-list #tree-toc ul{padding:0;margin:0 24px 0 0}
 #sidebar-bottom-list #tree-toc ul li>a,#sidebar-bottom-list #tree-toc ul li.current>a{line-height:26px;border-right:0}
 #sidebar-bottom-list #tree-toc ul li>a{color:#212121;background-color:#E8EAF6}
-#sidebar-bottom-list #tree-toc ul li.current>a{color:#FFFFFF;background-color:#66BB6A}
+#sidebar-bottom-list #tree-toc ul li.current>a, h2{color:#FFFFFF;background-color:#66BB6A}
+h2{border-right:5px #E8EAF6 solid !important}
 #sidebar-bottom-list #tree-toc ul li>ul>li>a{color:#FFFFFF;background-color:#A5D6A7}
 #sidebar-bottom-list #tree-toc ul li>a:hover{border-right:5px #66BB6A solid;color:#212121}
 #sidebar-bottom-list #tree-toc ul li.current>a:hover{border-right:5px #E8EAF6 solid;color:#FFFFFF}
@@ -221,7 +225,6 @@ tr.row-even{background-color:#F5F5F5;}
 
 
 /* custome style */
-h2{padding-top:24px}
 .red{color:#E65100}
 .emoji-size{font-size:20px;color:#E65100}
 p,blockquote{text-align:justify}

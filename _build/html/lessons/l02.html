@@ -60,7 +60,7 @@
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-63332333-1' ]);
+        _gaq.push(['_setAccount', 'UA-61670451-1' ]);
         _gaq.push(['_trackPageview']);
 
         (function() {
@@ -125,8 +125,8 @@
 <li class="toctree-l2"><a class="reference internal" href="l01.html#id8">توصیفی کوتاه</a></li>
 <li class="toctree-l2"><a class="reference internal" href="l01.html#id12">ویژگی‌ها</a></li>
 <li class="toctree-l2"><a class="reference internal" href="l01.html#id23">کارایی</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l01.html#id27">نسخه‌ها</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l01.html#id29">پی‌نوشت</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l01.html#id26">نسخه‌ها</a></li>
+<li class="toctree-l2"><a class="reference internal" href="l01.html#id28">پی‌نوشت</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">درس ۰۲: نصب و راه‌اندازی</a><ul>
@@ -294,8 +294,8 @@ python 3.4.0
 <p>اکنون با فرض اینکه توزیع مورد استفاده‌‌، از پیش فاقد نسخه‌ 3x بوده یا اینکه نسخه‌ نصب شده آنقدر قدیمی است که می‌بایست آن را ارتقا (Upgrade) داد؛ پس از دانلود سورس کد نسخه‌ جدید (در این زمان فایل: Python-3.4.2.tar.xz) به صورت زیر عمل خواهیم کرد (نصب نسخه‌ 2x نیز به همین شکل است):</p>
 <p>نخست می‌بایست تمام بسته‌های پیش‌نیاز در سیستم عامل نصب گردند. برای این منظور می‌توانید دستورات پایین را (متناسب با نوع توزیع خود) در خط فرمان سیستم عامل وارد نمایید:</p>
 <p>در <em>Fedora</em>:</p>
-<div class="code highlight-python"><div class="highlight"><pre>user&gt; sudo yum update
-user&gt; sudo yum install make automake autoconf pkgconfig glibc-devel gcc gcc-c++ bzip2 bzip2-devel tar tcl tcl-devel tix tix-devel tk tk-devel zlib-devel ncurses-devel sqlite-devel openssl-devel openssl readline-devel gdbm-devel db4-devel expat-devel libGL-devel libffi-devel gmp-devel valgrind-devel systemtap-sdt-devel xz-devel libX11-devel findutils libpcap-devel
+<div class="code highlight-python"><div class="highlight"><pre>user&gt; sudo dnf update
+user&gt; sudo dnf install make automake autoconf pkgconfig glibc-devel gcc gcc-c++ bzip2 bzip2-devel tar tcl tcl-devel tix tix-devel tk tk-devel zlib-devel ncurses-devel sqlite-devel openssl-devel openssl readline-devel gdbm-devel db4-devel expat-devel libGL-devel libffi-devel gmp-devel valgrind-devel systemtap-sdt-devel xz-devel libX11-devel findutils libpcap-devel
 </pre></div>
 </div>
 <p>در <em>Ubuntu</em>:</p>
@@ -304,7 +304,7 @@ user&gt; sudo apt-get install build-essential
 user&gt; sudo apt-get install make automake autoconf pkg-config libc6-dev gcc g++ bzip2 libbz2-dev tar tcl tcl-dev tix-dev tk tk-dev zlib1g-dev libncursesw5-dev libsqlite3-dev libssl-dev openssl libreadline-dev libgdbm-dev db4.8-util libexpat1-dev libgl-dev libffi-dev libgmp3-dev valgrind systemtap-sdt-dev xz-utils libX11-dev findutils libpcap-dev
 </pre></div>
 </div>
-<p>پس از اطمینان از نصب بسته‌های پیش‌نیاز به مسیری که سورس کد پایتون (پس از دانلود) در آن قرار دارد رفته (در اینجا: دایرکتوری Downloads) و فایل سورس کد را از حالت فشرده خارج نمایید. حاصل کار یک دایرکتوری جدید با نامی مشابه Python-3.4.2 است که اکنون می‌بایست از طریق خط فرمان و دستور <code class="docutils literal"><span class="pre">cd</span></code> وارد مسیر آن شوید.</p>
+<p>پس از اطمینان از نصب بسته‌های پیش‌نیاز به مسیری که سورس کد پایتون (پس از دانلود) در آن قرار دارد رفته (در اینجا: دایرکتوری Downloads) و فایل سورس کد را از حالت فشرده خارج نمایید. حاصل کار یک دایرکتوری جدید با نامی مشابه Python-3.4.2 است که با استفاده از دستور <code class="docutils literal"><span class="pre">ls</span></code> قابل مشاهده است؛ اکنون می‌بایست از طریق خط فرمان و دستور <code class="docutils literal"><span class="pre">cd</span></code> وارد مسیر آن شوید.</p>
 <div class="code highlight-python"><div class="highlight"><pre>user&gt; cd Downloads/
 user&gt; ls
 Python-3.4.2.tar.xz
@@ -380,7 +380,7 @@ user&gt; /opt/python3.4/bin/python3.4 --version
 Python 3.4.2
 </pre></div>
 </div>
-<p>برای راحتی در فراخوانی می‌توانید نشانی دایرکتوری مفسر پایتون را به متغیر محیطی Path سیستم عامل اضافه نمایید. برای این کار فایل پنهان bashrc. موجود در دایرکتوری home (مسیر ~) را توسط یک ویرایشگر متن، باز نموده و عبارتی مشابه پایین را در آن وارد و سپس تغییر ایجاد شده را ذخیره (Save) نمایید:</p>
+<p>برای راحتی در فراخوانی می‌توانید نشانی دایرکتوری مفسر پایتون را به متغیر محیطی Path سیستم عامل اضافه نمایید. برای این کار فایل پنهان bashrc. (البته چنانچه از پوسته پیش‌فرض یعنی bash استفاده می‌کنید) موجود در دایرکتوری home (مسیر ~) را توسط یک ویرایشگر متن، باز نموده و عبارتی مشابه پایین را در آن وارد و سپس تغییر ایجاد شده را ذخیره (Save) نمایید:</p>
 <div class="code highlight-python"><div class="highlight"><pre>export PATH=$PATH:/opt/python3.4/bin
 </pre></div>
 </div>
@@ -393,7 +393,7 @@ Python 3.4.2
 </div>
 <div class="admonition note">
 <p class="first admonition-title">توجه</p>
-<p class="last">به صورت کلی برای فراخوانی پایتون نسخه 3x از یکی از دستورات <code class="docutils literal"><span class="pre">python3.4</span></code> ،<code class="docutils literal"><span class="pre">python3</span></code> یا <code class="docutils literal"><span class="pre">python3.x</span></code> که x بیانگر بخش جزئی نسخه پایتون می‌باشد. برای نسخه 2x نیز از دستورات <code class="docutils literal"><span class="pre">python2.7</span></code> ،<code class="docutils literal"><span class="pre">python2</span></code> ،<code class="docutils literal"><span class="pre">python</span></code> یا <code class="docutils literal"><span class="pre">python2.x</span></code> استفاده می‌گردد. در این راستا چنانچه پایتون در مسیری خاص نصب گردد لازم است مسیر آن به متغیر Path اضافه شود. برای فراخوانی pip و IDLE هر نسخه نیز از همین رویه پیروی می‌شود.</p>
+<p class="last">به صورت کلی برای فراخوانی پایتون نسخه 3x از یکی از دستورات <code class="docutils literal"><span class="pre">python3.4</span></code> ،<code class="docutils literal"><span class="pre">python3</span></code> یا <code class="docutils literal"><span class="pre">python3.x</span></code> که x بیانگر بخش جزئی نسخه پایتون می‌باشد و برای نسخه 2x نیز از دستورات <code class="docutils literal"><span class="pre">python2.7</span></code> ،<code class="docutils literal"><span class="pre">python2</span></code> ،<code class="docutils literal"><span class="pre">python</span></code> یا <code class="docutils literal"><span class="pre">python2.x</span></code> استفاده می‌گردد. در این راستا چنانچه پایتون در مسیری خاص نصب گردد لازم است مسیر آن به متغیر Path اضافه شود. برای فراخوانی pip و IDLE هر نسخه نیز از همین رویه پیروی می‌شود.</p>
 </div>
 </div>
 <div class="section" id="id8">
@@ -406,7 +406,7 @@ Python 3.4.2
 <p>pip از زمان انتشار نسخه‌ 3.4 به بسته‌ نصبی پایتون افزوده شده است و به همراه آن نصب می‌شود ولی در صورت نیاز به pip برای نسخه‌های قدیمی‌تر، می‌بایست آن را به صورت جداگانه‌ نصب نمایید.</p>
 <div class="admonition note">
 <p class="first admonition-title">توجه</p>
-<p class="last">نسخه 2.7.9 پایتون پس از نسخه 3.4 منتشر شده است؛ بنابراین با نصب آن نیز pip در دسترس خواهد بود.</p>
+<p class="last">نسخه 2.7.9 پایتون پس از نسخه 3.4 منتشر شده است؛ بنابراین با نصب این نسخه و نسخه‌های جدیدتر آن از شاخه 2x پایتون نیز pip در دسترس خواهد بود.</p>
 </div>
 <p>برای نصب pip لازم است تا فایل <a class="reference external" href="http://bootstrap.pypa.io/get-pip.py">get-pip.py</a> را دانلود نمایید.</p>
 <p>سپس به وسیله‌ دستوری مشابه <code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code> در خط فرمان، با سطح کاربری Administrator (در ویندوز) یا root (در گنولینوکس) می‌توانید اقدام به نصب pip نمایید. فراموش نشود، در زمان نصب نیاز به اتصال اینترنت می‌باشد.</p>
@@ -414,7 +414,7 @@ Python 3.4.2
 <p class="first admonition-title">توجه</p>
 <p class="last">منظور از <code class="docutils literal"><span class="pre">python</span></code> در دستور <code class="docutils literal"><span class="pre">python</span> <span class="pre">get-pip.py</span></code>، فراخوانی مفسر پایتون نسخه‌ایست که قصد داریم pip را در آن نصب کنیم.</p>
 </div>
-<p>برای نمونه؛ با فرض دانلود بودن <code class="docutils literal"><span class="pre">get-pip.py</span></code> و قرار داشتن آن در دایرکتوری Downloads سیستم عامل،‌ برای نصب pip در نسخه 3x پایتون به صورت پایین عمل می‌نماییم:</p>
+<p>برای نمونه؛ با فرض دانلود بودن <code class="docutils literal"><span class="pre">get-pip.py</span></code> و قرار داشتن آن در دایرکتوری Downloads سیستم عامل،‌ برای نصب pip در نسخه 3x (مثلا قدیمی!) پایتون به صورت پایین عمل می‌نماییم:</p>
 <p>در <em>گنولینوکس</em>:</p>
 <div class="code highlight-python"><div class="highlight"><pre>user&gt; cd Downloads/
 user&gt; sudo python3 get-pip.py
@@ -531,7 +531,7 @@ user&gt; pip show SomePackage
                         &copy; Copyright 2015, Saeid Darvishi.
             </p>
                 <p style="font-size: 13px;">
-                    . Jul 17, 2015  آخرین بروز رسانی در
+                    . Jul 24, 2015  آخرین بروز رسانی در
                 </p>
                 <p style="font-size: 13px;">
                     
