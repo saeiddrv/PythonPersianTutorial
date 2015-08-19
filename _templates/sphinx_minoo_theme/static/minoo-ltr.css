@@ -36,8 +36,8 @@ caption{text-align:center;color:#212121;padding:8px 24px;background-color:#E8EAF
 code,kbd,pre,samp{background-color:#E8EAF6;border-radius:0;border:none;direction:ltr;font-size:12px}
 code,kbd,samp{padding:2px 6px;white-space:pre}
 pre{margin:0;overflow-wrap:normal}
-ul,ol{padding-left:24px}
-ul li{list-style:disc;margin-top:1px}
+ul,ol{padding-left:24px;font-size:16px}
+ul li{list-style:disc;margin-top:1px;font-size:16px}
 dl dt{font-weight:bold}
 dl dd{margin:0 0 12px 24px}
 
