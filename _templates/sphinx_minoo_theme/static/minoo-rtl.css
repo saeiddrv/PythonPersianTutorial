@@ -133,7 +133,7 @@ table.field-list th,table.field-list td{width:auto!important}
 .footnote-reference,.citation-reference{vertical-align:super;font-size:90%}
 .table.docutils.footnote tr,.table.docutils.citation tr{background:none;color:#616161}
 table.docutils.citation tr td,table.docutils.footnote tr td{border:none}
-table.docutils.footnote td,table.docutils.footnote th,table.docutils.citation td,table.docutils.citation th,table.field-list th,table.field-list td{margin:0;padding:3px 6px!important;font-size:90%;overflow:visible;width:100%}
+table.docutils.footnote td,table.docutils.footnote th,table.docutils.citation td,table.docutils.citation th,table.field-list th,table.field-list td{margin:0;padding:3px 12px!important;font-size:90%;overflow:visible;width:100%}
 table.docutils.footnote{white-space:normal}
 .toctree-wrapper li,#sidebar-bottom-list #tree-toc ul li,.contents.topic ul li{list-style:none}
 .toctree-wrapper li>ul{padding:0;margin:0 24px 0 0}
