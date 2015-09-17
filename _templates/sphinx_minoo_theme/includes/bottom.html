@@ -27,13 +27,13 @@
                     {%- if hasdoc('copyright') %}
                         {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
                     {%- else %}
-                        {% trans copyright=copyright|e %}
                             <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"  target="_blank">
-                                <img alt="Creative Commons License" style="border-width:0;margin-bottom: 3px" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" />
+                                <img alt="Creative Commons License" style="border-width:0;margin-bottom:3px" src="{{ pathto('_static/by-nc-80x15.png', 1) }}" />
                             </a>
+                        {% trans copyright=copyright|e %}
                             <span style="display: inline-block;vertical-align: middle" >{{ copyright }} </span>
-                            <a href="https://twitter.com/saeiddrv" target="_blank"><i class="fa fa-twitter"></i></a>
                         {% endtrans %}
+                            <a href="https://twitter.com/saeiddrv" target="_blank"><i class="fa fa-twitter"></i></a>
                     {%- endif %}
                 {%- endif %}
             </p>
