@@ -21,6 +21,7 @@
    lessons/l05
    lessons/l06
    lessons/l07
+   lessons/l08
    log
 
 |
