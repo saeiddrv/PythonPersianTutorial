@@ -156,7 +156,8 @@ h2{border-left:5px #E8EAF6 solid !important}
 #sidebar-bottom-list #tree-toc ul li.current>ul>li>a:hover{color:#FFFFFF}
 #sidebar-bottom-list #tree-toc li a,.toctree-wrapper li>a,.contents.topic li>a{display:inline-block;margin:0;padding:2px 10px}
 #sidebar-bottom-list #tree-toc li,.toctree-wrapper li,.contents.topic li{margin-top:1px}
-#sidebar-bottom-list #tree-toc li.toctree-l1 i,.toctree-wrapper li.toctree-l1 i{margin-left:-24px; margin-right:9px;display:inline-block;vertical-align:top;padding-top:5px;cursor:pointer;color:#E8EAF6;position:absolute}
+#sidebar-bottom-list #tree-toc li.toctree-l1 i,.toctree-wrapper li.toctree-l1 i{margin-left:-24px; margin-right:9px;display:inline-block;vertical-align:top;padding-top:5px;cursor:pointer;color:#E8EAF6}
+.toctree-wrapper li.toctree-l1 i{position:absolute}
 .toctree-wrapper li.toctree-l1 i{color:#CE93D8!important}
 #sidebar-bottom-list #tree-toc li.toctree-l1 i:hover{color:#66BB6A}
 .toctree-wrapper li.toctree-l1 i:hover{color:#AB47BC!important}
