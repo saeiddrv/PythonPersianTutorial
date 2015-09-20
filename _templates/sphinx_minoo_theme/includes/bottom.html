@@ -28,7 +28,7 @@
                         {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
                     {%- else %}
                             <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"  target="_blank">
-                                <img alt="Creative Commons License" style="border-width:0;margin-bottom:3px" src="{{ pathto('_static/by-nc-80x15.png', 1) }}" />
+                                <img alt="Creative Commons License" style="border-width:0;margin-bottom:3px;width:80px;height:15px" src="{{ pathto('_static/by-nc-80x15.png', 1) }}" />
                             </a>
                         {% trans copyright=copyright|e %}
                             <span style="display: inline-block;vertical-align: middle" >{{ copyright }} </span>
