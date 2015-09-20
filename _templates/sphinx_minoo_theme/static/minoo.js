@@ -117,6 +117,13 @@ $( document ).ready(function() {
         e.stopPropagation();
     });
 
+    // get current id in sidebar
+    // set scroll
+
+    var crl = $(".toctree-l1.current").attr('id');
+    var pos = $("#" + crl).offset();
+    $('#sidebar-bottom').animate({scrollTop: pos.top - 232 }, "slow");
+
 });
 
 $( window ).resize(function() {
