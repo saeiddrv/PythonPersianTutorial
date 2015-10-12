@@ -8,6 +8,16 @@
 ================
 
 
+
+.. raw:: html
+
+    <p class="rubric" id="00106" ><a class="reference external" href="#00106">00106</a> - دوشنبه ۲۰ مهر ۱۳۹۴</p>
+
+درس نهم با عنوان «دستورهای کنترلی» به فهرست کتاب افزوده شد.
+
+----
+
+
 .. raw:: html
 
     <p class="rubric" id="00105" ><a class="reference external" href="#00105">00105</a> - شنبه ۲۸ شهریور ۱۳۹۴</p>
