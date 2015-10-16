@@ -117,12 +117,29 @@ $( document ).ready(function() {
         e.stopPropagation();
     });
 
+
+
+   //  custome function
+   $("li[id^='wrapper-toctree-l1-'] a").each(function() {
+       if ($(this).text().contains("گزارش")) {
+           $(this).addClass('reportmenufield');
+        }
+       if ($(this).text().contains("تمرین‌های")) {
+           $(this).addClass('exercisesmenufield');
+        }
+   });
+   //  end custome function
+
+
+
+
     // get current id in sidebar
     // set scroll
 
     var crl = $(".toctree-l1.current").attr('id');
     var pos = $("#" + crl).offset();
     $('#sidebar-bottom').animate({scrollTop: pos.top - 232 }, "slow");
+
 
 });
 

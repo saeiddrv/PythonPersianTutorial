@@ -235,3 +235,7 @@ body{font-size:16px}
 @font-face{font-family:'IranianSans';src:url('fonts/IranianSansWeb-Regular.woff');font-weight:normal;font-style:normal}
 .table-ltr{direction:ltr !important;text-align:center;margin-bottom: -24px !important;}
 .table-ltr th{text-align:center !important}
+.reportmenufield{background-color:#ec407a !important}
+.reportmenufield:hover{border-right:5px #f48fb1 solid !important}
+.exercisesmenufield{background-color:#ff7043 !important}
+.exercisesmenufield:hover{border-right:5px #ffab91 solid !important}
