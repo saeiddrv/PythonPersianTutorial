@@ -124,7 +124,7 @@ $( document ).ready(function() {
        if ($(this).text().contains("گزارش")) {
            $(this).addClass('reportmenufield');
         }
-       if ($(this).text().contains("تمرین‌های")) {
+       if ($(this).text().contains("خودآزمایی")) {
            $(this).addClass('exercisesmenufield');
         }
    });

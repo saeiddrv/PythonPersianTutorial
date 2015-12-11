@@ -35,6 +35,7 @@ thead{background-color:#5C6BC0;color:#FFFFFF}
 caption{text-align:center;color:#212121;padding:8px 24px;background-color:#E8EAF6}
 code,kbd,pre,samp{background-color:#E8EAF6;border-radius:0;border:none;direction:ltr;font-size:12px}
 code,kbd,samp{padding:2px 6px;white-space:pre}
+code{color:#212121}
 pre{margin:0;overflow-wrap:normal;text-align:left}
 ul,ol{padding-right:24px;font-size:16px}
 ul li{list-style:disc;font-size:16px}
@@ -237,5 +238,5 @@ body{font-size:16px}
 .table-ltr th{text-align:center !important}
 .reportmenufield{background-color:#ec407a !important}
 .reportmenufield:hover{border-right:5px #f48fb1 solid !important}
-.exercisesmenufield{background-color:#ff7043 !important}
-.exercisesmenufield:hover{border-right:5px #ffab91 solid !important}
+.exercisesmenufield{background-color:#ef5350 !important}
+.exercisesmenufield:hover{border-right:5px #ef9a9a solid !important}
