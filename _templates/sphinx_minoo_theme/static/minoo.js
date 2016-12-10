@@ -121,10 +121,13 @@ $( document ).ready(function() {
 
    //  custome function
    $("li[id^='wrapper-toctree-l1-'] a").each(function() {
-       if ($(this).text().contains("گزارش")) {
+       if ($(this).text().indexOf("گزارش توسعه")>=0) {
            $(this).addClass('reportmenufield');
         }
-       if ($(this).text().contains("خودآزمایی")) {
+       if ($(this).text().indexOf("پیش‌گفتار")>=0) {
+           $(this).addClass('reportmenufield');
+        }
+       if ($(this).text().indexOf("خودآزمایی") >= 0) {
            $(this).addClass('exercisesmenufield');
         }
    });

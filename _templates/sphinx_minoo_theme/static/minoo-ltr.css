@@ -33,9 +33,9 @@ th{text-align:left}
 td,th{vertical-align:top}
 thead{background-color:#5C6BC0;color:#FFFFFF}
 caption{text-align:center;color:#212121;padding:8px 24px;background-color:#E8EAF6}
-code,kbd,pre,samp{background-color:#E8EAF6;border-radius:0;border:none;direction:ltr;font-size:12px}
+code,kbd,pre,samp{background-color:#E8EAF6;border-radius:0;border:none;direction:ltr;font-size:12px;direction:ltr;font-size:12px;font-weight:600;}
 code,kbd,samp{padding:2px 6px;white-space:pre}
-code{color:#212121}
+code{color:#000}
 pre{margin:0;overflow-wrap:normal}
 ul,ol{padding-left:24px;font-size:16px}
 ul li{list-style:disc;margin-top:1px;font-size:16px}

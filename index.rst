@@ -14,6 +14,7 @@
 .. toctree::
    :maxdepth: 6
 
+   preface
    lessons/l01
    lessons/l02
    lessons/l03
@@ -24,6 +25,7 @@
    lessons/l08
    lessons/l09
    lessons/l10
+   lessons/l11
    log
 
 |

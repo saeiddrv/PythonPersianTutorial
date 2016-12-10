@@ -9,7 +9,7 @@ https://github.com/saeiddrv/SphinxMinooTheme.
 class MinooVersion():
     major = "0"
     minor = "9"
-    micro = "5"
+    micro = "0"
     level = "Beta"
     release = r"2015/05/21"
     def info(self):
