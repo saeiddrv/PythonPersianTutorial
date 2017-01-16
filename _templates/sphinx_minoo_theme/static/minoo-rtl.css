@@ -75,7 +75,9 @@ box-shadow: 0px 0px 1px 1px rgba(66,66,66,1);}
 #sidebar-bottom-list{width:100%;display:inline-block;min-height:100%;clear:both}
 #wrapper-sidebar-bottom{right:-300px;position:fixed;z-index:1000;min-height:100%;width:300px;background-color:#5C6BC0}
 #body-content{margin-right:auto;margin-left:auto;}
-#body-top{width:100%;height:auto;padding:10px 0;display:inline-block;color:#5C6BC0;border-bottom:3px #E8EAF6 solid;margin-bottom:24px}
+#body-top{width:100%;height:auto;padding:10px 0;display:inline-block;color:#5C6BC0;border-bottom:3px #E8EAF6 solid;}
+#body-donate{width:100%;height:auto;display:inline-block;color:#EC407A;border-top:3px #FCE4EC solid;margin-bottom:24px;margin-top:2px;position:relative;}
+.donate-box{display:inline-block;background-color:#FCE4EC;float:left;height:32px;width:auto;padding:2px 10px;cursor:pointer;color:#EC407A;}
 #body-top>a{display:inline-block;height:auto;vertical-align:bottom;height:auto}
 #body-top>a:hover{color:#66BB6A}
 #body-top>span{width:auto;height:28px;line-height:16px;display:inline-block;vertical-align:bottom}
