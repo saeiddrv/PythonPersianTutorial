@@ -34,17 +34,4 @@
     کتاب در حال تکمیل است!.
 
 
-.. raw:: html
-
-    <a href="http://www.iwmf.ir/website/16487"
-       target="_blank">
-       <img src="http://www.iwmf.ir/img/vote_banner_left.png"
-           alt="لوگوی جشنواره وب و موبایل ایران"
-           style="position: fixed;
-           z-index: 1000;
-           width: 150px;
-           left: 0;
-           top: 0;">
-   </a>
-
 
