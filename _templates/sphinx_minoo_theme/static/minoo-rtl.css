@@ -251,3 +251,4 @@ body{font-size:16px}
   font-weight: normal;
   font-style: normal;
 }
+h1 a.toc-backref, h2 a.toc-backref{color:#fff !important}
