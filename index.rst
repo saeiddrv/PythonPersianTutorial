@@ -28,6 +28,7 @@
    lessons/l11
    lessons/l12
    log
+   donate
 
 |
 
