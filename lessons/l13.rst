@@ -28,11 +28,11 @@
 
 
 
-Decorator (تزئین‌گر)
---------------------
+Decorator
+----------
 
 
-تزئین‌گرها یا همان **Decorator‌** ها توابعی هستند که به منظور پوشش (wrap) توابع یا کلاس‌های دیگر پیاده‌سازی می‌شوند. Decorator‌ها در پایتون ابزار بسیار کاربردی و مفیدی هستند که به برنامه‌نویس این امکان را می‌دهند تا بدون تغییر در بدنه توابع و کلاس‌های خود، رفتار و ویژگی‌های آن‌ها را گسترش دهد.
+دکوراتور (تزئین‌گر) یا همان **Decorator‌** ها [`PEP 318 <https://www.python.org/dev/peps/pep-0318//>`__] به توابعی گفته می‌شود که به منظور پوشش (wrap) توابع یا کلاس‌های دیگر پیاده‌سازی می‌شوند. Decorator‌ها در پایتون ابزار بسیار کاربردی و مفیدی هستند که به برنامه‌نویس این امکان را می‌دهند تا با کاهش حجم کدنویسی و بدون تغییر در بدنه توابع و کلاس‌های خود، رفتار و ویژگی‌های آن‌ها را گسترش دهد. در این بخش تمرکز بر روی اعمال Decorator‌ها به توابع است و Decorator‌ کلاس را در درس مربوط به کلاس‌ها بررسی خواهیم کرد.
 
 برای پوشش یک تابع توسط Decorator‌ از سینتکسی مشابه ``decorator‌_name@`` در بالای بخش سرآیند استفاده می‌شود:
 
@@ -99,7 +99,179 @@ Decorator (تزئین‌گر)
   Something is happening after the function is called.
   >>> 
 
-همانطور که با مقایسه دو نمونه کد بالا قابل مشاهده است، Decorator‌ها یک روپوش (wrapper) برای توابع و کلاس‌های ما بوجود می‌آورند. در هنگام فراخوانی تابع ``function_name`` مفسر پایتون متوجه decorator‌ آن شده است و به جای اجرا، یک نمونه شی از آن را به decorator‌ مشخص شده (``decorator‌_name``) ارسال می‌کند و یک شی جدید که در اینجا با عنوان ``wrapper`` مشخص شده است را دریافت و اجرا می‌کند.
+همانطور که با مقایسه دو نمونه کد بالا قابل مشاهده است، Decorator‌ها یک روپوش (wrapper) برای توابع و کلاس‌های ما بوجود می‌آورند. در هنگام فراخوانی تابع ``function_name`` مفسر پایتون متوجه decorator‌ آن شده است و به جای اجرا، یک نمونه شی از آن را به decorator‌ مشخص شده (``decorator‌_name``) ارسال می‌کند و یک شی جدید که در اینجا با تابع ``wrapper`` مشخص شده است را دریافت و اجرا می‌کند.
+
+در مورد توابع دارای پارامتر نیز باید توجه داشت که در هنگام فراخوانی تابع مورد نظر و ارسال آرگومان به تابع، مفسر پایتون این آرگومان‌ها را به تابع ``wrapper`` از decorator‌ ارسال می‌کند::
+
+  >>> def multiply_in_2(func):
+  ...     def wrapper(*args):
+  ...         return func(*args) * 2
+  ...     return wrapper 
+  ... 
+  >>> 
+  >>> @multiply_in_2
+  ... def sum_two_numbers(a, b):
+  ...     return a + b
+  ... 
+  >>> 
+  >>> sum_two_numbers(2, 3)
+  10
+
+::
+
+  >>> # normal
+  >>>
+  >>> def multiply_in_2(func):
+  ...     def wrapper(*args):
+  ...         return func(*args) * 2
+  ...     return wrapper 
+  ... 
+  >>> 
+  >>> def sum_two_numbers(a, b):
+  ...     return a + b
+  ... 
+  >>> 
+  >>> wrapper = multiply_in_2(sum_two_numbers)
+  >>> wrapper(2, 3)
+  10
+
+
+
+
+می‌توان بیش از یک Decorator‌ به کلاس‌ها و توابع خود اعمال کرد که در این صورت ترتیب قرار گرفتن این Decorator‌ها برای مفسر پایتون دارای اهمیت است::
+
+  @decorator_3
+  @decorator_2
+  @decorator_1
+  def function_name():
+      print("Somthing!")
+
+
+  function_name()
+
+
+::
+
+  wrapper = decorator_3(decorator_2(decorator_1(function_name)))
+  wrapper()
+
+
+همچنین می‌توان به Decorator‌ها آرگومان نیز ارسال کرد::
+
+  @decorator_name(params)
+  def function_name():
+      print("Somthing!")
+
+
+  function_name()
+
+در این حالت مفسر پایتون ابتدا آرگومان را به تابع Decorator‌ ارسال می‌کند و سپس حاصل را با آرگومان ورودی تابع مورد نظر فراخوانی می‌کند::
+
+  temp_decorator = decorator_name(params)
+  wrapper = temp_decorator(function_name)
+  wrapper()
+
+به نمونه کد پایین توجه نمایید::
+
+  >>> def formatting(lowerscase=False):
+  ...     def formatting_decorator(func):
+  ...         def wrapper(text=''):
+  ...             if lowerscase:
+  ...                 func(text.lower())
+  ...             else:
+  ...                 func(text.upper())
+  ...         return wrapper 
+  ...     return formatting_decorator
+  ... 
+  >>> 
+  >>> @formatting(lowerscase=True)
+  ... def chaap(message):
+  ...     print(message)
+  ... 
+  >>> 
+  >>> chaap("I Love Python")
+  i love python
+  >>> 
+
+
+Generator
+----------
+
+ژنراتور (مولد) یا همان **Generator‌** ها [`PEP 255 <https://www.python.org/dev/peps/pep-0255/>`__] به توابعی گفته می‌شود که به منظور ایجاد یک تابع با رفتاری مشابه اشیا ``iterator`` (تکرارکننده - درس نهم) پیاده‌سازی می‌شوند.
+
+بر خلاف شی لیست، عملکرد Generator‌ به صورت **lazy** (کندرو) [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Lazy_evaluation>`__] می‌باشد و داده‌ها را یکجا ذخیره نمی‌کند بلکه آنها را تنها در همان زمانی که درخواست می‌شوند، **تولید** (Generate) می‌کند. بنابراین در هنگام برخورد با مجموعه داده‌های بزرگ، Generator‌ها مدیریت حافظه کارآمدتری دارند.
+
+برای ایجاد یک تابع Generator تنها کافی است در یک تابع معمولی از دستور ``yield`` استفاده کنیم. اکنون مفسر پایتون در هنگام فراخوانی این تابع یک شی ``generator`` برمی‌گرداند که توانایی تولید یک **دنباله** (Sequence) از مقادیر (شی) برای استفاده در کاربردهای تکرارپذیر را دارد. به نمونه کد پایین توجه نمایید::
+
+
+  >>> def a_generator_function():
+  ...    for i in range(3):  # i: 0, 1, 2
+  ...       yield i*i
+  ... 
+  >>> 
+  >>> my_generator = a_generator_function()  # Create a generator
+  >>> 
+  >>> type(my_generator)
+  <class 'generator'>
+  >>> 
+  >>> for i in my_generator:
+  ...     print(i)
+  ... 
+  0
+  1
+  4
+  >>> 
+
+دستور ``yield`` را می‌توان همانند دستور ``return``  دانست با این تفاوت که پس از توقف اجرای تابع، وضعیت تابع را نیز حفظ می‌کند. به همین دلیل می‌توان ادامه دنباله را از پی گرفت.
+
+
+::
+
+  >>> def a_generator_function():
+  ...    for i in range(3):
+  ...       yield i*i
+  ... 
+  >>> my_generator = a_generator_function()
+  >>> 
+  >>> my_generator.__next__()  #  Use my_generator.next() in Python 2.x
+  0
+  >>> my_generator.__next__()
+  1
+  >>> my_generator.__next__()
+  4
+  >>> my_generator.__next__()
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  StopIteration
+  >>> 
+
+مقادیر دنباله مورد نظر خود را می‌توانیم با استفاده از متد ``()__next__`` (یا ``()next`` در پایتون 2x) درخواست نماییم. باید توجه داشت که پایان این دنباله توسط استثنا ``StopIteration`` گزارش می‌شود. در زمان استفاده از دستور ``for`` این استثنا کنترل شده و حلقه پایان می‌پذیرد.
+
+به یک نمونه کد دیگر نیز توجه نمایید::
+
+  >>> def countdown(n):
+  ...     print("Counting down from %d" % n)
+  ...     while n > 0:
+  ...        yield n
+  ...        n -= 1
+  ...     return
+  ... 
+  >>> 
+  >>> countdown_generator = countdown(10)
+  >>> 
+  >>> countdown_generator.__next__()
+  Counting down from 10
+  10
+  >>> countdown_generator.__next__()
+  9
+  >>> countdown_generator.__next__()
+  8
+  >>> countdown_generator.__next__()
+  7
+  >>> 
+
+
+
 
 
 
