@@ -36,5 +36,9 @@
 .. note::
     کتاب در حال تکمیل است!.
 
+.. raw:: html
+
+    <iframe style="width: 100%; height: 300px; border: none;" name="embedded_python_anywhere" src="https://console.python.org/python-dot-org-console/"></iframe>
+
 
 
