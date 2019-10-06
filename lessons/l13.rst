@@ -311,6 +311,35 @@ Generator
 در ادامه Coroutine :yield
 ------------------------------------
 
+از نسخه پایتون 2.5 ویژگی‌های جدیدی به تابع Generator‌ افزوده شد [`PEP 342 <https://www.python.org/dev/peps/pep-0342/>`__]. اگر داخل یک تابع، دستور  ``yield`` را در سمت راست یک عملگر انتساب ``=`` قرار دهیم آنگاه تابع مذکور رفتار متفاوتی از خود نشان می‌دهد که باعث می‌شود به آن **Coroutine** گفته شود. تصور کنید که اکنون می‌توانیم مقادیر دلخواه خود را به تابع Generator‌ ارسال کنیم!::
+
+  >>> def receiver():
+  ...     print("Ready to receive")
+  ...     while True:
+  ...         n = (yield)
+  ...         print("Got %s" % n)
+  ... 
+  >>> 
+
+
+  >>> receiver_generator = receiver()
+
+  >>> receiver_generator.__next__()
+  Ready to receive
+
+  >>> receiver_generator.send('WooW!!')
+  Got WooW!!
+
+  >>> receiver_generator.send(1)
+  Got 1
+
+  >>> receiver_generator.send(':)')
+  Got :)
+
+چگونگی اجرای یک **Coroutine** همانند یک Generator‌ است.
+
+
+
 
 
 
