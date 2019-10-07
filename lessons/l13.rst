@@ -311,7 +311,7 @@ Generator
 در ادامه Coroutine :yield
 ------------------------------------
 
-از نسخه پایتون 2.5 ویژگی‌های جدیدی به تابع Generator‌ افزوده شد [`PEP 342 <https://www.python.org/dev/peps/pep-0342/>`__]. اگر داخل یک تابع، دستور  ``yield`` را در سمت راست یک عملگر انتساب ``=`` قرار دهیم آنگاه تابع مذکور رفتار متفاوتی از خود نشان می‌دهد که باعث می‌شود به آن **Coroutine** گفته شود. تصور کنید که اکنون می‌توانیم مقادیر دلخواه خود را به تابع Generator‌ ارسال کنیم!::
+از نسخه پایتون 2.5 ویژگی‌های جدیدی به تابع Generator‌ افزوده شد [`PEP 342 <https://www.python.org/dev/peps/pep-0342/>`__]. اگر داخل یک تابع، دستور ``yield`` را در سمت راست یک عملگر انتساب ``=`` قرار دهیم آنگاه تابع مذکور رفتار متفاوتی از خود نشان می‌دهد که به آن در زبان برنامه‌نویسی پایتون **Coroutine** گفته شود. تصور کنید که اکنون می‌توانیم مقادیر دلخواه خود را به تابع Generator‌ ارسال کنیم!::
 
   >>> def receiver():
   ...     print("Ready to receive")
@@ -324,7 +324,7 @@ Generator
 
   >>> receiver_generator = receiver()
 
-  >>> receiver_generator.__next__()
+  >>> receiver_generator.__next__() # python 3.x - In Python 2.x use .next()
   Ready to receive
 
   >>> receiver_generator.send('WooW!!')
@@ -336,7 +336,65 @@ Generator
   >>> receiver_generator.send(':)')
   Got :)
 
-چگونگی اجرای یک **Coroutine** همانند یک Generator‌ است.
+چگونگی اجرای یک **Coroutine** همانند یک Generator‌ است ولی با این تفاوت که متد ``()send`` نیز برای ارسال مقدار به درون تابع در اختیار است.
+
+
+با فراخوانی تابع Coroutine، بدنه اجرا نمی‌شود بلکه یک شی از نوع Generator‌ برگردانده می‌شود. متد ``()__next__`` (یا ``()next`` در پایتون 2x) اجرای برنامه را به نخستین ``yield`` می‌رساند، در این نقطه تابع در وضعیت تعلیق (Suspend) قرار می‌گیرد و آماده دریافت مقدار است. متد ``()send`` مقدار مورد نظر را به تابع ارسال می‌کند که این مقدار توسط عبارت ``(yield)`` در Coroutine دریافت می‌شود. پس از دریافت مقدار، اجرای Coroutine تا رسیدن به ``yield`` بعدی (در صورت وجود) یا انتهای بدنه تابع ادامه می‌یابد.
+
+در بحث Coroutineها برای رهایی از فراخوانی متد ``()__next__`` می‌توان از Decorator‌ها استفاده کرد::
+
+
+  >>> def coroutine(func):
+  ...     def start(*args,**kwargs):
+  ...         generator = func(*args,**kwargs)
+  ...         generator.__next__()
+  ...         return generator
+  ...     return start
+  ...   
+  >>> 
+  >>> @coroutine
+  ... def receiver():
+  ...     print("Ready to receive")
+  ...     while True:
+  ...         n = (yield)
+  ...         print("Got %s" % n)
+  ... 
+  >>> 
+  >>> receiver_generator = receiver()
+  >>> receiver_generator.send('Hello World')  # Note : No initial .next()/.__next__() needed
+
+
+یک Coroutine می‌تواند به دفعات نامحدود اجرا شود مگر اینکه اجرای آن توسط برنامه با فراخوانی متد ``()close`` یا به خودی خود با پایان خطوط اجرای تابع، پایان بپذیرد. 
+
+چنانچه پس از پایان Coroutine، متد ``()send`` فراخوانی شود یک استثنا ``StopIteration`` رخ خواهد داد::
+
+  >>> receiver_generator.close()
+  >>> receiver_generator.send('value')
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  StopIteration
+
+
+یک Coroutine می‌تواند همزمان با دریافت مقدار، خروجی نیز تولید و برگرداند::
+
+  >>> def line_splitter(delimiter=None):
+  ...     print("Ready to split")
+  ...     result = None
+  ...     while True:
+  ...         line = (yield result)
+  ...         result = line.split(delimiter)
+  ... 
+  >>> 
+  >>> splitter = line_splitter(",")
+  >>> splitter.__next__()
+  Ready to split
+  >>> splitter.send("A,B,C")
+  ['A', 'B', 'C']
+  >>> splitter.send("100,200,300")
+  ['100', '200', '300']
+  >>> 
+
+**چه اتفاقی افتاد؟**
 
 
 
