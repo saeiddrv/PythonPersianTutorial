@@ -412,6 +412,101 @@ PDF: [`A Curious Course on Coroutines and Concurrency <https://www.dabeaz.com/co
 VIDEO: [`YouTube <https://www.youtube.com/watch?v=Z_OAlIhXziw>`__]
 
 
+List Comprehensions
+--------------------
+
+**List Comprehensions** به عملیاتی گفته می‌شود که در طی آن می‌توان یک تابع را به تک تک اعضای یک نوع شی لیست (list) اعمال و نتیجه را در قالب یک نوع شی لیست جدید دریافت کرد [`PEP 202 <https://www.python.org/dev/peps/pep-0202/>`__]::
+
+  >>> numbers = [1, 2, 3, 4, 5]
+  >>> squares = [n * n for n in numbers]
+  >>> 
+  >>> squares
+  [1, 4, 9, 16, 25]
+  >>> 
+
+نمونه کد بالا برابر است با::
+
+  >>> numbers = [1, 2, 3, 4, 5]
+  >>> squares = []
+  >>> for n in numbers:
+  ...     squares.append(n * n)
+  ... 
+  >>> 
+  >>> squares
+  [1, 4, 9, 16, 25]
+
+
+سینتکس کلی List Comprehensions به صورت زیر است::
+
+  [expression for item1 in iterable1 if condition1
+      for item2 in iterable2 if condition2
+      ...
+      for itemN in iterableN if conditionN]
+
+  # This syntax is roughly equivalent to the following code:
+
+  s = []
+  for item1 in iterable1:
+      if condition1:
+          for item2 in iterable2:
+              if condition2:
+              ...
+                 for itemN in iterableN:
+                     if conditionN: s.append(expression)
+
+
+به مثال‌هایی دیگر در این زمینه توجه نمایید::
+
+  >>> a = [-3,5,2,-10,7,8]
+  >>> b = 'abc'
+
+  >>> [2*s for s in a]
+  [-6, 10, 4, -20, 14, 16]
+
+  >>> [s for s in a if s >= 0]
+  [5, 2, 7, 8]
+
+  >>> [(x,y) for x in a for y in b if x > 0]
+  [(5, 'a'), (5, 'b'), (5, 'c'), (2, 'a'), (2, 'b'), (2, 'c'), (7, 'a'), (7, 'b'), (7, 'c'), (8, 'a'), (8, 'b'), (8, 'c')]
+
+  >>> import math
+  >>> c = [(1,2), (3,4), (5,6)]
+  >>> [math.sqrt(x*x+y*y) for x,y in c]
+  [2.23606797749979, 5.0, 7.810249675906654]
+
+
+توجه داشته باشید، چنانچه نتیجه اعمال List Comprehensions در هر نوبت شامل بیش از یک عضو باشد، می‌بایست مقادیر نتایج در داخل یک پرانتز قرار داده شوند (به صورت یک شی تاپل - tuple). 
+
+به نمونه ``[x,y) for x in a for y in b if x > 0)]`` و خروجی آن توجه نمایید. با توجه به این موضوع عبارت زیر از نظر مفسر پایتون نادرست می‌باشد::
+
+  >>> [x,y for x in a for y in b]
+    File "<stdin>", line 1
+      [x,y for x in a for y in b]
+             ^
+  SyntaxError: invalid syntax
+  >>> 
+
+یک نکته مهم دیگر باقی‌مانده است. به نمونه کد پایین در دو نسخه پایتون 3x و 2x توجه نمایید::
+
+  # Python 3.x
+
+  >>> x = 'before'
+  >>> a = [x for x in (1, 2, 3)]
+  >>> 
+  >>> x
+  'before'
+
+::
+
+  # Python 2.x
+
+  >>> x = 'before'
+  >>> a = [x for x in (1, 2, 3)]
+  >>> 
+  >>> x
+  3
+
+هر دو کد یکسان هستند ولی در نسخه 2x به دلیل اینکه متغیرهای تکرار تعریف شده - در اینجا ``x`` - در یک حوزه (scope) جداگانه در نظر گرفته نمی‌شوند، با تغییر مقدار آنها در داخل عبارت، مقدار همنام موجود در حوزه بیرونی عبارت نیز تغییر داده می‌شود. این به بیان آقای روسوم "dirty little secret" در نسخه 3x برطرف گردیده است. [`توضیحات بیشتر <https://stackoverflow.com/a/4199355/8434370>`__]
 
 
 
