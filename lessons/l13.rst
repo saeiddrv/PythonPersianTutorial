@@ -508,6 +508,86 @@ List Comprehensions
 
 هر دو کد یکسان هستند ولی در نسخه 2x به دلیل اینکه متغیرهای تکرار تعریف شده - در اینجا ``x`` - در یک حوزه (scope) جداگانه در نظر گرفته نمی‌شوند، با تغییر مقدار آنها در داخل عبارت، مقدار همنام موجود در حوزه بیرونی عبارت نیز تغییر داده می‌شود. این به بیان آقای روسوم "dirty little secret" در نسخه 3x برطرف گردیده است. [`توضیحات بیشتر <https://stackoverflow.com/a/4199355/8434370>`__]
 
+Generator Expressions
+----------------------
+
+عملکرد **Generator Expressions** مشابه **List Comprehensions** است ولی با خاصیت یک شی Generator و برای ایجاد آن کافی است به جای براکت ``[]`` در List Comprehensions از پرانتز ``()`` استفاده کنیم. [`PEP 289 <https://www.python.org/dev/peps/pep-0289/>`__]::
+
+  >>> a = [1, 2, 3, 4]
+  >>> b = (10*i for i in a)
+  >>> 
+  >>> 
+  >>> b
+  <generator object <genexpr> at 0x7f488703aca8>
+  >>> 
+  >>> b.__next__()  # python 3.x - In Python 2.x use .next()
+  10
+  >>> b.__next__()  # python 3.x - In Python 2.x use .next()
+  20
+  >>> 
+
+درک تفاوت Generator Expressions و List Comprehensions بسیار مهم است. خروجی یک **List Comprehensions** دقیقا همان نتیجه انجام عملیات در قالب یک شی لیست است در حالی که خروجی یک **Generator Expressions** شی است که می‌داند چگونه نتایج را مرحله به مرحله تولید کند. درک این دست موضوعات نقش مهمی در بالا بردن کارایی (Performance) برنامه و مصرف حافظه (Memory) خواهد داشت.
+
+با اجرای نمونه کد پایین؛ از میان تمام سطرهای داخل فایل The_Zen_of_Python.txt، سطرهایی که به صورت کامنت در زبان پایتون باشند چاپ می‌شوند:
+
+.. code-block:: text
+    :linenos:
+
+    Beautiful is better than ugly.
+    Explicit is better than implicit.
+    Simple is better than complex.
+    Complex is better than complicated.
+    Flat is better than nested.
+    Sparse is better than dense.
+    Readability counts.
+    Special cases aren't special enough to break the rules.
+    Although practicality beats purity.
+    Errors should never pass silently.
+    Unless explicitly silenced.
+    In the face of ambiguity, refuse the temptation to guess.
+    There should be one-- and preferably only one --obvious way to do it.
+    Although that way may not be obvious at first unless you're Dutch.
+    Now is better than never.
+    Although never is often better than *right* now.
+    If the implementation is hard to explain, it's a bad idea.
+    If the implementation is easy to explain, it may be a good idea.
+    Namespaces are one honking great idea -- let's do more of those!
+    ------------------------------------------------------------------
+    # File Name: The_Zen_of_Python.txt
+    # The Zen of Python
+    # PEP 20: https://www.python.org/dev/peps/pep-0020
+
+::
+
+  >>> file = open("/home/saeid/Documents/The_Zen_of_Python.txt")
+  >>> lines = (t.strip() for t in file) 
+  >>> comments = (t for t in lines if t[0] == '#')
+  >>> for c in comments:
+  ...     print(c)
+  ... 
+  # File Name: The_Zen_of_Python.txt
+  # The Zen of Python
+  # PEP 20: https://www.python.org/dev/peps/pep-0020
+  >>>
+
+در سطر یکم، فایل The_Zen_of_Python.txt باز شده و در سطر دوم یک شی Generator برای دستیابی و strip کردن (حذف کاراکترهای خالی (space) احتمالی در ابتدا و انتهای متن سطر) آن‌ها به شیوه  **Generator Expressions** به دست آمده است. توجه داشته باشید که سطرهای فایل هنوز خوانده نشده‌اند و تنها امکان درخواست و پیمایش سطر به سطر فایل ایجاد شده است. در سطر سوم با ایجاد یک شی Generator دیگر (باز هم به شیوه **Generator Expressions**) امکان فیلتر سطرهای کامنت مانند در داخل فایل را به کمک شی ``lines`` مرحله قبل، به دست آورده‌ایم. ولی هنوز سطرهای فایل خوانده نشده‌اند چرا که هنوز درخواستی مبنی بر تولید به هیچ یک از دو شی Generator ایجاد شده (``lines`` و ``comments``) ارسال نشده است. تا اینکه بالاخره در سطر چهارم دستور حلقه ``for`` شی ``comments`` را به جریان می‌اندازد و این شی نیز بر اساس عملیات تعریف شده برای آن، شی  ``lines`` را به جریان در می‌آورد.
+
+فایل The_Zen_of_Python.txt مورد استفاده در این مثال حجم بسیار کمی دارد ولی تاثیر به کار گرفتن **Generator Expressions** در این مثال را می‌توانید با استخراج کامنت‌های یک فایل چند گیگابایتی مشاهده نمایید!
+
+.. tip::
+    شی Generator ایجاد شده  به شیوه  **Generator Expressions** را نیز می‌توان با استفاده از تابع ``()list`` به شی لیست تبدیل کرد::
+     
+       >>> comment_list = list(comments)
+       >>> comment_list
+       ['# File Name: The_Zen_of_Python.txt', 
+       '# The Zen of Python', 
+       '# PEP 20: https://www.python.org/dev/peps/pep-0020']
+
+
+
+
+
+
 
 
 
