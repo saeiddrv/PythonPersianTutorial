@@ -398,6 +398,8 @@ Generator
 
 * فراموش نکنیم که استفاده از دستور ``return`` در هر کجا از بدنه تابع باعث پایان یافتن اجرای تابع در آن نقطه می‌شود و توابع Generator‌ نیز از این امر مسثنا نیستند!.
 
+* با فراخوانی متد ``close`` می‌توانید یک شی Generator‌ را خاموش کنید!. توجه داشته باشید که پس از فراخوانی این متد چنانچه باز هم درخواست ایجاد مقدار ارسال (``()__next__``) شود یک  استثنا ``StopIteration`` گزارش می‌گردد.
+
 
 
 به یک نمونه کد دیگر نیز توجه نمایید::
@@ -422,6 +424,26 @@ Generator
   >>> countdown_generator.__next__()
   7
   >>> 
+  >>> countdown_generator.close()
+  >>> 
+  >>> countdown_generator.__next__()
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  StopIteration
+  >>> 
+
+
+.. tip::
+    شی Generator را می‌توان با استفاده از تابع ``()list`` به شی لیست تبدیل کرد::
+     
+       >>> countdown_list = list(countdown(10))
+       Counting down from 10
+       >>> 
+       >>> countdown_list
+       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+       >>> 
+
+
 
 
 
