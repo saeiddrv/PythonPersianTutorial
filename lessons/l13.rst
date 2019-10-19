@@ -8,7 +8,7 @@
 درس ۱۳: تابع - بخش دوم
 ========================
 
-
+این درس در ادامه درس پیش است که به معرفی مواردی از کاربردهای تابع در ایجاد مفاهیمی جدید، مهم و کاربردی در زبان برنامه‌نویسی پایتون می‌پردازد. مبحث تابع در پایتون با این درس به پایان نمی‌رسد و نکات باقی‌مانده در درس بعدی ارائه می‌شوند. 
 
 
 
@@ -32,7 +32,7 @@ Decorator
 ----------
 
 
-دکوراتور (تزئین‌گر) یا همان **Decorator‌** ها [`PEP 318 <https://www.python.org/dev/peps/pep-0318//>`__] به توابعی گفته می‌شود که به منظور پوشش (wrap) توابع یا کلاس‌های دیگر پیاده‌سازی می‌شوند. Decorator‌ها در پایتون ابزار بسیار کاربردی و مفیدی هستند که به برنامه‌نویس این امکان را می‌دهند تا با کاهش حجم کدنویسی و بدون تغییر در بدنه توابع و کلاس‌های خود، رفتار و ویژگی‌های آن‌ها را گسترش دهد. در این بخش تمرکز بر روی اعمال Decorator‌ها به توابع است و Decorator‌ کلاس را در درس مربوط به کلاس‌ها بررسی خواهیم کرد.
+دکوراتور (تزئین‌گر) یا همان **Decorator‌** ها [`PEP 318 <https://www.python.org/dev/peps/pep-0318//>`__] به توابعی گفته می‌شود که به منظور پوشش (wrap) توابع یا کلاس‌های دیگر پیاده‌سازی می‌شوند. Decorator‌ها در پایتون ابزار بسیار کاربردی و مفیدی هستند که به برنامه‌نویس این امکان را می‌دهند تا با کاهش حجم کدنویسی و بدون تغییر در بدنه توابع و کلاس‌های خود، رفتار و ویژگی‌های آن‌ها را گسترش دهد. در این بخش تمرکز بر روی **اعمال** Decorator‌ها به **توابع** است و Decorator‌ کلاس را در درس مربوط به کلاس‌ها بررسی خواهیم کرد.
 
 برای پوشش یک تابع توسط Decorator‌ از سینتکسی مشابه ``decorator‌_name@`` در بالای بخش سرآیند استفاده می‌شود:
 
@@ -196,6 +196,124 @@ Decorator
   >>> chaap("I Love Python")
   i love python
   >>> 
+
+
+**functools.wraps@**
+======================
+
+در پایتون عنوانی مطرح است به نام **Higher-order functions** (توابع مرتبه بالاتر) و به توابعی گفته می‌شود که اعمالی را روی توابع دیگر انجام می‌دهند یا یک تابع جدید را به عنوان خروجی برمی‌گرداند. بر همین اساس یک ماژول به نام ``functools`` نیز در کتابخانه استاندارد پایتون قرار گرفته است که یک سری توابع کمکی و کاربردی ارائه می‌دهد [`مستندات پایتون <https://docs.python.org/3/library/functools.html>`__]. یکی از این توابع ``wraps`` [`مستندات پایتون <https://docs.python.org/3/library/functools.html#functools.wraps>`__] می‌باشد.
+
+اما چرا معرفی این تابع در این بخش مهم است؟. وقتی ما از یک Decorator‌ استفاده می‌کنیم، اتفاقی که می‌افتد این است که یک تابع جدید جایگزین تابع اصلی ما می‌شود. به نمونه کدهای پایین توجه نمایید::
+
+  >>> def func(x):
+  ...     """does some math"""
+  ...     return x + x * x
+  ... 
+  >>>
+  >>> print(func.__name__)
+  func
+  >>> print(func.__doc__)
+  does some math
+  >>> 
+
+::
+
+  >>> def logged(func):
+  ...     def with_logging(*args, **kwargs):
+  ...         print(func.__name__ + " was called")
+  ...         return func(*args, **kwargs)
+  ...     return with_logging
+  ... 
+  >>> 
+  >>> @logged
+  ... def f(x):
+  ...     """does some math"""
+  ...     return x + x * x
+  ... 
+  >>> 
+  >>> print(f.__name__)
+  with_logging
+  >>> print(f.__doc__)
+  None
+  >>>
+
+:: 
+
+  >>> # It is mean: f = logged(func)
+  ... 
+  >>> f = logged(func)
+  >>> print(f.__name__)
+  with_logging
+
+در زمان استفاده Decorator‌ وقتی خواستیم نام تابع را چاپ کنیم ``(__print(f.__name`` نام تابع جدید (``with_logging``) چاپ شد و نه تابع اصلی (``f``).
+
+استفاده از Decorator‌ همیشه به معنی از دست رفتن اطلاعات مربوط به تابع اصلی است که به منظور جلوگیری از این اتفاق و حفظ اطلاعات مربوط به تابع اصلی خود می‌توانیم از تابع ``wraps`` استفاده کنیم. این تابع در واقع خود یک Decorator‌ است که وظیفه آن کپی اطلاعات از تابعی که به عنوان آرگومان دریافت می‌کند به تابعی که به آن انتساب داده شده است::
+
+  >>> from functools import wraps
+  >>> 
+  >>> def logged(func):
+  ...     @wraps(func)
+  ...     def with_logging(*args, **kwargs):
+  ...         print(func.__name__ + " was called")
+  ...         return func(*args, **kwargs)
+  ...     return with_logging
+  ... 
+  >>> 
+  >>> @logged
+  ... def f(x):
+  ...    """does some math"""
+  ...    return x + x * x
+  ... 
+  >>> 
+  >>> print(f.__name__)
+  f
+  >>> print(f.__doc__)
+  does some math
+  >>> 
+
+
+
+
+
+
+
+
+
+
+لطفا به آخرین مثال از بحث Decorator‌ نیز توجه فرمایید. در این مثال زمان اجرای یک تابع را با استفاده از Decorator‌ها محاسبه خواهیم کرد [`منبع <https://realpython.com/primer-on-python-decorators/#a-few-real-world-examples>`__]::
+
+  >>> import functools
+  >>> import time
+  >>> 
+  >>> def timer(func):
+  ...     """Print the runtime of the decorated function"""
+  ...     @functools.wraps(func)
+  ...     def wrapper_timer(*args, **kwargs):
+  ...         start_time = time.perf_counter()   
+  ...         value = func(*args, **kwargs)
+  ...         end_time = time.perf_counter() 
+  ...         run_time = end_time - start_time 
+  ...         print(f"Finished {func.__name__!r} in {run_time:.4f} secs")
+  ...         return value
+  ...     return wrapper_timer
+  ... 
+  >>> 
+  >>> @timer
+  ... def waste_some_time(num_times):
+  ...     result = 0
+  ...     for _ in range(num_times):
+  ...         for i in range(10000)
+  ...             result += i**2
+  ... 
+  >>> 
+  >>> waste_some_time(1)
+  Finished 'waste_some_time' in 0.0072 secs
+  >>> waste_some_time(999)
+  Finished 'waste_some_time' in 2.6838 secs
+
+در این مثال از تابع ``perf_counter`` برای محاسبه فواصل زمانی (time intervals) [`مستندات پایتون <https://docs.python.org/3/library/time.html#time.perf_counter>`__] استفاده شده که تنها از نسخه 3.3 به بعد در دسترس می‌باشد [`اطلاعات تکمیلی <https://stackoverflow.com/a/25787875/8434370>`__].
+
+چنانچه درک دستور  ``("print(f"Finished {func.__name__!r} in {run_time:.4f} secs``  برایتان مبهم است به درس هفتم بخش مربوط به رشته‌ها مراجعه نمایید.
 
 
 Generator
