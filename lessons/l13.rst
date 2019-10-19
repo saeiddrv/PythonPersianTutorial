@@ -313,7 +313,6 @@ Decorator
 
 در این مثال از تابع ``perf_counter`` برای محاسبه فواصل زمانی (time intervals) [`مستندات پایتون <https://docs.python.org/3/library/time.html#time.perf_counter>`__] استفاده شده که تنها از نسخه 3.3 به بعد در دسترس می‌باشد [`اطلاعات تکمیلی <https://stackoverflow.com/a/25787875/8434370>`__].
 
-چنانچه درک دستور  ``("print(f"Finished {func.__name__!r} in {run_time:.4f} secs``  برایتان مبهم است به درس هفتم بخش مربوط به رشته‌ها مراجعه نمایید.
 
 
 Generator
