@@ -1414,6 +1414,51 @@
         >>> '{0:{fill}{align}16}'.format(text, fill=align, align=align)
         '>>>>>>>>>>>Right'
 
+
+f-string
+~~~~~~~~~~
+
+از نسخه پایتون 3.6 یک امکان جدید و بسیار جالب در مورد بحث قالب‌بندی رشته‌ها ارايه شده است که با عنوان ``f-string`` شناخته می‌شود [`PEP 498 <https://www.python.org/dev/peps/pep-0498//>`__].
+
+ساختار همان ساده شده حالت ``()str.format`` می‌باشد::
+
+  >>> name = "Saeid"
+  >>> age = 32
+  >>> f"Hello, {name}. You are {age}."
+  'Hello, Saeid. You are 32.'
+  >>> 
+
+یعنی اگر در ابتدای یک متن، حرف ``f`` یا ``F`` قرار دهیم، آنگاه می‌توانیم متغیرها یا عبارات خود را مستقیم در داخل آن - با استفاده از ``{}`` - قرار بدهیم::
+
+  >>> f"{2 * 37}"
+  '74'
+
+در نمونه کد پایین یک تابع را مستقیم در داخل متن موجود فراخوانی می‌کینم::
+
+  >>> def to_lowercase(input):
+  ...     return input.lower()
+  ... 
+  >>> 
+  >>> name = "Eric Idle"
+  >>> 
+  >>> f"{to_lowercase(name)} is funny."
+  'eric idle is funny.'
+
+::
+
+  >>> f"{name.lower()} is funny."
+  'eric idle is funny.' 
+  >>> 
+
+
+
+
+
+
+
+
+
+
 .. rubric:: برخی از متدهای کاربردی یک شی رشته
 
 * ``()capitalize`` [`اسناد پایتون <http://docs.python.org/3/library/stdtypes.html#str.capitalize>`__] - یک کپی از رشته که نخستین حرف آن به صورت بزرگ (Capital) نوشته شده است را برمی‌گرداند::
