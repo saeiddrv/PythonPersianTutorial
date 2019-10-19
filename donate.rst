@@ -9,7 +9,9 @@
 گزارش هدایای پرداخت شده
 =========================
 
-مبالغ مهم نیستند، از اقدام شما دوستان بسیار سپاسگذارم.
+مبالغ مهم نیستند، از اقدام و پیام تشویق شما دوستان بسیار سپاسگذارم. (*اطلاعات این صفحه به صورت آنی بروز نمی‌شود!*)
+
+----
 
 
 |
@@ -20,172 +22,214 @@
 
 
 
-.. raw:: html
 
-    <p class="rubric" id="8d728" >26: <a class="reference external" href="https://ppng.ir/p/8d728" target="_blank">50,000 تومان</a> در زمان 16:52 28-03-1398</p>
 
-----
 
 .. raw:: html
 
-    <p class="rubric" id="efc8e" >25: <a class="reference external" href="https://ppng.ir/p/efc8e" target="_blank">50,000 تومان</a> در زمان 09:13 08-02-1398</p>
+    <p id="3e89ee" >29: <strong style="color:#5C6BC0">20,000 تومان</strong> در زمان 11:41 03-06-1398<br><q>ممنون از زحمات شما</q></p>
 
 ----
+
+
 
 .. raw:: html
 
-    <p class="rubric" id="fcf0a" >24: <a class="reference external" href="https://ppng.ir/p/fcf0a" target="_blank">50,000 تومان</a> در زمان 22:44 26-01-1398</p>
-
-----
-
-سال 1397: 92,000 تومان
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="8bbe2" >23: <a class="reference external" href="https://ppng.ir/p/8bbe2" target="_blank">5,000 تومان</a> در زمان 13:52 23-11-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="edbd0" >22: <a class="reference external" href="https://ppng.ir/p/edbd0" target="_blank">5,000 تومان</a> در زمان 09:13 05-11-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="c6796" >21: <a class="reference external" href="https://ppng.ir/p/c6796" target="_blank">10,000 تومان</a> در زمان 15:25 01-11-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="5d771" >20: <a class="reference external" href="https://ppng.ir/p/5d771" target="_blank">2,000 تومان</a> در زمان 20:36 20-10-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="3d87a" >19: <a class="reference external" href="https://ppng.ir/p/3d87a" target="_blank">1,000 تومان</a> در زمان 13:47 13-10-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="1b28" >18: <a class="reference external" href="https://ppng.ir/p/1b28" target="_blank">1,000 تومان</a> در زمان 09:35 28-07-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="7928" >17: <a class="reference external" href="https://ppng.ir/p/7928" target="_blank">1,000 تومان</a> در زمان 18:39 20-07-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="Puf4" >16: <a class="reference external" href="https://ppng.ir/p/Puf4" target="_blank">25,000 تومان</a> در زمان 16:45 10-06-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="4dXT" >15: <a class="reference external" href="https://ppng.ir/p/4dXT" target="_blank">2,000 تومان</a> در زمان 12:45 24-05-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="Vg6r" >14: <a class="reference external" href="https://ppng.ir/p/Vg6r" target="_blank">20,000 تومان</a> در زمان 19:50 08-04-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="N68a" >13: <a class="reference external" href="https://ppng.ir/p/N68a" target="_blank">10,000 تومان</a> در زمان 22:27 04-04-1397</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="O73x" >12: <a class="reference external" href="https://ppng.ir/p/O73x" target="_blank">10,000 تومان</a> در زمان 18:30 26-02-1397</p>
-
-----
-
-سال 1396: 61,000 تومان
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="T3k4" >11: <a class="reference external" href="https://ppng.ir/p/T3k4" target="_blank">5,000 تومان</a> در زمان 17:51 06-12-1396</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="Xijy" >10: <a class="reference external" href="https://ppng.ir/p/Xijy" target="_blank">10,000 تومان</a> در زمان 21:23 10-09-1396</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="EMwM" >9: <a class="reference external" href="https://ppng.ir/p/EMwM" target="_blank">5,000 تومان</a> در زمان 21:00 07-09-1396</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="0PUn" >8: <a class="reference external" href="https://ppng.ir/p/0PUn" target="_blank">10,000 تومان</a> در زمان 08:39 06-08-1396</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="ZzxB" >7: <a class="reference external" href="https://ppng.ir/p/ZzxB" target="_blank">10,000 تومان</a> در زمان 13:50 13-07-1396</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="lZ2N" >6: <a class="reference external" href="https://ppng.ir/p/lZ2N" target="_blank">1,000 تومان</a> در زمان 10:04 11-06-1396</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="8I1d" >5: <a class="reference external" href="https://ppng.ir/p/8I1d" target="_blank">10,000 تومان</a> در زمان 22:44 16-04-1396</p>
-
-----
-
-.. raw:: html
-
-    <p class="rubric" id="BOGC" >4: <a class="reference external" href="https://ppng.ir/p/BOGC" target="_blank">10,000 تومان</a> در زمان 17:51 11-04-1396</p>
-
-----
-
-سال 1395: 18,000 تومان
+    <p id="d7409c" >28: <strong style="color:#5C6BC0">5,000 تومان</strong> در زمان 13:10 02-06-1398<br><q>متشکرم که دانشتون رو در اختیار ما می زارید.</q></p>
 
 ----
 
 
 .. raw:: html
 
-    <p class="rubric" id="JfRE" >3: <a class="reference external" href="https://ppng.ir/p/JfRE" target="_blank">10,000 تومان</a> در زمان 19:33 27-11-1395</p>
+    <p id="67c60a" >27: <strong style="color:#5C6BC0">1,000,000 تومان</strong> در زمان 22:23 11-04-1398<br><q>Omidvaram tashvighi beshe vase sorato detaile bishtar!</q></p>
+
+----
+
+
+.. raw:: html
+
+    <p id="8d728" >26: <strong style="color:#5C6BC0">50,000 تومان</strong> در زمان 16:52 28-03-1398<br><q>وسع یه دانشجو همینقدره ببخشید. کاش تا جایی که میتونین وب سایتو رایگان نگه دارین...</q></p>
 
 ----
 
 .. raw:: html
 
-    <p class="rubric" id="tztN" >2: <a class="reference external" href="https://ppng.ir/p/tztN" target="_blank">5,000 تومان</a> در زمان 20:51 15-11-1395</p>
+    <p id="efc8e" >25: <strong style="color:#5C6BC0">50,000 تومان</strong> در زمان 09:13 08-02-1398<br><q>با تشکر</q></p>
 
 ----
 
 .. raw:: html
 
-    <p class="rubric" id="O7QU" >1: <a class="reference external" href="https://ppng.ir/p/O7QU" target="_blank">3,000 تومان</a> در زمان 11:27 09-11-1395</p>
+    <p id="fcf0a" >24: <strong style="color:#5C6BC0">50,000 تومان</strong> در زمان 22:44 26-01-1398<br><q>آقا برای آموزش پایتون خیلی زحمت کشیدی، مرسی.</q></p>
+
+----
+
+|
+
+**سال 1397: 92,000 تومان**
+
+|
+
+
+
+----
+
+.. raw:: html
+
+    <p id="8bbe2" >23: <strong style="color:#5C6BC0">5,000 تومان</strong> در زمان 13:52 23-11-1397<br><q>از کتاب آموزش پایتون شما لذت بردم، درس اول و دوم رو خوندم. موفق و پیروز باشید.</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="edbd0" >22: <strong style="color:#5C6BC0">5,000 تومان</strong> در زمان 09:13 05-11-1397<br><q>ممنون از کار بسیار مفید شما</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="c6796" >21: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 15:25 01-11-1397<br><q>تشکر</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="5d771" >20: <strong style="color:#5C6BC0">2,000 تومان</strong> در زمان 20:36 20-10-1397<br><q>omid</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="3d87a" >19: <strong style="color:#5C6BC0">1,000 تومان</strong> در زمان 13:47 13-10-1397<br><q>با سلام خیلی خوشحال شدم از مطالب خوبت. امیدوارم ادامه بدی ممنونم مجید</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="1b28" >18: <strong style="color:#5C6BC0">1,000 تومان</strong> در زمان 09:35 28-07-1397<br><q>salam</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="7928" >17: <strong style="color:#5C6BC0">1,000 تومان</strong> در زمان 18:39 20-07-1397<br><q>خوب بود</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="Puf4" >16: <strong style="color:#5C6BC0">25,000 تومان</strong> در زمان 16:45 10-06-1397<br><q>با تشکر</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="4dXT" >15: <strong style="color:#5C6BC0">2,000 تومان</strong> در زمان 12:45 24-05-1397<br><q>با تشکر از کتاب روان و جامع شما</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="Vg6r" >14: <strong style="color:#5C6BC0">20,000 تومان</strong> در زمان 19:50 08-04-1397<br><q>.لطفا ادامه پایتون را هم تکمیل کنید</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="N68a" >13: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 22:27 04-04-1397<br><q>Awesome work! continue it!</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="O73x" >12: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 18:30 26-02-1397<br><q>تشکر از نوشته بسیار خوبتان</q></p>
+
+----
+
+|
+
+**سال 1396: 61,000 تومان**
+
+|
+
+----
+
+.. raw:: html
+
+    <p id="T3k4" >11: <strong style="color:#5C6BC0">5,000 تومان</strong> در زمان 17:51 06-12-1396<br><q>هدیه :)</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="Xijy" >10: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 21:23 10-09-1396<br><q>بهترین سایت پایتون هستید چقدر بدبختی کشیدم بدون شما. شرمنده فعلا کمه جبران میکنم بیشتر</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="EMwM" >9: <strong style="color:#5C6BC0">5,000 تومان</strong> در زمان 21:00 07-09-1396<br><q>👍</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="0PUn" >8: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 08:39 06-08-1396<br><q>مرسی از آقا سعید عزیز برای این کار با ارزش. ارزش این کارتون هیچ جوره با قابل پرداخت نیست.</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="ZzxB" >7: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 13:50 13-07-1396<br><q>لطفا ادامه بدید</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="lZ2N" >6: <strong style="color:#5C6BC0">1,000 تومان</strong> در زمان 10:04 11-06-1396<br><q>ببخشید کمه ولی ایشالا بعد بیشتر</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="8I1d" >5: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 22:44 16-04-1396<br><q>مبلغی ناچیز و ناقابل بابت زحماتی که درآموزش پایتون میکشید</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="BOGC" >4: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 17:51 11-04-1396<br><q>بخاطر کارهای خوب در نگارش دقیق آموزش پای‌تُن</q></p>
+
+----
+
+|
+
+**سال 1395: 18,000 تومان**
+
+|
+
+
+----
+
+
+.. raw:: html
+
+    <p id="JfRE" >3: <strong style="color:#5C6BC0">10,000 تومان</strong> در زمان 19:33 27-11-1395<br><q>کارتون عالیه، ادامه بدید.</q></p>
+
+----
+
+.. raw:: html
+
+
+    <p id="tztN" >2: <strong  style="color:#5C6BC0">5,000 تومان</strong> در زمان 20:51 15-11-1395<br><q>با تشکر از زحمات شما برای نشر علم .هر چند این مبالغ در برابر تلاش شما ناچیز است .</q></p>
+
+
+----
+
+.. raw:: html
+
+    <p id="O7QU" >1: <strong style="color:#5C6BC0">3,000 تومان</strong> در زمان 11:27 09-11-1395<br><q>دم شما گرم</q></p>
 
 
 
