@@ -47,8 +47,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'کتاب آزاد آموزش پایتون'
-copyright = u'2015, Saeid Darvishi'
-author = u'Saeid Darvishi'
+copyright = u'2015, Saeid Darvish'
+author = u'Saeid Darvish'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -223,7 +223,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   (master_doc, 'PythonPersianTutorial.tex', u'PythonPersianTutorial Documentation',
-   u'Saeid Darvishi', 'manual'),
+   u'Saeid Darvish', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
