@@ -1493,8 +1493,31 @@ f-string
   >>> 
 
 
+همچنین می‌توانیم هر یک از اشیا مورد استفاده در درون متن را با شیوه خاص آن شی، با قرار دادن یک ``:`` به صورت جداگانه قالب‌بندی نماییم::
 
 
+  >>> a_float_number = 5.236501
+  >>> print(f'{a_float_number:.4f}')
+  5.2365
+  >>> print(f'{a_float_number:.2f}')
+  5.24
+  >>> 
+
+::
+
+  >>> a_int_number = 16
+  >>> print(f'{a_int_number:05d}')
+  00016
+  >>> 
+
+::
+
+  >>> import datetime
+  >>> now = datetime.datetime.now()
+  >>> print(f'{now:%Y-%m-%d %H:%M}')
+  2019-10-20 10:37
+
+در دروس آینده در مورد ماژول ``datetime`` صحبت خواهیم کرد. [`اسناد پایتون <https://docs.python.org/3/library/datetime.html>`__] 
 
 
 
