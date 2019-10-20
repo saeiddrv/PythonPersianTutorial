@@ -201,7 +201,7 @@ Decorator
 **functools.wraps@**
 ~~~~~~~~~~~~~~~~~~~~~
 
-در پایتون عنوانی مطرح است به نام **Higher-order functions** (توابع مرتبه بالاتر) و به توابعی گفته می‌شود که اعمالی را روی توابع دیگر انجام می‌دهند یا یک تابع جدید را به عنوان خروجی برمی‌گرداند. بر همین اساس یک ماژول به نام ``functools`` نیز در کتابخانه استاندارد پایتون قرار گرفته است که یک سری توابع کمکی و کاربردی برای این دست توابع ارائه می‌دهد [`مستندات پایتون <https://docs.python.org/3/library/functools.html>`__]. یکی از توابع داخل این ماژول ``wraps`` [`مستندات پایتون <https://docs.python.org/3/library/functools.html#functools.wraps>`__] می‌باشد.
+در پایتون عنوانی مطرح است به نام **Higher-order functions** (توابع مرتبه بالاتر) و به توابعی گفته می‌شود که اعمالی را روی توابع دیگر انجام می‌دهند یا یک تابع جدید را به عنوان خروجی برمی‌گرداند. بر همین اساس یک ماژول به نام ``functools`` نیز در کتابخانه استاندارد پایتون قرار گرفته است که یک سری توابع کمکی و کاربردی برای این دست توابع ارائه می‌دهد [`اسناد پایتون <https://docs.python.org/3/library/functools.html>`__]. یکی از توابع داخل این ماژول ``wraps`` [`اسناد پایتون <https://docs.python.org/3/library/functools.html#functools.wraps>`__] می‌باشد.
 
 **اما چرا معرفی این تابع در این بخش مهم است؟** وقتی ما از یک Decorator‌ استفاده می‌کنیم، اتفاقی که می‌افتد این است که یک تابع جدید جایگزین تابع اصلی ما می‌شود. به نمونه کدهای پایین توجه نمایید::
 
@@ -311,7 +311,9 @@ Decorator
   >>> waste_some_time(999)
   Finished 'waste_some_time' in 2.6838 secs
 
-در این مثال از تابع ``perf_counter`` برای محاسبه فواصل زمانی (time intervals) [`مستندات پایتون <https://docs.python.org/3/library/time.html#time.perf_counter>`__] استفاده شده که تنها از نسخه 3.3 به بعد در دسترس می‌باشد [`اطلاعات تکمیلی <https://stackoverflow.com/a/25787875/8434370>`__].
+در این مثال از تابع ``perf_counter`` [`اسناد پایتون <https://docs.python.org/3/library/time.html#time.perf_counter>`__] برای محاسبه فواصل زمانی (time intervals) استفاده شده که تنها از نسخه 3.3 به بعد در دسترس می‌باشد [`اطلاعات تکمیلی <https://stackoverflow.com/a/25787875/8434370>`__].
+
+چنانچه درک کد ``print(f"Finished {func.__name__!r} in {run_time:.4f} secs")`` برایتان مبهم است به درس هفتم بخش **f-string** مراجعه نمایید [`درس هفتم f-string <http://127.0.0.1:8000/html/lessons/l07.html#f-string>`__].
 
 
 
