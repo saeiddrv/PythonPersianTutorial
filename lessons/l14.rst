@@ -74,7 +74,48 @@
 * یک عبارت حاوی فراخوانی خود تابع
 * یک شرط برای انتخاب بین فراخوانی مجدد و پایان
 
-**پیاده‌سازی شیوه بازگشتی شاید به نظر هیجان‌انگیز باشد اما نباید فراموش کرد که میزان حافظه (Memory) زیادی مصرف می‌کند، اجرای آن زمان‌بر خواهد بود، درک جریان اجرای آن اغلب سخت است و اشکال‌زدایی (debug) آن ساده نخواهد بود!**
+.. note::
+    پیاده‌سازی شیوه بازگشتی شاید به نظر هیجان‌انگیز باشد اما نباید فراموش کرد که میزان حافظه (Memory) زیادی مصرف می‌کند، اجرای آن زمان‌بر خواهد بود، درک جریان اجرای آن اغلب سخت است و اشکال‌زدایی (debug) آن ساده نخواهد بود!
+
+
+استفاده از decorator
+~~~~~~~~~~~~~~~~~~~~~
+
+هنگام استفاده از decorator بر روی توابع بازگشتی باید به این نکته توجه داشته باشید که این decorator بر روی تمامی نمونه‌های فراخوانی شده از تابع اعمال خواهد شد و اینکه تنها یک نمونه از decorator ایجاد می‌شود و تمام نمونه‌‌های تابع به همان یک نمونه ارسال می‌شوند::
+
+  >>> def logger(func):
+  ...     print('Decorator is created!')
+  ...     def func_wrapper(number):
+  ...         print(f'New factorial call with parameter: {number}')
+  ...         result = func(number)
+  ...         print (f'factorial({number}) ==> {result}')
+  ...         return result
+  ...     return func_wrapper
+  ... 
+  >>> @logger
+  ... def factorial(n):
+  ...     if n <= 1:
+  ...         return 1
+  ...     else:
+  ...         return n * factorial(n - 1)
+  ... 
+  >>> 
+  >>> factorial(5)
+  Decorator is created!
+  New factorial call with parameter: 5
+  New factorial call with parameter: 4
+  New factorial call with parameter: 3
+  New factorial call with parameter: 2
+  New factorial call with parameter: 1
+  factorial(1) ==> 1
+  factorial(2) ==> 2
+  factorial(3) ==> 6
+  factorial(4) ==> 24
+  factorial(5) ==> 120
+  120
+  >>> 
+
+*به خروجی نمونه کد بالا حتما توجه نمایید!.*
 
 تنظیم عمق بازگشتی
 ~~~~~~~~~~~~~~~~~~~~
@@ -173,6 +214,71 @@
 
   >>> list(genflatten(items))
   [1, 2, 3, 4, 5, 5, 6, 7, 8, 9]
+
+
+Memoization
+~~~~~~~~~~~~~
+
+**Memoization** یا یادآوری، یک تکنیک برای نگهداری از نتایج به دست آمده به منظور جلوگیری از تکرار محاسبات است [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Memoization>`__]. این تکنیک را می‌توان در زبان برنامه‌نویسی پایتون با استفاده از **decorator** پیاده‌سازی کرد.
+
+برای توضیح این بخش اجازه دهید یک مثال بازگشتی دیگر را بررسی کنیم. محاسبه مقدار فیبوناچی [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Fibonacci_number>`__] یک عدد مشخص:
+
+.. image:: /_static/l14-fibonacci-relation.png
+    :align: center
+
+::
+
+  >>> def fibonacci(n):
+  ...     if n <= 1:
+  ...         return n
+  ...     else:
+  ...         return fibonacci(n-1) + fibonacci(n-2)
+  ... 
+  >>> for number in range(10):
+  ...    print(fibonacci(number))
+  ... 
+  0
+  1
+  1
+  2
+  3
+  5
+  8
+  13
+  21
+  34
+
+  
+در این مثال ما از عدد ``9`` جلوتر نرفتیم چرا که محاسبه برای اعداد بزرگتری به مانند ``50`` واقعا زمان‌بر خواهد بود و این فرصتی است تا ما کارایی تکنیک Memoization را محک بزنیم. اکنون تابع بازگشتی فیبوناچی خود را با استفاده از تکنیک Memoization و یک Decorator بهینه‌سازی می‌کنیم::
+
+  >>> def memoize_fibonacci(func):
+  ...     memory = {} 
+  ...     def func_wrapper(number): 
+  ...         if number not in memory: 
+  ...             memory[number] = func(number)
+  ...         return memory[number]
+  ...     return func_wrapper
+  ... 
+  >>> @memoize_fibonacci
+  ... def fibonacci(n):
+  ...     if n <= 1:
+  ...         return n
+  ...     else:
+  ...         return fibonacci(n-1) + fibonacci(n-2)
+  ... 
+  >>> 
+
+حالا مقدار ``50`` که هیچ، مقدار فیبوناچی برای عدد ``500`` را محاسبه کنید (``(500)fibonacci``). تفاوت در زمان اجرا را خودتان متوجه خواهید شد!
+
+
+به کمک Decorator در این مثال (``memoize_fibonacci``) نتایج حاصل از فراخوانی هر نمونه تابع در جایی ذخیره می‌شود (شی دیکشنری ``memory``) و پیش از فراخوانی مجدد یک نمونه جدید از تابع بررسی می‌شود که آیا قبلا این مقدار محاسبه شده است یا خیر. در صورت وجود جواب از تکرار فراخوانی تابع صرف نظر و مقدار از پیش موجود به عنوان نتیجه برگردانده می‌شود. بنابراین بدیهی است که با جلوگیری از ایجاد نمونه توابع جدید و محاسبات تکراری، سرعت اجرا افزایش یابد.
+
+
+
+
+
+
+
 
 
 
