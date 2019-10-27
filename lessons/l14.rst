@@ -112,6 +112,71 @@
 .. tip::
     علاوه بر این محدودیت، یک محدودیت جدی‌تر دیگری نیز وجود دارد و آن هم میزان فضایی است که توسط سیستم عامل برای پشته در نظر گرفته شده است. با رد شدن از این مقدار فضا، برنامه با خطای زمان اجرا مواجه می‌گردد (``RuntimeError``).
 
+تابع Generator بازگشتی
+~~~~~~~~~~~~~~~~~~~~~~
+
+در پیاده‌سازی توابع Generator و Coroutine نیز می‌توان شیوه بازگشتی را در نظر گرفت، در این صورت ممکن است نتایج کمی برخلاف انتظار شما باشد. نمونه کد زیر یک شی لیست تو در تو را دریافت و تک تک اعضای درون هر لیست را چاپ می‌کند::
+
+  >>> def flatten(lists):
+  ...     for sub in lists:
+  ...         if isinstance(sub,list):
+  ...             flatten(sub)
+  ...         else:
+  ...             print(sub)
+  ... 
+  >>> items = [[1,2,3],[4,5,[5,6]],[7,8,9]]
+  >>> flatten(items)
+  1
+  2
+  3
+  4
+  5
+  5
+  6
+  7
+  8
+  9
+  >>> 
+
+اکنون برای تبدیل تابع ``flatten`` به یک  Generator کافی است به جای ``print`` از ``yield`` استفاده کنیم::
+
+  >>> def genflatten(lists):
+  ...     for sub in lists:
+  ...         if isinstance(sub,list):
+  ...             genflatten(sub)
+  ...         else:
+  ...             yield sub
+  ... 
+  >>> items = [[1,2,3],[4,5,[5,6]],[7,8,9]]
+
+  >>> genflatten(items)
+  <generator object genflatten at 0x7eff06d40150>
+
+  >>> list(genflatten(items))
+  []
+
+
+اتفاقی نیفتاد! و خروجی یک لیست خالی است. از درس پیش به خاطر داریم، فراخوانی تابع ``genflatten`` (که در واقع یک تابع Generator است) تنها باعث ایجاد یک شی Generator می‌شود و می‌بایست در نقطه‌ای که تابع خودش را فراخوانی می‌کند نیز مقدمات پردازش خروجی یک شی Generator را فراهم کنیم. اکنون با اصلاح کد بالا::
+
+  >>> def genflatten(lists):
+  ...     for sub in lists:
+  ...         if isinstance(sub,list):
+  ...             for item in genflatten(sub):
+  ...                 yield item
+  ...         else:
+  ...             yield sub
+  ... 
+  >>> items = [[1,2,3],[4,5,[5,6]],[7,8,9]]
+
+  >>> genflatten(items)
+  <generator object genflatten at 0x7f6cee349258>
+
+  >>> list(genflatten(items))
+  [1, 2, 3, 4, 5, 5, 6, 7, 8, 9]
+
+
+
+
 
 
 
