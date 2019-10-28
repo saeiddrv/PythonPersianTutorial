@@ -274,6 +274,104 @@ Memoization
 به کمک Decorator در این مثال (``memoize_fibonacci``) نتایج حاصل از فراخوانی هر نمونه تابع در جایی ذخیره می‌شود (شی دیکشنری ``memory``) و پیش از فراخوانی مجدد یک نمونه جدید از تابع بررسی می‌شود که آیا قبلا این مقدار محاسبه شده است یا خیر. در صورت وجود جواب از تکرار فراخوانی تابع صرف نظر و مقدار از پیش موجود به عنوان نتیجه برگردانده می‌شود. بنابراین بدیهی است که با جلوگیری از ایجاد نمونه توابع جدید و محاسبات تکراری، سرعت اجرا افزایش یابد.
 
 
+Function Attributes
+---------------------
+
+از دروس پیش مشاهده کردیم که اشیا در پایتون بر حسب نوع خود شامل یک سری صفات یا ویژگی‌های (Attributes) پیش‌فرض هستند؛ برای مثال صفت ``__name__`` که دربردارنده نام تابع است [`اسناد پایتون <https://docs.python.org/3/library/stdtypes.html#definition.__name__>`__]. 
+
+علاوه بر این؛‌ توابع در پایتون می‌توانند صفات دلخواه کاربر را نیز دریافت کنند که به این صورت می‌توان یک سری اطلاعات اضافی را به توابع پیوست کرد [`PEP 232 <https://www.python.org/dev/peps/pep-0232/>`__]. به نمونه کد پایین توجه نمایید::
+
+  >>> def foo():
+  ...     pass
+  ... 
+  >>> foo.is_done = True
+  >>> 
+  >>> if foo.is_done:
+  ...     print('DONE!')
+  ... 
+  DONE!
+  >>> 
+
+همانطور که قابل مشاهده است با استفاده از سینتکس زیر می‌توان یک Attribute به تابع اضافه کرد::
+
+  function_name.attribute_name = attribute_value
+
+همچنین برای این منظور می‌توان از تابع آماده ``(setattr(object, name, value`` استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#setattr>`__]. این تابع سه آرگومان دریافت می‌کند؛ شی ای که می‌خواهید یک Attribute به آن اضافه کنید (در اینجا تابع)، نام (از نوع رشته - string) و مقدار Attribute مورد نظر::
+
+  >>> setattr(foo, 'name', 'Saeid')
+  >>> setattr(foo, 'age', 32)
+  >>> 
+  >>> foo.name
+  'Saeid'
+  >>> foo.age
+  32
+
+این صفات در قالب یک شی دیکشنری ذخیره می‌شوند که با استفاده از صفت ``__dict__`` در دسترس هستند [`اسناد پایتون <https://docs.python.org/3/library/stdtypes.html#object.__dict__>`__]::
+
+  >>> foo.__dict__
+  {'is_done': True, 'name': 'Saeid', 'age': 32}
+
+برای دریافت مقدار یک Attribute مشخص می‌توانید از تابع آماده ``([getattr(object, name[, default`` نیز استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#getattr>`__]. این تابع دو پارامتر اجباری (``object`` و ``name``) و یک پارامتر اختیاری (``default``) دارد. در صورتی که شی مورد نظر (در اینجا تابع) فاقد صفت مورد نظر باشد مقدار default (در صورت ارسال) برگردانده خواهد شد::
+
+  >>> getattr(foo, 'is_done')
+  True
+  >>> getattr(foo, 'is_publish', False)
+  False
+
+::
+
+  >>> getattr(foo, 'is_publish')
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  AttributeError: 'function' object has no attribute 'is_publish'
+
+  >>> foo.is_publish
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  AttributeError: 'function' object has no attribute 'is_publish'
+
+در صورت تلاش برای دریافت صفتی که برای تابع مورد نظر تعریف نشده باشد یک استثنای ``AttributeError`` گزارش خواهد شد. البته همانطور که بیان شد در صورت استفاده از تابع ``getattr`` و تنظیم پارامتر ``default`` این اتفاق رخ نخواهد داد. همچنین برای جلوگیری از بروز این استثنا می‌توان پیش از استفاده از صفت، وجود آن را با استفاده از تابع آماده ``(hasattr(object, name`` بررسی کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#hasattr>`__]::
+
+  >>> if hasattr(foo, 'is_publish'):
+  ...     print(foo.is_publish)
+  ... else:
+  ...     print(f"{foo.__name__!r} has no attribute 'is_publish'")
+  ... 
+  'foo' has no attribute 'is_publish'
+  >>> 
+
+برای **حذف** یک Attribute نیز می‌توان از تابع آماده ``(delattr(object, name`` استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#delattr>`__]::
+
+  >>> delattr(foo, 'age')
+  >>> 
+  >>> foo.age
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  AttributeError: 'function' object has no attribute 'age'
+
+و یا از دستور ``del`` ::
+
+  >>> del foo.is_done
+  >>> 
+  >>> foo.is_done
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  AttributeError: 'function' object has no attribute 'is_done'
+  >>> 
+
+.. note::
+    در انتهای این بخش باید خاطر نشان کرد که در صورت تعریف Attribute برای توابع خود و استفاده از decorator، همانطور که در درس پیش نیز توضیح داده شد استفاده از ``functools.wraps@`` فراموش نشود [`درس سیزدهم </lessons/l13.html#functools-wraps>`__].
+
+
+
+
+
+
+
+
+
+
+
 
 
 
