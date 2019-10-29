@@ -385,7 +385,14 @@ eval
   >>> eval('math.sin(3.5+x) + 7.2')
   6.494459674429608
 
-تعریف این تابع شامل دو پارامتر  ``globals`` و ``locals`` نیز می‌شود که ارسال آرگومان به آن‌ها اختیاری است. 
+بر اساس تعریف موجود در اسناد پایتون ``([[eval(object[, globals[, locals``، این تابع شامل دو پارامتر  ``globals`` و ``locals`` نیز می‌شود که ارسال آرگومان به آن‌ها اختیاری است. هر دو از نوع دیکشنری (dict) هستند که Scope یا حوزه‌های global و  local کدی که باید اجرا شود (پارامتر یکم تابع) را  ارايه می‌دهند::
+
+  >>> globals_env = {'x': 7, 'y': 10, 'birds': ['Parrot', 'Swallow', 'Albatross']}
+  >>> locals_env = {}
+  >>> a = eval("3 * x + 4 * y", globals_env, locals_env)
+  >>> a
+  61
+
 
 
 
@@ -409,10 +416,33 @@ exec
   4
 
 .. note::
-    ``exec`` در پایتون نسخه 2x به صورت تابع تعریف نشده است و به صورت یک دستور به کار می‌رود::
+    ``exec`` در پایتون نسخه 2x به صورت تابع تعریف نشده است و به صورت یک دستور به کار می‌رود [`اسناد پایتون <https://docs.python.org/2.7/reference/simple_stmts.html#exec>`__]::
 
       >>> exec 'import math; x=2; print(math.sin(3.5+x) + 7.2)'
       6.49445967443
+
+این تابع همانند ``eval`` شامل دو پارامتر  ``globals`` و ``locals`` نیز می‌شود::
+
+  exec(object[, globals[, locals]])
+
+::
+
+  >>> exec("for b in birds: print(b)", globals_env, locals_env)
+  Parrot
+  Swallow
+  Albatross
+
+که البته در نسخه‌های 2x از سینتکس ``[[exec code[ in globals[,locals`` پیروی می‌شود::
+
+  >>> exec "for b in birds: print b" in globals_env, locals_env
+  Parrot
+  Swallow
+  Albatross
+
+
+compile
+~~~~~~~~~
+
 
 
 
