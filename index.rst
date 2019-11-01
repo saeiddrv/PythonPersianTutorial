@@ -31,12 +31,7 @@
    lessons/l14
    log
    donate
-
-|
-
-.. raw:: html
-
-    <iframe style="width: 100%; height: 300px; border: none;" name="embedded_python_anywhere" src="https://console.python.org/python-dot-org-console/"></iframe>
+   interpreter
 
 |
 

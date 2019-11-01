@@ -127,7 +127,7 @@ $( document ).ready(function() {
        if ($(this).text().indexOf("پیش‌گفتار")>=0) {
            $(this).addClass('reportmenufield');
         }
-       if ($(this).text().indexOf("گزارش هدایای پرداخت شده")>=0) {
+       if ($(this).text().indexOf("گزارش حمایت‌های مالی")>=0) {
            $(this).addClass('reportmenufield');
         }
        if ($(this).text().indexOf("خودآزمایی") >= 0) {
