@@ -443,23 +443,105 @@ exec
 compile
 ~~~~~~~~~
 
+هر بار که یک شی رشته حاوی کد پایتون به توابع ``eval`` و ``exec`` ارسال می‌شود، مفسر پایتون ابتدا این کد را به بایت‌کد کامپایل و سپس اجرا می‌کند که تکرار این کار باعث تحمیل سربار به سیستم می‌شود. می‌توان با یک بار کامپیال و استفاده مجدد از اعمال این سربار اجتناب کرد.
+
+تابع ``compile`` برای همین منظور است [`اسناد پایتون <https://docs.python.org/3/library/functions.html#compile>`__]. تعریف این تابع به صورت زیر است::
+
+  compile(source, filename, mode, flags=0, dont_inherit=False, optimize=-1)
+
+
+* **source**: کدی است که می‌خواهیم آن را کامپیال و در نهایت اجرا کنیم که می‌تواند یک شی از نوع رشته (str)، بایت (bytes) یا AST [`اسناد پایتون <https://docs.python.org/3/library/ast.html>`__] باشد.
+
+* **filename**: نام فایلی که کد باید از آن خوانده شود؛ چنانچه کد مورد نظر شما از فایل خوانده نمی‌شود، یک نام به دلخواه خود قرار دهید یا آن را با یک رشته خالی مقداردهی کنید.
+
+* **mode**: نوع کد را مشخص می‌کند. می‌تواند یکی از مقادیر ``exec``، ``eval`` یا ``single`` باشد. شرایط اجرای دو تابع ``eval`` (تنها شامل یک عبارت) و ``exec`` (یک یا چند عبارت و دستور) را برسی کردیم و از ``single`` نیز در مواقعی که کد مورد نظر تنها شامل یک دستور باشد، استفاده می‌شود.
+
+* **flags**, **dont_inheritmode**: این دو پارامتر اختیاری هستند و در این مرحله می‌توانید از آنها گذر کنید. از این دو برای تعیین اینکه کدام یک از دستورات Future در کامپایل کد مورد نظر تاثیر دارد [`اسناد پایتون <https://docs.python.org/3/reference/simple_stmts.html#future>`__]، مورد استفاده قرار می‌گیرند.
+
+* **optimize**: میزان سطح بهینه‌سازی کد را برای کامپایلر تنطیم می‌کند و ارسال آروگومان به آن نیز اختیاری است - مطالعه بیشتر: [`PEP 488 <https://www.python.org/dev/peps/pep-0488/>`__]. 
+
+
+به نمونه کدهای پایین توجه نمایید::
+
+  >>> # compile() with string source
+
+  >>> code_str = 'x=5\ny=10\nprint("sum =",x+y)'
+  >>> code = compile(code_str, 'sum_test.py', 'exec')
+  >>> print(type(code))
+  <class 'code'>
+  >>> exec(code)
+  sum = 15
 
 
 
+.. code-block:: text
+    :linenos:
+
+    # File Name: test_code.py
+    # Directory: /home/saeid/Desktop
+
+    x = 10
+    y = 20
+    print('Multiplication = ', x * y)
+
+::
+
+  >>> # reading code from a file
+ 
+  >>> file = open('/home/saeid/Desktop/test_code.py', 'r')
+  >>> code_str = file.read()
+  >>> file.close()
+  >>> code = compile(code_str, 'test_code.py', 'exec')
+  >>> print(type(code))
+  <class 'code'>
+  >>> exec(code)
+  Multiplication =  200
 
 
+locals, globals
+~~~~~~~~~~~~~~~~~
+
+خروجی هر دو تابع یک شی دیکشنری (dict) است. تابع ``()locals`` یک دیکشنری حاوی متغیرهای موجود در حوزه local [`اسناد پایتون <https://docs.python.org/3/library/functions.html#locals>`__] و تابع ``()globals`` نیز یک دیکشنری حاوی متغیرهای موجود در حوزه global را برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/functions.html#globals>`__]::
+
+  >>> a = 0
+  >>> def func():
+  ...     x = 'text'
+  ...     print('-' * 10)
+  ...     print('locals():')
+  ...     print(locals())
+  ...     print('-' * 10)
+  ...     print('globals():')
+  ...     print(globals())
+  ... 
+  >>> func()
+  ----------
+  locals():
+  {'x': 'text'}
+  ----------
+  globals():
+  {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 0, 'func': <function func at 0x7f2b29f1ec80>}
+  >>> 
+
+توجه داشته باشید در سطح ماژول خروجی این دو تابع با هم یکسان می‌شود::
+
+  >>> a = 5
+  >>> b = 10
+  >>> def func():
+  ...     pass
+  ... 
+  >>> locals()
+  {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 5, 'b': 10, 'func': <function func at 0x7f1dd0218c80>}
+  >>> globals()
+  {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 5, 'b': 10, 'func': <function func at 0x7f1dd0218c80>}
+  >>> 
 
 
+.. caution::
+    همانطور که در درس‌های سوم و چهارم نیز بیان شده است، تمام محیط تعاملی پایتون از دید مفسر پایتون همانند یک ماژول (یا اسکریپت) است.
 
 
-
-
-
-
-
-
-
-
+Documentation Strings
+------------------------
 
 
 
