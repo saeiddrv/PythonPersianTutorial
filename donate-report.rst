@@ -24,6 +24,18 @@
 
 
 
+.. raw:: html
+
+    <p id="d4f6e4" >31: <strong style="color:#5C6BC0">50,000 تومان</strong> در زمان 12:47 01-08-1398<br><q>ممنون از اموزش پایتون</q></p>
+
+----
+
+.. raw:: html
+
+    <p id="ed0031" >30: <strong style="color:#5C6BC0">1,000 تومان</strong> در زمان 14:51 29-07-1398<br><q>درود بر تو.</q></p>
+
+----
+
 
 .. raw:: html
 

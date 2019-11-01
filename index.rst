@@ -29,7 +29,7 @@
    lessons/l12
    lessons/l13
    log
-   donate
+   donate-report
    interpreter
 
 |
