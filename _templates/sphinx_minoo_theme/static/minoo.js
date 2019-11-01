@@ -52,8 +52,10 @@ $( document ).ready(function() {
     $(window).scroll(function() {    
         if ($(this).scrollTop() > 250) {
             $('.back-to-top').fadeIn(300);
+	    $('.donate-badge').addClass('active');
         } else {
             $('.back-to-top').fadeOut(300);
+            $('.donate-badge').removeClass('active');
         }        
     });
 
