@@ -21,12 +21,12 @@ h1,h2,h3,h4,h5,h6{font-weight:bold;color:#000000;display:inline-block}
 h1,h2,h3{padding:10px 15px 10px 0}
 h1{background-color:#5C6BC0;color:#FFFFFF;line-height:26px;border-right:5px #E8EAF6 solid}
 p{line-height:24px;margin:0;font-size:16px}
-h1{font-size:175%}
-h2{font-size:150%}
-h3{font-size:125%}
-h4{font-size:115%}
-h5{font-size:110%}
-h6{font-size:100%}
+h1{font-size:150%}
+h2{font-size:125%}
+h3{font-size:115%}
+h4{font-size:110%}
+h5{font-size:100%}
+h6{font-size:90%}
 hr{margin-top:0;border-top:1px #E8EAF6 solid}
 blockquote{border-left:none;border-right:none;padding:0;margin:0 24px 0 0}
 th{text-align:right}
@@ -151,7 +151,7 @@ table.docutils.footnote{white-space:normal}
 .contents.topic li>ul>li>a:hover{border-right:5px #5C6BC0 solid}
 #sidebar-bottom-list #tree-toc{margin-top:10px;margin-bottom:20px;width:280px;min-height:100%}
 #sidebar-bottom-list #tree-toc ul{padding:0;margin:0 24px 0 0}
-#sidebar-bottom-list #tree-toc ul li>a,#sidebar-bottom-list #tree-toc ul li.current>a{line-height:26px;border-right:0}
+#sidebar-bottom-list #tree-toc ul li>a,#sidebar-bottom-list #tree-toc ul li.current>a{line-height:20px;border-right:0}
 #sidebar-bottom-list #tree-toc ul li>a{color:#212121;background-color:#E8EAF6}
 #sidebar-bottom-list #tree-toc ul li.current>a,h2{color:#FFFFFF;background-color:#66BB6A}
 h2{border-right:5px #E8EAF6 solid !important}
@@ -342,6 +342,15 @@ background-color: #30ff00;
 
 .donate-badge.active  {
     display:block;
+}
+
+#sidebar-bottom-list ul li {
+    font-size: 12px;
+text-align: inherit;
+}
+
+.toctree-wrapper ul li {
+text-align: inherit;
 }
 
 
