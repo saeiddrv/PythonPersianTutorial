@@ -31,7 +31,7 @@
    lessons/l14
    log
    donate-report
-   interpreter
+   python-interactive
 
 |
 
