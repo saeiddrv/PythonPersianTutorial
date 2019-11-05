@@ -28,6 +28,7 @@
    lessons/l11
    lessons/l12
    lessons/l13
+   lessons/l14
    log
    donate
    interpreter
