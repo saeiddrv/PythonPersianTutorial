@@ -296,7 +296,7 @@ Function Attributes
 
   function_name.attribute_name = attribute_value
 
-همچنین برای این منظور می‌توان از تابع آماده ``(setattr(object, name, value`` استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#setattr>`__]. این تابع سه آرگومان دریافت می‌کند؛ شی ای که می‌خواهید یک Attribute به آن اضافه کنید (در اینجا تابع)، نام (از نوع رشته - string) و مقدار Attribute مورد نظر::
+همچنین برای این منظور می‌توان از تابع آماده ``(setattr(object, name, value`` استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#setattr>`__]. این تابع سه آرگومان دریافت می‌کند؛ شی‌ای که می‌خواهید یک Attribute به آن اضافه کنید (در اینجا تابع)، نام (از نوع رشته - string) و مقدار Attribute مورد نظر::
 
   >>> setattr(foo, 'name', 'Saeid')
   >>> setattr(foo, 'age', 32)
@@ -543,7 +543,58 @@ locals, globals
 Documentation Strings
 ------------------------
 
+از درس ششم با `docstring </lessons/l06.html#docstring>`__ آشنا شده‌ایم؛ در این بخش با رویکرد تابع به این مبحث می‌پردازیم [`PEP 257 <https://www.python.org/dev/peps/pep-0257/>`__].
 
+.. tip::
+   استفاده از **docstring** در ابتدای ماژول‌ها، کلاس‌ها و توابع یک شیوه مناسب در زبان پایتون برای ارايه چگونگی ارتباط و رفتار با این عناصر است.
+
+به نمونه کد پایین توجه نمایید::
+
+  >>> def factorial(n):
+  ...     """Computes n factorial. For example:
+  ... 
+  ...     >>> factorial(5)
+  ...     120
+  ...     >>>
+  ...     """
+  ...
+  ...     if n <= 1: return 1
+  ...     else: return n*factorial(n-1)
+  ... 
+  >>>
+
+::
+
+  >>> factorial.__doc__
+  'Computes n factorial. For example:\n\n    >>> factorial(5)\n    120\n    >>>\n    '
+
+::
+
+  >>> print(factorial.__doc__)
+  Computes n factorial. For example:
+
+      >>> factorial(5)
+      120
+      >>>
+  >>>
+
+::
+
+  >>> help(factorial)
+
+  Help on function factorial in module __main__:
+
+  factorial(n)
+      Computes n factorial. For example:
+    
+      >>> factorial(5)
+      120
+      >>>
+  (END)
+
+مقدار docstring در attribute یا صفت ``__doc__`` تابع قرار می‌گیرد. همچنین این مقدار از طریق تابع ``help`` در محیط تعاملی (interactive) پایتون نیز قابل دسترس است.
+
+برنامه‌های موسوم به IDE از جمله PyCharm نیز docstring‌ها را مورد پردازش قرار می‌دهند و با استفاده از اطلاعات موجود در آن‌ها به برنامه‌نویس امکانات کمکی بیشتری ارايه می‌دهند. برای مثال می‌توان نوع ورودی‌های یک تابع یا مقدار خروجی آن را با استفاده از docstring تشریح کرد. برای اطلاعات بیشتر و مشاهده نمونه کد می‌توانید به مستندات PyCharm مراجعه نمایید: `PyCharm - Document source code <https://www.jetbrains.com/help/pycharm/documenting-source-code.html>`__
 
 
 
