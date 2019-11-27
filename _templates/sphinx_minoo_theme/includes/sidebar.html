@@ -47,7 +47,7 @@
 
 <div id="wrapper-sidebar-bottom">
 <div id="sidebar-bottom">
-    <div id="sidebar-bottom-list">
+    <div id="sidebar-bottom-list" style="position: relative;padding-bottom:48px">
         {% set toctree = toctree(maxdepth=2,collapse=False, includehidden=True) %}
         {% if toctree %}
             <div id="tree-toc">
@@ -58,6 +58,8 @@
                 {{ toc }}
             </div>
         {% endif %}
+
+	<a href="https://maktabkhooneh.org" class="side-top-link">آموزش آنلاین مکتب‌خونه</a>
    </div>
    <div id="sidebar-bottom-versions">
       {% include "includes/versions.html" %}
