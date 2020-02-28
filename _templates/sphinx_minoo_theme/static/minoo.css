@@ -326,7 +326,7 @@ margin-top:100px;
 
 .donate-badge{
     position: fixed;
-    bottom: 8px;
+    bottom: 12px;
     z-index: 999999;
     left: 40px;
     display:none;
@@ -383,4 +383,16 @@ text-align: inherit;
 	.top-red{display:none !important;}
 }
 
+ul li p:last-child {margin-bottom: 24px !important;}
+
+a.side-donate{
+    background-color: #66BB6A;
+    margin: 0px 2px;
+    color: white;
+    padding: 2px 10px;
+}
+
+a.hover{
+    background-color: #4CAF50;
+}
 
