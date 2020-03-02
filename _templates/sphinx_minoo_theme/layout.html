@@ -14,10 +14,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="{{ theme_language }}" > <!--<![endif]-->
 <html dir="{{ theme_direction }}" lang="{{ theme_language }}">
     <head>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-WL8FM8K');</script>
+	<!-- End Google Tag Manager -->
+
         {% include "includes/header.html" %}
         {%- block extrahead %}{% endblock %}
     </head>
     <body>
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL8FM8K"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
         <div id="page">
             <div id="wrapper-page-sidebar">
                 {% include "includes/sidebar.html" %}
