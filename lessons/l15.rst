@@ -110,7 +110,7 @@
      a$
            a        => Matched
            formula  => Matched
-           cab      => NO Matched ('a' is not in the end)
+           cab      => NO Match ('a' is not in the end)
 
 
   ::
@@ -131,7 +131,7 @@
            mn       => Matched
            man      => Matched
            maaan    => Matched
-           main     => NO Matched ('a' is not followed by 'n')
+           main     => NO Match ('a' is not followed by 'n')
            woman    => Matched
 
 
@@ -143,10 +143,10 @@
   ::
 
      ma+n
-           mn       => NO Matched (no 'a' character)
+           mn       => NO Match (no 'a' character)
            man      => Matched
            maaan    => Matched
-           main     => NO Matched ('a' is not followed by 'n')
+           main     => NO Match ('a' is not followed by 'n')
            woman    => Matched
 
 
@@ -161,8 +161,8 @@
      ma?n
            mn       => Matched
            man      => Matched
-           maaan    => NO Matched (more than one 'a' character)
-           main     => NO Matched ('a' is not followed by 'n')
+           maaan    => NO Match (more than one 'a' character)
+           main     => NO Match ('a' is not followed by 'n')
            woman    => Matched
 
 
@@ -184,7 +184,7 @@
      [abc]
            a          => 1 Matched
            ac         => 2 Matched
-           python     => NO Matched
+           python     => NO Match
            abc de ca  => 5 Matched
 
 
@@ -199,7 +199,7 @@
 
 
   .. note::
-      باید توجه داشت RegEx ذاتا CASE SENSITIVE است و کوچک یا بزرگ بودن حروف انگلیسی در آن تاثیر دارد. با این حال زبان‌های برنامه‌نویسی از جمله پایتون امکاناتی را برای غیرفعال ساختن این وضعیت فراهم می‌آورند که در ادامه بررسی خواهد شد.
+      باید توجه داشت RegEx ذاتا CASE SENSITIVE است و کوچک یا بزرگ بودن حروف انگلیسی در آن **تاثیر دارد**. با این حال زبان‌های برنامه‌نویسی از جمله پایتون امکاناتی را برای غیرفعال ساختن این وضعیت فراهم می‌آورند که در ادامه بررسی خواهد شد.
 
 
   **کاربرد دوم کاراکتر  ^ (Caret)**
@@ -216,7 +216,7 @@
   ::
 
      a{2,3}
-           abc dat      => NO Matched
+           abc dat      => NO Match
            abc daat     => 1 Matched (at d'aa't)
            aabc daaat   => 2 Matched (at 'aa'bc and d'aaa't)
            aabc daaaat  => 2 Matched (at 'aa'bc and d'aaa'at)
@@ -227,11 +227,11 @@
   ::
 
      [0-9]{2,4}
-           1          => NO Matched
+           1          => NO Match
            ab123cde   => 1 Matched (at ab'123'cde)
            12         => 1 Matched
            123456789  => 2 Matched (at '1234' and '5678')
-           1 2 3 4    => NO Matched
+           1 2 3 4    => NO Match
 
 
   [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/5>`__]
@@ -243,11 +243,11 @@
   ::
 
      [0-9]{3}
-           1          => NO Matched
+           1          => NO Match
            ab123cde   => 1 Matched (at ab'123'cde)
-           12         => NO Matched
+           12         => NO Match
            123456789  => 3 Matched (at '123' and '456' and '789')
-           1 2 3 4    => NO Matched
+           1 2 3 4    => NO Match
 
   [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/13>`__]
 
@@ -261,7 +261,7 @@
   ::
 
      a|b
-           cde      => NO Matched
+           cde      => NO Match
            ade      => 1 Matched (at 'a'de)
            acdbea   => 3 Matched (at 'a'cd'b'e'a')
 
@@ -278,7 +278,7 @@
 
      (a|b|c)xz
 
-           ab xz      => NO Matched
+           ab xz      => NO Match
            abxz       => 1 Matched (at a'bxz')
            axz cabxz  => 2 Matched (at 'axz'bc ca'bxz')
 
@@ -299,9 +299,9 @@
 
      [0-9]\.[0-9]{2}
 
-           3        => NO Matched
+           3        => NO Match
            3.55     => 1 Matched (at '3.55')
-           5.2      => NO Matched
+           5.2      => NO Match
            7.37520  => 1 Matched (at '7.37')
            506.035  => 1 Matched (at '6.03')
 
@@ -309,16 +309,189 @@
 
 
 
+توالی‌های ویژه (Special sequences)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+در بحث عبارات باقاعده هنگامی که کاراکتر ``\`` به همراه یک کاراکتر مشخص (به شرح زیر) آورده شود، Special sequence خوانده می‌شود. Special sequences برای سهولت در نوشتن الگوها کاربرد دارند که برخی از پر کاربردترین آن‌ها عبارتند از::
+
+  \A \b \B \d \D \s \S \w \W
+
+
+
+
+* ``A\``
+
+  برای تعین شروع یک متن به کار می‌رود. برای نمونه، الگوی ``AThe\`` تمام رشته‌هایی که با ``The`` شروع شوند را تطبیق می‌دهد (یادآوری: در بحث RegEx، کوچک یا بزرگ بودن حروف دارای اهمیت است).
+
+  ::
+
+     \AThe
+
+           The Rain        => Match
+           In The Rain     => NO Match
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/14>`__]
+
+
+
+* ``b\``
+
+  بر حسب موقعیت قرار گرفتن، شروع یا پایان یک **کلمه** را مشخص می‌کند. 
+
+  ::
+
+     \bunder
+
+           understand        => Match
+           underworld        => Match
+           Underworld        => NO Match
+           TheUnderworld     => NO Match
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/16>`__]
+
+
+
+  ::
+
+     ing\b
+
+           Driving        => Match
+           Spring         => Match
+           spring_day     => NO Match
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/17>`__]
+
+
+* ``B\``
+
+  برعکس ``b\``، بر حسب موقعیت قرار گرفتن شروع یا پایان **نیافتن** یک **کلمه** را مشخص می‌کند. یعنی کلماتی را تطبیق می‌دهد که با کاراکتر یا کارکترهایی مشخصی شروع یا پایان نیافته باشند.
+
+  ::
+
+     \Bunder
+
+           understand        => NO Match
+           underworld        => NO Match
+           Underworld        => NO Match
+           Thunderbird       => Match
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/18>`__]
+
+
+  ::
+
+     ball\B
+
+           Football        => NO Match
+           Footballist     => Match
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/19>`__]
+
+
+* ``d\``
+
+  معادل ``[9-0]``
+
+  ::
+
+     \d{3,5}
+
+           1                     => NO Match
+           123                   => 1 Matched (at '123')
+           123456                => 1 Matched (at '12345')
+           1237 Main Street,     => 1 Matched (at '1237')
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/20>`__]
+
+
+
+* ``D\``
+
+  برعکس ``d\`` - معادل ``[9-0^]``، یعنی تمامی کاراکترهای غیر عددی را تطبیق می‌دهد.
+
+  ::
+
+     \D{3,5}
+
+           1                     => NO Match
+           123                   => NO Match
+           123456                => NO Match
+           1237 Main Street,     => 3 Matched (at ' Main', ' Stre', 'et,')
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/21>`__]
+
+
+* ``s\``
+
+  معادل ``[t\n\r\f\v\ ]``، به معنی عمل تطبیق با کاراکتر فضای خالی است.
+
+  ::
+
+     \s
+
+           1237 Main Street,     => 2 Matched (2 spaces)
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/23>`__]
+
+
+
+
+  البته باید توجه داشته که منظور از کاراکترهای ``t \n \r \f \v\`` همان Escape character هستند [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Escape_character>`__].
+
+  ::
+
+      \n ---> new line
+      \r ---> carriage return
+      \t ---> tab
+      \v ---> vertical tab
+      \f ---> form feed
 
 
 
 
 
 
+* ``S\``
+
+  برعکس ``s\`` - معادل ``[t\n\r\f\v\ ^]``، به معنی عمل تطبیق با هر کاراکتری غیر از فضای خالی است.
+
+  ::
+
+     \S{2,5}
+
+           1237 Main Street,     => 4 Matched (at '1237', 'Main', 'Stree', 't,')
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/24>`__]
 
 
+* ``w\``
+
+  معادل ``[_a-zA-Z0-9]``، به معنی عمل تطبیق با کاراکترهای الفبایی و عددی (زبان انگلیسی) به همراه کاراکتر ``_`` یا underscore.
+
+  ::
+
+     \w{2,5}
+
+           1237 Main Street,     => 3 Matched (at '1237', 'Main', 'Stree')
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/25>`__]
 
 
+* ``W\``
+
+  برعکس ``w\`` - معادل ``[_a-zA-Z0-9^]``، به معنی عمل تطبیق با کاراکتری به غیر از کاراکترهای الفبایی و عددی (زبان انگلیسی) به همراه کاراکتر ``_`` یا underscore.
+
+  ::
+
+     \W
+
+           1237 Main Street,     => 3 Matched (2 spaces and ',')
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/26>`__]
+
+
+ماژول re پایتون
+-----------------
 
 
 
