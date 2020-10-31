@@ -493,6 +493,224 @@
 ماژول re پایتون
 -----------------
 
+آنچه از عبارات باقاعده تاکنون آشنا شدیم تنها شامل تعدادی تعاریف و قواعد بودند که برای استفاده و به کار بردن آنها در زبان‌های برنامه‌نویسی نیاز به ابزارهایی می‌باشد. همچنین باید توجه داشت انجام تمامی امور مربوط به پردازش متن را نباید از عبارات باقاعده انتظار داشت چرا که این قواعد هم محدودیت‌های خاص خود را دارد و در مواردی ممکن است الگوی ایجاد شده چنان پیچیده گردد که از خوانایی برنامه کاسته شود.
+
+در زبان برنامه‌نویسی پایتون از طریق ماژول ``re`` از کتابخانه استاندارد آن، ثابت‌ها (constants) و توابع (functions) کاربردی بسیاری در زمینه عبارت باقاعده فراهم آورده شده است. در ادامه به بررسی برخی این از این توابع و نکات پیرامون آن‌ها خواهیم پرداخت:
+
+
+
+* ``re.compile(pattern, flags=0)``
+
+  تابع ``compile`` یک الگوی RegEx را کامپایل و یک شی RegEx پایتونی [`اسناد پایتون <https://docs.python.org/3/library/re.html#regular-expression-objects>`__] برمی‌گرداند. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.compile>`__]
+
+  این تابع دو پارامتر دارد: ``pattern`` که معرف الگو RegEx مورد نظر می‌باشد و ``flags`` که با توجه به داشتن مقدار پیش‌فرض ``0``، ارسال آرگومان به آن اختیاری است.
+
+  پیش از ادامه با این تابع، بهتر است با مقادیر مجاز برای پارامتر ``flags`` آشنا شویم، چرا که این پارامتر اختیاری در توابع دیگری از ماژول ``re`` نیز مورد استفاده قرار گرفته است. در واقع با استفاده از این پارامتر می‌توان چگونگی پردازش الگو را دستخوش تغییراتی ساخت که گاهی ممکن است بسیار کارگشا باشند.  [`اسناد پایتون <https://docs.python.org/3/howto/regex.html#compilation-flags>`__]:
+
+
+      * ``re.I`` یا ``re.IGNORECASE``
+
+       نادیده گرفتن حروف کوچک یا بزرگ - یعنی صرف نظر از اینکه در الگوی مورد نظر از کاراکتر بزرگ استفاده شده باشد یا کوچک، عمل انطباق با آن کاراکتر صورت پذیرد. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.IGNORECASE>`__]
+ 
+
+
+      * ``re.M`` یا ``re.MULTILINE``
+
+       سطرها در نظر گرفته شوند - در حالت عادی کاراکترهای تطابق ``^`` و ``$`` در الگو RegEx مشخص کننده ابتدا و انتهای یک رشته یا متن می‌باشند. فارغ از اینکه متن مورد نظر می‌تواند شامل چندین سطر باشد عمل تطابق با کل متن به انجام می‌رسد. اما با استفاده از این flag می‌توان مفهوم سطر را نیز پر رنگ کرد، به این صورت که: کاراکتر ``^`` مشخص کننده ابتدای هر سطر و کاراکتر ``$`` نیز مشخص کننده انتهای هر سطر خواهد بود. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.MULTILINE>`__]
+
+
+
+      * ``re.S`` یا ``re.DOTALL``
+
+       کاراکتر ``.`` شامل تمامی کاراکترها باشد - در حالت عادی این کاراکتر عمل تطابق با کاراکتر سطر جدید ``n\`` را شامل نمی‌شود که با استفاده از این flag این ویژگی به الگو اضافه می‌گردد. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.DOTALL>`__]
+ 
+
+
+
+      * ``re.X`` یا ``re.VERBOSE``
+
+       الگو حاوی توضیح (Comment) است - با استفاده از این flag می‌توان توضیح را به الگو اضافه کرد که نقش زیادی در بالا بردن خوانایی و درک الگو ایجاد می‌کند. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.VERBOSE>`__]
+ 
+
+
+      .. tip::
+             می‌توان با استفاده از کاراکتر ``|`` در زمان ارسال آرگومان به flags، همزمان چندین مقدار را تنظیم نمود. به مانند: ``re.compile(pattern, re.I | re.M)``
+
+
+             پارامتر flags می‌تواند مقادیر دیگری نیز بپذیرد که برای مطالعه بیشتر می‌توانید به مستندات پایتون مراجعه نمایید.
+
+
+  به تابع ``compile`` برمی‌گردیم::
+
+
+    >>> # Python 3.x
+    >>> 
+    >>> import re
+    >>> 
+    >>> pattern = re.compile("^<html>", re.I)
+    >>> 
+    >>> type(pattern)
+    <class 're.Pattern'>
+    >>> 
+    >>> print(pattern)
+    re.compile('^<html>', re.IGNORECASE)
+
+
+  :: 
+
+          >>> # Python 2.x
+          >>> 
+          >>> import re
+          >>> 
+          >>> pattern = re.compile("^<html>", re.I)
+          >>> 
+          >>> type(pattern)s
+          <type '_sre.SRE_Pattern'>
+          >>> 
+          >>> print pattern
+          <_sre.SRE_Pattern object at 0x7f22cf27ac00>
+
+
+  کاربرد تابع ``compile`` زمانی است که می‌خواهیم از یک الگو مشخص چندین بار در طول اجرای یک ماژول استفاده نماییم. در ادامه با توابع دیگری از ماژول ``re`` آشنا خواهیم شد؛ این توابع پیش از انجام وظیفه مربوط به خود، به صورت ضمنی الگو را به شی ``re.Pattern`` یا ``sre.SRE_Pattern_`` (در پایتون 2x) کامپایل می‌کنند که به این صورت می‌توان کارایی برنامه را با یک بار ``compile`` افزایش دهیم. البته باید اشاره کرد که مفسر پایتون به صورت خودکار نمونه کامپایل شده چند الگو آخر مورد استفاده را Cache می‌کند، بنابراین چنانچه در برنامه‌ خود از تعداد اندکی الگو استفاده می‌کنید، می‌توانید در این زمینه نگران کارایی نباشید.
+
+  یادآوری شود که با استفاده از تابع ``dir`` می‌توانیم متدها و صفت‌های شی الگو را مشاهده نماییم::
+
+      >>> dir(pattern)  #  Python 3.x
+      ['__class__', '__copy__', '__deepcopy__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'findall', 'finditer', 'flags', 'fullmatch', 'groupindex', 'groups', 'match', 'pattern', 'scanner', 'search', 'split', 'sub', 'subn']
+      >>> 
+
+
+
+
+* ``search(pattern, string, flags=0)``
+
+  تابع ``search`` به دنبال اولین انطباق pattern در string می‌گردد، در صورت موفقیت یک شی ``Match`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#match-objects>`__] و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.search>`__]::
+
+
+    >>> # Python 2.x
+    >>> 
+    >>> import re
+    >>> 
+    >>> match = re.search('Py...n', 'Python is great')
+    >>> 
+    >>> type(match)
+    <type '_sre.SRE_Match'>
+    >>> 
+
+
+
+  ::
+
+
+    >>> # Python 3.x
+    >>> 
+    >>> import re
+    >>> 
+    >>> match = re.search('Py...n', 'Python is great')
+    >>> 
+    >>> type(match)
+    <class 're.Match'>
+
+
+  پیش از صحبت در مورد شی ``Match`` اجازه بدهید یاد آوری کنیم که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
+
+    >>> pattern = re.compile('Py...n')
+    >>> match = pattern.search('Python is great')
+
+  ::
+
+    >>> match = re.search('Py...n', 'Python is great')
+
+
+
+  شی ``Match``::
+
+    >>> match = pattern.search('Python is great')
+    >>> 
+    >>> if match:
+    ...     print(match.group())
+    ... else:
+    ...     print("pattern not found")
+    ... 
+    Python
+    >>> 
+
+  ::
+
+    >>> dir(match)
+    ['__class__', '__copy__', '__deepcopy__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'end', 'endpos', 'expand', 'group', 'groupdict', 'groups', 'lastgroup', 'lastindex', 'pos', 're', 'regs', 'span', 'start', 'string']
+
+  به دو نمونه کد زیر توجه نمایید::
+
+
+    >>> string = 'python3 python2 python1'
+    >>> pattern = 'python.'
+    >>> match = re.search(pattern, string) 
+    >>> 
+    >>> match.group()
+    'python3'
+    >>> match.group(0)
+    'python3'
+    >>> match.group(1)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    IndexError: no such group
+    >>> 
+    >>> match.groups()
+    ()
+    >>> 
+    >>> match.start()
+    0
+    >>> match.end()
+    7
+    >>> match.span()
+    (0, 7)
+    >>> 
+    >>> match.re
+    re.compile('python.')
+    >>> 
+    >>> match.string
+    'python3 python2 python1'
+    >>> 
+
+
+  ::
+
+    >>> string = '39801 356, 2102 1111'
+    >>> pattern = '(\d{3}) (\d{2})'
+    >>> match = re.search(pattern, string) 
+    >>> 
+    >>> match.group()
+    '801 35'
+    >>> match.group(0)
+    '801 35'
+    >>> match.group(1)
+    '801'
+    >>> match.group(2)
+    '35'
+    >>> match.group(3)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    IndexError: no such group
+    >>> 
+    >>> match.groups()
+    ('801', '35')
+    >>> 
+    >>> match.start()
+    2
+    >>> match.end()
+    8
+    >>> match.span()
+    (2, 8)
+    >>> 
+    >>> match.re
+    re.compile('(\\d{3}) (\\d{2})')
+    >>> 
+    >>> match.string
+    '39801 356, 2102 1111'
+    >>> 
+
+
 
 
 
