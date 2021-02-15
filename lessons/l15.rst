@@ -29,7 +29,7 @@
 عبارات باقاعده
 -----------------
 
-قواعد «عبارات باقاعده» شامل استفاده و چیدمان تعدادی کاراکتر خاص می‌شود که در مجموع معنی یا الگویی را به وجود می‌آورند!. در ادامه به بررسی این کاراکترها می‌پردازیم.
+قواعد «عبارات باقاعده» شامل استفاده و چیدمان تعدادی کاراکتر خاص می‌شود که در مجموع معنی یا الگویی را به وجود می‌آورند!. در ادامه در قالب دو دسته Matching Characters و Special Sequences به بررسی این کاراکترها می‌پردازیم.
 
 
 کاراکترهای تطابق (Matching Characters)
@@ -113,6 +113,8 @@
            cab      => NO Match ('a' is not in the end)
 
 
+  [`regex101@ تست آنلاین <https://regex101.com/r/wmx2cd/1>`__]
+
   ::
 
      ^s...d$
@@ -134,6 +136,7 @@
            main     => NO Match ('a' is not followed by 'n')
            woman    => Matched
 
+  [`regex101@ تست آنلاین <https://regex101.com/r/HsZQ5b/1>`__]
 
 * Plus ``+``
 
@@ -149,6 +152,7 @@
            main     => NO Match ('a' is not followed by 'n')
            woman    => Matched
 
+  [`regex101@ تست آنلاین <https://regex101.com/r/1Y0lLa/1>`__]
 
 
 * Question Mark ``?``
@@ -165,6 +169,7 @@
            main     => NO Match ('a' is not followed by 'n')
            woman    => Matched
 
+  [`regex101@ تست آنلاین <https://regex101.com/r/4opPeJ/1>`__]
 
 
 * Square brackets ``[ ]``
@@ -309,12 +314,12 @@
 
 
 
-توالی‌های ویژه (Special sequences)
+توالی‌های ویژه (Special Sequences)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 در بحث عبارات باقاعده هنگامی که کاراکتر ``\`` به همراه یک کاراکتر مشخص (به شرح زیر) آورده شود، Special sequence خوانده می‌شود. Special sequences برای سهولت در نوشتن الگوها کاربرد دارند که برخی از پر کاربردترین آن‌ها عبارتند از::
 
-  \A \b \B \d \D \s \S \w \W
+  \A \b \B \d \D \s \S \w \W \Z
 
 
 
@@ -331,6 +336,11 @@
            In The Rain     => NO Match
 
   [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/14>`__]
+
+
+  .. note::
+      تفاوت ``A\`` و کاربرد یکم ``^``: در متن‌های چند سطری مشاهده می‌شود به گونه‌ای که  ``A\`` به ابتدای کل آن متن و ``^`` به ابتدای هر سطر از متن اشاره می‌کنند.
+
 
 
 
@@ -364,7 +374,7 @@
 
 * ``B\``
 
-  برعکس ``b\``، بر حسب موقعیت قرار گرفتن شروع یا پایان **نیافتن** یک **کلمه** را مشخص می‌کند. یعنی کلماتی را تطبیق می‌دهد که با کاراکتر یا کارکترهایی مشخصی شروع یا پایان نیافته باشند.
+  برعکس ``b\``، بر حسب موقعیت قرار گرفتن، شروع یا پایان **نیافتن** یک **کلمه** را مشخص می‌کند. یعنی کلماتی را تطبیق می‌دهد که با کاراکتر یا کارکترهایی مشخصی شروع یا پایان نیافته باشند.
 
   ::
 
@@ -490,22 +500,45 @@
   [`regex101@ تست آنلاین <https://regex101.com/r/IIc4Fh/26>`__]
 
 
+
+
+* ``Z\``
+
+  برای تعین پایان یک متن به کار می‌رود. برای نمونه، الگوی ``Rain\Z`` تمام رشته‌هایی که با ``Rain`` پایان یابند را تطبیق می‌دهد (یادآوری: در بحث RegEx، کوچک یا بزرگ بودن حروف دارای اهمیت است).
+
+  ::
+
+     Rain\Z
+
+           The Rain     => Match
+
+  [`regex101@ تست آنلاین <https://regex101.com/r/GKdjqw/1>`__]  [`regex101@ تست آنلاین <https://regex101.com/r/a9KkLb/1>`__]
+
+
+  .. note::
+      تفاوت ``Z\`` و ``$``: در متن‌های چند سطری مشاهده می‌شود به گونه‌ای که  ``Z\`` به انتهای کل آن متن و ``$`` به انتهای هر سطر از متن اشاره می‌کنند.
+
+
+
+
 ماژول re پایتون
 -----------------
 
 آنچه از عبارات باقاعده تاکنون آشنا شدیم تنها شامل تعدادی تعاریف و قواعد بودند که برای استفاده و به کار بردن آنها در زبان‌های برنامه‌نویسی نیاز به ابزارهایی می‌باشد. همچنین باید توجه داشت انجام تمامی امور مربوط به پردازش متن را نباید از عبارات باقاعده انتظار داشت چرا که این قواعد هم محدودیت‌های خاص خود را دارد و در مواردی ممکن است الگوی ایجاد شده چنان پیچیده گردد که از خوانایی برنامه کاسته شود.
 
-در زبان برنامه‌نویسی پایتون از طریق ماژول ``re`` از کتابخانه استاندارد آن، ثابت‌ها (constants) و توابع (functions) کاربردی بسیاری در زمینه عبارت باقاعده فراهم آورده شده است. در ادامه به بررسی برخی این از این توابع و نکات پیرامون آن‌ها خواهیم پرداخت:
+در زبان برنامه‌نویسی پایتون از طریق ماژول ``re`` از کتابخانه استاندارد آن، ثابت‌ها (constants) و توابع (functions) کاربردی بسیاری در زمینه عبارت باقاعده فراهم آورده شده است. در ادامه به بررسی برخی این از این توابع و نکات پیرامون آن‌ها خواهیم پرداخت.
 
 
+تابع ``compile`` و  شی RegEx  پایتونی
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``re.compile(pattern, flags=0)``
+``re.compile(pattern, flags=0)``
 
-  تابع ``compile`` یک الگوی RegEx را کامپایل و یک شی RegEx پایتونی [`اسناد پایتون <https://docs.python.org/3/library/re.html#regular-expression-objects>`__] برمی‌گرداند. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.compile>`__]
+تابع ``compile`` یک الگوی RegEx را کامپایل و یک شی RegEx پایتونی [`اسناد پایتون <https://docs.python.org/3/library/re.html#regular-expression-objects>`__] برمی‌گرداند. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.compile>`__]
 
-  این تابع دو پارامتر دارد: ``pattern`` که معرف الگو RegEx مورد نظر می‌باشد و ``flags`` که با توجه به داشتن مقدار پیش‌فرض ``0``، ارسال آرگومان به آن اختیاری است.
+این تابع دو پارامتر دارد: ``pattern`` که معرف الگو RegEx مورد نظر می‌باشد و ``flags`` که با توجه به داشتن مقدار پیش‌فرض ``0``، ارسال آن اختیاری است.
 
-  پیش از ادامه با این تابع، بهتر است با مقادیر مجاز برای پارامتر ``flags`` آشنا شویم، چرا که این پارامتر اختیاری در توابع دیگری از ماژول ``re`` نیز مورد استفاده قرار گرفته است. در واقع با استفاده از این پارامتر می‌توان چگونگی پردازش الگو را دستخوش تغییراتی ساخت که گاهی ممکن است بسیار کارگشا باشند.  [`اسناد پایتون <https://docs.python.org/3/howto/regex.html#compilation-flags>`__]:
+پیش از ادامه با این تابع، بهتر است با مقادیر مجاز برای پارامتر ``flags`` آشنا شویم، چرا که این پارامتر اختیاری در توابع دیگری از ماژول ``re`` نیز مورد استفاده قرار گرفته است. در واقع با استفاده از این پارامتر می‌توان چگونگی پردازش الگو را دستخوش تغییراتی ساخت که گاهی ممکن است بسیار کارگشا باشند.  [`اسناد پایتون <https://docs.python.org/3/howto/regex.html#compilation-flags>`__]:
 
 
       * ``re.I`` یا ``re.IGNORECASE``
@@ -540,7 +573,7 @@
              پارامتر flags می‌تواند مقادیر دیگری نیز بپذیرد که برای مطالعه بیشتر می‌توانید به مستندات پایتون مراجعه نمایید.
 
 
-  به تابع ``compile`` برمی‌گردیم::
+به تابع ``compile`` برمی‌گردیم::
 
 
     >>> # Python 3.x
@@ -556,7 +589,7 @@
     re.compile('^<html>', re.IGNORECASE)
 
 
-  :: 
+:: 
 
           >>> # Python 2.x
           >>> 
@@ -571,20 +604,27 @@
           <_sre.SRE_Pattern object at 0x7f22cf27ac00>
 
 
-  کاربرد تابع ``compile`` زمانی است که می‌خواهیم از یک الگو مشخص چندین بار در طول اجرای یک ماژول استفاده نماییم. در ادامه با توابع دیگری از ماژول ``re`` آشنا خواهیم شد؛ این توابع پیش از انجام وظیفه مربوط به خود، به صورت ضمنی الگو را به شی ``re.Pattern`` یا ``sre.SRE_Pattern_`` (در پایتون 2x) کامپایل می‌کنند که به این صورت می‌توان کارایی برنامه را با یک بار ``compile`` افزایش دهیم. البته باید اشاره کرد که مفسر پایتون به صورت خودکار نمونه کامپایل شده چند الگو آخر مورد استفاده را Cache می‌کند، بنابراین چنانچه در برنامه‌ خود از تعداد اندکی الگو استفاده می‌کنید، می‌توانید در این زمینه نگران کارایی نباشید.
+کاربرد تابع ``compile`` زمانی است که می‌خواهیم از یک الگو مشخص چندین بار در طول اجرای یک ماژول استفاده نماییم. در ادامه با توابع دیگری از ماژول ``re`` آشنا خواهیم شد؛ این توابع پیش از انجام وظیفه مربوط به خود، به صورت ضمنی الگو را به شی ``re.Pattern`` یا ``sre.SRE_Pattern_`` (در پایتون 2x) کامپایل می‌کنند که به این صورت می‌توان کارایی برنامه را با یک بار ``compile`` افزایش دهیم. البته باید اشاره کرد که مفسر پایتون به صورت خودکار نمونه کامپایل شده چند الگو آخر مورد استفاده را Cache می‌کند، بنابراین چنانچه در برنامه‌ خود از تعداد اندکی الگو استفاده می‌کنید، می‌توانید در این زمینه نگران کارایی نباشید.
 
-  یادآوری شود که با استفاده از تابع ``dir`` می‌توانیم متدها و صفت‌های شی الگو را مشاهده نماییم::
+یادآوری شود که با استفاده از تابع ``dir`` می‌توانیم متدها و صفت‌های شی الگو را مشاهده نماییم::
 
       >>> dir(pattern)  #  Python 3.x
       ['__class__', '__copy__', '__deepcopy__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'findall', 'finditer', 'flags', 'fullmatch', 'groupindex', 'groups', 'match', 'pattern', 'scanner', 'search', 'split', 'sub', 'subn']
       >>> 
 
+توابع جستجو 
+~~~~~~~~~~~~~~~~~~~~~
+
+توابع پرکاربرد ماژول ``re``، مرتبط با عمل جستجو در متن، عبارتند از: ``finditer``  ``findall``  ``fullmatch``  ``match``  ``search`` که در بخش‌های بعدی به شرح هریک پرداخته خواهد شد.
 
 
+تابع ``search``
+~~~~~~~~~~~~~~~~~~~~~~
 
-* ``search(pattern, string, flags=0)``
 
-  تابع ``search`` به دنبال اولین انطباق pattern در string می‌گردد، در صورت موفقیت یک شی ``Match`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#match-objects>`__] و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.search>`__]::
+``search(pattern, string, flags=0)``
+
+تابع ``search`` به دنبال اولین انطباق pattern در string می‌گردد، در صورت موفقیت یک شی ``Match`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#match-objects>`__] و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.search>`__]::
 
 
     >>> # Python 2.x
@@ -597,9 +637,7 @@
     <type '_sre.SRE_Match'>
     >>> 
 
-
-
-  ::
+::
 
 
     >>> # Python 3.x
@@ -612,19 +650,25 @@
     <class 're.Match'>
 
 
-  پیش از صحبت در مورد شی ``Match`` اجازه بدهید یاد آوری کنیم که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
+اجازه بدهید یاد آوری کنیم که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
+
 
     >>> pattern = re.compile('Py...n')
     >>> match = pattern.search('Python is great')
 
-  ::
+::
 
     >>> match = re.search('Py...n', 'Python is great')
 
 
 
-  شی ``Match``::
+شی ``Match`` پایتون
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+::
+
+    >>> pattern = re.compile('Py...n')
     >>> match = pattern.search('Python is great')
     >>> 
     >>> if match:
@@ -635,80 +679,128 @@
     Python
     >>> 
 
-  ::
+::
 
     >>> dir(match)
     ['__class__', '__copy__', '__deepcopy__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'end', 'endpos', 'expand', 'group', 'groupdict', 'groups', 'lastgroup', 'lastindex', 'pos', 're', 'regs', 'span', 'start', 'string']
 
-  به دو نمونه کد زیر توجه نمایید::
+در ادامه به بررسی برخی از متدهای مهم این شی می‌پردازیم:
+  
 
+ * ``Match.group([group1, ...])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.group>`__]
 
-    >>> string = 'python3 python2 python1'
-    >>> pattern = 'python.'
-    >>> match = re.search(pattern, string) 
-    >>> 
-    >>> match.group()
-    'python3'
-    >>> match.group(0)
-    'python3'
-    >>> match.group(1)
+  این متد از شی ``Match`` گروه (های) تطبیق داده شده بر اساس الگو مورد نظر را برمی‌گرداند. این متد می‌تواند یک یا چند آرگومان عددی دریافت کند که معرف اندیس گروه مورد نظر می‌باشد. در حالت فراخوانی بدون آرگومان تمامی گروه‌های تطبیق داده شده به صورت یک مقدار رشته برگردانده می‌شود و در صورتی تنها یک مقدار به آن ارسال گردد، گروه تطبیق داده شده متناظر با آن اندیس (شمارش اندیس‌ها از یک است) در قالب یک شی رشته برگردانده می‌شود و در صورتی که بیش از یک اندیس به عنوان آرگومان ارسال گردد یک شی تاپل محتوی گروه‌های تطبیق داده شده برگردانده خواهد شد. چنانچه آرگومان ارسالی عددی منفی باشد یا اندیسی بالاتر از تعداد گروه‌های تطبیق داده شده باشد، یک استثنا ``IndexError`` رخ خواهد داد::
+
+    >>> m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist") 
+    >>> m.group()        # The entire match
+    'Isaac Newton'
+    >>> m.group(0)       # The entire match
+    'Isaac Newton'
+    >>> m.group(1)       # The first parenthesized subgroup.
+    'Isaac'
+    >>> m.group(2)       # The second parenthesized subgroup.
+    'Newton'
+    >>> m.group(1, 2)    # Multiple arguments give us a tuple.
+    ('Isaac', 'Newton')
+
+    >>> m.group(3)
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     IndexError: no such group
-    >>> 
-    >>> match.groups()
-    ()
-    >>> 
-    >>> match.start()
-    0
-    >>> match.end()
-    7
-    >>> match.span()
-    (0, 7)
-    >>> 
-    >>> match.re
-    re.compile('python.')
-    >>> 
-    >>> match.string
-    'python3 python2 python1'
-    >>> 
 
+
+  * ``Match.groups(default=None)`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.groups>`__]
+
+  این متد از شی ``Match`` تمام گروه‌های تطبیق داده شده بر اساس الگو مورد نظر را در قالب یک شی تاپل برمی‌گرداند. این متد می‌تواند یک آرگومان بپذیرد که معرف مقدار پیش‌فرض برای جایگذاری گروه‌هایی است در درشته ورودی تطبیق داده نشده اند، در حالت عادی (بدون ارسال آرگومان) این مقدار برابر با ``None`` است::
+
+    >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
+    >>> m.groups()
+    ('24', '1632')
 
   ::
 
-    >>> string = '39801 356, 2102 1111'
-    >>> pattern = '(\d{3}) (\d{2})'
-    >>> match = re.search(pattern, string) 
-    >>> 
-    >>> match.group()
-    '801 35'
-    >>> match.group(0)
-    '801 35'
-    >>> match.group(1)
-    '801'
-    >>> match.group(2)
-    '35'
-    >>> match.group(3)
+       >>> m = re.match(r"(\d+)\.?(\d+)?", "24")
+       >>> m.groups()      # Second group defaults to None.
+       ('24', None)
+       >>> m.groups('0')   # Now, the second group defaults to '0'.
+       ('24', '0')
+
+  * ``Match.start([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.start>`__]    ``Match.end([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.end>`__]
+
+  متن رشته خروجی (تطبیق یافته بر اساس الگو مورد نظر) را در نظر بگیرید، متد ``start`` اندیس شروع این متن از رشته ورودی و متد ``end``  اندیس نقطه پایان را برمی‌گردانند. این دو متد می‌توانند یک آرگومان اختیاری نیز دریافت کنند که معرف اندیس یک گروه مشخص در الگو می‌باشد، با ارسال این آرگومان نتایج بر اساس تکه متن تطبیق داده شده با آن گروه برگردانده خواهد شد::
+
+    >>> email = "tony@tiremove_thisger.net"
+    >>> m = re.search("remove_this", email)
+    >>> m.start()
+    7
+    >>> m.end()
+    18
+    >>> email[m.start() : m.end()]
+    'remove_this'
+    >>> email[:m.start()] + email[m.end():]
+    'tony@tiger.net'
+
+  ::
+
+       >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
+
+       >>> m.start()
+       0
+       >>> m.end()
+       7
+
+       >>> m.start(1)
+       0
+       >>> m.end(1)
+       2
+
+       >>> m.start(2)
+       3
+       >>> m.end(2)
+       7
+       >>> 
+
+
+  * ``Match.span([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.span>`__]
+
+  این متد یک شی تاپل دوتایی از خروجی دو متد ``start``  و ``end``  را بر می‌گرداند ``(m.start(group), m.end(group))`` و همانند آنها یک آرگومان اختیاری دارد::
+
+    >>> m.span()
+    (0, 7)
+    >>> m.span(1)
+    (0, 2)
+    >>> m.span(2)
+    (3, 7)
+    >>> m.span(3)
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     IndexError: no such group
-    >>> 
-    >>> match.groups()
-    ('801', '35')
-    >>> 
-    >>> match.start()
-    2
-    >>> match.end()
-    8
-    >>> match.span()
-    (2, 8)
-    >>> 
-    >>> match.re
-    re.compile('(\\d{3}) (\\d{2})')
-    >>> 
-    >>> match.string
-    '39801 356, 2102 1111'
-    >>> 
+
+  * ``Match.re`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.re>`__]    ``Match.string`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.string>`__]
+
+  این دو متغیر به ترتیب حاوی  شی RegEx الگو و متن ارسال شده به دو متد ``search``  و ``match`` خواهند بود::
+
+    >>> email = "tony@tiremove_thisger.net"
+    >>> m = re.search("remove_this", email)
+
+    >>> m.re
+    re.compile('remove_this')
+
+    >>> m.string
+    'tony@tiremove_thisger.net'
+    >>> m.string[m.start() : m.end()]
+    'remove_this'
+
+  ::
+
+       >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
+
+       >>> m.re
+       re.compile('(\\d+)\\.(\\d+)')
+
+       >>> m.string
+       '24.1632'
+
 
 
 
