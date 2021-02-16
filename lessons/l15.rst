@@ -5,7 +5,7 @@
    :keywords:  آموزش, آموزش پایتون, آموزش برنامه نویسی, پایتون, تابع, کتابخانه, پایتون, re
 
 
-درس ۱۵: کتابخانه استاندارد پایتون: Regular expression در پایتون - re
+درس ۱۵: Regular Expression در پایتون - بخش ۱
 ============================================================================
 
 **عبارات با قاعده** (**Regular expression**) یا به اختصار **RegEx**، رشته‌ای حاوی کاراکترهایی خاص و با معنی است که در عملیات‌هایی مانند یافتن (find)، جاگذاری (repleace) و اعتبارسنجی (validation) به شدت کاربرد پیدا کرده است. در واقع با استفاده از RegEx می‌توان یک الگو (pattern) برای جستجو در متن یا تطابق آن ایجاد کرد.  [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Regular_expression>`__]
@@ -519,12 +519,6 @@
       تفاوت ``Z\`` و ``$``: در متن‌های چند سطری مشاهده می‌شود به گونه‌ای که  ``Z\`` به انتهای کل آن متن و ``$`` به انتهای هر سطر از متن اشاره می‌کنند.
 
 
-      
-الگوهای گسترده (Extended Patterns) پایتون
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-ساختارهایی که با یک ``؟)`` شروع و با یک  ``(`` پایان می‌یابند که از زبان پرل (Perl) الگوبرداری شده است. در این ساختار نخستین کاراکتر بعد از ``؟`` چگونگی عملکرد آن الگو را مطرح می‌کند. توجه داشته باشید که با وجود پرانتز در این ساختار، جز در یک مورد هیچ یک از انواع این ساختار معنی گروهبندی را نمی‌دهند. این ساختارها عبارتند از:
-
 
 
 
@@ -619,225 +613,76 @@
       ['__class__', '__copy__', '__deepcopy__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'findall', 'finditer', 'flags', 'fullmatch', 'groupindex', 'groups', 'match', 'pattern', 'scanner', 'search', 'split', 'sub', 'subn']
       >>> 
 
-توابع جستجو 
-~~~~~~~~~~~~~~~~~~~~~
 
-توابع پرکاربرد ماژول ``re`` پایتون مرتبط با عمل جستجو در یک متن عبارتند از: ``finditer``  ``findall``  ``fullmatch``  ``match``  ``search`` که در بخش‌های بعدی به شرح هریک پرداخته خواهد شد.
+      
+الگوهای گسترده (Extended Patterns) پایتون
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+ادامه کار با ماژول ``re``  پایتون به درس بعدی موکول می‌کنیم، در اینجا به عنوان بخش پایانی این درس به بحث پیرامون چگونگی ایجاد ساختار الگو در RegEx پایتون برمی‌گردیم و به معرفی ساختار‌های کاربردی دیگری که توسط این زبان پشتیبانی می‌شود می‌پردازیم.
 
-تابع ``search``
-~~~~~~~~~~~~~~~~~~~~~~
+علاوه بر قواعد مورد بحث در دو بخش ابتدایی این درس، الگو (pattern) در RegEx پایتون می‌تواند شامل ساختارهایی باشد که با یک ``؟)`` شروع و با یک  ``(`` پایان می‌یابند - مانند:‌ ``( ?)``. این نوع ساختار از زبان پرل (Perl) الگوبرداری شده است. در این نوع ساختارها نخستین کاراکتر بعد از ``؟`` چگونگی عملکرد آن ساختار در الگو را مطرح می‌کند. توجه داشته باشید که با وجود پرانتز در این ساختارها، جز در یک مورد - هیچ‌کدام از آن‌ها معنی گروهبندی را نمی‌دهند و پرانتز در اینجا صرفا مشخص کننده یک فرمان خاص یا محدوده اثر ساختار می‌باشد. این ساختارها عبارتند از:
 
+* ``(aiLmsux?)``
 
-``search(pattern, string, flags=0)``
+  این ساختار کمک می‌کند که بتوانیم یک یا چند مقدار از پارامتر flags را که پیش‌تر با آن آشنا شدیم (مانند ``re.M`` که در اینجا معادل ``(m?)`` است) را از طریق متن الگو اثر دهیم و نه با ارسال پارامتر - باید توجه داشته باشید که برخلاف زبان پرل نمی‌توان این ساختار را در پایتون به صورت حوزه‌ای و محدود استفاده کرد بلکه همانند ارسال پارامتر، این فرامین به صورت کلی در الگو اثرگذاری خواهند داشت::
 
-تابع ``search`` به دنبال اولین انطباق pattern در string می‌گردد، در صورت موفقیت یک شی ``Match`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#match-objects>`__] و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.search>`__]::
+     (?i)PYTHON PROGRAMING
 
+           The Python Programing Language    => 1 Matched ('Python Programing')
 
-    >>> # Python 2.x
-    >>> 
-    >>> import re
-    >>> 
-    >>> match = re.search('Py...n', 'Python is great')
-    >>> 
-    >>> type(match)
-    <type '_sre.SRE_Match'>
-    >>> 
-
-::
-
-
-    >>> # Python 3.x
-    >>> 
-    >>> import re
-    >>> 
-    >>> match = re.search('Py...n', 'Python is great')
-    >>> 
-    >>> type(match)
-    <class 're.Match'>
-
-
-اجازه بدهید یادآوری کنیم که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
-
-
-    >>> pattern = re.compile('Py...n')
-    >>> match = pattern.search('Python is great')
-
-::
-
-    >>> match = re.search('Py...n', 'Python is great')
-
-
-
-شی ``Match`` پایتون
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-::
-
-    >>> pattern = re.compile('Py...n')
-    >>> match = pattern.search('Python is great')
-    >>> 
-    >>> if match:
-    ...     print(match.group())
-    ... else:
-    ...     print("pattern not found")
-    ... 
-    Python
-    >>> 
-
-::
-
-    >>> dir(match)
-    ['__class__', '__copy__', '__deepcopy__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'end', 'endpos', 'expand', 'group', 'groupdict', 'groups', 'lastgroup', 'lastindex', 'pos', 're', 'regs', 'span', 'start', 'string']
-
-در ادامه به بررسی برخی از متدهای مهم این شی می‌پردازیم:
-  
-
- * ``Match.group([group1, ...])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.group>`__]
-
-  این متد از شی ``Match``، گروه (های) تطبیق داده شده بر اساس الگو مورد نظر را برمی‌گرداند. این متد می‌تواند یک یا چند آرگومان عددی دریافت کند که معرف اندیس گروه مورد نظر می‌باشد. در حالت فراخوانی بدون آرگومان تمامی گروه‌های تطبیق داده شده به صورت یک مقدار رشته برگردانده می‌شود و در صورتی تنها یک مقدار به آن ارسال گردد، گروه تطبیق داده شده متناظر با آن اندیس (شمارش اندیس‌ها از یک است) در قالب یک شی رشته برگردانده می‌شود و در صورتی که بیش از یک اندیس به عنوان آرگومان ارسال گردد یک شی تاپل محتوی گروه‌های تطبیق داده شده برگردانده خواهد شد. چنانچه آرگومان ارسالی عددی منفی باشد یا اندیسی بالاتر از تعداد گروه‌های تطبیق داده شده باشد، یک استثنا ``IndexError`` رخ خواهد داد::
-
-    >>> m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist") 
-    >>> m.group()        # The entire match
-    'Isaac Newton'
-    >>> m.group(0)       # The entire match
-    'Isaac Newton'
-    >>> m.group(1)       # The first parenthesized subgroup.
-    'Isaac'
-    >>> m.group(2)       # The second parenthesized subgroup.
-    'Newton'
-    >>> m.group(1, 2)    # Multiple arguments give us a tuple.
-    ('Isaac', 'Newton')
-
-    >>> m.group(3)
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    IndexError: no such group
-    
-  در صورتی که الگو مورد نظر شامل هیچ گروهبندی نباشد، فراخوانی بدون آرگومان (یا ارسال آرگومان صفر) این متد، تمام متن تطبیق داده شده را برمی‌گرداند::
-  
-  
-    >>> pattern = re.compile('Py...n')
-    >>> match = pattern.search('Python is great')
-    >>> match.group()
-    'Python'
-    
-    >>> match.group(0)
-    'Python'
-    
-    >>> match.group(1)
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    IndexError: no such group
-    >>> 
-
-
-
-
-  * ``Match.groups(default=None)`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.groups>`__]
-
-  این متد تمام گروه‌های تطبیق داده شده بر اساس الگو مورد نظر را در قالب یک شی تاپل برمی‌گرداند. این متد می‌تواند یک آرگومان بپذیرد که معرف مقدار پیش‌فرض برای جایگذاری گروه‌هایی است که در رشته ورودی تطبیق داده نشده‌اند، در حالت عادی (بدون ارسال آرگومان) این مقدار برابر با ``None`` است::
-
-    >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
-    >>> m.groups()
-    ('24', '1632')
+  در نمونه کد بالا، وجود ساختار ``(i?)`` باعث نادیده گرفتن حروف کوچک یا بزرگ شده است - همانند ارسال پارامتر ``re.I`` [`regex101@ تست آنلاین <https://regex101.com/r/tuTqQ9/1>`__]
 
   ::
 
-       >>> m = re.match(r"(\d+)\.?(\d+)?", "24")
-       >>> m.groups()      # Second group defaults to None.
-       ('24', None)
-       >>> m.groups('0')   # Now, the second group defaults to '0'.
-       ('24', '0')
-       
-       
-  ::
-  
-      >>> pattern = re.compile('Py...n')  # The pattern is without grouping
-      >>> match = pattern.search('Python is great')
-      >>> match.groups()
-      ()
+      'a' == re.A (ASCII-only matching)
+      'i' == re.I (ignore case)
+      'L' == re.L (locale dependent)
+      'm' == re.M (multi-line)
+      's' == re.S (dot matches all)
+      'u' == re.U (Unicode matching)
+      'x' == re.X (verbose)
 
+  به ضعف این ساختار در محدودسازی در یک حوزه از الگو اشاره شد، از **پایتون نسخه 3.6** به بعد می‌توان از ساختار منعطف‌تر زیر استفاده کرد.
 
-  * ``Match.start([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.start>`__]    ``Match.end([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.end>`__]
+* ``(...:aiLmsux-imsx?)``
 
-  متن رشته خروجی (تطبیق یافته بر اساس الگو مورد نظر) را در نظر بگیرید، متد ``start`` اندیس شروع این متن از رشته ورودی و متد ``end``  اندیس نقطه پایان را برمی‌گرداند. این دو متد می‌توانند یک آرگومان اختیاری نیز دریافت کنند که معرف اندیس یک گروه مشخص در الگو می‌باشد، با ارسال این آرگومان نتایج بر اساس تکه متن تطبیق داده شده با آن گروه برگردانده خواهد شد::
+  از **پایتون نسخه 3.6** به بعد می‌توان از این ساختار استفاده کرد. با استفاده از این ساختار می‌توان اثربخشی حضور پارامترهای flags را محدود به ناحیه خاصی از الگو کرد به این صورت که این بخش از الگو می‌بایست بعد از کاراکتر ``:`` موجود در ساختار قرار بگیرد::
 
-    >>> email = "tony@tiremove_thisger.net"
-    >>> m = re.search("remove_this", email)
-    >>> m.start()
-    7
-    >>> m.end()
-    18
-    >>> email[m.start() : m.end()]
-    'remove_this'
-    >>> email[:m.start()] + email[m.end():]
-    'tony@tiger.net'
+     ^The (?i:PYTHON PROGRAMMING) Language$
+
+  مطابق الگو بالا، مهم نیست بخش ``PYTHON PROGRAMMING`` در متن مورد نظر ما با چه ترتیبی از کوچک یا بزرگ بودن حروف حضور داشته باشد، همین که در جای مناسب خود باشد کافی است. اما دو کلمه ``The`` و ``Language`` می‌بایست عینا حضور داشته باشند:
 
   ::
+     
+     >>> import re  # PYTHON 3.7.3
 
-       >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
+     >>> pattern = re.compile("^The (?i:PYTHON PROGRAMMING) Language$")
 
-       >>> m.start()
-       0
-       >>> m.end()
-       7
+     >>> print("YES") if pattern.match("The Python Programming Language") else print("NO")
+     YES
 
-       >>> m.start(1)
-       0
-       >>> m.end(1)
-       2
+     >>> print("YES") if pattern.match("The Python Programming LANGUAGE") else print("NO")
+     NO
 
-       >>> m.start(2)
-       3
-       >>> m.end(2)
-       7
-       >>> 
+  در درس بعدی با تابع ``match`` آشنا خواهید شد. به صورت خلاصه، این تابع مقدار دریافتی را با الگو تطابق می‌دهد و در صورت شکست مقدار ``None‍`` برمی‌گرداند.
 
+  **قابلیت دیگر این ساختار:** می‌توان با قرار دادن یک کاراکتر ‍ ``-``  قبل از پارمترهای ``i`` ``m`` ``s`` ``x``، اثر بخشی آن‌ها را در حوزه مشخصی از الگو غیرفعال ساخت که البته از **پایتون نسخه 3.7** به بعد، این قابلیت پارامترهای ``u`` ``L`` ``a`` را نیز شامل می‌شود - به نمونه کد زیر توجه نمایید::
 
-  * ``Match.span([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.span>`__]
+    >>> import re  # PYTHON 3.7.3
 
-  این متد یک شی تاپل دوتایی از خروجی دو متد ``start``  و ``end``  را بر می‌گرداند و همانند آنها نیز یک آرگومان اختیاری دارد - نمونه خروجی: ``(m.start(group), m.end(group))``::
+    >>> pattern = re.compile("^The (?-i:PYTHON PROGRAMMING) Language$", re.I)
 
-    >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
-    >>> m.span()
-    (0, 7)
-    >>> m.span(1)
-    (0, 2)
-    >>> m.span(2)
-    (3, 7)
-    >>> m.span(3)
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    IndexError: no such group
+    >>> print("YES") if pattern.match("The PYTHON PROGRAMMING Language") else print("NO")
+    YES
 
-  * ``Match.re`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.re>`__]    ``Match.string`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.string>`__]
+    >>> print("YES") if pattern.match("The PYTHON PROGRAMMING LANGUAGE") else print("NO")
+    YES
 
-  این دو متغیر به ترتیب حاوی  شی RegEx الگو و متن مورد نظر جهت انجام عملیات تطابق خواهند بود::
+    >>> print("YES") if pattern.match("THE PYTHON PROGRAMMING LANGUAGE") else print("NO")
+    YES
 
-    >>> email = "tony@tiremove_thisger.net"
-    >>> m = re.search("remove_this", email)
-
-    >>> m.re
-    re.compile('remove_this')
-
-    >>> m.string
-    'tony@tiremove_thisger.net'
-    >>> m.string[m.start() : m.end()]
-    'remove_this'
-
-  ::
-
-       >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
-
-       >>> m.re
-       re.compile('(\\d+)\\.(\\d+)')
-
-       >>> m.string
-       '24.1632'
-
-
+    >>> print("YES") if pattern.match("THE Python Programming LANGUAGE") else print("NO")
+    NO
 
 
 
