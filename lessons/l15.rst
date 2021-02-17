@@ -685,6 +685,81 @@
     NO
 
 
+* گروه بانام (Named Group): ``(...<P<name?)``
+
+  این ساختار نمایش همان گروه‌بندی عادی در بحث RegEx است با این تفاوت که می‌توان به هر گروه یک نام انتساب داد. به کمک ماژول re پایتون، همانطوری که در درس بعدی به صورت کامل خواهید دید، حاصل انطباق هر گروه موجود در الگو با متن مورد نظر از طریق یک اندیس عددی که به ترتیب از یک شروع می‌شود قابل دسترسی است، با استفاده از این ساختار می‌توان حاصل انطباق را بسیار خواناتر و تنها با استفاده از نام آن دستیابی نمود::
+
+    >>> import re
+    >>> string = "NOV 7, 1987"
+    >>> pattern = "^(\w+)\s(\d+),\s(\d+)$"
+    >>> match = re.search(pattern, string)
+    >>> match.group(1)
+    'NOV'
+    >>> match.group(2)
+    '7'
+    >>> match.group(3)
+    '1987'
+
+  ::
+
+       >>> import re
+
+       >>> string = "NOV 7, 1987"
+       >>> pattern = "^(?P<month>\w+)\s(?P<day>\d+),\s(?P<year>\d+)$"
+       >>> match = re.search(pattern, string)
+   
+       >>> match.group(1)
+       'NOV'
+       >>> match.group(2)
+       '7'
+       >>> match.group(3)
+       '1987'
+ 
+       >>> match.group('month')
+       'NOV'
+       >>> match.group('day')
+       '7'
+       >>> match.group('year')
+       '1987'
+
+  تابع ``search`` به دنبال اولین انطباق pattern در string می‌گردد، در صورت موفقیت یک شی ``Match`` و در غیر این صورت ``None`` برمی‌گرداند - این تابع و خروجی آن در درس بعدی شرح داده می‌شود.
+
+
+* ``(P=name?)``
+
+  این ساختار امکان ارجاع به حاصل انطباق یک گروه بانام در آن الگو را فراهم می‌آورد. این ساختار در الگوهایی که می‌بایست دقیقا یک بخش از متن تکرار گردد، بسیار کاربردی است. به نمونه کد زیر توجه نمایید، در این مثال قرار است ایمیل مربوط به دو شخص بررسی شود که آیا بر اساس نام و نام‌خانوادگی آن‌ها ایجاد شده است یا خیر::
+
+    >>> import re
+
+    >>> strings = ["name family: name.family@mail.com", "diff_name family: name.family@mail.com"]
+    >>> pattern = "(?P<f_name>\w+)\s(?P<l_name>\w+):\s(?P=f_name)\.(?P=l_name)@mail\.com$"
+    >>> for string in strings:
+    ...     print('STRING:', string)
+    ...     match = re.search(pattern, string)
+    ...     if match:
+    ...         print('Matched:', match.group('f_name'), match.group('l_name'))
+    ...     else:
+    ...         print('No match!')
+    ... 
+    STRING: name family: name.family@mail.com
+    Matched: name family
+    STRING: diff_name family: name.family@mail.com
+    No match!
+
+
+* توضیحات (Comment) ``(...#?)``
+
+  همانند توضیح در پایتون، متن موجود در این ساختار، هنگام پردازش الگو نادیده گرفته می‌شود::
+
+    >>> import re
+
+    >>> pattern = re.compile('^\d{3}:(?#Iran Emergency Numbers)\s\w+\.', re.I)
+
+    >>> print("YES") if pattern.match("115: Ambulance.") else print("NO")
+    YES
+
+    
+
 
 
 |
