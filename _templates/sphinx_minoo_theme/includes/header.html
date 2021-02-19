@@ -12,9 +12,9 @@
     {% endif %}
 {%- endblock %}
 
-{% if favicon %}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
-{% endif %}
+
+<link rel="shortcut icon" type="image/x-icon" href="{{ pathto('_static/favicon.ico', 1) }}"/>
+
 
 {% if not embedded %}
     {% if use_opensearch %}
@@ -36,7 +36,7 @@
 {% if theme_direction == "ltr" %}
     <link rel="stylesheet" type=text/css href="{{ pathto('_static/minoo-ltr.css', 1) }}">
 {% else %}
-    <link rel="stylesheet" type=text/css href="{{ pathto('_static/minoo.css', 1) }}">
+    <link rel="stylesheet" type=text/css href="{{ pathto('_static/minoo-20210219.css', 1) }}">
 {% endif %}
 
 {%- block linktags %}
