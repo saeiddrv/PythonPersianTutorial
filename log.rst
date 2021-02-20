@@ -11,6 +11,19 @@
 
 .. raw:: html
 
+    <p class="rubric" id="00115" ><a class="reference external" href="#00115">00115</a> - شنبه ۲ اسفند ۱۳۹۹</p>
+
+* بروزرسانی - ویژگی **پایتون 3.8:** مبحث Walrus Operator به درس ششم اضافه گردید.
+* بروزرسانی - ویژگی **پایتون 3.8:** مبحث Positional-Only Parameters به درس دوازدهم اضافه گردید.
+* گزارش حمایت مالی بروز گردید.
+
+----
+
+
+
+
+.. raw:: html
+
     <p class="rubric" id="00114" ><a class="reference external" href="#00114">00114</a> - جمعه ۱ اسفند ۱۳۹۹</p>
 
 * درس پانزدهم با عنوان «Regular Expression در پایتون - بخش ۱» به فهرست کتاب افزوده شد.

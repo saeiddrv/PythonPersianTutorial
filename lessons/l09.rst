@@ -109,6 +109,15 @@
     Jhon
     >>>
 
+به مثال دیگری با استفاده از walrus operator (عملگر شیرماهی - درس ششم) و f-string (درس هفتم) توجه نمایید::
+
+    >>> # Python >= 3.8
+    >>> a_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    >>> if (n := len(a_list)) > 5: 
+    ...     print(f"List is too long ({n} elements, expected <= 5)")
+    ... 
+    List is too long (10 elements, expected <= 5)
+
 
 .. rubric:: ۲. ساختار همراه با ``else`` (دو انتخابی)
 
