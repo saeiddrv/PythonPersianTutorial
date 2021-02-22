@@ -1,0 +1,307 @@
+.. role:: emoji-size
+
+.. meta::
+   :description: کتاب آموزش زبان برنامه نویسی پایتون به فارسی، آموزش ماژول re در پایتون، عبارات باقاعده در پایتون، Regular expression در پایتون، regex در پایتون
+   :keywords:  آموزش, آموزش پایتون, آموزش برنامه نویسی, پایتون, تابع, کتابخانه, پایتون, re
+
+
+درس ۱۶: Regular Expression در پایتون - بخش ۲
+============================================================================
+
+این درس در ادامه درس قبل (پانزدهم) می‌باشد و به شرح تابع‌های کاربردی موجود در ماژول ``re`` پایتون می‌پردازد. پیش از مطالعه این درس می‌بایست حتما درس قبل را نیز مطالعه کرده باشید.
+
+
+
+
+
+:emoji-size:`✔` سطح: متوسط
+
+----
+
+
+.. contents:: سرفصل‌ها
+    :depth: 2
+
+----
+
+
+
+
+توابع جستجو 
+---------------------------------------
+
+توابع پرکاربرد ماژول ``re`` پایتون مرتبط با عمل جستجو در یک متن عبارتند از: 
+
+* ``search``
+* ``match``  
+* ``fullmatch``  
+* ``findall``  
+* ``finditer``  
+
+
+تابع ``search``
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+``search(pattern, string, flags=0)``
+
+تابع ``search`` به دنبال اولین انطباق pattern در string می‌گردد، در صورت موفقیت یک شی ``Match`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#match-objects>`__] و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.search>`__]::
+
+
+    >>> # Python 2.x
+    >>> 
+    >>> import re
+    >>> 
+    >>> match = re.search('Py...n', 'Python is great')
+    >>> 
+    >>> type(match)
+    <type '_sre.SRE_Match'>
+    >>> 
+
+::
+
+
+    >>> # Python 3.x
+    >>> 
+    >>> import re
+    >>> 
+    >>> match = re.search('Py...n', 'Python is great')
+    >>> 
+    >>> type(match)
+    <class 're.Match'>
+
+
+اجازه بدهید یادآوری کنیم که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
+
+
+    >>> pattern = re.compile('Py...n')
+    >>> match = pattern.search('Python is great')
+
+::
+
+    >>> match = re.search('Py...n', 'Python is great')
+
+
+
+شی ``Match`` پایتون
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+::
+
+    >>> pattern = re.compile('Py...n')
+    >>> match = pattern.search('Python is great')
+    >>> 
+    >>> if match:
+    ...     print(match.group())
+    ... else:
+    ...     print("pattern not found")
+    ... 
+    Python
+    >>> 
+
+::
+
+    >>> dir(match)
+    ['__class__', '__copy__', '__deepcopy__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'end', 'endpos', 'expand', 'group', 'groupdict', 'groups', 'lastgroup', 'lastindex', 'pos', 're', 'regs', 'span', 'start', 'string']
+
+در ادامه به بررسی برخی از متدهای مهم این شی می‌پردازیم:
+  
+
+ * ``Match.group([group1, ...])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.group>`__]
+
+  این متد از شی ``Match``، گروه (های) تطبیق داده شده بر اساس الگو مورد نظر را برمی‌گرداند. این متد می‌تواند یک یا چند آرگومان عددی دریافت کند که معرف اندیس گروه مورد نظر می‌باشد. در حالت فراخوانی بدون آرگومان تمامی گروه‌های تطبیق داده شده به صورت یک مقدار رشته برگردانده می‌شود و در صورتی تنها یک مقدار به آن ارسال گردد، گروه تطبیق داده شده متناظر با آن اندیس (شمارش اندیس‌ها از یک است) در قالب یک شی رشته برگردانده می‌شود و در صورتی که بیش از یک اندیس به عنوان آرگومان ارسال گردد یک شی تاپل محتوی گروه‌های تطبیق داده شده برگردانده خواهد شد. چنانچه آرگومان ارسالی عددی منفی باشد یا اندیسی بالاتر از تعداد گروه‌های تطبیق داده شده باشد، یک استثنا ``IndexError`` رخ خواهد داد::
+
+    >>> match = re.search(r"(\w+) (\w+)", "Isaac Newton, physicist") 
+    >>> match.group()        # The entire match
+    'Isaac Newton'
+    >>> match.group(0)       # The entire match
+    'Isaac Newton'
+    >>> match.group(1)       # The first parenthesized subgroup.
+    'Isaac'
+    >>> match.group(2)       # The second parenthesized subgroup.
+    'Newton'
+    >>> match.group(1, 2)    # Multiple arguments give us a tuple.
+    ('Isaac', 'Newton')
+
+    >>> match.group(3)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    IndexError: no such group
+    
+  در صورتی که الگو مورد نظر شامل هیچ گروهبندی نباشد، فراخوانی بدون آرگومان (یا ارسال آرگومان صفر) این متد، تمام متن تطبیق داده شده را برمی‌گرداند::
+  
+  
+    >>> pattern = re.compile('Py...n')
+    >>> match = pattern.search('Python is great')
+    >>> match.group()
+    'Python'
+    
+    >>> match.group(0)
+    'Python'
+    
+    >>> match.group(1)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    IndexError: no such group
+    >>> 
+
+
+
+
+  * ``Match.groups(default=None)`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.groups>`__]
+
+  این متد تمام گروه‌های تطبیق داده شده بر اساس الگو مورد نظر را در قالب یک شی تاپل برمی‌گرداند. این متد می‌تواند یک آرگومان بپذیرد که معرف مقدار پیش‌فرض برای جایگذاری گروه‌هایی است که در رشته ورودی تطبیق داده نشده‌اند، در حالت عادی (بدون ارسال آرگومان) این مقدار برابر با ``None`` است::
+
+    >>> match = re.search("(\d+)\.(\d+)", "24.1632")
+    >>> match.groups()
+    ('24', '1632')
+
+  ::
+
+       >>> match = re.search("(\d+)\.?(\d+)?", "24")
+       >>> match.groups()      # Second group defaults to None.
+       ('24', None)
+       >>> match.groups('0')   # Now, the second group defaults to '0'.
+       ('24', '0')
+       
+       
+  ::
+  
+      >>> pattern = re.compile('Py...n')  # The pattern is without grouping
+      >>> match = pattern.search('Python is great')
+      >>> match.groups()
+      ()
+
+
+  * ``Match.groupdict(default=None)`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.groupdict>`__]
+
+    این متد یک شی دیکشنری (dict) حاوی حاصل تطابق تمام گروه‌های بانام (Named Groups) موجود در الگو را برمی‌گرداند::
+
+
+      >>> import re
+
+      >>> match = re.search(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Elvis Presley")
+      >>> match.groupdict()
+      {'first_name': 'Elvis', 'last_name': 'Presley'}
+
+      >>> match.group()
+      'Elvis Presley'
+      >>> match.group(1)
+      'Elvis'
+      >>> match.group(2)
+      'Presley'
+
+      >>> match.groups()
+      ('Elvis', 'Presley')
+
+    این متد نیز همانند متد ``groups`` یک پارامتر اختیاری دارد که در صورت ارسال آرگومان به آن به جای مقدار پیش‌فرض ``None`` برای حاصل عدم تطابق گروه‌های موجود در الگو قرار می‌گیرد::
+
+      >>> import re
+
+      >>> match = re.search("(?P<first_name>\w+) (?P<nick_name>`\w+`\s)?(?P<last_name>\w+)", "Elvis `The King` Presley")
+      >>> match.groupdict()
+      {'first_name': 'Elvis', 'nick_name': '`The King` ', 'last_name': 'Presley'}
+
+      >>> match = re.search("(?P<first_name>\w+) (?P<nick_name>`\w+`\s)?(?P<last_name>\w+)", "Elvis Presley")
+      >>> match.groupdict()
+      {'first_name': 'Elvis', 'nick_name': None, 'last_name': 'Presley'}
+
+      >>> match.groupdict("---") # or match.groupdict(default="---")
+      {'first_name': 'Elvis', 'nick_name': '---', 'last_name': 'Presley'}
+
+
+
+  * ``Match.start([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.start>`__]    ``Match.end([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.end>`__]
+
+  متن رشته خروجی (تطبیق یافته بر اساس الگو مورد نظر) را در نظر بگیرید، متد ``start`` اندیس شروع این متن از رشته ورودی و متد ``end``  اندیس نقطه پایان را برمی‌گرداند. این دو متد می‌توانند یک آرگومان اختیاری نیز دریافت کنند که معرف اندیس یک گروه مشخص در الگو می‌باشد، با ارسال این آرگومان نتایج بر اساس تکه متن تطبیق داده شده با آن گروه برگردانده خواهد شد::
+
+    >>> email = "tony@tiremove_thisger.net"
+    >>> match = re.search("remove_this", email)
+    >>> match.start()
+    7
+    >>> match.end()
+    18
+    >>> email[match.start() : match.end()]
+    'remove_this'
+    >>> email[:match.start()] + email[match.end():]
+    'tony@tiger.net'
+
+  ::
+
+       >>> match = re.search(r"(\d+)\.(\d+)", "24.1632")
+
+       >>> match.start()
+       0
+       >>> match.end()
+       7
+
+       >>> match.start(1)
+       0
+       >>> match.end(1)
+       2
+
+       >>> match.start(2)
+       3
+       >>> match.end(2)
+       7
+       >>> 
+
+
+  * ``Match.span([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.span>`__]
+
+  این متد یک شی تاپل دوتایی از خروجی دو متد ``start``  و ``end``  را بر می‌گرداند و همانند آنها نیز یک آرگومان اختیاری دارد - نمونه خروجی: ``(m.start(group), m.end(group))``::
+
+    >>> match = re.search(r"(\d+)\.(\d+)", "24.1632")
+    >>> match.span()
+    (0, 7)
+    >>> match.span(1)
+    (0, 2)
+    >>> match.span(2)
+    (3, 7)
+    >>> match.span(3)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    IndexError: no such group
+
+  * ``Match.re`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.re>`__]    ``Match.string`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.string>`__]
+
+  این دو متغیر به ترتیب حاوی  شی RegEx الگو و متن مورد نظر جهت انجام عملیات تطابق خواهند بود::
+
+    >>> email = "tony@tiremove_thisger.net"
+    >>> match = re.search("remove_this", email)
+
+    >>> match.re
+    re.compile('remove_this')
+
+    >>> match.string
+    'tony@tiremove_thisger.net'
+
+    >>> match.string[match.start() : match.end()]
+    'remove_this'
+
+  ::
+
+       >>> match = re.search(r"(\d+)\.(\d+)", "24.1632")
+
+       >>> match.re
+       re.compile('(\\d+)\\.(\\d+)')
+
+       >>> match.string
+       '24.1632'
+
+
+
+
+
+
+|
+
+----
+
+:emoji-size:`😊` امیدوارم مفید بوده باشه
+
+`لطفا دیدگاه و سوال‌های مرتبط با این درس خود را در کدرز مطرح نمایید. <http://www.coderz.ir/python-tutorial-re-regex/>`_
+
+
+
