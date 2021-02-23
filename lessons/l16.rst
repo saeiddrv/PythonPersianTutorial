@@ -222,7 +222,7 @@
         >>> match.groups()
         ('Jazz', 'Rock', 'Pop')
         
-        >>> match.expand('-->\1---->\2------>\3') # Wrong result!!!
+        >>> match.expand('-->\1---->\2------>\3') # Warning!!!
         '-->\x01---->\x02------>\x03'
 
         >>> match.expand('-->\\1---->\\2------>\\3')
@@ -232,24 +232,34 @@
         '-->Jazz---->Rock------>Pop'
 
 
+    ::
+
+          # \1, \2 and \3 are all valid escape characters
+
+          \1  # (U+0001 or 0x01) stands for the ascii start-of-heading character
+          \2  # (U+0002 or 0x02) stands for the ascii start-of-text character
+          \3  # (U+0003 or 0x03) stands for the ascii end-of-text character
+
     .. note::
         در نمونه کد بالا، خروجی نخستین استفاده از متد ``expand`` متناسب با انتظار نیست، دلیل هم مربوط به وجود کاراکترهایی با ``\`` است (escape characters) که باعث بروز اخلال در تحلیل رشته قالب شده است. بهتر است همیشه در این مواقع از قوانین **raw string** پیروی نماییم: استفاده از ``\\`` به جای ``\`` (همانند ``n\\``) یا قرار دادن یک کاراکتر ``r`` یا ``R`` در ابتدای رشته (همانند ``'r'\n``). در این صورت کاراکترهایی همچون newline یا ``n\`` در رشته، معنای خود را از دست می‌دهند. (یادآوری از درس هفتم)
+
+        در واقع مفسر پایتون پیش از قراردادن متن مورد نظر ما در قالب یک شی رشته (string) در حافظه (memory) آن را تحلیل و مقادیر متناسب با کاراکترهای ``\`` را در آن جایگذاری می‌کند که این کار ممکن است در هنگام استفاده ماژول ``re`` از آن شی رشته اخلال ایجاد کند. استفاده از **raw string**  باعث می‌شود مفسر پایتون متن مورد نظر را بدون تغییر در حافطه قرار دهد.
 
 
     .. tip::
         بلای Backslash [`اسناد پایتون <https://docs.python.org/3/howto/regex.html#the-backslash-plague>`__] 
 
-        همیشه در هنگام کار با RegEx (نه فقط در زبان پایتون!) مواظب escape characters یا backslash characters باشید.
+        همیشه در هنگام کار با RegEx (نه فقط در زبان پایتون!) مواظب escape characters یا همان backslash characters باشید. تا این لحظه برای جلوگیری از پیچیدگی در مثال‌های ارائه شده مبحث RegEx از قرار دادن **raw string** صرف نظر شده بود اما از آنجا که الگوهای RegEx پر از ``\`` است همواره می‌بایست به لزوم استفاده از **raw string** فکر کنیم.
 
     ::
 
-           >>> match = re.search('(?P<num>\d+)', 'Top 100 songs')
+           >>> match = re.search(r'(?P<num>\d+)', 'Top 100 songs')
            >>> match.group(1)
            '100'
 
-           >>> match.expand('--- \g<num> ---')
+           >>> match.expand(r'--- \g<num> ---')
            '--- 100 ---'
-           >>> match.expand('--- \g<1> ---')
+           >>> match.expand(r'--- \g<1> ---')
            '--- 100 ---'
 
 
@@ -272,7 +282,7 @@
 
   ::
 
-       >>> match = re.search("(\d+)\.(\d+)", "24.1632")
+       >>> match = re.search(r"(\d+)\.(\d+)", "24.1632")
 
        >>> match.start()
        0
@@ -295,7 +305,7 @@
 
   این متد یک شی تاپل دوتایی از خروجی دو متد ``start``  و ``end``  را بر می‌گرداند و همانند آنها نیز یک آرگومان اختیاری دارد - نمونه خروجی: ``(m.start(group), m.end(group))``::
 
-    >>> match = re.search("(\d+)\.(\d+)", "24.1632")
+    >>> match = re.search(r"(\d+)\.(\d+)", "24.1632")
     >>> match.span()
     (0, 7)
     >>> match.span(1)
@@ -325,7 +335,7 @@
 
   ::
 
-       >>> match = re.search("(\d+)\.(\d+)", "24.1632")
+       >>> match = re.search(r"(\d+)\.(\d+)", "24.1632")
 
        >>> match.re
        re.compile('(\\d+)\\.(\\d+)')
@@ -334,7 +344,120 @@
        '24.1632'
 
 
+تابع ``match``
+~~~~~~~~~~~~~~~~~~~~~~
 
+
+``match(pattern, string, flags=0)``
+
+تابع ``match`` از ابتدای string انطباق pattern را انجام می‌دهد، در صورت موفقیت یک شی ``Match`` و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.match>`__]::
+
+    >>> import re  # Python 3.x
+
+    >>> match = re.match(r'\d+', '123@USERNAME')
+    >>> print(match)
+    <re.Match object; span=(0, 3), match='123'>
+
+    >>> match = re.match(r'\d+', 'USERNAME@123')
+    >>> print(match)
+    None
+
+
+    >>> match = re.search(r'\d+', '123@USERNAME')
+    >>> print(match)
+    <re.Match object; span=(0, 3), match='123'>
+
+    >>> match = re.search(r'\d+', 'USERNAME@123')
+    >>> print(match)
+    <re.Match object; span=(9, 12), match='123'>
+
+
+.. tip::
+
+  تفاوت دو تابع ``match`` و ``search`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#search-vs-match>`__]:
+
+  هنگام استفاده از تابع ``match``، از همان ابتدای متن مورد نظر می‌بایست با الگو تطابق صورت پذیرد (حتی در متن‌های چند سطری) ولی تابع ``search`` انجام انطباق را در هر جایی از متن دنبال می‌کند.
+
+  هنگام استفاده از نشانه ``re.MULTILINE`` در تابع ``search``، کاراکتر ``^`` در الگو از معنای **ابتدای متن** به معنای **ابتدای هر سطر** تغییر می‌کند ولی از نظر تابع ``match`` وجود کاراکتر ``^`` در الگو همواره به معنی ابتدای متن می‌باشد (نه هر سطر)::
+
+      >>> import re
+      >>> string = 'Perl\nPython\nRuby'  # 3 lines
+
+      >>> match = re.search('^Perl', string)
+      >>> print(match)
+      <re.Match object; span=(0, 4), match='Perl'>
+
+      >>> match = re.search('^Python', string)
+      >>> print(match)
+      None
+
+      >>> match = re.search('^Python', string, re.MULTILINE)
+      >>> print(match)
+      <re.Match object; span=(5, 11), match='Python'>
+
+
+      >>> match = re.match('^Perl', string)
+      >>> print(match)
+      <re.Match object; span=(0, 4), match='Perl'>
+
+      >>> match = re.match('^Python', string, re.MULTILINE)
+      >>> print(match)
+      None
+
+
+اجازه بدهید یادآوری کنیم که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
+
+
+    >>> pattern = re.compile('Py...n')
+    >>> match = pattern.match('Python is great')
+
+::
+
+    >>> match = re.match('Py...n', 'Python is great')
+
+
+تابع ``fullmatch``
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+``fullmatch(pattern, string, flags=0)``
+
+این تابع (``fullmatch``) چنانچه تمام string با pattern انطباق داشته باشد یک شی ``Match`` و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.fullmatch>`__] - این تابع از **پایتون نسخه 3.4** به بعد در دسترس است::
+
+    >>> import re  # Python >= 3.4
+
+    >>> match = re.fullmatch(r'\d+', '123@USERNAME')
+    >>> print(match)
+    None
+
+    >>> match = re.fullmatch(r'\d+', '123')
+    >>> print(match)
+    <re.Match object; span=(0, 3), match='123'>
+
+**عملکرد نمونه کدهای زیر برابر هم هستند - به الگو و نام توابع توجه نمایید**::
+
+    >>> match = re.search(r'^\d+$', '123')
+    >>> print(match)
+    <re.Match object; span=(0, 3), match='123'>
+
+    >>> match = re.match(r'\d+$', '123')
+    >>> print(match)
+    <re.Match object; span=(0, 3), match='123'>
+
+    >>> match = re.fullmatch(r'\d+', '123')
+    >>> print(match)
+    <re.Match object; span=(0, 3), match='123'>
+
+
+همچنین باید یادآوری کنیم که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
+
+
+    >>> pattern = re.compile('Py...n')
+    >>> match = pattern.fullmatch('Python')
+
+::
+
+    >>> match = re.fullmatch('Py...n', 'Python')
 
 
 
