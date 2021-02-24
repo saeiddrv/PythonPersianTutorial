@@ -27,7 +27,7 @@
 
 
 
-توابع جستجو 
+توابع جستجو، ماژول ``re`` پایتون
 ---------------------------------------
 
 توابع پرکاربرد ماژول ``re`` پایتون مرتبط با عمل جستجو در یک متن عبارتند از: 
@@ -458,6 +458,137 @@
 ::
 
     >>> match = re.fullmatch('Py...n', 'Python')
+
+
+تابع ``findall``
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+``findall(pattern, string, flags=0)``
+
+این تابع (``findall``) حاصل تمام انطباق‌های ممکن pattern در string را در قالب یک لیست از رشته‌ها (نتایج) برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.findall>`__]::
+
+    >>> import re
+
+    >>> string = "My number is 123456789 and my friend's number is 987654321"
+    >>> results = re.findall(r'\d+', string)
+
+    >>> type(results)
+    <class 'list'>
+
+    >>> print(results)
+    ['123456789', '987654321']
+
+تابع ``findall`` از سمت چپ string شروع به دنبال انطباق pattern در آن می‌گردد و نتایج را به ترتیب برمی‌گرداند. اگر الگو (pattern) شامل گروه باشد فقط نتایج مربوط به انطباق گروه را برمی‌گرداند و نه تمام الگو را::
+
+    >>> results = re.findall(r'#(\w+)#', '#Perl#.#Python#.#Ruby#')
+    >>> print(results)
+    ['Perl', 'Python', 'Ruby']
+
+    >>> results = re.findall(r'#\w+#', '#Perl#.#Python#.#Ruby#')
+    >>> print(results)
+    ['#Perl#', '#Python#', '#Ruby#']
+
+چنانچه الگو شامل بیش از یک گروه باشد، خروجی تابع ``findall`` برابر است با یک لیست از تاپل‌ها که هر تاپل، حاصل یک دور انطباق است::
+
+     >>> results = re.findall(r'(\w+)@(\d+)', 'Perl@1987,Python@1991,Ruby@1995')
+     >>> print(results)
+     [('Perl', '1987'), ('Python', '1991'), ('Ruby', '1995')]
+
+
+یادآوری می‌شود که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
+
+
+    >>> pattern = re.compile('Py...n')
+    >>> results = pattern.findall('PythonPythonPython')
+
+::
+
+    >>> results = re.findall('Py...n', 'PythonPythonPython')
+
+
+تابع ``finditer``
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+``finditer(pattern, string, flags=0)``
+
+خروجی این تابع (``finditer``) یک شی ``iterator`` (شی تکرارکننده - درس نهم) است و حاصل هر بار پیمایش آن یک شی ``Match`` می‌باشد که همانند تابع ``findall`` از سمت چپ string شروع به دنبال انطباق pattern در آن می‌گردد و نتایج را به ترتیب برمی‌گرداند. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.finditer>`__]::
+
+    >>> import re  # Python 3.x
+
+    >>> string = "My number is 123456789 and my friend's number is 987654321"
+    >>> result = re.finditer(r'\d+', string)
+
+    >>> type(result)
+    <class 'callable_iterator'>
+
+    >>> result.__next__()
+    <re.Match object; span=(13, 22), match='123456789'>
+
+    >>> result.__next__()
+    <re.Match object; span=(49, 58), match='987654321'>
+
+    >>> result.__next__()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    StopIteration
+
+::
+
+       >>> for match in re.finditer(r'#(\w+)#', '#Perl#.#Python#.#Ruby#'):
+       ...     print(match)
+       ... 
+       <re.Match object; span=(0, 6), match='#Perl#'>
+       <re.Match object; span=(7, 15), match='#Python#'>
+       <re.Match object; span=(16, 22), match='#Ruby#'>
+
+
+       >>> for match in re.finditer(r'#\w+#', '#Perl#.#Python#.#Ruby#'):
+       ...     print(match)
+       ... 
+       <re.Match object; span=(0, 6), match='#Perl#'>
+       <re.Match object; span=(7, 15), match='#Python#'>
+       <re.Match object; span=(16, 22), match='#Ruby#'>
+
+::
+
+          >>> for match in re.finditer(r'(\w+)@(\d+)', 'Perl@1987,Python@1991,Ruby@1995'):
+         ...     print(match)
+         ... 
+         <re.Match object; span=(0, 9), match='Perl@1987'>
+         <re.Match object; span=(10, 21), match='Python@1991'>
+         <re.Match object; span=(22, 31), match='Ruby@1995'>
+
+
+یادآوری می‌شود که دو نمونه کد زیر عملکردی معادل یکدیگر دارند::
+
+
+    >>> pattern = re.compile('Py...n')
+    >>> result = pattern.finditer('PythonPythonPython')
+
+::
+
+    >>> result = re.finditer('Py...n', 'PythonPythonPython')
+
+
+
+توابع جایگزینی، ماژول ``re`` پایتون
+---------------------------------------
+
+توابع پرکاربرد ماژول ``re`` پایتون مرتبط با عمل جایگزینی (replace) یک متن عبارتند از: 
+
+* ``sub``
+* ``subn``  
+
+
+
+تابع ``sub``
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+``sub(pattern, repl, string, count=0, flags=0)``
+
 
 
 
