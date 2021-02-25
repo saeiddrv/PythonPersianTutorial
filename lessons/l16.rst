@@ -589,6 +589,63 @@
 
 ``sub(pattern, repl, string, count=0, flags=0)``
 
+این تابع (``sub``) حاصل انطباق‌های ممکن pattern در string را در repl جایگذاری می‌کند. این تابع همچنین دو پارامتر اختیاری دارد (flags و count)، پیش‌تر در مورد flags صحبت کردیم و count نیز بیانگر ماکزیمم تعداد انطباقی است که می‌خواهیم در repl جایگذاری شود - این مقدار می‌بایست یک عدد مثبت باشد و مقدار صفر (مقدار پیش‌فرض) برای آن به معنی هر تعداد (نامحدود) خواهد بود. پارامتر repl در این تابع می‌تواند از نوع رشته یا تابع باشد، ابتدا حالت رشته را بررسی می‌کنیم [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.sub>`__]::
+
+     >>> import re  # Python 3.x
+
+     >>> string = 'Perl@1987,Python@1991,Ruby@1995'
+     >>> repl = ' - '
+     >>> pattern = r'@\d+,?'
+
+     >>> result = re.sub(pattern, repl, string)
+
+     >>> type(result)
+     <class 'str'>
+
+     >>> print(result)
+     Perl - Python - Ruby - 
+
+     >>> result = re.sub(pattern, repl, string, 2) #  count=2
+     >>> print(result)
+     Perl - Python - Ruby@1995
+
+     >>> result = re.sub(pattern, repl, string, 1) #  count=1
+     >>> print(result)
+     Perl - Python@1991,Ruby@1995
+
+متد ``expand`` از شی Match که در ابتدای این درس مطرح شد را بیاد بیاورید، بدیهی است که pattern می‌تواند شامل گروهبندی نیز باشد، در این شرایط آنچه از قوانین موجود در پارامتر template متد ``expand`` گفته شد در repl (در حالتی که یک شی رشته است) نیز صدق می‌کند::
+
+     >>> result = re.sub(r'(\w+),(\w+),(\w+)', r'(\1) (\2) (\3)', 'Jazz,Rock,Pop')
+     >>> print(result)
+     (Jazz) (Rock) (Pop)
+
+     >>> re.sub(r'(\w+),(\w+),(\w+)', r'(\g<1>) (\g<2>) (\g<3>)', 'Jazz,Rock,Pop')
+     '(Jazz) (Rock) (Pop)'
+
+
+::
+
+      >>> re.sub(r'(?P<num>\d+)', r'#\g<num>#', 'Top 100 songs')
+      'Top #100# songs'
+
+به مثالی دیگر توجه نمایید::
+
+    >>> re.sub('x*', '-', 'abc@123,456')
+    '-a-b-c-@-1-2-3-,-4-5-6-'
+
+الگو مورد استفاده برای متن مثال بالا یک Zero-length Match است (درس قبل) - [`regex101@ تست آنلاین <https://regex101.com/r/n0I6JU/1>`__] 
+
+
+.. tip::
+  
+  چنانچه تابع ``sub`` هیچ انطباقی از pattern در string پیدا نکند، مقدار string را بدون تغییر برمی‌گرداند::
+
+       >>> re.sub(r'\d', '-', 'abc@xyz') #  Without matching
+       'abc@xyz'
+
+       >>> re.sub(r'\d', '-', 'abc@123')
+       'abc@---'
+
 
 
 
