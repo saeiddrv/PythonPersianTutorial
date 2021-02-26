@@ -9,6 +9,21 @@
 گزارش توسعه
 =============
 
+
+
+.. raw:: html
+
+    <p class="rubric" id="00116" ><a class="reference external" href="#00116">00116</a> - جمعه ۸ اسفند ۱۳۹۹</p>
+
+* درس شانزدهم با عنوان «Regular Expression در پایتون - بخش ۲» به فهرست کتاب افزوده شد.
+* بروزرسانی: مبحث Zero-length Match به درس پانزدهم اضافه گردید.
+* گزارش حمایت مالی بروز گردید.
+
+----
+
+
+
+
 .. raw:: html
 
     <p class="rubric" id="00115" ><a class="reference external" href="#00115">00115</a> - شنبه ۲ اسفند ۱۳۹۹</p>
