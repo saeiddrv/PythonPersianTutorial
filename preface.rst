@@ -16,7 +16,7 @@
 
 در نهایت امیدوارم مطالعه این کتاب برایتان مفید باشد.
 
-`سعید درویش <https://wiki.python.org/moin/SaeidDarvish>`__
+`سعید درویش <https://wiki.python.org/moin/SaeidDarvish>`__  - `تماس با من <mailto:python@coderz.ir>`__  
 
 
 
