@@ -28,5 +28,6 @@
 * `Sphinx <http://www.sphinx-doc.org>`_ 
 * `Minoo Theme <https://github.com/saeiddrv/SphinxMinooTheme>`_ 
 * `Behdad Font <https://github.com/font-store/font-behdad>`_ 
+* `GitHub <https://github.com>`_ 
 * `Read the Docs <https://readthedocs.org>`_ 
 
