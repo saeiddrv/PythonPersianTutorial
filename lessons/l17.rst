@@ -339,8 +339,16 @@ Class Attribute
 متدها در واقع توابعی هستند که داخل هر کلاس تعریف می‌شوند. هر کلاس پایتون می‌تواند شامل سه نوع متد باشد:
 
 * Instance Method
+
+  هر زمان در پیاده‌سازی یک کلاس، به شی جاری از کلاس یا Instance Attributeها نیاز داشتیم می‌بایست این نوع متد را پیاده‌سازی کنیم.
+
 * Class Method
+
+  هر زمان در پیاده‌سازی یک کلاس، به خود کلاس یا Class Attributeها نیاز داشتیم می‌بایست این نوع متد را پیاده‌سازی کنیم.
+
 * Static Method
+
+  هر زمان در پیاده‌سازی یک کلاس، به کلاس و به اشیای آن کلاس نیازی نداشتیم، می‌بایست این نوع متد را پیاده‌سازی کنیم. س
 
 .. code-block:: python
     :linenos:
@@ -411,11 +419,80 @@ Class Attribute
 متد کلاس (Class Method)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+این نوع متد همواره می‌بایست حداقل یک پارامتر داشته باشد. پارامتر نخست که معمولا ``cls`` نام‌گذاری می‌شود حاوی کلاس جاری است - در واقع این متد هیچ اطلاعاتی از اشیا کلاس ندارد و تنها کلاس را می‌شناسد و Class Attributeها را دستیابی و دستکاری می‌کند. مقدار ``cls`` نیز همانند ``self``  همواره از  سوی مفسر پایتون ارسال می‌گردد و نیازی به ارسال از سوی برنامه‌نویس ندارد. این متد با استفاده از دکوراتور (Decorator‌ - درس سیزدهم) ``classmethod@`` ایجاد می‌شود [`اسناد پایتون <https://docs.python.org/3/library/functions.html#classmethod>`__]:
+
+.. code-block:: python
+    :linenos:
+
+    class Student:
+        school_name = 'My School'
+    
+        def __init__(self, name, family):
+            self.name = name
+            self.family = family
+        
+        @classmethod
+        def school_info(cls):
+            print(cls)
+            return f'name: {cls.school_name}'
+    
+    print(Student.school_info())
+    print('-' * 30)
+    print(Student('My Name', 'My Family').school_info())
+
+::
+
+        <class '__main__.Student'>
+        name: My School
+        ------------------------------
+        <class '__main__.Student'>
+        name: My School
+
+
+.. tip:: 
+
+  این نوع متد (Class Method) را می‌توان هم با استفاده از نام کلاس دستیابی کرد (سطر ۱۳) و هم با استفاده از اشیای آن کلاس (سطر ۱۵)، در واقع دکوراتور  ``classmethod@`` کارهای لازم برای نادیده گرفتن شی و ارسال مقدار پارامتر ``cls`` را انجام می‌دهد.
 
 
 متد ایستا (Static Method)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+این نوع متد با استفاده از دکوراتور (Decorator‌ - درس سیزدهم) ``staticmethod@`` ایجاد می‌شود [`اسناد پایتون <https://docs.python.org/3/library/functions.html#staticmethod>`__]. این نوع متد پایتون، نه از اشیا اطلاعاتی دارد و نه حتی از کلاس. در واقع به این نوع متد، نه مقدار ``self``  ارسال می‌شود و نه ``cls``:
+
+
+.. code-block:: python
+    :linenos:
+
+    class Student:
+        school_name = 'My School'
+    
+        def __init__(self, name, family):
+            self.name = name
+            self.family = family
+        
+        @classmethod
+        def school_info(cls):
+            print(cls)
+            return f'name: {cls.school_name}'
+
+        @staticmethod
+        def info():
+            return "This is a student class"
+    
+    print(Student.info())
+    print('-' * 30)
+    print(Student('My Name', 'My Family').info())
+
+::
+
+        This is a student class
+        ------------------------------
+        This is a student class
+
+
+.. tip:: 
+
+  این نوع متد (Static Method) را می‌توان هم با استفاده از نام کلاس دستیابی کرد (سطر ۱۷) و هم با استفاده از اشیای آن کلاس (سطر ۱۹)، در واقع دکوراتور  ``staticmethod@`` کارهای لازم برای نادیده گرفتن شی و کلاس مربوط را انجام می‌دهد.
 
 
 
