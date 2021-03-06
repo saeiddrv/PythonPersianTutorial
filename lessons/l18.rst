@@ -30,11 +30,91 @@
 وراثت (Inheritance)
 ----------------------------------
 
+وراثت به معنی امکانی است که یک کلاس بتواند صفات و رفتارهای یک کلاس دیگر را نیز به همراه خود داشته باشد. پیاده‌سازی وراثت در پایتون حداقل به دو کلاس نیاز دارد:
+
+* **base class** یا **superclass**: کلاس اصلی یا کلاسی می‌خواهیم کلاس یا کلاس‌های دیگری آن را به ارث ببرند و صفات و رفتارهای آن به دیگر کلاس(ها) سرایت پیدا کند.
+* **derived class** یا **subclass**: کلاس یا کلاس‌هایی که از superclass ارث‌بری خواهند داشت.
+
+.. image:: /_static/l18-python-oop-inheritance.jpg
+    :align: center
+
+تصویر بالا یک نمونه ساده از ساختار وراثت را نمایش می‌دهد. در برنامه ما قرار است یک کلاس گنجشک (Sparrow) و سگ (Dog) ایجاد گردد، از آنجا که برخی از رفتارهای این دو کلاس یکسان است مانند راه رفتن (Walk) یا نفس کشیدن (Breathe)، یک superclass کلاس برای آن‌ها با نام Animal ایجاد می‌کنیم که شامل صفات و رفتارهای مشترک دو کلاس نام برده باشد - پیاده‌سازی پایتونی تصویر بالا به صورت نمونه کد زیر خواهد بود:
+
+.. code-block:: python
+    :linenos:
+
+    class Animal:
+
+        def walk(self):
+          print(f'{self.__class__.__name__}: wlking...')
+    
+        def breathe(self):
+          print(f'{self.__class__.__name__}: breathing...')
+    
+    
+    class Sparrow(Animal):
+    
+        def fly(self):
+          print(f'{self.__class__.__name__}: flying...')
+    
+    
+    class Dog(Animal):
+    
+        def run(self):
+          print(f'{self.__class__.__name__}: running...')
+    
+    
+    sparrow = Sparrow()
+    dog = Dog()
+    
+    sparrow.walk()
+    sparrow.breathe()
+    sparrow.fly()
+
+    print('-' * 30)
+
+    dog.walk()
+    dog.breathe()
+    dog.run()
+
+::
+
+    Sparrow: wlking...
+    Sparrow: breathing...
+    Sparrow: flying...
+    ------------------------------
+    Dog: wlking...
+    Dog: breathing...
+    Dog: running...
+
+.. tip:: 
+
+  همانطور که از نمونه کد بالا مشاهده می‌شود، زمانی که یک شی subclass، متد superclass خود را فراخوانی می‌کند، مقدار ``self`` در متد superclass برابر با شی فراخوانی کننده متد یعنی همان subclass خواهد بود. 
+
+به صورت پیش‌فرض هر شی پایتون حاوی  Attributeها و متدهایی است که فهرست آن‌ها با استفاده از تابع ``dir`` [`اسناد پایتون <https://docs.python.org/3/library/functions.html#dir>`__] قابل مشاهده خواهد بود. با این توضیح صفت ``__self.__class``  حاوی کلاس شی می‌باشد و ``__self.__class__.__name`` نیز نام کلاس شی را در بر دارد - *این موضوع در درس‌های پیش نیز مطرح شده بود*::
+
+    >>> class Sample:
+    ...     def imethod(self):
+    ...         print(dir(self))
+    ...         print()
+    ...         print(self.__class__)
+    ... 
+    >>> 
+    >>> sample = Sample()
+    >>> sample.imethod()
+    ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'imethod']
+
+    <class '__main__.Sample'>
+    >>> 
+
+با این حال، برخی اشیا پایتون حاوی  Attributeهایی هستند که ممکن است توسط تابع ``dir``  نمایش داده نشود. از این  Attributeها به عنوان Special Attributes یاد می‌شود [`اسناد پایتون <https://docs.python.org/3/library/stdtypes.html#special-attributes>`__]. برای مثال صفت ``__definition.__name`` بسته به نوع definition، حاوی نام کلاس، تابع، متد یا غیره می‌باشد.
 
 
+Super Class
+~~~~~~~~~~~~
 
 
-
+  
 انجمن (Association)
 ----------------------------------
 
