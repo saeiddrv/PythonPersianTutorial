@@ -32,6 +32,7 @@
    lessons/l15
    lessons/l16
    lessons/l17
+   lessons/l18
    log
    donate-report
    python-interactive
