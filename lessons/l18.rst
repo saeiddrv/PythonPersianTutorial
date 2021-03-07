@@ -109,9 +109,144 @@
 
 با این حال، برخی اشیا پایتون حاوی  Attributeهایی هستند که ممکن است توسط تابع ``dir``  نمایش داده نشود. از این  Attributeها به عنوان Special Attributes یاد می‌شود [`اسناد پایتون <https://docs.python.org/3/library/stdtypes.html#special-attributes>`__]. برای مثال صفت ``__definition.__name`` بسته به نوع definition، حاوی نام کلاس، تابع، متد یا غیره می‌باشد.
 
+همان‌طور که بیان شد subclass‌ها به Attributeهای superclass کلاس خود نیز دسترسی دارند، به نمونه کدی دیگر نیز توجه نمایید:
 
-Super Class
-~~~~~~~~~~~~
+.. code-block:: python
+    :linenos:
+
+    class SuperClass:
+        super_class_attr = {'one':1, 'two':2}
+    
+        def __init__(self, param_1):
+            self.super_instance_attr = param_1
+    
+
+    class SubClass(SuperClass):
+        sub_class_attr = {'six':6, 'seven':7}
+    
+        def __init__(self, param_1, param_2):
+            super().__init__(param_1)
+            self.sub_instance_attr = param_2
+
+        def sub_instance_method(self):
+            print('Called: sub_instance_method')
+            print(self.super_instance_attr)
+            print(self.sub_instance_attr)
+    
+        @classmethod
+        def sub_class_method(cls):
+            print('Called: sub_class_method')
+            print(cls.super_class_attr)
+            print(cls.sub_class_attr)
+    
+
+    sub = SubClass('param_1', 'param_2')
+    
+    print(sub.super_instance_attr)
+    print(sub.sub_instance_attr)
+    print('-' * 30)
+    print(SubClass.super_class_attr)
+    print(SubClass.sub_class_attr)
+    print('-' * 30)
+    sub.sub_instance_method()
+    print('-' * 30)
+    SubClass.sub_class_method()
+
+::
+
+    param_1
+    param_2
+    ------------------------------
+    {'one': 1, 'two': 2}
+    {'six': 6, 'seven': 7}
+    ------------------------------
+    Called: sub_instance_method
+    param_1
+    param_2
+    ------------------------------
+    Called: sub_class_method
+    {'one': 1, 'two': 2}
+    {'six': 6, 'seven': 7}
+
+
+.. tip:: 
+
+  از درس پیش مفهوم سازنده (Constructor) در شی گرایی را بیاد داریم. چنانچه در superclass متدهای سازنده (``__new__`` و  ``__init__``) پیاده‌سازی شده باشند، می‌بایست این متدها در subclass‌ها نیز پیاده‌سازی شوند، نیازی نیست که سرآیند تعریف این دو متد با superclass یکسان باشد ولی می‌بایست مقادیر مورد نیاز متد superclass فراهم شود. برای این کار لازم است داخل متد subclassها به superclass دسترسی داشه باشیم، تابع ``super`` [`اسناد پایتون <https://docs.python.org/3/library/functions.html#super>`__] این امکان را فراهم می‌کند.
+
+خروجی  تابع ``super`` [`اسناد پایتون <https://docs.python.org/3/library/functions.html#super>`__] شی است که نقش واسط را بین دو کلاس subclass و superclass دارد. نمونه کد زیر چگونگی فراخوانی انواع متدهای superclass را از subclass نمایش می‌دهد:
+
+
+.. code-block:: python
+    :linenos:
+
+    class SuperClass:
+    
+        def super_instance_method(self):
+            print('Called: super_instance_method')
+            print(self)
+    
+        @classmethod
+        def super_class_method(cls):
+            print('Called: super_class_method')
+            print(cls)
+
+        @staticmethod
+        def super_static_method():
+            print('Called: super_static_method')
+    
+
+    class SubClass(SuperClass):
+    
+        def sub_instance_method(self):
+            super().super_instance_method()
+            super().super_class_method()
+            SuperClass.super_static_method()
+    
+        @classmethod
+        def sub_class_method(cls):
+            super().super_class_method()
+            SuperClass.super_static_method()
+
+        @staticmethod
+        def sub_static_method():
+            SuperClass.super_static_method()
+    
+
+    sub = SubClass()
+    
+    sub.sub_instance_method()
+    print('-' * 30)
+    SubClass.sub_class_method()
+    print('-' * 30)
+    SubClass.sub_static_method()
+
+::
+
+    Called: super_instance_method
+    <__main__.SubClass object at 0x7f9c77052898>
+    Called: super_class_method
+    <class '__main__.SubClass'>
+    Called: super_static_method
+    ------------------------------
+    Called: super_class_method
+    <class '__main__.SubClass'>
+    Called: super_static_method
+    ------------------------------
+    Called: super_static_method
+
+می‌دانیم که مفسر پایتون به صورت خودکار اطلاعات مربوط به شی فراخوانی کننده یک Instance Method را فراهم می‌آورد. زمانی که یک Instance Method از subclass فراخوانی می‌شود، تابع ``super`` می‌تواند آن شی و از طریق آن شی نیز به کلاس دسترسی داشته باشد بنابراین از داخل Instance Method کلاس subclass می‌توان به واسطه تابع ``super`` به هر دو نوع Instance Methodها و Class Methodهای superclass دسترسی پیدا کرد، چرا که تابع ``super`` می‌تواند مقادیر ``self``  و ``cls`` را به منظور فراخوانی متدهای متناظر superclass به دست آورد.
+
+همچنین می‌دانیم که در فراخوانی Class Method، تنها اطلاعات مربوط به کلاس فراهم است و نه شی. زمانی که یک Class Method از subclass فراخوانی می‌شود، تابع ``super`` می‌تواند به کلاس مرتبط دسترسی داشته باشد بنابراین از داخل Class Method کلاس subclass تنها می‌توان به واسطه تابع ``super`` به Class Methodهای superclass دسترسی پیدا کرد، چرا که تابع ``super`` تنها می‌تواند مقدار ``cls`` را به منظور فراخوانی متدهای متناظر superclass به دست آورد.
+
+در زمان فراخوانی Static Method نیز می‌دانیم که مفسر پایتون هیچ اطلاعاتی از شی و کلاس مرتبط را فراهم نمی‌آورد، بنابراین فراخوانی این متد با استفاده از تابع ``super`` انجام نمی‌پذیرد. در صورت نیاز به فراخوانی Static Methodهای کلاس superclass در کلاس subclass، همواره می‌توانید از نام کلاس superclass بهره بگیرید.
+
+
+.. note:: 
+
+  این برنامه‌نویس است که تصمیم می‌گیرد یک کلاس چگونه طراحی شود. اینکه کدام متد باید از کدام نوع باشد مسئله‌ای است که برنامه‌نویس باید در زمان طراحی کلاس خود به آن فکر کند و از امکانات زبان برنامه‌نویسی پایتون به درستی در جهت بهتر و راحت‌تر به انجام رساندن مسئله خود بهره بگیرد.
+
+وراثت چندگانه (Multiple Inheritance)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
   
