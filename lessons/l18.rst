@@ -245,10 +245,183 @@
 
   این برنامه‌نویس است که تصمیم می‌گیرد یک کلاس چگونه طراحی شود. اینکه کدام متد باید از کدام نوع باشد مسئله‌ای است که برنامه‌نویس باید در زمان طراحی کلاس خود به آن فکر کند و از امکانات زبان برنامه‌نویسی پایتون به درستی در جهت بهتر و راحت‌تر به انجام رساندن مسئله خود بهره بگیرد.
 
+
+.. tip:: 
+
+  هر شی از یک کلاس علاوه بر اینکه از نوع آن کلاس محسوب می‌شود، از نوع superclass نیز به حساب می‌آید. در واقع یک شی نوع subclass، نوع superclass را نیز به ارث می‌برد::
+
+       >>> class SuperClass:
+       ...     pass
+       ... 
+       >>> class SubClass(SuperClass):
+       ...     pass
+       ... 
+       >>> sub = SubClass()
+       >>> 
+       >>> isinstance(sub, SubClass)
+       True
+       >>> isinstance(sub, SuperClass)
+       True
+
+
 وراثت چندگانه (Multiple Inheritance)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+پایتون جزو معدود زبان‌های برنامه‌نویسی مدرنی است که از وراثت چندگانه پشتیبانی می‌کند، چیزی که در زبانی همچون Java نیز وجود ندارد. در واقع پیاده‌سازی وراثت چندگانه چالش‌هایی به همراه دارد، همانند Diamond Problem که در Java ترجیح داده شده است که از وراثت چندگانه پرهیز کند و نبود آن را با پیاده‌سازی مفهومی همچون Interface پوشش دهد [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Interface_(Java)>`__]. 
 
+فراموش نکنیم در پیاده‌سازی شی گرایی می‌بایست بنابر نیاز برنامه کدهای خود را به کوچک‌ترین واحدهای ممکن تقسیم کنیم و اینکه یک شی بتواند صفات و رفتارهای چندین کلاس را به همراه خود داشته باشد یک نیاز اساسی در شی گرایی است. این الزام فلسفه سادگی پایتون است که مانع از آن می‌شود تا مفاهیمی موازی درکنار هم ایجاد شوند - همانند Class و Interface - وراثت چندگانه راه حل ساده و منطقی زبان برنامه‌نویسی پایتون برای حل این مشکل است و این امکان را می‌دهد که یک کلاس بتواند بیش از یک superclass داشته باشد:
+::
+
+    >>> class SuperClassA:
+    ...     pass
+    ... 
+    >>> class SuperClassB:
+    ...     pass
+    ... 
+    >>> class SuperClassC:
+    ...     pass
+    ... 
+    >>> class SubClass(SuperClassA, SuperClassB, SuperClassC):
+    ...     pass
+    ... 
+    >>> sub = SubClass()
+    >>> 
+    >>> isinstance(sub, SubClass)
+    True
+    >>> isinstance(sub, SuperClassA)
+    True
+    >>> isinstance(sub, SuperClassB)
+    True
+    >>> isinstance(sub, SuperClassC)
+    True
+
+نمونه کد بالا نمایش ساختار وراثت چندگانه در پایتون است که در آن کلاس SubClass به ترتیب از سه کلاس SuperClassA و SuperClassB و SuperClassC  ارث‌بری دارد. 
+
+اکنون مهم‌ترین چالش چگونگی دسترسی به متدهای هر یک از این superclassها می‌باشد. تاکنون برای دسترسی به متدهای superclass از تابع  ``super``  استفاده می‌کردیم ولی حالا که صحبت از چندین superclass است، مثلا مقدارهی متد ``__init__`` توسط این تابع چگونه می‌تواند انجام شود؟ چگونه باید به پایتون بگوییم آرگومان‌هایی را که می‌خواهیم دقیقا به متد خاصی از superclass مورد نظر ارسال کند؟ البته نگران نباشید، پایتون مشکلی نخواهد داشت. در ادامه، حالات مختلف حل این مسئله را بررسی خواهیم کرد.
+
+**شیوه یکم:** خیلی ساده، می‌توانیم اصلا از تابع ``super`` استفاده نکنیم و متدهای هر superclass را مستقیم با نام خودش فراخوانی کنیم که البته در این روش لازم است به ازای تمام پارامترهای متد superclass آرگومان متناظر را ارسال نماییم، از جمله برای ``self``:
+
+
+.. code-block:: python
+    :linenos:
+
+    class SuperClassA:
+        def __init__(self, param_0, param_3):  
+            print('Called: SuperClassA.__init__()')
+            self.param_0 = param_0
+            self.param_3 = param_3
+    
+    
+    class SuperClassB:
+        def __init__(self, param_1):  
+            print('Called: SuperClassB.__init__()')
+            self.param_1 = param_1
+    
+    class SuperClassC:
+        def __init__(self, param_2):  
+            print('Called: SuperClassC.__init__()')
+            self.param_2 = param_2
+    
+    
+    class SubClass(SuperClassA, SuperClassB, SuperClassC):
+        def __init__(self, param_0, param_1, param_2, param_3, param_4):  
+            SuperClassA.__init__(self, param_0, param_3)
+            SuperClassB.__init__(self, param_1)
+            SuperClassC.__init__(self, param_2)
+            self.param_4 = param_4
+    
+    
+    sub = SubClass(0, 1, 2, 3, 4)
+    
+    print('param_0: ', sub.param_0)
+    print('param_1: ', sub.param_1)
+    print('param_2: ', sub.param_2)
+    print('param_3: ', sub.param_3)
+    print('param_4: ', sub.param_4)
+
+::
+
+    Called: SuperClassA.__init__()
+    Called: SuperClassB.__init__()
+    Called: SuperClassC.__init__()
+    param_0:  0
+    param_1:  1
+    param_2:  2
+    param_3:  3
+    param_4:  4
+
+
+**شیوه دوم:** فراخوانی تابع ``super``  یک سینتکس معادل نیز دارد که می‌توانیم از آن استفاده کنیم.
+
+    
+
+
+**شیوه سوم:** رفتار تابع ``super`` را عمیق‌تر بشناسیم و درست از آن بهره بگیریم:
+
+
+.. code-block:: python
+    :linenos:
+
+    class SuperClassA:
+        def __init__(self, param_0, param_3, *args):  
+            print('Called: SuperClassA.__init__()')
+            super().__init__(*args)
+            self.param_0 = param_0
+            self.param_3 = param_3
+    
+    
+    class SuperClassB:
+        def __init__(self, param_1, *args):  
+            print('Called: SuperClassB.__init__()')
+            super().__init__(*args)
+            self.param_1 = param_1
+    
+    class SuperClassC:
+        def __init__(self, param_2, *args): 
+            print('Called: SuperClassC.__init__()')
+            super().__init__(*args)
+            self.param_2 = param_2
+    
+    
+    class SubClass(SuperClassA, SuperClassB, SuperClassC):
+        def __init__(self, param_0, param_1, param_2, param_3, param_4):  
+            super().__init__(param_0, param_3, param_1, param_2)
+            self.param_4 = param_4
+    
+    
+    sub = SubClass(0, 1, 2, 3, 4)
+
+.. code-block:: python
+    :linenos:
+
+    class SuperClassA:
+        def __init__(self, param_0, param_3, **kargs):  
+            print('Called: SuperClassA.__init__()')
+            super().__init__(**kargs)
+            self.param_0 = param_0
+            self.param_3 = param_3
+    
+    
+    class SuperClassB:
+        def __init__(self, param_1, **kargs):  
+            print('Called: SuperClassB.__init__()')
+            super().__init__(**kargs)
+            self.param_1 = param_1
+    
+    class SuperClassC:
+        def __init__(self, param_2, **kargs): 
+            print('Called: SuperClassC.__init__()')
+            super().__init__(**kargs)
+            self.param_2 = param_2
+    
+    
+    class SubClass(SuperClassA, SuperClassB, SuperClassC):
+        def __init__(self, p0, p1, p2, p3, p4):  
+            super().__init__(param_0=p0, param_3=p3, param_1=p1, param_2=p2)
+            self.param_4 = p4
+    
+    
+    sub = SubClass(0, 1, 2, 3, 4)
   
 انجمن (Association)
 ----------------------------------
