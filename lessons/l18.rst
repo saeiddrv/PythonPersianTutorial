@@ -363,7 +363,13 @@
    (<class '__main__.SubClass'>, <class '__main__.SuperClassA'>, <class '__main__.SuperClassB'>, <class '__main__.SuperClassC'>, <class 'object'>)
 
 
-می‌دانیم که هر کلاس پایتون به صورت پیش‌فرض از کلاس ``object`` ارث‌بری دارد. از طرفی در فرآیند وراثت چندگانه ترتیب نوشتن superclassها در سرآیند subclass مهم است به این صورت که MRO پایتون برای یافتن متد مورد نظر کلاس‌های superclass را به ترتیب از سمت چپ به راست مورد جستجو قرار می‌دهد.
+می‌دانیم که هر کلاس پایتون به صورت پیش‌فرض از کلاس ``object`` ارث‌بری دارد. از طرفی در فرآیند وراثت چندگانه ترتیب نوشتن superclassها در سرآیند subclass مهم است به این صورت که MRO پایتون برای یافتن متد مورد نظر کلاس‌های superclass را به ترتیب از سمت چپ به راست مورد جستجو قرار می‌دهد (**depth-first left-to-right**)، ابتدا نخستین superclass از سمت چپ انتخاب و برسی می‌گردد، چنانچه آن کلاس نیز  superclass داشته باشد، برای آن نیز همین روند طی می‌شود تا به کلاس object برسد، سپس دومین superclass از سمت چپ انتخاب و همین روند تا بالاترین سطح برای آن پیمایش می‌شود و الی آخر::
+
+     SubClass 
+              --> SuperClassA --> object 
+              --> SuperClassB --> object 
+              --> SuperClassC --> object
+
 
 .. code-block:: python
     :linenos:
