@@ -5,7 +5,7 @@
    :keywords:  آموزش, آموزش پایتون, آموزش برنامه نویسی, پایتون, تابع, کتابخانه, پایتون, شی گرایی در پایتون
 
 
-درس ۱۸: شی گرایی (OOP) در پایتون: وراثت (Inheritance) و انجمن (Association)
+درس ۱۸: شی گرایی (OOP) در پایتون: وراثت (Inheritance) و Association
 ========================================================================================================
 
 
@@ -354,22 +354,17 @@
     
 
 
-**شیوه دوم:** رفتار تابع ``super`` را عمیق‌تر بشناسیم و درست از آن بهره بگیریم:
+**شیوه دوم:** رفتار تابع ``super`` را عمیق‌تر بشناسیم و درست از آن بهره بگیریم، برای این منظور می‌بایست شیوه پیمایش  superclassها و جستجو برای متد در تابع ``super`` پایتون را بشناسیم، این شیوه با نام  **Method Resolution Order** یا به اختصار **MRO** خوانده می‌شود.
 
-لازم است با **Method Resolution Order** یا به اختصار **MRO** در زبان برنامه‌نویسی پایتون آشنا شویم. همانطوری که از نام آن نیز مشخص است، **MRO** ترتیبی که می‌بایست بر اساس آن متدها به ارث برده شوند را مشخص می‌کند. پایتون برای این منظور از الگوریتم C3 linearization بهره گرفته است [`ویکی‌پدیا <https://en.wikipedia.org/wiki/C3_linearization>`__]. هر کلاس پایتون یک Special Attribute به اسم ``__mro__`` دارد که حاوی یک تاپل از ترتیب کلاس‌هایی است که در فرآیند MRO نقش دارند [`اسناد پایتون <https://docs.python.org/3/library/stdtypes.html#class.__mro__>`__]::
+**Method Resolution Order** ، همانطوری که از نام آن نیز مشخص است، **MRO** ترتیبی که می‌بایست بر اساس آن متدها جستجو شوند را پیدا می‌کند. پایتون برای این منظور از الگوریتم C3 linearization بهره گرفته است [`ویکی‌پدیا <https://en.wikipedia.org/wiki/C3_linearization>`__] (البته از نسخه 2.3 به بعد) [`اسناد پایتون <https://www.python.org/download/releases/2.3/mro>`__]. 
+
+هر کلاس پایتون یک Special Attribute به اسم ``__mro__`` دارد که حاوی یک تاپل از ترتیب کلاس‌هایی است که پایتون بر اساس آن به دنبال یک متد می‌گردد [`اسناد پایتون <https://docs.python.org/3/library/stdtypes.html#class.__mro__>`__]، در واقع این مقدار حاصل تلاش MRO بر اساس محاسبه الگوریتم C3 linearization برای آن کلاس خواهد بود. برای مثال این مقدار برای کلاس ``SubClass`` ما برابر است با::
 
 
    >>> SubClass.__mro__
    (<class '__main__.SubClass'>, <class '__main__.SuperClassA'>, <class '__main__.SuperClassB'>, <class '__main__.SuperClassC'>, <class 'object'>)
 
-
-می‌دانیم که هر کلاس پایتون به صورت پیش‌فرض از کلاس ``object`` ارث‌بری دارد. از طرفی در فرآیند وراثت چندگانه ترتیب نوشتن superclassها در سرآیند subclass مهم است به این صورت که MRO پایتون برای یافتن متد مورد نظر کلاس‌های superclass را به ترتیب از سمت چپ به راست مورد جستجو قرار می‌دهد (**depth-first left-to-right**)، ابتدا نخستین superclass از سمت چپ انتخاب و برسی می‌گردد، چنانچه آن کلاس نیز  superclass داشته باشد، برای آن نیز همین روند طی می‌شود تا به کلاس object برسد، سپس دومین superclass از سمت چپ انتخاب و همین روند تا بالاترین سطح برای آن پیمایش می‌شود و الی آخر::
-
-     SubClass 
-              --> SuperClassA --> object 
-              --> SuperClassB --> object 
-              --> SuperClassC --> object
-
+همانطور که مقدار ``__mro__``  برای کلاس ``SubClass``  مشخص کرده است، پایتون برای جستجوی یک متد ابتدا داخل خود کلاس SubClass را بررسی و سپس شروع به پیمایش  superclassهای آن با ترتیب  SuperClassA و بعد SuperClassB و بعد SuperClassC می‌کند. آخرین کلاس همواره کلاس object می‌باشد، این کلاسی است که تمام کلاس‌های پایتون به صورت ضمنی و پیش‌فرض از آن ارث‌بری دارند و در یک سلسله مراتب وراثت بالاترین سطح وراثت می‌باشد. اکنون بر اساس این آگاهی می‌توانیم به شیوه زیر عمل کنیم:
 
 .. code-block:: python
     :linenos:
@@ -403,6 +398,16 @@
     
     sub = SubClass(0, 1, 2, 3, 4)
 
+همانطور که در نمونه کد بالا مشخص است متد SubClass تنها شامل یکبار فراخوانی تابع ``super`` است و از طرفی هم تمام متدهای متناظر در superclassهای آن نیز شامل فراخوانی تابع ``super`` هستند.
+
+با آگاهی از حاصل MRO و  ترتیب پیمایش superclassها، متد مورد نظر  (در اینجا: ``__init__``) را هنگام فراخوانی ``super`` مقداردهی می‌کنیم. یعنی ارسال آرگومان‌ها را به ترتیبی قرار می‌دهیم که ابتدا قرار است متد متناظر در کلاس SuperClassA پیدا، فراخوانی و پارامترهای آن مقداردهی شود، سپس SuperClassB و در نهایت SuperClassC. (سطر ۲۴)
+
+در این شیوه می‌بایست هر یک از متدهای متناظر در superclassها با متد مورد نظر ما در SubClass، نیز شامل فراخوانی تابع ``super`` باشند. چرا پایتون با اولین نتیجه موفق از یافتن متد، پیمایش را متوقف می‌کند ولی ما می‌خواهیم دیگر متدهای متناظر باقی‌مانده نیز فراخوانی شوند. در نتیجه با فراخوانی مجدد ``super`` این روند را دوباره به اجرا در می‌آوریم.
+
+متدها در کلاس از قوانین حاکم بر تابع در پایتون پیروی می‌کنند، در نتیجه متدهای متناظر در superclassها باید به گونه‌ای تعریف شده باشند که هر تعداد پارامتر را بپذیرند. برای این منظور در انتهای تعریف پارامترهای این متدها، یک پارامتر ``args*`` قرار داده‌ایم. این پارامتر، تمامی آرگومان‌های اضافی ارسال شده به آن تابع را در خود نگه‌داری می‌کند. در نتیجه برای ادامه روند فراخوانی متدهای نظیر باقی‌مانده، تنها کافی است این مقدار ارسال گردد. (تابع در پایتون - درس دوازدهم)
+
+اگر شیوه ارسال آرگومان‌ها را به صورت **نام=مقدار** تغییر دهیم، ترتیب ارسال آرگومان‌ها از اهمیت می‌افتد و پیاده‌سازی آسان‌تر و کد خواناتر خواهد بود:
+
 .. code-block:: python
     :linenos:
 
@@ -429,27 +434,251 @@
     
     class SubClass(SuperClassA, SuperClassB, SuperClassC):
         def __init__(self, p0, p1, p2, p3, p4):  
-            super().__init__(param_0=p0, param_3=p3, param_1=p1, param_2=p2)
+            super().__init__(param_0=p0, param_1=p1, param_2=p2, param_3=p3)
             self.param_4 = p4
     
     
     sub = SubClass(0, 1, 2, 3, 4)
+
+
+.. note:: 
+
+  آنچه در مثال بررسی شد حالتی پیچیده از فراخوانی متد مهم ``__init__`` بود. همواره زمانی که از وراثت چندگانه بهره می‌برید، در زمان فراخوانی یک متد که در دو یا چند superclass مشترک است، می‌بایست به یکی از شیوه‌های ارائه شده عمل نمایید.
+
+
+
+Method Resolution Order
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+در این بخش به شرح چگونگی عملکرد **Method Resolution Order** پایتون و محاسبه الگوریتم C3 linearization خواهیم پرداخت. توجه داشته باشید مطالعه این بخش الزامی نیست و در هر زمان شما با استفاده از ``__Class.__mro``  می‌توانید به مقصود دست پیدا کنید!
+
+برای شروع لازم است قوانین زیر را در نظر داشته باشیم (توجه: در ادامه برای ساده‌سازی توضیحات از ذکر حضور کلاس ``object`` صرف‌نظر شده است!):
+
+۱) حاصل الگوریتم C3 linearization برای یک کلاس که superclass ندارد برابر با همان کلاس خواهد بود::
+
+       >>> class A: pass
+
+       >>> A.__mro__
+       ( <class '__main__.A'>, <class 'object'>)
+
+۲) چنانچه کلاس مورد نظر تنها شامل یک سطح از سلسله مراتب وراثت می‌باشد، حاصل الگوریتم C3 linearization برای آن کلاس برابر است با لیستی از خود آن کلاس و  superclassهای آن کلاس به ترتیبی که قرار گرفته‌اند (از چپ به راست)::
+    
+       >>> class A: pass
+       >>> class B: pass
+       >>> class C(B, A): pass
+
+       >>> C.__mro__
+       (<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
+
+
+۳) محاسبه حاصل الگوریتم C3 linearization برای یک کلاس که بیش از یک سطح سلسله مراتب وراثت دارد کمی زحمت دارد! در حالت کلی این مقدار برابر است با: «لیستی تک عضوی شامل آن کلاس » ``+`` لیستی با اعضای منحصر به فرد که حاصل ادغام (merge) «نتیجه خطی شدن (linearization) superclassهای آن کلاس» و «لیستی از  superclassهای آن کلاس». عمل ادغام در اینجا علاوه بر اینکه تکرارپذیر می‌باشد نکاتی دارد که در ادامه ذکر خواهد شد .
+
+اکنون برای پی بردن به چگونگی ایجاد حاصل ``__Class.__mro`` و درک عملکرد الگوریتم C3 linearization دو مثال معروف در این زمینه را بررسی خواهیم کرد. نخست ساختار الماس (Diamond):
+
+.. image:: /_static/l18-python-mro-diamond.png
+    :align: center
+
+.. code-block:: python
+    :linenos:
+
+    class A: pass
+    class B(A): pass
+    class C(A): pass
+    class D(B, C): pass
+
+    print (D.__mro__)
+
+::
+
+    (<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>)
+
+روند محاسبه الگوریتم C3 linearization برای کلاس ``D`` این مثال به صورت زیر می‌باشد:
+
+.. code-block:: python
+    :linenos:
+
+    L(A) := [A]
+
+    L(B) := [B] + merge(L(A), [A])
+          = [B] + merge([A], [A])
+          = [B, A]
+
+    L(C) := [C] + merge(L(A), [A])
+          = [C] + merge([A], [A])
+          = [C, A]
+
+    L(D) := [D] + merge(L(B), L(C), [B, C])
+          = [D] + merge([B, A], [C, A], [B, C])
+          = [D, B] + merge([A], [C, A], [C])
+          = [D, B, C] + merge([A], [A], [])
+          = [D, B, C, A]
+
+
+* سطر ۱: حاصل خطی سازی (linearization) کلاس A یا همان L(A) برابر است با لیستی که تنها شامل همان کلاس A است چرا که کلاس A بدون superclass است.
+
+* سطر ۳: حاصل خطی سازی (linearization) کلاس B یا همان L(B) برابر است با «لیستی که تنها شامل همان کلاس B» ``+`` ادغام «حاصل خطی سازی (linearization) تک تک superclassهای کلاس B - در اینجا: L(A)» و لیستی از superclassهای کلاس  B - در اینجا: [A]
+
+* سطر۴: حاصل L(A) جایگذاری شده است. 
+
+* سطر ۵: حاصل ادغام چند لیست که تنها شامل یک کلاس می‌باشند برابر است با آن کلاس: ``[A] + [B] = [B,A]``
+
+* سطر ۷: حاصل خطی سازی (linearization) کلاس C همانند کلاس  B می‌باشد.
+
+* سطر ۱۱: حاصل خطی سازی (linearization) کلاس D یا همان L(D) برابر است با «لیستی که تنها شامل همان کلاس D» ``+`` ادغام «حاصل خطی سازی (linearization) تک تک superclassهای کلاس D با حفظ ترتیب از چپ به راست - در اینجا: L(B) , L(C)» و لیستی از superclassهای کلاس  D  با حفظ ترتیب از چپ به راست - در اینجا: [B,C]
+
+* سطر ۱۲: حاصل L(B) و L(C) جایگذاری شده است. 
+
+* سطر ۱۳: اکنون عملیات ادغام شامل بیش از یک کلاس است، در این شرایط عملیات ادغام و انتخاب یک کلاس مطلوب آنقدر تکرار می‌شود تا دیگر کلاسی باقی نماند. فرآیند انتخاب کلاس مطلوب به این صورت است که از چپ‌ترین کلاس موجود در چپ‌ترین لیست شروع می‌کنیم به انتخاب، این کلاس می‌بایست در باقی لیست‌ها در صورت وجود چپ‌ترین عضو باشد، در غیر این صورت چپ‌ترین کلاس موجود در لیست بعدی انتخاب و بررسی خواهد شد. چنانچه کلاس انتخاب شده شرایط را دارا باشد عمل ادغام برای آن کلاس صورت می‌پذیرد و داخل تمام لیست‌ها در صورت وجود نیز حذف می‌گردد. در اینجا: ابتدا کلاس B انتخاب می‌شود، این کلاس شرایط مطلوب بودن را دارا می‌باشد، در نتیجه عمل ادغام برای آن به انجام می‌رسد.
+
+* سطر ۱۴: در ادامه عمل ادغام فرآیند خطی سازی برای کلاس D، این بار ابتدا کلاس A انتخاب می‌شود، این کلاس شرایط لازم را ندارد چرا که در جایگاهی از لیست دوم نیز حضور دارد که جایگاه نخست (چپ‌ترین) نیست. کلاس A رها می‌شود و به سراغ لیست دوم می‌رویم، نخستین عضو آن یعنی کلاس C شرایط لازم برای ادغام را دارد، در نتیجه در این مرحله عمل ادغام برای کلاس C به انجام می‌رسد.
+
+* سطر ۱۵: حاصل ادغام چند لیست که تنها شامل یک کلاس می‌باشند برابر است با همان کلاس، در نتیجه کلاس A انتخاب و عمل ادغام برای آن به انجام می‌رسد.
+
+عملیات با موفقیت به پایان رسید و ما به مقداری برابر با ``__D.__mro`` دست پیدا کردیم!
+
+|
+
+اکنون مثال پیچیده‌تری را بررسی می‌کنیم. برگرفته شده از [`اینجا <https://www.wikiwand.com/en/C3_linearization>`__]  و [`اینجا <https://www.python.org/download/releases/2.3/mro>`__] :
+
+.. image:: /_static/l18-python-mro-example.png
+    :align: center
+
+.. code-block:: python
+    :linenos:
+
+    class O: pass
+    
+    class A(O): pass
+    class B(O): pass
+    class C(O): pass
+    class D(O): pass
+    class E(O): pass
+    
+    class K1(A,B,C): pass
+    class K2(D,B,E): pass
+    class K3(D,A): pass
+    
+    class Z(K1,K2,K3): pass
+    
+    print (Z.__mro__)
+
+::
+
+    (<class '__main__.Z'>, <class '__main__.K1'>, <class '__main__.K2'>, <class '__main__.K3'>, <class '__main__.D'>, <class '__main__.A'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.E'>, <class '__main__.O'>, <class 'object'>)
+
+.. code-block:: python
+    :linenos:
+
+    L(O)  := [O]                                                # the linearization of O is trivially the singleton list [O], because O has no parents
+    
+    L(A)  := [A] + merge(L(O), [O])                             # the linearization of A is A plus the merge of its parents' linearizations with the list of parents...
+           = [A] + merge([O], [O])
+           = [A, O]                                             # ...which simply prepends A to its single parent's linearization
+    
+    L(B)  := [B, O]                                             # linearizations of B, C, D and E are computed similar to that of A
+    L(C)  := [C, O]
+    L(D)  := [D, O]
+    L(E)  := [E, O]
+    
+    L(K1) := [K1] + merge(L(A), L(B), L(C), [A, B, C])          # first, find the linearizations of K1's parents, L(A), L(B), and L(C), and merge them with the parent list [A, B, C]
+           = [K1] + merge([A, O], [B, O], [C, O], [A, B, C])    # class A is a good candidate for the first merge step, because it only appears as the head of the first and last lists
+           = [K1, A] + merge([O], [B, O], [C, O], [B, C])       # class O is not a good candidate for the next merge step, because it also appears in the tails of list 2 and 3; but class B is a good candidate
+           = [K1, A, B] + merge([O], [O], [C, O], [C])          # class C is a good candidate; class O still appears in the tail of list 3
+           = [K1, A, B, C] + merge([O], [O], [O])               # finally, class O is a valid candidate, which also exhausts all remaining lists
+           = [K1, A, B, C, O]
+    
+    L(K2) := [K2] + merge(L(D), L(B), L(E), [D, B, E])
+           = [K2] + merge([D, O], [B, O], [E, O], [D, B, E])    # select D
+           = [K2, D] + merge([O], [B, O], [E, O], [B, E])       # fail O, select B
+           = [K2, D, B] + merge([O], [O], [E, O], [E])          # fail O, select E
+           = [K2, D, B, E] + merge([O], [O], [O])               # select O
+           = [K2, D, B, E, O]
+    
+    L(K3) := [K3] + merge(L(D), L(A), [D, A])
+           = [K3] + merge([D, O], [A, O], [D, A])               # select D
+           = [K3, D] + merge([O], [A, O], [A])                  # fail O, select A
+           = [K3, D, A] + merge([O], [O])                       # select O
+           = [K3, D, A, O]
+    
+    L(Z)  := [Z] + merge(L(K1), L(K2), L(K3), [K1, K2, K3])
+           = [Z] + merge([K1, A, B, C, O], [K2, D, B, E, O], [K3, D, A, O], [K1, K2, K3])    # select K1
+           = [Z, K1] + merge([A, B, C, O], [K2, D, B, E, O], [K3, D, A, O], [K2, K3])        # fail A, select K2
+           = [Z, K1, K2] + merge([A, B, C, O], [D, B, E, O], [K3, D, A, O], [K3])            # fail A, fail D, select K3
+           = [Z, K1, K2, K3] + merge([A, B, C, O], [D, B, E, O], [D, A, O])                  # fail A, select D
+           = [Z, K1, K2, K3, D] + merge([A, B, C, O], [B, E, O], [A, O])                     # select A
+           = [Z, K1, K2, K3, D, A] + merge([B, C, O], [B, E, O], [O])                        # select B
+           = [Z, K1, K2, K3, D, A, B] + merge([C, O], [E, O], [O])                           # select C
+           = [Z, K1, K2, K3, D, A, B, C] + merge([O], [E, O], [O])                           # fail O, select E
+           = [Z, K1, K2, K3, D, A, B, C, E] + merge([O], [O], [O])                           # select O
+           = [Z, K1, K2, K3, D, A, B, C, E, O]                                               # done
+
+
+
   
 انجمن (Association)
 ----------------------------------
 
+وراثت مفهوم پرکاربردی از شی‌گرایی است ولی همانطور که مشاهده خواهید کرد، همیشه تمام روابط را نمی‌توان اینگونه تعریف کرد. با تعریف و چگونگی پیاده‌سازی رابطه **IS-A** در شی گرایی پایتون آشنا شده‌ایم، اکنون می‌بایست با مفهوم رابطه **HAS-A** در شی گرایی آشنا شویم. 
 
 
+رابطه **HAS-A** زمانی پیش می‌آید که یک شی حاوی یک یا چند شی دیگر باشد. در این رابطه برخلاف آنچه در وراثت (**IS-A**) شاهد آن بودیم، یک شی از طریق یکی شدن با دیگران گسترش پیدا نمی‌کند - بلکه با مالک شدن اشیای دیگر گسترش می‌یابد که در شی گرایی با عنوان **Association** شناخته می‌شود و بر اساس شدت مالکیت، Association بر دو نوع قابل تقسیم است:
 
-ترکیب (Composition)
+* Composition
+* Aggregation
+
+
+توجه داشته باشید که پیاده‌سازی این نوع رابطه (HAS-A) هیچ نکته خاص پایتونی ندارد، تنها تعریف Attribute برای شی است. آنچه مورد تاکید است مفهوم این موارد در برنامه‌نویسی شی گراست که درک آن‌ها خالی از لطف نمی‌باشد. برنامه‌نویس باید بتواند بر اساس مسئله، کلاس‌های خود و روابط بین آن‌ها را به بهترین شکل ممکن طراحی کند، دانستن این موارد به این امر کمک خواهند کرد.
+
+
+Composition
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+در **Composition** یک شی بخشی از شی دیگر خواهد بود به صورتی که در حالت تکی مفهومی در برنامه نخواهد داشت و تنها جزیی از شی دیگر بودن است که به آن در برنامه مفهوم می‌بخشد. برای مثال رابطه  شی بازو (Arm) و  پا (Leg) با شی انسان (Human) از این نوع است. شی Arm تنها در داخل شی Human مفهوم و کاربرد دارد. در واقع شی Arm یا Leg تنها برای استفاده در شی Human ایجاد گردیده‌اند و با از بین رفتن شی Human، شی Arm و  Leg نیز از بین می‌روند. 
+
+.. code-block:: python
+    :linenos:	
+    
+    class Arm:
+    	pass
+    	
+    class Leg:
+    	pass
+
+    class Human:
+    	def __init__(self):
+    	    self.arm = Arm()
+    	    self.leg = Leg()
+    
+    human = Human()
+
+از لحاظ منطقی اگر نگاه کنیم، شی Human برای داشتن قابلیت‌های بازو (Arm) و  پا (Leg)، نباید از کلاس‌های مربوط به آن‌ها ارث‌بری داشته باشد. چراکه نمی‌توانیم بگوییم یک Human، یک Arm است (IS-A) ولی می‌توانیم بگوییم که یک Human، یک Arm دارد (HAS-A).
+    	
+
+معمولا در پیاده‌سازی Composition، اشیای مورد نیاز یک شی در داخل آن شی ایجاد می‌گردند. چرا که این اشیا در بیرون از کلاس مورد نظر کاربردی نخواهند داشت و می‌بایست با از بین رفتن شی مالک (در اینجا: Human)، آن‌ها نیز از بین بروند.
 
 
-
-تجمع (Aggregation)
+Aggregation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+در تعریف **Aggregation** یک شی بخشی از شی دیگر می‌شود ولی به صورت مستقل نیز می‌تواند در برنامه حضور داشته باشد و طول عمر (life cycle) آن‌ها وابسته به یکدیگر نیست. برای مثال رابطه دانش‌آموز (Student) و مدرسه (School) می‌تواند از این نوع در نظر گرفته شود، وقتی School تعطیل می‌شود - Student هنوز وجود دارد. 
+
+
+.. code-block:: python
+    :linenos:	
+    
+    class Student:
+    	pass
+
+    class School:
+    	def __init__(self, students):
+    		self.students = students
+    
+    students = [Student(), Student(), Student()]
+    
+    school = School(students)
+
+
+معمولا در پیاده‌سازی Aggregation، اشیای مورد نیاز یک شی در زمان نمونه‌سازی به آن ارسال می‌گردند. چرا که این اشیا در بیرون از کلاس موجودیت‌های مستقلی هستند و طول عمر (life cycle) آن‌ها وابسته به شی مالک (در اینجا: School) نیست.
 
 
 
