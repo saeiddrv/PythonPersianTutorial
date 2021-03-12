@@ -14,7 +14,13 @@
 
 
 
+.. raw:: html
 
+    <p class="rubric" id="00118" ><a class="reference external" href="#00118">00118</a> - جمعه ۲۲ اسفند ۱۳۹۹</p>
+
+* درس هجدهم با عنوان «شی گرایی (OOP) در پایتون: وراثت (Inheritance) و Association» به فهرست کتاب افزوده شد.
+
+----
 
 .. raw:: html
 
