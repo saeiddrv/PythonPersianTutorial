@@ -30,9 +30,8 @@
 
 **متاکلاس (Metaclass)** [`اسناد پایتون <https://docs.python.org/3/reference/datamodel.html#metaclasses>`__] در پایتون یک مفهوم پنهان در رابطه با پیاده‌سازی برنامه‌نویسی شی گرا می‌باشد. اکثر برنامه‌نویس‌ها چه از آن آگاه باشند و چه خیر، به ندرت از آن استفاده می‌کنند و شاید شما هیچگاه نیاز به استفاده از این قابلیت نداشته باشید ولی باید بدانید این قابلیتی است که در اکثر زبان‌های برنامه‌نویسی شی گرا ارائه نمی‌شود! 
 
-.. image:: /_static/l19-python-metaclass.png
+.. image:: /_static/l19-python-metaclass-type.jpg
     :align: center
-    :target: https://blog.ionelmc.ro/2015/02/09/understanding-python-metaclasses/
 
 **متاکلاس چیست؟** یک کلاس است و اشیایی که از آن ایجاد می‌گردند، کلاس‌ها هستند! بارها گفته شد که «هر چیزی در پایتون یک شی است» و این جمله حتی خود موجودیت کلاس‌ها را نیز شامل می‌شود. با اجرای دستور تعریف کلاس، یک شی از نوع ``type`` در حافظه ایجاد می‌گردد و از نام کلاس برای اشاره به آن شی استفاده می‌شود (درس هفدهم). اکنون می‌توانیم بگوییم که  ``type`` در واقع یک متاکلاس می‌باشد::
 
@@ -100,6 +99,83 @@
 	<class '__main__.SampleMetaClass'>
 
 برای ایجاد متا کلاس تنها کافی است یک کلاس جدید بسازید که از کلاس ``type`` ارث‌بری داشته باشد. با ارسال نام این کلاس به پارامتر ``metaclass`` هر کلاس دیگری می‌توان به آن‌ها انتساب داد.
+
+بحث اشیای Callable را از درس هفدهم به یاد آورید -  هر کلاس در پایتون یک شی از متاکلاس مربوط به خودش می‌باشد، همچنین گفته شد کلاس‌ها در پایتون Callable هستند، بنابراین هرگاه یک کلاس فراخوانی می‌شود (در واقع زمانی که یک شی از آن کلاس ایجاد می‌گردد)، به صورت خودکار متد ``__call__`` متا کلاس آن نیز فراخوانی می‌گردد.
+
+اکنون زمانی است که می‌توانید تمام فرآیند ایجاد یک شی در پایتون را بدانید، آن را در دست بگیرید و هر کاری که نیاز دارید را به انجام برسانید!:
+
+
+.. code-block:: python
+    :linenos: 
+    
+    class MetaClass(type):
+
+        def __call__(self, *args, **kwargs):
+            print('\n------->>> MetaClass __call__')
+            print('self: ', self)
+            print('args: ', args)
+            print('kwargs: ', kwargs)
+            
+            obj = self.__new__(self, *args, **kwargs)    
+    
+            if obj is not None and isinstance(obj, self) and hasattr(obj, '__init__'):
+                 obj.__init__(*args, **kwargs)
+             
+            return obj
+
+
+    class Sample(metaclass=MetaClass):
+
+        def __new__(cls, *args, **kwargs): 
+            print('\n------->>> Sample __new__')
+            print('cls: ', cls)
+            print('args: ', args)
+            print('kwargs: ', kwargs)
+            
+            obj = super().__new__(cls)
+            return obj
+        
+        def __init__(self, x=0, y=0, z=0):
+            print('\n------->>> Sample __init__')
+            print('self: ', self)
+            print('x: ', x)
+            print('y: ', y)
+            print('z: ', z)
+            
+            self.x = x
+            self.y = y
+            self.z = z
+
+
+    sample_obj = Sample('p_arg_1', 'p_arg_2', z='k_arg')
+
+
+
+::
+
+    ------->>> MetaClass __call__
+    self:  <class '__main__.Sample'>
+    args:  ('p_arg_1', 'p_arg_2')
+    kwargs:  {'z': 'k_arg'}
+
+    ------->>> Sample __new__
+    cls:  <class '__main__.Sample'>
+    args:  ('p_arg_1', 'p_arg_2')
+    kwargs:  {'z': 'k_arg'}
+
+    ------->>> Sample __init__
+    self:  <__main__.Sample object at 0x7f578772f3d0>
+    x:  p_arg_1
+    y:  p_arg_2
+    z:  k_arg
+
+
+
+
+
+
+
+
 
 بر اساس تعریف ارائه شده در [`اسناد پایتون <https://docs.python.org/3/glossary.html#term-metaclass>`__]، تعریف کلاس (دستور ``class``) باعث ایجاد «نام کلاس»، «یک شی دیکشنری از کلاس» و «یک  شی لیست حاوی superclassهای آن کلاس» می‌شود، متاکلاس این سه آرگومان را دریافت و شی کلاس را ایجاد می‌کند.
 
