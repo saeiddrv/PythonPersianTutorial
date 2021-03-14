@@ -118,8 +118,7 @@
             
             obj = self.__new__(self, *args, **kwargs)    
     
-            if obj is not None and isinstance(obj, self) and hasattr(obj, '__init__'):
-                 obj.__init__(*args, **kwargs)
+            obj.__init__(*args, **kwargs)
              
             return obj
 
@@ -169,15 +168,68 @@
     y:  p_arg_2
     z:  k_arg
 
+بر اساس نمونه کد بالا، می‌توان فرآیند ایجاد یک شی در پایتون را به ترتیب زیر شرح داد:
+
+* کلاس Sample فراخوانی می‌شود (سطر ۳۹)، در نتیجه به صورت خودکار متد ``__call__`` کلاسِ کلاس Sample  یا همان متا کلاس آن (MetaClass) فراخوانی می‌شود. توجه داشته باشید که مقدار پارامتر ``self`` در این متد برابر با کلاس Sample می‌باشد (به خروجی سطر پنجم توجه شود - ``<'class '__main__.Sample>``)، چرا که شی فراخوانی کننده این متد اکنون خود کلاس Sample می‌باشد.
+
+* داخل  متد ``__call__`` از متا کلاس، ابتدا  متد ``__new__`` تعریف شده داخل کلاس Sample فراخوانی می‌شود (سطر ۹). توجه داشته باشید که متد ``__new__`` از کلاس  Sample نیز متد مرتبط از کلاس ``object`` (به عنوان superclass) فراخوانی شده است (سطر ۲۴). حاصل یک شی جدید از کلاس Sample خواهد بود که به داخل متد ``__call__`` از متاکلاس برگردانده می‌شود.
+
+* داخل  متد ``__call__`` از متا کلاس، اینبار  متد ``__init__``  فراخوانی می‌گردد - پیش از برگرداندن شی Sample  ایجاد شده (سطر ۱۱). این متد عملیات initialize یا مقداردهی اولیه را بر روی شی تازه ایجاد شده از کلاس Sample به انجام می‌رساند.
+
+* در انتها متد ``__call__`` از متا کلاس، شی Sample را باز‌می‌گرداند (سطر ۱۳).
+
+* توجه داشته باشید از آنجا که احتمال ارسال آرگومان به دو صورت «positional arguments» و «keyword arguments» وجود دارد، پارامترها و آرگومان‌ها به گونه‌ای تعریف و ارسال گردیدند که هر دو حالت پوشش داده شود:‌ ``args, **kwargs*``
+
+با استفاده از مثال پیش، یک کاربرد جالب و مهم از قابلیت تعریف متا کلاس در پایتون را بررسی کردیم، مثالی که شما را با روند ایجاد شی نیز بیشتر آشنا کرد.
+
+در انتهای این بخش جا دارد با امکان تعریف یک متد از نوع Class Method و نام ``__prepare__``  [`اسناد پایتون <https://docs.python.org/3/reference/datamodel.html#preparing-the-class-namespace>`__] در پایتون آشنا شویم. به صورت پیش‌فرض مفسر پایتون پس از اینکه متا کلاسِ یک کلاس را تشخیص می‌دهد، بلافاصله به دنبال ``__prepare__`` در آن می‌گردد و چنانچه پیاده‌سازی شده باشد، آن را فراخوانی و آرگومان‌های «متا کلاس»، «نام کلاسی که قرار است یک شی از آن ایجاد گردد»، «یک شی تاپل حاوی فهرست superclassهای آن کلاس - با حفظ ترتیب» و «تعدادی keyword argumentهای احتمالی (آرگومان‌های نام=مقدار)» را به آن ارسال می‌کند [`PEP 3115 <https://www.python.org/dev/peps/pep-3115/#invoking-the-metaclass>`__]. خروجی این متد می‌بایست یک شی  دیکشنری  (``dict``) باشد که در زمان ایجاد و ارزیابی کلاس، مورد استفاده قرار می‌گیرد. این متد قبل از ``__call__``  فراخوانی می‌شود و ما می‌توانیم از آن برای قرار دادن مقادیری برای استفاده در کلاس‌هایی که توسط متا کلاس ایجاد می‌گردند قرار دهیم. برای درک بهتر کاربرد این متد، به نمونه کد زیر توجه نمایید:
+
+.. code-block:: python
+    :linenos: 
+
+    class MetaClass(type):
+    
+        @classmethod
+        def __prepare__(metacls, name, bases, **kwargs):
+            print('\n------->>> MetaClass __prepare__')
+            print('metaclass: ', metacls)
+            print('name: ', name)
+            print('superclasses: ', bases)
+            print('extra arguments: ', kwargs)
+
+            return {"class_code": 1633}
+    
+    
+    class Sample(metaclass=MetaClass):
+    
+        @classmethod
+        def print_extra_info(cls):
+            print('\n------->>> Sample print_extra_info')
+
+            print ('class_code:', cls.__dict__['class_code'])
+    
+    
+    print ('Sample.__dict__:\n', Sample.__dict__)
+    Sample.print_extra_info()
+
+::
+
+    ------->>> MetaClass __prepare__
+    metaclass:  <class '__main__.MetaClass'>
+    name:  Sample
+    superclasses:  ()
+    extra arguments:  {}
+    Sample.__dict__:
+     {'class_code': 1633, '__module__': '__main__', 'print_extra_info': <classmethod object at 0x7f090a6aa5c0>, '__dict__': <attribute '__dict__' of 'Sample' objects>, '__weakref__': <attribute '__weakref__' of 'Sample' objects>, '__doc__': None}
+
+    ------->>> Sample print_extra_info
+    class_code: 1633
+
+دانستن ترتیب مراحل فراخوانی متدهای معرفی شده و همچنین قابلیت پیاده‌سازی و شخصی‌سازی آن‌ها می‌تواند در شرایط خاص خودش برای برنامه‌نویس بسیار کارگشا باشد.
 
 
 
 
-
-
-
-
-بر اساس تعریف ارائه شده در [`اسناد پایتون <https://docs.python.org/3/glossary.html#term-metaclass>`__]، تعریف کلاس (دستور ``class``) باعث ایجاد «نام کلاس»، «یک شی دیکشنری از کلاس» و «یک  شی لیست حاوی superclassهای آن کلاس» می‌شود، متاکلاس این سه آرگومان را دریافت و شی کلاس را ایجاد می‌کند.
 
 
 
