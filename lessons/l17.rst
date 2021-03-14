@@ -175,7 +175,7 @@
             print('kwargs: ', kwargs)
     
             # create new object
-            obj = super().__new__(cls)
+            obj = super().__new__(cls, *args, **kwargs)
     
             # return object
             return obj
