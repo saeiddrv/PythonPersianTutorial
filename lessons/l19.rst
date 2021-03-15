@@ -228,14 +228,75 @@
 
 
 
-
-
-
-
-
 انتزاع (Abstraction)
 ----------------------------------
 
+انتزاع یا تجرید یا  Abstraction در شی گرایی فرآیندی است که طی آن تنها ویژگی‌های اصلی،  آن‌هم بدون پیاده‌سازی جزییات ارايه می‌گردد. در واقع **Abstraction** برابر است با **Implementation hiding**. این مفهوم همراه با موجودیت کلاس تعریف می‌شود. کلاس‌های Abstrac، از درس پنجم به یاد داریم که دو نوع کلاس در شی‌گرایی وجود دارد: ۱- کلاس‌های عادی که توانایی نمونه‌سازی دارند و به آن‌ها **”Concrete Class“** گفته می‌شود ۲- کلاس‌هایی که توانایی نمونه‌سازی ندارند و به آن‌ها **”Abstract Class“** گفته می‌شود.
+
+«کلاس Abstract» کلاسی است که شامل یک یا چند «متد Abstract» باشد و «متد Abstract» متدی است که اعلان (Declare) شده ولی بدنه آن ‌تعریف (Define) نشده است. کلاس‌های Abstract قابلیت نمونه‌سازی ندارند و نمی‌توان از آن‌ها شی ایجاد نمود؛ چرا که هدف از توسعه آن‌ها قرار گرفتن در بالاترین سطح (یا چند سطح بالایی) سلسله‌مراتب وراثت، به عنوان کلاس پایه برای ارث‌بری کلاس‌های پایین‌تر می‌باشد. در واقع ایده طراحی کلاس Abstract در تعیین یک نقشه توسعه برای subclassها می‌باشد.
+
+در زبان برنامه‌نویسی پایتون، Abstraction از طریق ماژول ``abc`` ارايه می‌شود [`اسناد پایتون <https://docs.python.org/3/library/abc.html>`__]. این ماژول دو راه برای ایجاد کلاس Abstract فراهم آورده است:
+
+۱- با استفاده از متا کلاس ``ABCMeta`` [`اسناد پایتون <https://docs.python.org/3/library/abc.html#abc.ABCMeta>`__]:
+
+.. code-block:: python
+    :linenos: 
+    
+    from abc import ABCMeta, abstractmethod
+
+    class MyABC(metaclass=ABCMeta):
+    
+        @abstractmethod
+        def abs_instance_method(self):
+            pass
+    
+        @classmethod
+        @abstractmethod
+        def abs_class_method(cls):
+            pass
+        
+        @staticmethod        
+        @abstractmethod
+        def abs_static_method():
+            pass
+
+۲- با استفاده از ارث‌بری کلاس ``ABC`` [`اسناد پایتون <https://docs.python.org/3/library/abc.html#abc.ABC>`__]،  ``ABC`` یک کلاس کمکی است که متا کلاس آن ``ABCMeta`` می‌باشد و از نسخه 3.4 به پایتون افزوده شده است:
+
+
+.. code-block:: python
+    :linenos: 
+    
+    from abc import ABC, abstractmethod
+
+    class MyABC(ABC):
+    
+        @abstractmethod
+        def abs_instance_method(self):
+            pass
+    
+        @classmethod
+        @abstractmethod
+        def abs_class_method(cls):
+            pass
+        
+        @staticmethod        
+        @abstractmethod
+        def abs_static_method():
+            pass
+
+
+
+.. tip:: 
+
+  در زبان برنامه‌نویسی پایتون:
+  
+  * کلاس‌های Abstract می‌توانند علاوه بر متدهای Abstract، شامل متدهای معمولی که پیش‌تر شرح داده شد نیز باشند.
+
+  * نمی‌توان از کلاس‌های Abstract شی ایجاد کرد،‌ این نوع کلاس فاقد عملیات نمونه‌سازی می‌باشد.
+  
+  * متدهای Abstract با استفاده از دکوراتور ``abstractmethod@`` از ماژول ``abc`` ایجاد می‌گردد.
+  
+  * متدهای Abstract مانند هر متدی دیگری در پایتون می‌توانند از انواع Instance Method یا Class Method یا Static Method باشند.
 
 
 |
