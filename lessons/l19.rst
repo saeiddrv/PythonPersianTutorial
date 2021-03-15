@@ -248,17 +248,17 @@
     
         @abstractmethod
         def abs_instance_method(self):
-            pass
+            """This method should implement how to ....."""
     
         @classmethod
         @abstractmethod
         def abs_class_method(cls):
-            pass
+            """This method should implement how to ....."""
         
         @staticmethod        
         @abstractmethod
         def abs_static_method():
-            pass
+            """This method should implement how to ....."""
 
 ۲- با استفاده از ارث‌بری کلاس ``ABC`` [`اسناد پایتون <https://docs.python.org/3/library/abc.html#abc.ABC>`__]،  ``ABC`` یک کلاس کمکی است که متا کلاس آن ``ABCMeta`` می‌باشد و از نسخه 3.4 به پایتون افزوده شده است:
 
@@ -272,32 +272,35 @@
     
         @abstractmethod
         def abs_instance_method(self):
-            pass
+            """This method should implement how to ....."""
     
         @classmethod
         @abstractmethod
         def abs_class_method(cls):
-            pass
+            """This method should implement how to ....."""
         
         @staticmethod        
         @abstractmethod
         def abs_static_method():
-            pass
+            """This method should implement how to ....."""
 
 
-
-.. tip:: 
-
-  در زبان برنامه‌نویسی پایتون:
+.. note:: 
+  در بحث  کلاس‌های Abstract زبان برنامه‌نویسی پایتون می‌بایست نکات زیر را در نظر داشت:
   
   * کلاس‌های Abstract می‌توانند علاوه بر متدهای Abstract، شامل متدهای معمولی که پیش‌تر شرح داده شد نیز باشند.
 
   * نمی‌توان از کلاس‌های Abstract شی ایجاد کرد،‌ این نوع کلاس فاقد عملیات نمونه‌سازی می‌باشد.
   
-  * متدهای Abstract با استفاده از دکوراتور ``abstractmethod@`` از ماژول ``abc`` ایجاد می‌گردد.
+  * متدهای Abstract با استفاده از دکوراتور ``abstractmethod@`` از ماژول ``abc`` ایجاد می‌گردد. 
   
-  * متدهای Abstract مانند هر متدی دیگری در پایتون می‌توانند از انواع Instance Method یا Class Method یا Static Method باشند.
+  * متدهای Abstract مانند هر متدی دیگری در پایتون می‌توانند از انواع Instance Method یا Class Method یا Static Method باشند. توجه داشته باشید که این قانون در مورد Class Method و Static Method از نسخه 3.3 به بعد پایتون پشتیبانی می‌گردد.
 
+  * معمولا بدنه متدهای Abstract می‌بایست بدون پیا‌ده‌سازی باشند، این کار می‌تواند با قرار دادن دستورهایی همچون ``pass`` یا ``return`` یا ``return None`` نیز انجام شود ولی بهترین کار استفاده از Docstring می‌باشد (درس ششم)، با یک تیر دو نشان خواهید زد!
+
+  * هیچ اجباری به خالی بودن بدنه (عدم پیاده‌سازی) متدهای Abstract در داخل کلاس Abstract نیست، این متدها در کلاس  Abstract می‌توانند شامل یک پیاده‌سازی پیش‌فرض باشند، که اشیا subclassها در صورت نیاز می‌توانند با استفاده از تابع ``()super``  (همانطور که پیش‌تر شرح داده شد)، متد نظیر کلاس Abstract  را نیز فراخوانی کنند.
+
+  * کلاس‌های Abstract می‌توانند مانند دیگر کلاس‌ها در چند سطح از سلسله مراتب وراثت شرکت کنند (از یکدیگر ارث‌بری داشته باشند)، بنابراین باید توجه داشت که تنها subclassهایی که تمام متدهای Abstract مربوط به superclassهای خود را پیاده‌سازی کرده باشد به عنوان یک کلاس نرمال یا به اصطلاح Concrete حساب می‌شود و می‌توان از آن نمونه‌سازی کرد، در غیر این صورت مفسر پایتون آن کلاس را به عنوان یک کلاس Abstract در نظر می‌گیرد و اجازه نمونه‌سازی از آن را نخواهد داد.
 
 |
 
