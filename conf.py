@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'کتاب آزاد آموزش پایتون'
+project = u'کتاب آزاد آموزش زبان برنامه‌نویسی پایتون'
 copyright = u'2015, Saeid Darvish'
 author = u'Saeid Darvish'
 
@@ -189,7 +189,7 @@ html_last_updated_fmt = '%b %d, %Y'
 # Sphinx supports the following languages:
 #   'da', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'ja'
 #   'nl', 'no', 'pt', 'ro', 'ru', 'sv', 'tr'
-#html_search_language = 'en'
+html_search_language = 'en'
 
 # A dictionary with options for the search language support, empty by default.
 # Now only 'ja' uses this config value
