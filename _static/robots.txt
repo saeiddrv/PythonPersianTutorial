@@ -1,5 +1,7 @@
-User-Agent: *
+User-agent: *
+
 Disallow: 
 
-Sitemap: https://python.coderz.ir/_static/sitemap.xml
+Sitemap: https://python.coderz.ir/_static/sitemap-index.xml
+
 
