@@ -31,7 +31,102 @@
 
 در مبحث شی گرایی به پنهان‌سازی اطلاعات درونی یک شی و محدود کردن دسترسی به آن‌ها از بیرون، **کپسوله‌سازی (Encapsulation)** گفته می‌شود - در واقع Encapsulation برابر است با **Information hiding**.
 
-زبان برنامه‌نویسی پایتون از فلسفه‌ای به نام «اینجا همه بزرگسال هستیم» "we are all consenting adults here" پیروی می‌کند! بنابراین این زبان برخلاف زبان‌هایی همانند Java یک Encapsulation قوی و محافظت شده در اختیار برنامه‌نویس قرار نمی‌دهد. پایتون به برنامه‌نویس اعتماد دارد و می‌گوید «اگر دوست داری در مکان‌های تاریک پرسه بزنی، من مطمئنم که دلیل خوبی داری و هیچ مشکلی ایجاد نمی‌کنی!»
+زبان برنامه‌نویسی پایتون از فلسفه‌ای به نام «اینجا همه بزرگسال هستیم» "we are all consenting adults here" پیروی می‌کند! بنابراین این زبان برخلاف زبان‌هایی مانند Java و ++C یک Encapsulation قوی (strong) در اختیار برنامه‌نویس قرار نمی‌دهد. پایتون به برنامه‌نویس اعتماد دارد و می‌گوید «اگر دوست داری در مکان‌های تاریک پرسه بزنی، من مطمئنم که دلیل خوبی داری و هیچ مشکلی ایجاد نمی‌کنی!»
+
+
+.. tip:: 
+  به صورت پیش‌فرض تمام اجزای داخلی یک کلاس، **public** هستند و از هر جایی خارج از کلاس مرتبط خود، قابل دستیابی می‌باشند.
+
+.. tip:: 
+  بر اساس یک قرارداد مابین برنامه‌نویسان پایتون،‌ چنانچه ابتدای نام Attributeها و Methodها با **یک کاراکتر خط زیرین** (``_``) آغاز شود، این مفهوم را با خود می‌رساند که «دست نزنید مگر داخل همان کلاس یا subclassهای آن». رعایت این قرارداد معادل سطح دسترسی **protected** در Java و ++C می‌باشد.
+
+.. tip:: 
+  
+  زبان برنامه‌نویسی پایتون از تکنیک «دستکاری نام» یا **name mangling** [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Name_mangling>`__] پشتیبانی می‌کند. به کمک این تکنیک و با قراردادن **دو کاراکتر خط زیرین** (``__``) در ابتدای نام هر یک از اجزای داخلی یک کلاس، می‌توان معادل سطح دسترسی **private** در Java و ++C را پیاده‌سازی کرد [`اسناد پایتون <https://docs.python.org/3/tutorial/classes.html#private-variables>`__].
+
+به نمونه کد زیر توجه نمایید:
+
+.. code-block:: python
+    :linenos:
+
+    class Student:
+
+        def __init__(self, name, score=0):
+            self.name = name
+            self.__score = score
+ 
+        def display(self):
+            print('name:', self.name)
+            print('score:', self.__score)
+
+
+    student = Student('Saeid', 70)
+
+    #accessing using method
+    student.display()
+
+    #accessing directly from outside
+    print('-' * 10, 'Accessing directly from outside')
+    print('name:', student.name)
+    print('score:', student.__score)
+
+
+::
+
+    name: Saeid
+    score: 70
+    ---------- Accessing directly from outside
+    name: Saeid
+    Traceback (most recent call last):
+      File "sample.py", line 20, in <module>
+        print('score:', student.__score)
+    AttributeError: 'Student' object has no attribute '__score'
+
+داده‌های private را در خارج از کلاس نمی‌توان مستقیم مورد دستیابی قرار داد و همانطور که از نمونه کد بالا مشاهده می‌شود دستیابی چنین عناصری در پایتون باعث بروز AttributeError می‌شود. اما گفته شد که پایتون Encapsulation قوی ندارد، چه اتفاقی افتاد؟
+
+مفسر پایتون بر اساس تکنیک **name mangling**، نام تمام عناصری که تنها با **دو کاراکتر خط زیرین** شروع شده باشند (مانند ``spam__``) را به صورت زیر با افزودن نام کلاس به ابتدای آن تغییر می‌دهد::
+
+    _classname__spam
+
+بنابراین اگر برنامه‌نویسی به دنبال دستیابی نام موجود (``spam__``) در کلاس باشد، چیزی پیدا نخواهد کرد. با این کار پایتون به صورت ضعیف امکان دور نگه‌داشتن برخی از عناصر را از حالت عمومی فراهم آورده است. برای مثال پیش داریم::
+
+    >>> dir(student)
+    ['_Student__score', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'display', 'name']
+
+
+متدهای Setter و Getter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+در برنامه‌نویسی شی گرا چنانچه بخواهیم دسترسی به داده‌ای را به شدت محدود کنیم، به آن داده سطح دسترسی private را اعمال می‌کنیم. اما گاهی می‌خواهیم تنها روند دستیابی و تغییر برخی از داده‌ها را کنترل کنیم - دسترسی مجاز است ولی چگونگی آن مهم است - در این صورت علاوه بر تنظیم سطح دسترسی private به آن عناصر متدهایی را برای تغییر (به عنوان Setter) و دستیابی (به عنوان Getter) آن‌ها نیز می‌بایست ایجاد کنیم:
+
+.. code-block:: python
+    :linenos:
+
+    class Student:
+
+        def __init__(self, name, score=0):
+            self.name = name
+            self.__score = score
+
+        def set_score(self, score):
+            if isinstance(score, int) and  0 <= score <= 100:
+                self.__score = score
+
+        def get_score(self):
+            return self.__score
+
+
+    student = Student('Saeid', 70)
+    student.set_score(99)
+    student.set_score('100')
+    student.set_score(-10)
+    print(f'{student.name}, score:', student.get_score())
+
+
+::
+
+    Saeid, score: 99
+
 
 
 
