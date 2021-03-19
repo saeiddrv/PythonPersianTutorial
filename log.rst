@@ -12,6 +12,18 @@
 
 
 
+
+.. raw:: html
+
+    <p class="rubric" id="00120" ><a class="reference external" href="#00120">00120</a> - جمعه ۲۹ اسفند ۱۳۹۹</p>
+
+* درس بیستم با عنوان «شی گرایی (OOP) در پایتون: Encapsulation و چندریختی (Polymorphism)» به فهرست کتاب افزوده شد.
+
+**✽ سال نو مبارک ✽**
+
+----
+
+
 .. raw:: html
 
     <p class="rubric" id="00119" ><a class="reference external" href="#00119">00119</a> - چهارشنبه ۲۷ اسفند ۱۳۹۹</p>
