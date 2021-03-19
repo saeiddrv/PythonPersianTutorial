@@ -160,13 +160,13 @@ Method Overriding
           print('Animal, breathing...')
 
         def walk(self):
-          print('Animal, wlking...')
+          print('Animal, walking...')
     
     
     class Dog(Animal):
 
         def walk(self):
-          print('Dog, wlking...')
+          print('Dog, walking...')
 
 
     dog = Dog()
@@ -177,7 +177,7 @@ Method Overriding
 ::
 
     Animal, breathing...
-    Dog, wlking...
+    Dog, walking...
 
 در این نمونه کد، کلاس Dog از کلاس Animal ارث‌بری دارد و متد ``walk`` از کلاس Animal را Override کرده است. همانطور که از خروجی مشاهده می‌شود، برخلاف متد ``breathe``، هنگام فراخوانی متد ``walk`` توسط شی Dog، متد باز‌پیاده‌سازی شده موجود در این کلاس فراخوانی می‌شود.
 
@@ -198,6 +198,38 @@ Method Overriding
 Method Overloading
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+این نوع از چندریختی به امکان کنارهم قرار گرفتن چندین متد همنام ولی با پارامترهای متفاوت (از نظر تعداد و نوع) در کنار هم می‌باشد. یک شی می‌تواند با ارسال آرگومان‌های متفاوت و فراخوانی یک نام یکسان از متد، کارهای متفاوتی را به انجام برساند.
+
+همانطور که در قسمت پیش نیز اشاره شد، در زبان برنامه‌نویسی پایتون تعداد و نوع پارامترهای تعریف شده برای یک تابع یا متد، هیچ ارتباطی با هویت آن متد ندارد و یک متد تنها با نام آن شناسایی می‌شود. **بنابراین Method Overloading در پایتون پشتیبانی نمی‌شود** و چنانچه چندین متد یا تابع همنام با پارامترهای متفاوت در یک کلاس یا ماژول در کنار هم باشند، خطایی رخ نمی‌دهد ولی باید توجه داشته باشید که متد یا تابع آخر، تمام موارد پیش از خود را در زیر سایه خواهد گرفت:
+
+.. code-block:: python
+    :linenos:
+
+    class Animal:
+
+        def breathe(self):
+            print('breathing...')
+
+        def walk(self):
+            print('walking...')
+
+        def walk(self, time=30):
+            print(f'{time} minutes, walking...')
+
+        def walk(self, minutes=30, seconds=59):
+            print(f'{minutes} minutes and {seconds} seconds, walking...')
+
+
+    animal = Animal()
+    animal.walk()
+
+
+::
+
+    30 minutes and 59 seconds, walking...
+
+
+همان‌طور که از خروجی نمونه کد بالا مشاهده می‌شود، با فراخوانی متد ``walk`` توسط شی Animal، از میان سه متد تعریف شده، این آخرین متد است که اجرا می‌گردد.
 
 
 Operator Overloading
