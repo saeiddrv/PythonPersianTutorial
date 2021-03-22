@@ -292,7 +292,186 @@ Class Annotations
 ماژول typing
 ~~~~~~~~~~~~~~~~~~~~~~
 
+این ماژول از نسخه 3.5 با هدف فراهم آوردن پشتیبانی از انواع داده پیچیده‌تر در Runtime پایتون، افزوده شده است [`اسناد پایتون <https://docs.python.org/3/library/typing.html>`__]. 
 
+برخی از مواردی که این ماژول در پشتیبانی از قابلیت Type Hints فراهم آورده است به شرح زیر است. جهت آشنایی بیشتر می‌توانید به صفحه اصلی مستندات مراجعه نمایید.
+
+
+**-- معادل برخی از انواع --**
+
+تاکنون فقط به ذکر نوع انواع ساده‌ای همچون ``int`` و ``str`` پرداخته‌ایم، با این حال ذکر نوع برای نوع داده دیکشنری که شامل اعضایی به صورت کلید:مقدار بوده و هر عضو نیز می‌تواند از دو نوع مختلف باشد چگونه باید انجام شود؟ در پاسخ باید گفت که ماژول ``typing`` یک سری انواع معادل فراهم آورده است.
+
+
+* ``Dict`` [`اسناد پایتون <https://docs.python.org/3/library/typing.html#typing.Dict>`__] معادل ``dict``
+
+  ::
+
+       >>> from typing import Dict
+
+       >>> d: Dict[str, int] = {'a': 97, 'b': 98, 'c': 99, 'd': 100}
+
+       >>> d
+       {'a': 97, 'b': 98, 'c': 99, 'd': 100}
+       >>> type(d)
+       <class 'dict'>
+       >>> isinstance(d, dict)
+       True
+
+
+  ::
+
+       >>> d = {'a': 97, 'b': 98, 'c': 99, 'd': 100}
+
+
+
+* ``List`` [`اسناد پایتون <https://docs.python.org/3/library/typing.html#typing.List>`__] معادل ``list``
+
+  ::
+
+       >>> from typing import List
+
+       >>> L: List[int] = [97, 98, 99, 100]
+
+       >>> L
+       [97, 98, 99, 100]
+       >>> type(L)
+       <class 'list'>
+       >>> isinstance(L, list)
+       True
+
+
+  ::
+
+       >>> L = [97, 98, 99, 100]
+
+
+
+
+* ``Set`` [`اسناد پایتون <https://docs.python.org/3/library/typing.html#typing.Set>`__] معادل ``set``
+
+  ::
+
+       >>> from typing import Set
+
+       >>> s: Set[str] = {'a', 'b', 'c', 'd'}
+
+       >>> s
+       {'d', 'c', 'a', 'b'}
+       >>> type(s)
+       <class 'set'>
+       >>> isinstance(s, set)
+       True
+
+  ::
+
+       >>> s = {'a', 'b', 'c', 'd'}
+
+
+|
+
+
+
+**-- NewType --**
+
+با استفاده از این تابع می‌توان یک نوع جدید یا درواقع یک Wrapper شخصی برای انواع موجود ایجاد نماییم [`اسناد پایتون <https://docs.python.org/3/library/typing.html#newtype>`__].
+
+
+سینتکس ``NewType('UserId', int)`` یک نوع جدید با نام ``UserId`` بر اساس نوع اصلی ``int`` ایجاد می‌کند. توجه داشته باشید که نوع جدید تنها از نظر ظاهر برای ابزارهای type checker متفاوت بوده ولی در پایتون همان ماهیت نوع اصلی را خواهد داشت:
+
+  ::
+
+       >>> from typing import NewType
+
+       >>> UserId = NewType('UserId', int)
+
+       >>> some_id = UserId(524313)
+
+       >>> some_id
+       524313
+       >>> type(some_id)
+       <class 'int'>
+       >>> isinstance(some_id, int)
+       True
+
+  ::
+
+      >>> def get_user_name(user_id: UserId) -> str:
+      ...      if user_id == 1633:
+      ...          return 'saeid'
+      ...      else:
+      ...          return ''
+      ... 
+      >>> saeid_id = UserId(1633)
+      >>> get_user_name(saeid_id)
+      'saeid'
+
+|
+
+**-- Any --**
+
+یک نوع خاص که به معنی هر نوعی می‌باشد، در واقع ``Any`` هر نوعی می‌تواند باشد [`اسناد پایتون <https://docs.python.org/3/library/typing.html#the-any-type>`__]. دو قطعه کد زیر از نظر ابزارهای type checker کاملا مشابه یکدیگر هستند:
+
+  ::
+
+        >>> def func(param):
+        ...     return param
+        ... 
+        >>> 
+
+  ::
+
+        >>> from typing import Any
+        >>> def func(param: Any) -> Any:
+        ...     return param
+        ... 
+        >>> func(4)
+        4
+        >>> func('py')
+        'py'
+        >>> func([0, 1, 2])
+        [0, 1, 2]
+
+
+|
+
+**-- Callable --**
+
+یک نوع خاص دیگر برای شرح نوع یک شی Callable (درس هفدهم) به مانند توابع می‌باشد [`اسناد پایتون <https://docs.python.org/3/library/typing.html#callable>`__]. ساختار این نوع به صورت زیر است:
+
+  ::
+
+        Callable[[Arg1Type, Arg2Type,...], ReturnType]
+
+
+  به مثال زیر توجه تمایید:
+
+.. code-block:: python
+    :linenos:
+
+    from typing import Any, Callable
+
+    class Response:
+
+        def __init__(self, code:int, message:str, result:Any) -> None:
+            self.code = code
+            self.message = message
+            self.result = result
+
+
+    def success_handler(result:Any) -> None:
+        pass
+
+
+    def error_handler(code:int, message:str) -> None:
+        pass
+
+
+    def async_query(on_success: Callable[[Any], None],
+                    on_error: Callable[[int, str], None]) -> Response:
+        pass
+
+
+    async_query(success_handler, error_handler)
 
 
 
