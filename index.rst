@@ -47,6 +47,7 @@
    lessons/l19
    lessons/l20
    lessons/l21
+   lessons/l22
    log
    donate-report
    python-interactive
