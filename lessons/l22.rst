@@ -479,7 +479,7 @@ Class Annotations
 Data Classes
 ----------------------------
 
-از **نسخه 3.7 پایتون** یک ویژگی جالب به پایتون اضافه گردید. دیتا کلاس **(Data Class)** [`PEP 557 <https://www.python.org/dev/peps/pep-0557>`__]، در واقع یک سینتکسی ساده‌سازی شده برای ایجاد کلاس‌هایی که معمولا تنها حاوی Instance Attribute می‌باشند. این نوع کلاس با استفاده از دکوراتور ``dataclass@`` از ماژول ``dataclasses`` ایجاد می‌گردد [`اسناد پایتون <https://docs.python.org/3/library/dataclasses.html>`__]. برای مثال کلاس زیر را در نظر بگیرید:
+از **نسخه 3.7 پایتون** یک ویژگی جالب به پایتون اضافه گردید. دیتا کلاس **(Data Class)** [`PEP 557 <https://www.python.org/dev/peps/pep-0557>`__]، در واقع سینتکسی ساده‌سازی شده برای ایجاد کلاس‌هایی می‌باشد که معمولا تنها حاوی Instance Attribute هستند. این نوع کلاس با استفاده از دکوراتور ``dataclass@`` از ماژول ``dataclasses`` ایجاد می‌گردد [`اسناد پایتون <https://docs.python.org/3/library/dataclasses.html>`__]. برای مثال کلاس زیر را در نظر بگیرید:
 
 
 .. code-block:: python
@@ -510,11 +510,11 @@ Data Classes
     True
 
 
-در این نوع کلاس برای تعریف Attributeها از سینتکس  Variable Annotations [`PEP 526 <https://www.python.org/dev/peps/pep-0526/>`__] استفاده می‌شود. این سینتکس و در کل ذکر نوع داده در پایتون یا Type Hints [`PEP 484 <https://www.python.org/dev/peps/pep-0484/>`__] **موضوع درس بعدی است**. در این شیوه نوع متغیرها به صراحت ذکر می‌گردد. در حالت عادی تعریف یک متغییر در زبان برنامه‌نویسی پایتون به صورت ``var = value`` می‌باشد (درس ششم)، همانطور که می‌دانیم تاکنون هیچ‌گاه در پایتون برای تعریف متغییر نیازی به ذکر صریح نوع داده نمی‌بود، **اکنون نیز نیازی نیست**، ولی از **نسخه 3.6 پایتون** می‌توانیم اینکار را انجام دهیم، می‌توانیم نوع داده را خودمان مشخص کنیم یا به اصطلاح آن نوع را annotation کنیم. سینتکس این عملیات به صورت ``var: annotation`` می‌باشد، این سینتکس مشخص می‌کند که متغییر var از نوع annotation می‌باشد. همچنین با استفاده از سینتکس ``var: annotation = value`` نیز می‌توان همزمان عملیات انتساب و مقداردهی را نیز انجام داد. باید توجه داشت که تغییری در ساختار مفسر پایتون ایجاد نشده است!، بلکه صرفا سینتکس جدیدی اضافه شده که می‌تواند به ابزارهای شخص‌ثالث (third party) همانند IDEها برای کنترل نوع داده‌ها در زمان توسعه برنامه یاری‌رسان باشد.
+در این نوع کلاس برای تعریف Attributeها از سینتکس  Variable Annotations [`PEP 526 <https://www.python.org/dev/peps/pep-0526/>`__] استفاده می‌شود. 
 
-باید توجه داشت که طبق سند PEP 484 پیروی از اصول Type Hints در پایتون اجباری نبوده و نخواهد شد. ولی Data Class یک استثناست و در آن حتما می‌بایست Attributeها به شیوه شرح داده شده، تعریف گردند و به آن‌ها فیلدهای (field) دیتا کلاس گفته می‌شود.
+باید توجه داشت که طبق سند PEP 484 پیروی از اصول Type Hints در پایتون اجباری نبوده، نیست و نخواهد شد. ولی Data Class یک استثناست و در آن حتما می‌بایست Attributeها به شیوه شرح داده شده، تعریف گردند و به آن‌ها فیلدهای (field) دیتا کلاس گفته می‌شود.
 
-از آنجا که این نوع کلاس برای ایجاد یک کاربرد عمومی از کلاس‌ها توسعه یافته (نگهداری اطلاعات)، بنابراین بسیاری از عملیات‌ها در آن خودکارسازی شده تا پیاده‌سازی این کلاس ساده‌تر از هر کلاس دیگری باشد. برای مثال نیازی به پیاده‌سازی متد ``__init__`` نیست و این متد به صورت خودکار برای کلاس ما ایجاد می‌گردد. اکنون اگر بخواهیم دیتاکلاس مثال قبل را به صورت عادی پیاده‌سازی کنیم:
+از آنجا که این نوع کلاس برای ایجاد یک کاربرد عمومی از کلاس‌ها توسعه یافته (نگهداری اطلاعات)، بنابراین بسیاری از عملیات‌ها در آن خودکارسازی شده تا پیاده‌سازی این کلاس ساده‌تر از هر کلاس دیگری باشد. برای مثال نیازی به پیاده‌سازی متد ``__init__`` نیست و این متد به صورت خودکار برای کلاس ما ایجاد می‌گردد (به لطف Type Hinting!). اکنون اگر بخواهیم دیتاکلاس مثال قبل را به صورت عادی پیاده‌سازی کنیم:
 
 
 .. code-block:: python
@@ -545,7 +545,7 @@ Data Classes
     False
 
 
-با مقایسه این دو خروجی، مشاهده می‌شود که مقدار چاپ شی (سطر ۹) و نیز حاصل مقایسه دو شی (سطر ۱۴) با مقادیر یکسان متفاوت است. دلیل نیز پیشتر بیان شد،‌ تعدادی متد خاص همانند ``__init__`` برای دیتا کلاس‌ها پیاده‌سازی می‌شود که با پیاده‌سازی پیش‌فرض متفاوت‌ بوده و بر نوع کاربرد این کلاس‌ها و راحتی استفاده آن‌ها تمرکز شده است. این پیاده‌سازی را می‌توان به صورت زیر نمایش داد:
+با مقایسه این دو خروجی، مشاهده می‌شود که مقدار چاپ شی (سطر ۹) و نیز حاصل مقایسه دو شی (سطر ۱۴) با مقادیر یکسان، متفاوت است. دلیل نیز پیشتر بیان شد،‌ تعدادی متد خاص همانند ``__init__`` برای دیتا کلاس‌ها به صورت خودکار تولید می‌شوند که با پیاده‌سازی پیش‌فرض متفاوت‌ بوده و بر نوع کاربرد این کلاس‌ها و راحتی استفاده تمرکز شده است. این پیاده‌سازی را می‌توان به صورت زیر نمایش داد:
 
 
 
@@ -584,6 +584,18 @@ Data Classes
     True
 
 از درس پیش با متد ``__eq__`` آشنا هستیم، متد ``__str__`` [`اسناد پایتون <https://docs.python.org/3/reference/datamodel.html#object.__str__>`__] نیز یکی دیگر از متدهای خاص پایتون می‌باشد و هنگامی که یک شی می‌خواهد به نوع str تبدیل گردد، به صورت خودکار فراخوانی می‌گردد (**تبدیل به نوع رشته - درس هفتم**)، به صورت مشابه متد ``__repr__`` [`اسناد پایتون <https://docs.python.org/3/reference/datamodel.html#object.__repr__>`__] نیز قابل پیاده سازی است.
+
+
+بهتر است مقداردهی اولیه اشیای دیتاکلاس‌ها را به روش **نام=مقدار** انجام دهید (هنگام نمونه‌سازی)، در غیر این صورت اگر ترتیب تعریف فیلدها در کلاس را از بالا به پایین در نظر بگیریم، آنگاه ترتیب قرار گرفتن پارامترها در متد ``__init__`` که قرار است تولید شود، با حفظ ترتیب، از چپ به راست خواهند بود.
+
+به همین دلیل می‌بایست در ترتیب قرارگرفتن فیلدهایی که دارای مقدار پیش‌فرض هستند دقت کرد و آن‌ها را جزو فیلد‌های انتهایی درنظر گرفت. چرا که تعریف متد ``__init__`` با خطا مواجه می‌گردد. از تعریف توابع به یاد داریم که پس از پارامتر با مقدار پیش‌فرض نمی‌تواند پارامتر بدون مقدار پیش‌فرض قرار بگیرد!
+
+
+
+Type Hinting
+~~~~~~~~~~~~~~~~~~~~~~
+
+تنها این Attributeهای یک دیتا کلاس است که می‌بایست بر اساس قوانین سینتکس Type Hinting نوشته شوند. در این بین برای درج Class Attributeها نیز می‌بایست حتما از ``ClassVar`` استفاده گردد، در غیر این صورت آن Attribute در حکم Instance Attribute خواهد بود.
 
 
 متد ``__post_init__``
@@ -695,7 +707,7 @@ Data Classes
 * توجه: در هر فیلد تنها یکی از دو پارامتر ``default`` یا ``default_factory`` می‌بایست حاوی مقداری غیر از ``MISSING`` باشد.
 
 
-* ``repr``, ``init``, ``compare``, ``hash``: در صورتی که هر کدام از این پارامتر‌ها برابر با مقدار ``True`` (پیش‌فرض) تنطیم گردند، فیلد مربوطه به متدهای ایجاد شده متناظر با هر پارامتر ارسال خواهد شد::
+* ``repr``, ``init``, ``compare``, ``hash``: در صورتی که هر کدام از این پارامتر‌ها برابر با مقدار ``True`` (پیش‌فرض) تنظیم گردند، فیلد مربوطه به متدهای ایجاد شده متناظر با هر پارامتر ارسال خواهد شد::
 
       repr    -->> __repr__ __str__
       init    -->> __init__
@@ -705,6 +717,146 @@ Data Classes
 
 * توجه چنانچه مقدار ``compare`` برای ``True`` تنظیم گردد (حالت پیش‌فرض)،‌مقدار ``hash`` می‌بایست ``None`` (و نه ``False``) باشد، چرا که عملیات مقایسه دو شی دیگر به مقدار hash وابسته نبوده و از طریق متدهای تولید شده (__eq__ و غیره) انجام خواهد شد. 
 
+
+* ``metadata``: می‌توان اطلاعات اضافی و دلخواه پیرامون فیلد را در قالب یک شی دیکشنری به این پارامتر ارسال کرد.
+
+
+
+ به نمونه کد زیر توجه نمایید:
+
+.. code-block:: python
+    :linenos:
+
+    from dataclasses import dataclass, field, fields
+    from typing import List
+
+
+    def get_default_books():
+        return []
+
+
+    @dataclass
+    class Book:
+        id: int 
+        name: str = field(compare=False)   
+
+
+    @dataclass
+    class Author:
+        id: int 
+        name: str = field(compare=False, metadata={'coding': 'UTF-8'})   
+        books: List[Book] = field(default_factory=get_default_books, compare=False)
+
+
+
+    author = Author(id=1, name='Saeid')
+    print(author)
+    print(fields(author))
+
+
+::
+
+    Author(id=1, name='Saeid', books=[])
+    (Field(name='id',type=<class 'int'>,default=<dataclasses._MISSING_TYPE object at 0x7f5e66a58e48>,default_factory=<dataclasses._MISSING_TYPE object at 0x7f5e66a58e48>,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),_field_type=_FIELD), Field(name='name',type=<class 'str'>,default=<dataclasses._MISSING_TYPE object at 0x7f5e66a58e48>,default_factory=<dataclasses._MISSING_TYPE object at 0x7f5e66a58e48>,init=True,repr=True,hash=None,compare=False,metadata=mappingproxy({'coding': 'UTF-8'}),_field_type=_FIELD), Field(name='books',type=typing.List[__main__.Book],default=<dataclasses._MISSING_TYPE object at 0x7f5e66a58e48>,default_factory=<function get_default_books at 0x7f5e66bcb1e0>,init=True,repr=True,hash=None,compare=False,metadata=mappingproxy({}),_field_type=_FIELD))
+
+
+Immutable Data Classes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+دکوراتور ``dataclass@`` چندین پارامتر با مقدار پیش‌فرض دارد که به شرح زیر می‌باشند [`اسناد پایتون <https://docs.python.org/3/library/dataclasses.html#dataclasses.dataclass>`__]::
+
+    @dataclass(init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False)
+    class Sample:
+       ...
+
+
+* ``init``: اگر ``True`` باشد، متد ``__init__`` تولید می‌شود.
+
+* ``repr``: اگر ``True`` باشد، متد ``__repr__`` تولید می‌شود.
+
+* ``order``: اگر ``True`` باشد، متدهای ``__gt__`` ،``__le__`` ،``__lt__`` و ``__ge__`` تولید می‌شوند.
+
+* ``unsafe_hash``: اگر ``False`` باشد، آنگاه بر اساس مقادیر ``eq`` ،``init`` و ``frozen`` و شرایط موجود یک متد ``__hash__`` مناسب تولید می‌شود.
+
+
+**frozen**
+
+چنانچه این پارامتر برابر ``True`` تنظیم گردد، دیتا کلاس Immutable (غیرقابل تغییر) خواهد شد و دیگر نمی‌توان مقدار هیچکدام از فیلدهای اشیای آن را پس از نمونه‌سازی تغییر داد، این رفتار در موارد بسیاری می‌تواند مفید باشد:
+
+
+
+.. code-block:: python
+    :linenos:
+
+    from dataclasses import dataclass
+
+    @dataclass(frozen=True)
+    class Position:
+        name: str
+        lon: float = 0.0
+        lat: float = 0.0
+
+    pos = Position('Tehran', 35.6, 51.5)
+
+    print(pos.name)
+    print('-' * 30)
+    pos.name = 'Qazvin'
+
+::
+
+    Tehran
+    ------------------------------
+    Traceback (most recent call last):
+      File "sample.py", line 13, in <module>
+        pos.name = 'Qazvin'
+      File "<string>", line 3, in __setattr__
+    dataclasses.FrozenInstanceError: cannot assign to field 'name'
+
+
+
+وراثت (Inheritance)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+دیتا کلاس‌ها می‌توانند از یکدیگر ارث‌بری داشته باشند:
+
+
+.. code-block:: python
+    :linenos:
+
+    from dataclasses import dataclass
+
+
+    @dataclass
+    class Person:
+        name: str
+
+
+    @dataclass
+    class Friend(Person):
+        city: str
+
+        def say_hi(self):
+            print(f'Hi {self.name}')
+
+
+    f = Friend(city='Tehran', name='Armin')
+    f.say_hi()
+
+    f = Friend('Tehran', 'Armin')
+    f.say_hi()
+
+::
+
+    Hi Armin
+    Hi Tehran
+
+
+بهتر است مقداردهی اولیه اشیای دیتاکلاس‌ها را به روش **نام=مقدار** انجام دهید، در غیر این صورت باید بدانید در هنگام ارث‌بری ابتدا فیلدهای supperclass مقداردهی می‌شوند! در نتیجه می‌توان تعریف متد ``__init__`` برای کلاس ``Friend`` را برابر با تعریف زیر فرض کرد::
+
+
+    def __init__(self, name, city):
+
+به همین دلیل نیز اگر یکی از فیلدهای supperclass دارای مقدار پیش‌فرض باشد، می‌بایست فیلدهای subclass نیز دارای مقدار پیش‌فرض باشند. چرا که تعریف متد ``__init__`` با خطا مواجه می‌گردد. از تعریف توابع به یاد داریم که پس از پارامتر با مقدار پیش‌فرض نمی‌تواند پارامتر بدون مقدار پیش‌فرض قرار بگیرد!
 
 
 |
