@@ -236,7 +236,8 @@ Class Annotations
     print(obj.__annotations__)
 
     print('\nSEC#03', '-' * 30)
-    print(vars(obj))
+    print('Class  vars:', vars(Sample))
+    print('Object vars:', vars(obj))
 
     print('\nSEC#04', '-' * 30)
     print('x:', obj.x)
@@ -267,7 +268,9 @@ Class Annotations
     {'a': <class 'str'>, 'b': typing.ClassVar[str], 'x': <class 'int'>}
 
     SEC#03 ------------------------------
-    {'x': 5, 'y': 8}
+    Class  vars: {'__module__': '__main__', '__annotations__': {'a': <class 'str'>, 'b': typing.ClassVar[str], 'x': <class 'int'>}, 'a': 'a_data', 'b': 'b_data', '__init__': <function Sample.__init__ at 0x7faae8f16bf8>, '__dict__': <attribute '__dict__' of 'Sample' objects>, '__weakref__': <attribute '__weakref__' of 'Sample' objects>, '__doc__': None}
+    Object vars: {'x': 5, 'y': 8}
+
 
     SEC#04 ------------------------------
     x: 5
@@ -282,6 +285,7 @@ Class Annotations
     b: LANGUAGE
 
 
+تابع ``vars`` تمام attributeهای شی دریافتی را در قالب یک شی دیکشنری برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/functions.html#vars>`__].
 
 
 
