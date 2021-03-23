@@ -344,11 +344,130 @@ Decorators
 قراردادن Decorator بر روی کلاس
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+در زبان برنامه‌نویسی پایتون می‌توان یک Decorator را به کل یک کلاس اعمال کرد، در این صورت نیز تفاوتی با آنچه در توابع دیدم، نمی‌کند. تنها در این حالت، این کلاس است که به Decorator ارسال می‌گردد. دو نمونه کد زیر معادل یکدیگر هستند::
+
+
+    def decorator_name(a_class):
+        def wrapper():
+            # Do Something!
+            print('Class name:', a_class.__name__)
+            return a_class()
+
+        return wrapper
+
+
+::
+
+     # 1
+
+     @decorator_name
+     class Sample():
+         pass
+
+
+     sample = Sample()
+
+
+::
+
+      # 2
+
+      class Sample():
+          pass
+
+      SampleWrapper = decorator_name(Sample)
+      sample = SampleWrapper()
+
+
+::
+
+      # Output
+
+      Class name: Sample
+
 
 
 کلاس به عنوان Decorator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+در زبان برنامه‌نویسی پایتون می‌توان از کلاس‌ها همچون توابع برای ایجاد Decorator استفاده کرد. در این صورت شی‌ای که Decorator به آن اعمال شده است از طریق متد ``__init__`` دریافت می‌گردد. همچنین می‌بایست متد ``__call__`` را پیاده‌سازی کرده باشیم تا اشیای کلاس قابلیت callable را داشته باشند (درس هفدهم)، عملیات اصلی Decorator می‌بایست داخل این متد پیاده‌سازی گردد:
+
+
+
+::
+
+    class CountCalls:
+        def __init__(self, func):
+            self.func = func
+            self.num_calls = 0
+
+        def __call__(self):
+            self.num_calls += 1
+            print(f"Call {self.num_calls} of {self.func.__name__!r}")
+            return self.func()
+
+::
+
+    # 1
+
+    @CountCalls
+    def func():
+        ''' a function'''
+
+    print(func.__doc__)
+    func()
+    func()
+
+
+::
+
+    # 2
+
+    def func():
+        ''' a function'''
+
+    obj = CountCalls(func)
+
+    print(obj.__doc__)
+    obj()
+    obj()
+
+
+::
+
+
+    # Output
+
+    None
+    Call 1 of 'func'
+    Call 2 of 'func'
+
+
+
+**functools.update_wrapper**
+
+همانند کاربرد تابع ``wraps`` از ماژول ``functools`` در هنگام ساخت Decorator از توابع، در اینجا نیز می‌توانیم جهت حفظ اطلاعات مربوط به تابع اصلی، این‌بار از تابع ``update_wrapper`` این ماژول استقاده کنیم [`اسناد پایتون <https://docs.python.org/3/library/functools.html#functools.update_wrapper>`__] - اگر کلاس CountCalls را به صورت زیر تغییر دهیم، آنگاه خروجی هر دو حالت نیز به شرح زیر تغییر خواهد کرد، چرا که اکنون ``__doc__`` در دسترس باقی مانده است::
+
+
+    import functools
+
+    class CountCalls:
+        def __init__(self, func):
+            functools.update_wrapper(self, func)
+            self.func = func
+            self.num_calls = 0
+
+        def __call__(self):
+            self.num_calls += 1
+            print(f"Call {self.num_calls} of {self.func.__name__!r}")
+            return self.func()
+
+
+::
+
+     a function
+     Call 1 of 'func'
+     Call 2 of 'func'
 
 
 Descriptors
