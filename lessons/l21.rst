@@ -5,7 +5,7 @@
    :keywords:  آموزش, آموزش پایتون, آموزش برنامه نویسی, پایتون, Decorators, کتابخانه, پایتون, شی گرایی در پایتون, Descriptors,Properties 
 
 
-درس ۲۱: شی گرایی (OOP) در پایتون: Descriptors ،Decorator و Properties
+درس ۲۱: شی گرایی (OOP) در پایتون: __Descriptors ،Decorator ،__slots و Properties
 ===================================================================================================
 
 
@@ -22,6 +22,75 @@
     :depth: 2
 
 ----
+
+
+__slots__
+----------------------------
+
+پیش از هر توضیحی به نمونه کد زیر توجه نمایید:
+
+
+.. code-block:: python
+    :linenos: 
+
+    class Sample:
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+
+    objet = Sample(1, 2)
+    print(objet.__dict__)
+
+    print('-' * 30)
+
+    objet.c = 3
+    print(objet.__dict__)
+
+    print('-' * 30)
+
+    objet.__dict__['d'] = 4
+    print(objet.__dict__)
+    print(objet.d)
+
+::
+
+    {'a': 1, 'b': 2}
+    ------------------------------
+    {'a': 1, 'b': 2, 'c': 3}
+    ------------------------------
+    {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+    4
+
+پیشتر نیز صحبت کرده بودیم، می‌توان پس از ایجاد یک شی به آن Attribute اضافه کنیم (به دو سطر ۱۲ و ۱۷ توجه نمایید). داده‌های مربوط به تمام Attributeهای یک شی توسط یک شی دیکشنری که از طریق ``__dict__`` در دسترس می‌باشد، نگهداری می‌شود.  
+
+``__slots__`` [`اسناد پایتون <https://docs.python.org/3/reference/datamodel.html#slots>`__] یک Attribute ویژه در پایتون می‌باشد که با مقداردهی آن می‌توان از ایجاد ``__dict__`` جلوگیری و در نتیجه قابلیت افزودن Attribute جدید به شی را غیرفعال و تعداد Attributeهای آن را از همان نقطه ایجاد، ثابت نگه‌داشت:
+
+
+.. code-block:: python
+    :linenos: 
+
+    class Sample:
+
+        __slots__ = ('a', 'b')
+
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+
+    objet = Sample(1, 2)
+    print(objet.__dict__)
+
+::
+
+    Traceback (most recent call last):
+      File "sample.py", line 11, in <module>
+        print(objet.__dict__)
+    AttributeError: 'Sample' object has no attribute '__dict__'
+
+
+از مزایای ``__slots__`` می‌توان به کاهش مصرف حافطه (RAM) به خصوص در مورد کلاس‌هایی که قرار است اشیایی خیلی زیادی از آن‌ها ایجاد گردد، اشاره نمود.
 
 
 Decorators
