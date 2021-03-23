@@ -1,11 +1,11 @@
 .. role:: emoji-size
 
 .. meta::
-   :description: کتاب آموزش زبان برنامه نویسی پایتون به فارسی، آموزش شی گرایی در پایتون، OOP در پایتون،  Decorators در پایتون، Descriptors در پایتون، Properties در پایتون
-   :keywords:  آموزش, آموزش پایتون, آموزش برنامه نویسی, پایتون, Decorators, کتابخانه, پایتون, شی گرایی در پایتون, Descriptors,Properties 
+   :description: کتاب آموزش زبان برنامه نویسی پایتون به فارسی، آموزش شی گرایی در پایتون، OOP در پایتون،  Decorators در پایتون، Descriptors در پایتون، property@ در پایتون
+   :keywords:  آموزش, آموزش پایتون, آموزش برنامه نویسی, پایتون, Decorators, کتابخانه, پایتون, شی گرایی در پایتون, Descriptors,property@ 
 
 
-درس ۲۱: شی گرایی (OOP) در پایتون: __Descriptors ،Decorator ،__slots و Properties
+درس ۲۱: شی گرایی (OOP) در پایتون: __Descriptors ،Decorator ،__slots و property@
 ===================================================================================================
 
 
@@ -473,12 +473,267 @@ Decorators
 Descriptors
 ----------------------------
 
+توصیف‌گر (Descriptor) کلاسی است که کنترل عملیات‌های دریافت (get)، تنظیم (set) و حذف (delete) را بر روی یک attribute از شی‌ای دیگر را فراهم می‌کند. Descriptor یک راهکار پایتونی (Pythonic) برای ایجاد مکانیزم get & set رایج در دیگر زبان‌های برنامه‌نویسی می‌باشد.
+
+**چگونه می‌توان یک Descriptor در پایتون ایجاد کرد؟** [`اسناد پایتون <https://docs.python.org/3/reference/datamodel.html#implementing-descriptors>`__]
+
+۱- یک کلاس ایجاد کنیم که در آن حداقل یکی از متدهای خاص ``__set__`` ،``__get__`` و ``__delete__`` بازپیاده‌سازی (یا بهتر است بگوییم Override) شود.
+
+۲- از شی این کلاس به عنوان attribute مناسب از کلاس مورد نظر استفاده کنیم.
 
 
-Properties
+**کاربرد Descriptor پایتون چیست؟**
+
+هر زمان بخواهیم رویدادهایی همچون دریافت (get)، تنظیم (set) و حذف (delete) را بر روی یک attribute کنترل کنیم. برای مثال کلاسی شامل یک attribute با نام ایمیل (email) است، می‌خواهیم پیش از تنظیم مقدار بر روی این فیلد، مقدار جدید به صورت خودکار اعتبارسنجی (Validation) شود و در صورت صحت عملیات انجام شود:
+
+
+.. code-block:: python
+    :linenos:
+
+
+    import re
+
+    class EmailField:
+
+        def __init__(self, email=None):
+            self.email = email
+
+        def __get__(self, instance, owner=None):
+            print('-' * 10, 'CALLED[__get__]')
+            print('instance:', instance)
+            print('owner:', owner)
+            print('-' * 30)
+            print()
+
+            return self.email
+
+        def __set__(self, instance, value):
+            print('-' * 10, 'CALLED[__set__]')
+            print('instance:', instance)
+            print('value:', value)
+            print('-' * 30)
+
+            if re.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$', value):
+                self.email = value
+                print('Successful!\n')
+            else:
+                print(f'{value} is not a valid email!\n')
+
+
+    class Student:
+        email = EmailField()
+
+
+    obj = Student()
+
+    email = obj.email               # CALLED[__get__]
+
+    obj.email = 'python$$1400'      # CALLED[__set__]
+
+    obj.email = 'python@coderz.ir'  # CALLED[__set__]
+
+    print(obj.email)                # CALLED[__get__]
+
+
+::
+
+    ---------- CALLED[__get__]
+    instance: <__main__.Student object at 0x7f828bb9f4e0>
+    owner: <class '__main__.Student'>
+    ------------------------------
+
+    ---------- CALLED[__set__]
+    instance: <__main__.Student object at 0x7f828bb9f4e0>
+    value: python$$1400
+    ------------------------------
+    python$$1400 is not a valid email!
+
+    ---------- CALLED[__set__]
+    instance: <__main__.Student object at 0x7f828bb9f4e0>
+    value: python@coderz.ir
+    ------------------------------
+    Successful!
+
+    ---------- CALLED[__get__]
+    instance: <__main__.Student object at 0x7f62e42c64e0>
+    owner: <class '__main__.Student'>
+    ------------------------------
+
+    python@coderz.ir
+
+
+در نمونه کد، بالا کلاس ``EmailField`` یک Descriptor برای اتریبیوت ``email`` از کلاس ``Student`` می‌باشد. همانطور که مشاهده می‌شود، هرگاه مقداری به ``email`` انتساب داده می‌شود (سطرهای ۳۸ و ۴۰)، به صورت خودکار متد ``__set__`` از کلاس Descriptor آن فراخوانی می‌گردد و به همین ترتیب هرگاه مقدار آن درخواست می‌گردد (سطرهای ۳۶ و ۴۲)، متد ``__get__`` فراخوانی می‌گردد.
+
+پیشنهاد می‌شود در صورت امکان مقدار attribute را توسط Descriptor نگهداری نکنید و از Descriptor تنها برای انجام عملیات‌ مربوطه استفاده نمایید. بنابراین مثال قبل را می‌توانیم به صورت زیر بازنویسی نماییم:
+
+
+.. code-block:: python
+    :linenos:
+
+    import re
+
+    class EmailField:
+
+        def __init__(self, attr_name):
+            self.attr_name = attr_name
+
+        def __get__(self, instance, owner=None):
+            return instance.__dict__.get(self.attr_name)
+
+        def __set__(self, instance, value):
+            if re.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$', value):
+                instance.__dict__[self.attr_name] = value
+
+
+    class Student:
+        email = EmailField('email')
+
+
+    obj = Student()
+    obj.email = 'python@coderz.ir'
+
+    print(obj.email)
+
+
+::
+
+    python@coderz.ir
+
+
+در این روش تنها نام attribute نگهداری و از آن برای دستیابی به مقدار آن attribute، از طریق خود شی اقدام کردیم.
+
+اگر از **نسخه 3.6 به بعد پایتون** بهره‌مند هستید،‌ با استفاده از متد ``__set_name__`` [`اسناد پایتون <https://docs.python.org/3/reference/datamodel.html#object.__set_name__>`__] در کلاس Descriptor، دیگر حتی نیازی به پیاده‌سازی متد ``__init__`` و ارسال دستی نام attribute هم نخواهد بود:
+
+
+.. code-block:: python
+    :linenos:
+
+    import re
+
+    class EmailField:
+
+        def __set_name__(self, owner, name):
+            self.attr_name = name
+
+        def __get__(self, instance, owner=None):
+            return instance.__dict__.get(self.attr_name)
+
+        def __set__(self, instance, value):
+            if re.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$', value):
+                instance.__dict__[self.attr_name] = value
+
+
+    class Student:
+        email = EmailField()
+
+
+.. tip:: 
+
+  از Descriptor تنها برای Class Attributeها می‌توان استفاده کرد.
+
+
+
+
+property@
 ----------------------------
 
+خیلی ساده، این دکوراتور (``property@``) را می‌توان یک Descriptor سطح بالا دانست که توسط کتابخانه استاندارد پایتون برای Instance Attributeها فراهم آورده شده است. به نمونه کد زیر توجه نمایید:
 
+.. code-block:: python
+    :linenos:
+
+    import re
+
+    class Contact:
+
+        def __init__(self, name, phone):
+            self._name = name
+            self._phone = phone
+
+        @property
+        def name(self):
+            return self._name
+	
+        @name.setter
+        def name(self, new_name):
+            if new_name and len(new_name) > 0:
+                self._name = new_name
+            else:
+                print("Please enter a valid name")
+
+        @name.deleter
+        def name(self):
+            del self._name
+
+        @property
+        def phone(self):
+            return self._phone
+
+
+        @phone.setter
+        def phone(self, new_phone):
+            if re.match(r'^09\d{9}$', new_phone):
+                self._phone = new_phone
+            else:
+                print("Please enter a valid phone")
+
+        @phone.deleter
+        def phone(self):
+            del self._phone
+
+
+    obj = Contact(name='Saeid', phone='09999999999')
+
+    obj.phone = '09123456'
+    print('-' * 30)
+    print(obj.name)
+    print(obj.phone)
+
+
+::
+
+     Please enter a valid phone
+     ------------------------------
+     Saeid
+     09999999999
+
+
+در این مثال، کلاس ``Contact`` حاوی دو Instance Attribute با نام‌های ``name`` و ``phone`` می‌باشد. برای اینکه بتوانیم رویدادهایی همچون دریافت (get)، تنظیم (set) و حذف (delete) را بر روی آن‌ها کنترل کنیم، از دکوراتور ``property@`` استفاده کردیم. به این صورت که:
+
+**۱-** نخست باید توجه داشت که نام Attributeها با یک کاراکتر ``_`` شروع کردیم. با این کار به دیگر برنامه‌نویسان خواهیم گفت که این Attribute با سطح دسترسی protected می‌باشد (درس بیستم)::
+
+    def __init__(self, name, phone):
+        self._name = name
+        self._phone = phone
+
+**۲-** برای هر کدام یک متد getter ساختیم و به آن دکوراتور ``property@`` انتساب دادیم. نام این متد را همنام با Attributeها ولی بدون ``_`` انتخاب کردیم::
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def phone(self):
+        return self._phone   
+
+
+نام این متد هر چیزی انتخاب شود، در زمان درخواست مقدار Attribute باید از این نام (به جای نام اصلی Attribute) استفاده گردد (سطرهای ۴۵ و ۴۶).
+
+**۳-** اکنون می‌توانیم دو متد دیگر برای عملیات set و delete پیاده‌سازی کنیم و به آن‌ها دکوراتورهای زیر را انتساب دهیم::
+
+     @<property_getter_method_name>.setter
+     @<property_getter_method_name>.deleter
+
+
+بخش نخست از نام دکوراتور (property_getter_method_name) می‌بایست همان نام متد getter باشد.
+
+در این مثال ما از همان نام متد getter برای نام‌گذاری این دو متد استفاده کردیم. ولی باید توجه داشته باشید که نام این دو متد هر چیزی انتخاب شود، در زمان تنظیم مقدار (سطر ۴۳) یا حذف Attribute باید از این نام (به جای نام اصلی Attribute) استفاده گردد.
+
+
+
+.. tip:: 
+
+  از ``property@`` تنها برای Instance Attributeها می‌توان استفاده کرد.
 
 |
 
@@ -486,7 +741,7 @@ Properties
 
 :emoji-size:`😊` امیدوارم مفید بوده باشه
 
-`لطفا دیدگاه و سوال‌های مرتبط با این درس خود را در کدرز مطرح نمایید. <https://www.coderz.ir/python-tutorial-oop-descriptors-properties>`_
+`لطفا دیدگاه و سوال‌های مرتبط با این درس خود را در کدرز مطرح نمایید. <https://www.coderz.ir/python-tutorial-oop-slots-descriptors-property>`_
 
 
 
