@@ -93,6 +93,199 @@ __slots__
 از مزایای ``__slots__`` می‌توان به کاهش مصرف حافطه (RAM) به خصوص در مورد کلاس‌هایی که قرار است اشیایی خیلی زیادی از آن‌ها ایجاد گردد، اشاره نمود.
 
 
+از طریق ``__slots__`` همچنین می‌توان اجازه داد که کدام Attribute در آینده برای شی ایجاد گردد:
+
+.. code-block:: python
+    :linenos: 
+
+    class Sample:
+
+        __slots__ = ('a', 'b', 'c')
+
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+    objet = Sample(1, 2)
+
+    objet.c = 3
+
+    print('a: ', objet.a)
+    print('b: ', objet.b)
+    print('c: ', objet.c)
+
+    objet.d = 4
+
+::
+
+
+    a:  1
+    b:  2
+    c:  3
+    Traceback (most recent call last):
+      File "sample.py", line 17, in <module>
+        objet.d = 4
+    AttributeError: 'Sample' object has no attribute 'd'
+
+
+
+**اکنون نمونه کد زیر را در وضعیت وراثت در نظر بگیرید:**
+
+.. code-block:: python
+    :linenos: 
+
+    class Parent:
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+
+    class Child(Parent):
+        def __init__(self, a, b):
+            super().__init__(a, b)
+
+
+    child = Child(1, 2)
+    print(child.__dict__)
+
+    child.c = 3
+    print(child.__dict__)
+
+    print('a: ', child.a)
+    print('b: ', child.b)
+    print('c: ', child.c)
+
+::
+
+    {'a': 1, 'b': 2}
+    {'a': 1, 'b': 2, 'c': 3}
+    a:  1
+    b:  2
+    c:  3
+
+
+اگر کلاس Parent شامل ``__slots__`` باشد و در نتیجه فاقد ``__dict__``:
+
+.. code-block:: python
+    :linenos: 
+
+    class Parent:
+        __slots__ = ('a', 'b')
+
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+
+    class Child(Parent):
+
+        def __init__(self, a, b):
+            super().__init__(a, b)
+
+
+    child = Child(1, 2)
+    print(child.__dict__)
+
+    child.c = 3
+    print(child.__dict__)
+
+    print('a: ', child.a)
+    print('b: ', child.b)
+    print('c: ', child.c)
+
+
+::
+
+     {}
+     {'c': 3}
+     a:  1
+     b:  2
+     c:  3
+
+اگر هر دو کلاس شامل ``__slots__`` باشند:
+
+.. code-block:: python
+    :linenos: 
+
+    class Parent:
+        __slots__ = ('a', 'b')
+
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+
+    class Child(Parent):
+        __slots__ = ('c')
+
+        def __init__(self, a, b):
+            super().__init__(a, b)
+
+
+    child = Child(1, 2)
+
+    child.c = 3
+    print('a: ', child.a)
+    print('b: ', child.b)
+    print('c: ', child.c)
+
+::
+
+    a:  1
+    b:  2
+    c:  3
+
+
+**در وراثت چندگانه،** چنانچه ``__slots__`` مربوط به superclassها حاوی مقدار تکراری باشد، آنگاه باعث بروز خطا می‌گردد:
+
+.. code-block:: python
+    :linenos: 
+
+    class ParentOne:
+        __slots__ = ('a', 'b')
+
+    class ParentTwo:
+        __slots__ = ('z', 'b')
+
+
+    class Child(ParentOne, ParentTwo):
+        __slots__ = ('c')
+
+
+    child = Child()
+
+::
+
+    Traceback (most recent call last):
+      File "sample.py", line 8, in <module>
+        class Child(ParentOne, ParentTwo):
+    TypeError: multiple bases have instance lay-out conflict
+
+
+بهتر است superclassها حاوی یک ``__slots__`` خالی (شی تاپل خالی) باشند و هر subclass خود محتوای ``__slots__`` خود را تعریف نماید:
+
+.. code-block:: python
+    :linenos: 
+
+    class ParentOne:
+        __slots__ = ()
+
+    class ParentTwo:
+        __slots__ = ()
+
+
+    class Child(ParentOne, ParentTwo):
+        __slots__ = ('a', 'b', 'z', 'c')
+
+
+    child = Child()
+
+
+|
+
+
+[`مطلب مرتبط در StackOverflow <https://stackoverflow.com/a/28059785>`__]
+
 Decorators
 ----------------------------
 
