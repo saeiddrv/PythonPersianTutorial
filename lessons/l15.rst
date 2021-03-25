@@ -8,6 +8,12 @@
 درس ۱۵: عبارات با قاعده (Regular Expression) یا RegEx در پایتون
 ============================================================================
 
+.. figure:: /_static/pages/15-python-regex-1.jpg
+    :align: center
+    :alt: عبارات با قاعده (Regular Expression) یا RegEx در پایتون
+
+    Photo by `Ehud Neuhaus <https://unsplash.com/photos/RZaR1yos2NM>`__
+
 **عبارات با قاعده** (**Regular expression**) یا به اختصار **RegEx**، رشته‌ای حاوی کاراکترهایی خاص و با معنی است که در عملیات‌هایی مانند یافتن (find)، جاگذاری (repleace) و اعتبارسنجی (validation) به شدت کاربرد پیدا کرده است. در واقع با استفاده از RegEx می‌توان یک الگو (pattern) برای جستجو در متن یا تطابق آن ایجاد کرد.  [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Regular_expression>`__]
 
 در این درس به شرح قواعد موجود در RegEx و همچنین ماژول ``re`` از کتابخانه استاندارد پایتون خواهیم پرداخت [`اسناد پایتون <https://docs.python.org/3/library/re.html>`__]. ماژول ``re`` یک مجموعه ابزار برای کار با RegEx در پایتون را فراهم آورده است که می‌توان آن را موتور تحلیل RegEx در پایتون دانست.

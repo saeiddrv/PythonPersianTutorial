@@ -8,6 +8,12 @@
 درس ۲۱: شی گرایی (OOP) در پایتون: __Descriptors ،Decorator ،__slots و property@
 ===================================================================================================
 
+.. figure:: /_static/pages/21-python-object-oriented-programming-property-descriptors.jpg
+    :align: center
+    :alt: شی گرایی (OOP) در پایتون: __Descriptors ،Decorator ،__slots و property@
+
+    Photo by `Mathyas Kurmann <https://unsplash.com/photos/fb7yNPbT0l8>`__
+  
 این درس نیز در ادامه مجموعه دروس آموزش شی گرایی در زبان برنامه‌نویسی پایتون می‌باشد که به شرح و جمع‌بندی برخی موارد مرتبط با مفاهیم کلاس و شی موجود در پایتون می‌پردازد. مواردی که ممکن است قابل گذر باشند ولی هریک نکاتی دارند که در توسعه برنامه شی گرای پایتونی به شما کمک خواهند کرد. مواردی همچون صفت ویژه __slots__ در کلاس‌ها، ایجاد Decorator با استفاده از کلاس در پایتون و همچنین ایجاد قابلیت getter و setter در پایتون با استفاده از مفاهیم Descriptors و دکوراتور property که در ادامه تا حد کافی شرح داده خواهند شد.
 
 
