@@ -8,7 +8,7 @@
 درس ۱۳: تابع در پایتون: Coroutine ،Generator ،Decorator‌ و lambda
 ==================================================================
 
-.. figure:: /_static/pages/13-python-function-decorator‌-generator-coroutine-lambda.jpg
+.. figure:: /_static/pages/13-python-function-decorator-generator-coroutine-lambda.jpg
     :align: center
     :alt: تابع در پایتون: Coroutine ،Generator ،Decorator‌ و lambda
 
