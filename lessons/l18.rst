@@ -8,8 +8,13 @@
 درس ۱۸: شی گرایی (OOP) در پایتون: وراثت (Inheritance)، Association و Mixin
 ========================================================================================================
 
+.. figure:: /_static/pages/18-python-object-oriented-programming-inheritance-mro-mixin.jpg
+    :align: center
+    :alt: شی گرایی (OOP) در پایتون: وراثت (Inheritance)، Association و Mixin
 
+    Photo by `Vidar Nordli-Mathisen <https://unsplash.com/photos/s-vhziQHngM>`__
 
+  
 این درس در ادامه درس پیش می‌باشد و به بررسی رابطه بین کلاس‌ها و اشیا می‌پردازد. در درس پنجم مقدمه‌ای از این روابط صحبت شده است و این درس  به صورت کامل دو رابطه **IS-A** یا Inheritance و **HAS-A** یا Association در مفهموم شی گرایی و چگونگی پیاده‌سازی آن‌ها در زبان برنامه‌نویسی پایتون را شرح می‌دهد.
 
 در این درس همچنین به شرح **وراثت چندگانه (Multiple Inheritance)**، **Method Resolution Order** و کلاس‌های **Mixin** در زبان برنامه‌نویسی پایتون خواهیم پرداخت.

@@ -8,6 +8,12 @@
 درس ۱۹: شی گرایی (OOP) در پایتون: متا کلاس (Metaclass) و انتزاع (Abstraction)
 ========================================================================================================
 
+.. figure:: /_static/pages/19-python-object-oriented-programming-abstraction-metaclass.jpg
+    :align: center
+    :alt: شی گرایی (OOP) در پایتون: متا کلاس (Metaclass) و انتزاع (Abstraction)
+
+    Photo by `Giancarlo Revolledo <https://unsplash.com/photos/QOkr2RY4DT4>`__
+  
 
 این درس در ادامه دروس پیش مرتبط با آموزش شی گرایی در پایتون می‌باشد و به بررسی قابلیت **متا کلاس (Metaclass)** در پایتون می‌پردازد و در ادامه یکی دیگر از مفاهیم اصلی برنامه‌نویسی شی گرا به نام **انتزاع (Abstraction)** را معرفی و چگونگی پیاده‌سازی آن در زبان برنامه‌نویسی پایتون را بررسی خواهیم کرد.
 

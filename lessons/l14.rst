@@ -8,7 +8,14 @@
 درس ۱۴: تابع در پایتون: تابع بازگشتی (Recursive) و Memoization
 ==============================================================================
 
-این درس بخش پایانی از بررسی تابع در پایتون می‌باشد و موضوعات باقی‌مانده از مبحث تابع پایتون در این درس بیان می‌شود. 
+
+.. figure:: /_static/pages/14-python-function-recursive-memoization.jpg
+    :align: center
+    :alt: تابع در پایتون: تابع بازگشتی (Recursive) و Memoization
+
+    Photo by `Dan Freeman <https://unsplash.com/photos/WHPsxhB4mWQ>`__
+
+این درس بخش پایانی از بررسی تابع در پایتون می‌باشد و به شرح **تابع بازگشتی (Recursive)** و مفهوم **Memoization** در زبان برنامه‌نویسی پایتون خواهد پرداخت. 
 
 
 
