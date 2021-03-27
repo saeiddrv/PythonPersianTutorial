@@ -123,17 +123,20 @@ $( document ).ready(function() {
 
    //  custome function
    $("li[id^='wrapper-toctree-l1-'] a").each(function() {
-       if ($(this).text().indexOf("گزارش توسعه")>=0) {
-           $(this).addClass('reportmenufield');
+        if ($(this).text().indexOf("گزارش توسعه")>=0) {
+           $(this).parent().addClass('make-red');
         }
-       if ($(this).text().indexOf("پیش‌گفتار")>=0) {
-           $(this).addClass('reportmenufield');
+        if ($(this).text().indexOf("پیش‌گفتار")>=0) {
+           $(this).parent().addClass('make-red');
         }
-       if ($(this).text().indexOf("گزارش حمایت‌های مالی")>=0) {
-           $(this).addClass('reportmenufield');
+        if ($(this).text().indexOf("گزارش حمایت‌های مالی")>=0) {
+           $(this).parent().addClass('make-red');
         }
-       if ($(this).text().indexOf("خودآزمایی") >= 0) {
-           $(this).addClass('exercisesmenufield');
+        if ($(this).text().indexOf("بهترین منابع آموزش پایتون") >= 0) {
+           $(this).parent().addClass('make-green');
+        }
+        if ($(this).text().indexOf("محیط تعاملی پایتون") >= 0) {
+           $(this).parent().addClass('make-green');
         }
    });
    //  end custome function
