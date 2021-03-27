@@ -395,4 +395,21 @@ a.side-donate{
 a.hover{
     background-color: #4CAF50;
 }
+/* -------- make other colors -------- */
+
+.toctree-wrapper li.make-red >a {background-color: #ec407a;}
+.toctree-wrapper .make-red >a:hover {border-right: 5px #f48fb1 solid;}
+.toctree-wrapper li.make-red.toctree-l1 i {color: #f48fb1!important;}
+.toctree-wrapper li.make-red>ul>li>a {background-color: #f48fb1;}
+
+.toctree-wrapper li.make-green >a {background-color: #00695c;}
+.toctree-wrapper .make-green >a:hover {border-right: 5px #4db6ac solid;}
+.toctree-wrapper li.make-green.toctree-l1 i {color: #4db6ac!important;}
+.toctree-wrapper li.make-green>ul>li>a {background-color: #4db6ac;}
+
+
+.toctree-wrapper li.make-black >a {background-color: #37474f;}
+.toctree-wrapper .make-black >a:hover {border-right: 5px #90a4ae solid;}
+.toctree-wrapper li.make-black.toctree-l1 i {color: #90a4ae!important;}
+.toctree-wrapper li.make-black>ul>li>a {background-color: #90a4ae;}
 
