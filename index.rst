@@ -51,6 +51,7 @@
    log
    donate-report
    python-interactive
+   python-resources
    
 |
 
