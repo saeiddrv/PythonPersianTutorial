@@ -45,10 +45,10 @@
 **«خطاهای منطقی» (Logical errors)** برخلاف دیگر خطاها باعث توقف اجرای برنامه نشده بلکه باعث تولید نتایج نادرستی می‌شوند که از دیدگاه برنامه‌نویسی درست بوده ولی از دیدگاه منطقی کاملا اشتباه هستند. به عنوان یک مثال ساده فرض کنید فرمول محاسبه معدل اشتباه پیاده‌سازی شده باشد! این نوع خطا مصداق بارز «باگ» (Bug) در برنامه است که همیشه پیشگیری، از کشف و اصلاح آن‌ها به مراتب ساده‌تر خواهد بود.
 
 
-با وجود این توضیحات و همانطور که مشاهده خواهید کرد، بروز خطا همواره یک امر زشت و ناخواسته نبوده بلکه گاهی نیز یک استراتژی از سوی برنامه‌نویس خواهد بود تا یک وضعیت را به سطوح دیگر از برنامه اعلام یا اینکه مستقیما تغییری در روند اجرای برنامه ایجاد کند. در این صورت خطاها دیگر با نام زشت خطا خوانده نمی‌شوند بلکه به آنها **استثنا یا Exception** می‌گویند.
+با وجود این توضیحات و همانطور که مشاهده خواهید کرد، بروز خطا همواره یک امر زشت و ناخواسته نبوده بلکه گاهی نیز یک استراتژی از سوی برنامه‌نویس خواهد بود تا یک وضعیت را به سطوح دیگر از برنامه اعلام یا اینکه مستقیما تغییری در روند اجرای برنامه ایجاد کند. در این صورت خطاها دیگر با نام زشت خطا خوانده نمی‌شوند بلکه به آنها **استثنا یا اعتراض یا Exception** می‌گویند.
 
 
-به صورت کلی، **استثنا یا Exception** امکانی برای خروج برنامه از یک وضعیت مشخص است و بروز آن، همانند اعلام عمومی یک خبر مهم در برنامه می‌باشد. می‌توان با پیش‌بینی بروز Exceptionها در برنامه، به اصطلاح آن‌ها را **catch** نمود و فرآیندی را برای مدیریت آن‌ها پیاده‌سازی کرد. 
+به صورت کلی، **Exception** امکانی برای خروج برنامه از یک وضعیت مشخص است و بروز آن، همانند اعلام عمومی یک خبر مهم در برنامه می‌باشد. می‌توان با پیش‌بینی بروز Exceptionها در برنامه، به اصطلاح آن‌ها را **catch** نمود و فرآیندی را برای مدیریت آن‌ها پیاده‌سازی کرد. 
 
 درک وقوع یک Exception و امکان ایجاد یک فرآیند برای مدیریت آن، قابلیت مهمی در یک زبان‌برنامه‌نویسی محسوب می‌شود. چرا که می‌توان از آن در دو نقش زیر بهره گرفت:
 
@@ -169,6 +169,361 @@
 
 
 این نکته را نیز در نظر بگیرید - همانطور که اگر به خروجی‌های دقت کرده باشید حتما متوجه شده‌اید در دو حالت مربوط به گزارش خطای مربوط به ``SyntaxError`` خبری از سطر ``:Traceback (most recent call last)``  که در حالت خطای زمان اجرای ``TypeError`` مشاهده کردیم، نمی‌باشد. در واقع این سطر تنها در گزارش خطاهایی که پس از اجرای برنامه رخ دهند (Runtime errors)، نمایش داده خواهد شد. در زمان بررسی و ترجمه کد پایتون به بایت‌کد هرجا مشکلی باشد عملیات در همان نقطه متوقف می‌شود و صرفا گزارشی مبنی بر ابراز آن نقطه به برنامه‌نویس ارايه می‌گردد و نه چیزی که بتوان آن را یک گزارش ردیابی با Traceback نامید چرا که هنوز برنامه به اجرا درنیامده و اصلا نیازی به این کار نیست!
+
+
+Exception handling
+~~~~~~~~~~~~~~~~~~~~~~~~
+در زبان‌های برنامه‌نویسی صدای اعتراض یک Exception قابل درک و تشخیص است و می‌توان برای آن‌ها فرآیندی را پیش‌بینی کرد که بروز آن‌ها نه تنها باعث اتمام برنامه نشود بلکه برنامه بتواند در مسیر درست به اجرای خود ادامه دهد.
+
+در زبان برنامه‌نویسی پایتون دستور ``try/except`` برای همین منظور فراهم دیده شده است [`اسناد پایتون <https://docs.python.org/3/reference/compound_stmts.html#the-try-statement>`__]. 
+
+``try/except``
+------------------------
+
+
+ساختار این دستور به شکل زیر است::
+
+    try:
+        pass
+
+    except:
+        pass
+
+در این ساختار آن قطعه کدی که محتمل بروز Exception می‌باشد، داخل بدنه ``try`` و قطعه کدی که می‌بایست پس از وقوع Exception به اجرا درآید، داخل بدنه ``except`` قرار می‌گیرند::
+
+    >>> def print_int_sum(a, b):
+    ...     try:
+    ...         print(a + b)
+    ...     except:
+    ...         print(f'ERROR: {a}+{b}')
+    ... 
+    >>> print_int_sum(2, 3)
+    5
+    >>> print_int_sum(9, 3)
+    12
+    >>> print_int_sum(5, 'D')
+    ERROR: 5+D
+
+حالت فعلی از دستور ``except`` هر نوع Exceptionای که در داخل بدنه ``try`` رخ دهد را تشخیص و ادامه اجرای برنامه را به دست می‌گیرد، به اصطلاح یک expression-less except است. ولی می‌توان دستور ``except`` را محدود به تشخیص نوع خاصی از Exception کرد. در این صورت می‌بایست نوع Exception مورد نظر خود را در کنار دستور ``except`` درج نماییم:
+
+
+.. code-block:: python
+    :linenos:
+
+    def print_int_sum(a, b):
+
+        try:
+            print(a + b)
+
+        except TypeError:
+            print(f'ERROR: {a}+{b}')
+
+
+می‌توان با استفاده از یک دستور  ``try`` چندین Exception را تشخیص دهیم. برای این منظور کافی است از یک دستور ``try`` به همراه چندین دستور ``except`` استفاده کنیم:
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+
+        try:
+            sum = a + b
+            div = sum / a
+            print(div)
+
+        except TypeError:
+            print(f'TypeError: ({a}+{b!r})/{a}')
+
+        except:
+            print(f'OTHER ERROR: ({a}+{b!r})/{a}')
+
+
+    print_sum_div_first(5, 6)
+    print_sum_div_first(3, 'G')
+    print_sum_div_first(0, 8)
+
+::
+
+    2.2
+    TypeError: (3+'G')/3
+    OTHER ERROR: (0+8)/0
+
+
+ساختار ``try/except`` این مثال شامل دو دستور ``except`` می‌باشد، دستور نخست تنها ``TypeError`` و دستور دوم هر Exception دیگری به جز موارد بالای خود (در اینجا: ``TypeError``) را تشخیص می‌دهند.
+
+در مثال قبل، دستور موجود در سطر ۱۷ باعث بروز خطای «تقسیم بر صفر» [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Division_by_zero>`__] یا Exceptionای با نام ``ZeroDivisionError`` در پایتون شده است - که می‌توان به صورت زیر آن را بازنویسی نمود:
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+
+        try:
+            sum = a + b
+            div = sum / a
+            print(div)
+
+        except TypeError:
+            print(f'TypeError: ({a}+{b!r})/{a}')
+
+        except ZeroDivisionError:
+            print(f'ZeroDivisionError: ({a}+{b!r})/{a}')
+
+
+    print_sum_div_first(5, 6)
+    print_sum_div_first(3, 'G')
+    print_sum_div_first(0, 8)
+
+::
+
+    2.2
+    TypeError: (3+'G')/3
+    ZeroDivisionError: (0+8)/0
+
+
+چنانچه مکانیزم مدیریت خطای شما برای چندین نوع Exception مشخص یکسان است می‌توانید آن دستورهای ``except`` را با یکدیگر ترکیب کرد و تنها از یک دستور ``except`` استفاده نمایید. برای این منظور تنها کافی است نام تمام Exceptionهای مورد نظر خود را در قالب یک شی تاپل به دستور ``except`` بسپرید:
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+
+        try:
+            sum = a + b
+            div = sum / a
+            print(div)
+
+        except (TypeError, ZeroDivisionError):
+            print(f'Error: ({a}+{b!r})/{a}')
+
+
+    print_sum_div_first(5, 6)
+    print_sum_div_first(3, 'G')
+    print_sum_div_first(0, 8)
+
+::
+
+    2.2
+    Error: (3+'G')/3
+    Error: (0+8)/0
+
+
+هر چیزی در پایتون یک شی است، حتی Exceptionها! مفسر پایتون در ازای هر Exceptionای که رخ می‌دهد یک شی نیز در اختیار برنامه‌نویس قرار می‌دهد و این شی در صورت تمایل از طریق دستور ``except`` قابل دسترس می‌باشد. برای این منظور تنها کافی است از دستور ``as`` برای انتساب آن Exception به یک متغییر دلخواه استفاده نماییم:
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+
+        try:
+            sum = a + b
+            div = sum / a
+            print(div)
+
+        except TypeError as err:
+            print(f'{err.__class__.__name__}: ({a}+{b!r})/{a}')
+
+        except ZeroDivisionError as err:
+            print(f'{err.__class__.__name__}: ({a}+{b!r})/{a}')
+
+
+    print_sum_div_first(5, 6)
+    print_sum_div_first(3, 'G')
+    print_sum_div_first(0, 8)
+
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+
+        try:
+            sum = a + b
+            div = sum / a
+            print(div)
+
+        except (TypeError, ZeroDivisionError) as err:
+            print(f'{err.__class__.__name__}: ({a}+{b!r})/{a}')
+
+    print_sum_div_first(5, 6)
+    print_sum_div_first(3, 'G')
+    print_sum_div_first(0, 8)
+
+::
+
+    2.2
+    TypeError: (3+'G')/3
+    ZeroDivisionError: (0+8)/0
+
+البته چنانچه مایل هستید شی Exception را از طریق یک دستور ``except`` کلی (یعنی بدون ذکر نام Exception خاصی) دریافت کنید، می‌توانید از نوع یا کلاس ``Exception`` که در واقع supperclass اکثر Exceptionهای پایتون می‌باشد، استفاده نمایید:
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+
+        try:
+            sum = a + b
+            div = sum / a
+            print(div)
+
+        except Exception as err:
+            print(f'{err.__class__.__name__}: ({a}+{b!r})/{a}')
+
+    print_sum_div_first(5, 6)
+    print_sum_div_first(3, 'G')
+    print_sum_div_first(0, 8)
+
+::
+
+    2.2
+    TypeError: (3+'G')/3
+    ZeroDivisionError: (0+8)/0
+
+
+.. tip:: 
+
+  به صورت کلی وقتی در زمان اجرای دستورات داخل بدنه ``try`` یک Exception رخ می‌دهد، مفسر پایتون اجرای برنامه را در آن نقطه متوقف و شروع به جستجو برای یافتن یک دستور ``except`` متناسب با آن Exception یا به اصطلاح یک handler برای آن می‌کند. در صورت پیدا کردن ``except`` مناسب، ادامه روند اجرای برنامه را از آن سر می‌گیرد و در غیر این صورت Exception بدون handler باعث توقف اجرای کل برنامه می‌گردد.
+
+.. tip:: 
+
+  چنانچه از چندین دستور ``except`` بهره می‌گیرید باید توجه داشته باشید که دستور ``except`` کلی یا همان expression-less except - در صورت وجود - می‌بایست به عنوان آخرین دستور ``except`` قرار بگیرد، در غیر این صورت دیگر دستورهای ``except`` که نوع Exception در آن‌ها مشخص شده است، فرصت اجرا پیدا نخواهند کرد.
+
+.. tip:: 
+
+  دو دستور ``except`` زیر از نظر مفسر پایتون به عنوان یک handler برای تمام انواع Exceptionها می‌باشند و تنها تفاوت آن‌ها در امکان دریافت شی Exception می‌باشد:
+
+  ::
+
+      except:
+
+  ::
+
+      except Exception as error:
+
+.. tip:: 
+
+  به صورت کلی دستور ``try`` پایتون فاقد یک حوزه یا Scope مجزا می‌باشد، بنابراین تمامی متغیرهایی که در بدنه دستور ``try`` تعریف می‌گردند جزیی از حوزه بیرونی خود هستند و در تمام بخش‌های داخل آن حوزه در دسترس خواهند بود. البته نباید فراموش کرد که اگر در هنگام انتساب به نام یک متغیر خطایی رخ داده باشد، بدیهی است که آن متغیر ایجاد نشده و اساسا در دسترس نیز نخواهد بود.
+
+.. tip:: 
+
+  شی Exception که توسط دستور ``except`` دریافت می‌گردد تنها در داخل بدنه همان دستور ``except`` در دسترس خواهد بود، چرا که بلافاصله پس از اتمام دستورات داخل بدنه آن ``except``، شی مذکور نیز حذف می‌گردد.
+
+
+
+
+
+
+``try/except/else``
+------------------------
+
+در کنار دستور ``try/except`` می‌توان دستور ``else`` را نیز استفاده کرد. کاربرد این دستور این است که می‌توان قطعه کدی را برای مواقعی که اجرای بخش ``try`` به پایان رسیده و هیچ Exception رخ نداده باشد، به اجرا درآوریم:
+
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+
+        try:
+            sum = a + b
+            div = sum / a
+
+        except Exception as err:
+            print(f'{err.__class__.__name__}: ({a}+{b!r})/{a}')
+
+        else:
+            print(f'result: ({a}+{b!r})/{a} = {div}')
+
+    print_sum_div_first(5, 6)
+    print_sum_div_first(3, 'G')
+    print_sum_div_first(0, 8)
+
+::
+
+    result: (5+6)/5 = 2.2
+    TypeError: (3+'G')/3
+    ZeroDivisionError: (0+8)/0
+
+به یک مثال دیگر نیز توجه نماید (مرتبط با مبحث فایل‌ها - درس دهم):
+
+.. code-block:: python
+    :linenos:
+
+    def write_to_log(text, write_mode):
+        try:
+            output = open('log_file.txt', write_mode)
+            output.write(text)
+
+        except FileNotFoundError as fnfe:
+            print('File Not Found!!!')
+
+        else:
+            output.close()
+            print('Successful, closed!')
+
+
+    write_to_log('A text to insert in the log file', 'r') # WRONG mode!
+    print('*' * 30)
+    write_to_log('A text to insert in the log file', 'a')
+
+::
+
+    File Not Found!!!
+    ******************************
+    Successful, closed!
+
+
+
+``try/finally``  ``try/except/finally``  ``try/except/else/finally``
+---------------------------------------------------------------------------------------------
+
+دستور ``finally`` نیز یک دستور اختیاری مشابه با ``else`` می‌باشد که می‌توان از آن در کنار دستور ``try`` بهره گرفت. با استفاده از این دستور می‌توان یک قطعه کد را مهیا کرد که چه در حالتی که Exceptionای داخل ``try`` رخ دهد و چه ندهد اجرا شود. در واقع دستورات موجود در بدنه دستور ``finally`` تحت هر شرایطی اجرا می‌شوند.
+
+اکنون می‌توان روند کلی فرآیند اجرای دستورات پایتون در یک بلاک ``try`` را به این صورت شرح داد:
+
+**۱) در صورت عدم بروز Exception** داخل بدنه دستور ``try``: پس از پایان اجرای دستورات داخل بدنه دستور ``try``، نقطه اجرای برنامه به دستور ``else`` - در صورت وجود - سپرده می‌شود، پس از پایان اجرای دستورات داخل بدنه ``else``، نقطه اجرای برنامه به دستور ``finally`` - در صورت وجود - سپرده می‌شود.
+
+**۲) در صورت بروز Exception** داخل بدنه دستور ``try``: نقطه اجرای برنامه بلافاصله به دستور ``except`` مناسب سپرده می‌شود، پس از پایان اجرای دستورات داخل بدنه ``except``، نقطه اجرای برنامه به دستور ``finally`` - در صورت وجود - سپرده می‌شود.
+
+
+
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+        try:
+            print('----> try')
+            sum = a + b
+            div = sum / a
+
+        except Exception as err:
+            print('----> except')
+
+        else:
+            print('----> else')
+
+        finally:
+            print('----> finally')
+
+
+    print_sum_div_first(5, 6)
+    print('*' * 20)
+    print_sum_div_first(3, 'G')
+
+::
+
+    ----> try
+    ----> else
+    ----> finally
+    ********************
+    ----> try
+    ----> except
+    ----> finally
+
+کاربرد اصلی دستور ``finally`` تمیزکاری یا Cleaning Up کردن کد پس از انجام کاری مشخص است.
+
 
 
 
