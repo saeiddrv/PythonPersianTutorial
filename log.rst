@@ -11,6 +11,19 @@
 
 
 
+
+
+.. raw:: html
+
+    <p class="rubric" id="00123" ><a class="reference external" href="#00123">00123</a> - دوشنبه ۹ فروردین ۱۴۰۰</p>
+
+* درس بیست و سوم با عنوان «مدیریت خطا در پایتون: Exception ،Traceback و Exception Handling» به فهرست کتاب افزوده شد.
+
+
+
+----
+
+
 .. raw:: html
 
     <p class="rubric" id="00122" ><a class="reference external" href="#00122">00122</a> - شنبه ۷ فروردین ۱۴۰۰</p>
