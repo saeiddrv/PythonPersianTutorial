@@ -18,6 +18,7 @@
 
 
 
+
 توجه داشته باشید، هم اکنون پشتیبانی نسخه 2x پایتون به پایان رسیده است. بنابراین	به منظور جلوگیری از پیچیدگی‌های غیر ضروری، تمام مطالب این درس بر مبنای پایتون 3x ارائه می‌شود.
 
 
@@ -392,18 +393,6 @@
 
 .. tip:: 
 
-  دو دستور ``except`` زیر از نظر مفسر پایتون به عنوان یک handler برای تمام انواع Exceptionها می‌باشند و تنها تفاوت آن‌ها در امکان دریافت شی Exception می‌باشد:
-
-  ::
-
-      except:
-
-  ::
-
-      except Exception as error:
-
-.. tip:: 
-
   به صورت کلی دستور ``try`` پایتون فاقد یک حوزه یا Scope مجزا می‌باشد، بنابراین تمامی متغیرهایی که در بدنه دستور ``try`` تعریف می‌گردند جزیی از حوزه بیرونی خود هستند و در تمام بخش‌های داخل آن حوزه در دسترس خواهند بود. البته نباید فراموش کرد که اگر در هنگام انتساب به نام یک متغیر خطایی رخ داده باشد، بدیهی است که آن متغیر ایجاد نشده و اساسا در دسترس نیز نخواهد بود.
 
 .. tip:: 
@@ -705,6 +694,45 @@
 
 Exception Hierarchy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+در زبان برنامه‌نویسی پایتون تمامی Exceptionها در قالب کلاس‌هایی در یک سلسله مراتب از وراثت ارايه شده است. برای مشاهده این کلاس‌ها و ساختار وراثت می‌توانید به اسناد پایتون مراجعه نمایید:‌ `Exception hierarchy <https://docs.python.org/3/library/exceptions.html#exception-hierarchy/>`__ - این ساختار توسط تصویر پایین نمایش داده شده است:
+
+
+.. image:: /_static/123-python-exception-hierarchy.png
+    :align: center
+    :alt: Exception Hierarchy در پایتون
+
+کلاس ``BaseException`` در بالاترین سطح وراثت برای این دست کلاس‌ها قرار دارد و تمامی Exceptionها به صورت مستقیم یا غیر مستقیم از آن ارث‌بری دارند. از این بین تنها چهار کلاس هستند که مستقیم از ``BaseException`` ارث‌بری دارند:
+
+* کلاس ``SystemExit`` [`اسناد پایتون <https://docs.python.org/3/library/exceptions.html#SystemExit>`__]: هرگاه به برنامه پایتونی با اراده برنامه‌نویس و با استفاده از تابع ``exit`` از ماژول ``sys`` [`اسناد پایتون <https://docs.python.org/3/library/sys.html#sys.exit>`__] فرمان توقف صادر شود، این Exception رخ خواهد داد.
+
+* کلاس ``KeyboardInterrupt`` [`اسناد پایتون <https://docs.python.org/3/library/exceptions.html#KeyboardInterrupt>`__]: هرگاه با استفاده از صفحه‌کلید (Keyboard) اقدام به توقف ناگهانی برنامه پایتون نماییم - معمولا با استفاده از کلیدهای ترکیبی:‌ ``Control+C``، این Exception رخ خواهد داد.
+
+* کلاس ``GeneratorExit`` [`اسناد پایتون <https://docs.python.org/3/library/exceptions.html#GeneratorExit>`__]: این Exception در زمانی که یک Generator (درس سیزدهم) بسته (Close) می‌شود [`اسناد پایتون <https://docs.python.org/3/reference/expressions.html#generator.close>`__]، رخ می‌دهد.
+
+* کلاس ``Exception`` [`اسناد پایتون <https://docs.python.org/3/library/exceptions.html#Exception>`__]: می‌توان این‌گونه شرح داد که این کلاس، supperclass تمام Exceptionها به غیر از سه مورد قبلی است!
+
+
+
+.. tip:: 
+
+  زمانی که یک نوع Exception در دستور ``except`` ذکر می‌گردد، آن دستور ``except`` به عنوان یک handler برای آن نوع Exception و تمامی subclassهایی خواهد بود که از آن Exception ارث‌بری دارند.
+
+
+.. tip:: 
+
+  دو دستور ``except`` زیر معادل یکدیگر بوده و از نظر مفسر پایتون به عنوان یک handler برای تمام انواع Exceptionها می‌باشند و تنها تفاوت آن‌ها در امکان دریافت شی Exception می‌باشد. برای ایجاد یک handler برای ``KeyboardInterrupt`` ،``SystemExit`` و ``GeneratorExit`` یا می‌بایست نام آن‌ها به صورت مستقیم در ``except`` قرار داده شود یا یکی از فرم‌های پایین از دستور ``except`` را استفاده نماییم:
+
+  ::
+
+      except:
+
+  ::
+
+      except BaseException as error:
+
+
+  در واقع ``BaseException`` نوع Exception پیش‌فرض برای دستور ``except`` می‌باشد.
 
 
 
