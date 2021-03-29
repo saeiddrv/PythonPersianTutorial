@@ -5,7 +5,7 @@
    :keywords:  آموزش, آموزش پایتون, آموزش برنامه نویسی, پایتون, Data Class, کتابخانه, پایتون, شی گرایی در پایتون
 
 
-درس ۲۳: مدیریت خطا در پایتون: Exception ،Error و Warning
+درس ۲۳: مدیریت خطا در پایتون: Exception ،Traceback و Exception Handling
 ===================================================================================================
 
 .. figure:: /_static/pages/23-python-exception-error-warning-try.jpg
@@ -171,8 +171,9 @@
 این نکته را نیز در نظر بگیرید - همانطور که اگر به خروجی‌های دقت کرده باشید حتما متوجه شده‌اید در دو حالت مربوط به گزارش خطای مربوط به ``SyntaxError`` خبری از سطر ``:Traceback (most recent call last)``  که در حالت خطای زمان اجرای ``TypeError`` مشاهده کردیم، نمی‌باشد. در واقع این سطر تنها در گزارش خطاهایی که پس از اجرای برنامه رخ دهند (Runtime errors)، نمایش داده خواهد شد. در زمان بررسی و ترجمه کد پایتون به بایت‌کد هرجا مشکلی باشد عملیات در همان نقطه متوقف می‌شود و صرفا گزارشی مبنی بر ابراز آن نقطه به برنامه‌نویس ارايه می‌گردد و نه چیزی که بتوان آن را یک گزارش ردیابی با Traceback نامید چرا که هنوز برنامه به اجرا درنیامده و اصلا نیازی به این کار نیست!
 
 
-Exception handling
-~~~~~~~~~~~~~~~~~~~~~~~~
+مدیریت خطا (Exception Handling)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 در زبان‌های برنامه‌نویسی صدای اعتراض یک Exception قابل درک و تشخیص است و می‌توان برای آن‌ها فرآیندی را پیش‌بینی کرد که بروز آن‌ها نه تنها باعث اتمام برنامه نشود بلکه برنامه بتواند در مسیر درست به اجرای خود ادامه دهد.
 
 در زبان برنامه‌نویسی پایتون دستور ``try/except`` برای همین منظور فراهم دیده شده است [`اسناد پایتون <https://docs.python.org/3/reference/compound_stmts.html#the-try-statement>`__]. 
@@ -474,6 +475,36 @@ Exception handling
     Successful, closed!
 
 
+**توجه داشته باشید،** چنانچه بدنه ``try`` شامل دستور ``return`` باشد، آنگاه بدنه دستور ``else`` اجرا نخواهد شد!:
+
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+        try:
+            sum = a + b
+            div = sum / a
+            return 'Successful'
+
+        except Exception as err:
+            return 'Failed'
+
+        else:
+            return 'Successful, from else!'
+
+    result = print_sum_div_first(5, 6)   # Successful
+    print(result)
+
+    result = print_sum_div_first(3, 'G') # Failed
+    print(result)
+
+::
+
+    Successful
+    Failed
+
+
 
 ``try/finally``  ``try/except/finally``  ``try/except/else/finally``
 ---------------------------------------------------------------------------------------------
@@ -522,9 +553,158 @@ Exception handling
     ----> except
     ----> finally
 
-کاربرد اصلی دستور ``finally`` تمیزکاری یا Cleaning Up کردن کد پس از انجام کاری مشخص است.
+حتی اگر زمانی داخل بدنه دستور ``except`` نیز یک Exception رخ دهد، مفسر پایتون اعلام اعتراض آن Exception را موقتا نگه‌می‌دارد تا بدنه دستور ``finally`` به صورت کامل اجرا گردد. در واقع کاربرد اصلی دستور ``finally`` - که تحت هر شرایطی اجرا می‌گردد - تمیزکاری یا Cleaning Up کردن کد پس از انجام کاری مشخص است (پاک کردن فایل‌های موقت، آزادسازی منابع، حذف اشیایی که دیگر مورد نیاز نیستند و...) که از آن معمولا به عنوان Cleanup Handler نیز یاد می‌شود:
 
 
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+        try:
+            sum = a + b
+            div = sum / a
+
+        except TypeError as err:
+            print(f'{err.__class__.__name__}: ({a}+{b!r})/{a} =', (a+b)/a)
+
+        finally:
+            print('----> finally')
+
+
+    print_sum_div_first(5, 6)
+    print('*' * 20)
+    print_sum_div_first(3, 'G')
+
+::
+
+    ----> finally
+    ********************
+    ----> finally
+    Traceback (most recent call last):
+      File "sample.py", line 3, in print_sum_div_first
+        sum = a + b
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+    During handling of the above exception, another exception occurred:
+
+    Traceback (most recent call last):
+      File "sample.py", line 15, in <module>
+        print_sum_div_first(3, 'G')
+      File "sample.py", line 7, in print_sum_div_first
+        print(f'{err.__class__.__name__}: ({a}+{b!r})/{a} =', (a+b)/a)
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+همانطور که از خروجی نمونه کد بالا مشاهده می‌شود، داخل بدنه دستور ``except``، یک Exception دیگر رخ داده است. نکته قابل توجه این است که حتی در این وضعیت نیز بدنه دستور ``finally`` اجرا شده و سپس وقوع Exception بدنه ``except`` باعث توقف برنامه شده است.
+
+اگر به گزارش Traceback پایتون در این وضعیت دقت نمایید، مشاهده خواهید کرد که این گزارش چقدر کامل است چرا که حتی به ما می‌گوید در هنگام handle کردن یک Exception بوده که Exception دیگری رخ داده است!
+
+
+**توجه داشته باشید،** چنانچه بدنه ``try`` و ``except`` و ``finally`` شامل دستور ``return`` باشند، آنگاه این دستور ``return`` از بدنه دستور ``finally`` است که اجرا خواهد شد!:
+
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+        try:
+            sum = a + b
+            div = sum / a
+            return 'Successful'
+
+        except Exception as err:
+            return 'Failed'
+
+        else:
+            return 'Successful, from else!'
+
+        finally:
+            return '---------->finally!'
+
+    result = print_sum_div_first(5, 6)   # Successful
+    print(result)
+
+    result = print_sum_div_first(3, 'G') # Failed
+    print(result)
+
+::
+
+    ---------->finally!
+    ---------->finally!
+
+
+گاهی تنها از دستور ``finally`` در کنار ``try`` استفاده می‌گردد، یعنی بدون حضور هیچ‌گونه دستور ``except`` به صورت ``try/finally``. می‌توان از این قالب برای زمانیکه رخداد Exception و مدیریت آن برایمان اهمیتی نداشته باشد، بهره بگیریم. با این حال به نمونه کد زیر توجه نمایید:
+
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+        try:
+            sum = a + b
+            div = sum / a
+            print(f'----> Result: {div}')
+
+        finally:
+            print('--------> Finished!')
+
+
+    print_sum_div_first(5, 6)
+    print('*' * 30)
+    print_sum_div_first(3, 'G')
+
+::
+
+    ----> Result: 2.2
+    --------> Finished!
+    ******************************
+    --------> Finished!
+    Traceback (most recent call last):
+      File "sample.py", line 13, in <module>
+        print_sum_div_first(3, 'G')
+      File "sample.py", line 3, in print_sum_div_first
+        sum = a + b
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+به هر حال Exception بدون handler باعث توقف اجرای برنامه می‌شود اما اگر داخل بدنه ``finally`` شامل دستور ``return`` باشد، آنگاه مفسر پایتون از اعلام Exception رخ داده که در حال حاظر به صورت موقت نگه‌داشته است تا اجرای بدنه ``finally`` به پایان برسد، صرف نظر خواهد کرد!:
+
+.. code-block:: python
+    :linenos:
+
+    def print_sum_div_first(a, b):
+        try:
+            sum = a + b
+            div = sum / a
+            print(f'----> Result: {div}')
+
+        finally:
+            print('--------> Finished!')
+            return None
+
+
+    print_sum_div_first(5, 6)
+    print('*' * 30)
+    print_sum_div_first(3, 'G')
+
+::
+
+    ----> Result: 2.2
+    --------> Finished!
+    ******************************
+    --------> Finished!
+
+
+مدیریت خطای تودرتو (Nested Exception Handling)
+---------------------------------------------------
+
+به صورت کلی بدنه هر یک از دستورهای ``try`` ، ``except`` ، ``else`` ، ``finally`` به خودی‌خود می‌توانند شامل یک دستور ``try/except/else/finally`` دیگر باشد. هر جا که کدی نوشته شود آنجا نیز احتمال بروز Exception وجود دارد و هر جا که احتمال بروز Exception وجود داشته باشد به یک handler برای آن نیاز است.
+
+البته از آنجا که در یکی از بندهای فلسفه پایتون آمده: `PEP 20: Flat is better than nested <https://www.python.org/dev/peps/pep-0020/>`__ انجام این‌کار چندان پایتونی نمی‌باشد و برنامه‌نویس احتمالا می‌تواند با کمی دقت بیشر از ساختار تودرتو پرهیز کند و کدی به مراتب خواناتر توسعه دهد. به هر حال امکان این کار در زبان برنامه‌نویسی پایتون برای برنامه‌نویس محفوظ نگه‌داشته شده است.
+
+
+
+
+Exception Hierarchy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
