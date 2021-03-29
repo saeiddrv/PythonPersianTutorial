@@ -698,7 +698,7 @@ Exception Hierarchy
 در زبان برنامه‌نویسی پایتون تمامی Exceptionهای از پیش آماده در قالب کلاس‌هایی در یک سلسله مراتب از وراثت ارايه شده است. برای مشاهده این کلاس‌ها و ساختار وراثت آن‌ها می‌توانید به اسناد پایتون مراجعه نمایید:‌ `Exception hierarchy <https://docs.python.org/3/library/exceptions.html#exception-hierarchy/>`__ - این ساختار توسط تصویر پایین نمایش داده شده است:
 
 
-.. image:: /_static/123-python-exception-hierarchy.png
+.. image:: /_static/l23-python-exception-hierarchy.png
     :align: center
     :alt: Exception Hierarchy در پایتون
 
