@@ -8,7 +8,7 @@
 درس ۲۴: مدیریت خطا در پایتون: Warning ،raise Exception و Assertion
 ===================================================================================================
 
-.. figure:: /_static/pages/24-python--raise-exception-warning-assertion.jpg
+.. figure:: /_static/pages/24-python-raise-exception-warning-assertion.jpg
     :align: center
     :alt: مدیریت خطا در پایتون:Warning ،raise Exception و Assertion
 
@@ -35,6 +35,63 @@
 
 دستور ``raise``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+از درس پیش با Exception آشنا شدیم و مشاهده کردیم در زمان اجرای برنامه پایتونی تمامی خطاها در قالب یک Exception اعلام می‌گردند. اما در برنامه‌نویسی زمان‌های بسیاری خواهد بود که برنامه‌نویس می‌بایست خود اقدام به بروز Exception نماید. یک ماژول در هنگام انجام کار مشخصی ممکن است با وضعیت‌های مختلفی روبرو گردد که می‌بایست این وضعیت‌ها را به ماژول سطح بالاتر خود اعلام کند تا در نهایت نتیجه و توضیح مناسب برای کاربر فراهم گردد. برای مثال در پیاده‌سازی API ماژولی که انجام خدمت را به عهده دارد، هنگامی که به خطا یا وضعیتی  خاص برخورد می‌کند، می‌تواند این وضعیت را در قالب بروز یک Exception اعلام می‌کند و ماژولی که وظیفه تولید پاسخ یا Response را برعهده دارد، بر اساس نوع Exception رخ داده می‌تواند یک Response مناسب تولید نماید.
+
+در زبان برنامه‌نویسی پایتون از دستور ``raise`` [`اسناد پایتون <https://docs.python.org/3/reference/simple_stmts.html#raise>`__] برای بروز یک Exception استفاده می‌گردد::
+
+    raise Exception()  # an exception object
+
+
+.. code-block:: python
+    :linenos:
+    
+    def self_sum_int(a):
+        if not isinstance(a, int):
+            raise TypeError()
+        
+        return a + a
+
+    res = self_sum_int('C')
+    print(res)
+
+
+::
+
+    Traceback (most recent call last):
+      File "sample.py", line 7, in <module>
+        res = self_sum_int('C')
+      File "sample.py", line 3, in self_sum_int
+        raise TypeError()
+    TypeError
+
+در نمونه کد بالا ما یک شی از کلاس ``TypeError`` ایجاد و آن را raise کردیم (سطر ۳). همانطور که مشاهده می‌کنید، شرح Exception در Traceback (سطر پایانی) با آن چیزی که در درس پیش شاهد آن بودیم، متفاوت است و همچنین علت بروز Exception نیز raise شدن آن اعلام شده است. 
+
+می‌توان در هنگام نمونه‌سازی از کلاس Exception مورد نظر، یک متن دلخواه (یک شی از نوع ``str``) به عنوان شرح Exception در زمان نمونه‌سازی به صورت آرگومان ارسال کنیم:
+
+
+.. code-block:: python
+    :linenos:
+    
+    def self_sum_int(a):
+        if not isinstance(a, int):
+            raise TypeError(f"The input must be 'int' type, {a!r} is {type(a)}")
+        
+        return a + a
+
+    res = self_sum_int('C')
+    print(res)
+
+
+::
+
+    Traceback (most recent call last):
+      File "sample.py", line 7, in <module>
+        res = self_sum_int('C')
+      File "sample.py", line 3, in self_sum_int
+        raise TypeError(f'The input must be of the integer type, {a} is {type(a)}')
+    TypeError: The input must be 'int' type, 'C' is <class 'str'>
+
 
 
 ایجاد Exception
