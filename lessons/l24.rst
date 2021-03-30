@@ -128,6 +128,31 @@
         raise RuntimeError("Something bad happened") from exception
     RuntimeError: Something bad happened
 
+به عنوان یک نمونه کاربرد، از این روش می‌توان برای ایجاد یک Wrapper برای چندین Exception بهره برد. در این حالت کد سطح بالاتر تنها نیاز است یک نوع Exception را handle نماید:
+
+.. code-block:: python
+    :linenos:
+    
+    def sum_int(a, b):
+        try:
+            return a + b
+        except TypeError as type_err:
+            raise RuntimeError(f'Something bad happened \n    => {str(type_err)}') from type_err
+
+
+
+    try:
+        res = sum_int(3, 'C')
+        print(res)
+    
+    except RuntimeError as runtime_err:
+        print(f'{runtime_err.__class__.__name__}: {str(runtime_err)}')
+
+::
+
+    RuntimeError: Something bad happened 
+        => unsupported operand type(s) for +: 'int' and 'str'
+
 ایجاد Exception
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
