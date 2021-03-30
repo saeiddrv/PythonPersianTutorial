@@ -40,8 +40,9 @@
 
 در زبان برنامه‌نویسی پایتون از دستور ``raise`` [`اسناد پایتون <https://docs.python.org/3/reference/simple_stmts.html#raise>`__] برای بروز یک Exception استفاده می‌گردد::
 
-    raise Exception()  # an exception object
+    raise exception_object
 
+به نمونه کد زیر توجه نمایید:
 
 .. code-block:: python
     :linenos:
@@ -93,6 +94,39 @@
     TypeError: The input must be 'int' type, 'C' is <class 'str'>
 
 
+طی درس پیش مشاهده کردیم، چنانچه در زمان handle کردن یک Exception، یک Exception دیگر رخ دهد؛ در نتیجه Traceback نهایی نیز شامل یک Traceback به ازای هر Exception خواهد بود. این امکان نیز توسط دستور ``raise`` برای برنامه‌نویس فراهم می‌باشد. می‌توان با استفاده از دستور ``from`` در کنار  ``raise``،  دو Exception - که از نظر منطقی به یکدیگر وابسته هستند - را به یکدیگر متصل و سپس raise کرد::
+
+   raise exception_object from other_exception_object
+
+به نمونه کد ساده زیر و خروجی آن توجه نمایید:
+
+.. code-block:: python
+    :linenos:
+    
+    def sum_int(a, b):
+        try:
+            return a + b
+        except Exception as exception:
+            raise RuntimeError("Something bad happened") from exception
+
+    res = sum_int(3, 'C')
+    print(res)
+
+::
+
+    Traceback (most recent call last):
+      File "sample.py", line 3, in sum_int
+        return a + b
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+    The above exception was the direct cause of the following exception:
+
+    Traceback (most recent call last):
+      File "sample.py", line 7, in <module>
+        res = sum_int(3, 'C')
+      File "sample.py", line 5, in sum_int
+        raise RuntimeError("Something bad happened") from exception
+    RuntimeError: Something bad happened
 
 ایجاد Exception
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
