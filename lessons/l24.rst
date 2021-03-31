@@ -236,12 +236,248 @@
   در  زبان‌برنامه‌نویسی پایتون پیشنهاد می‌شود که اگر هدف از ایجاد Exception نمایش یک خطا باشد، در انتهای نام کلاس از واژه Error استفاده گردد.
 
 
-Context Manager و ``with``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 ماژول warnings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+تا این لحظه با مفهوم Exception آشنا شده‌ایم. می‌دانیم که بروز Exception در واقع اعلام یک خطا یا یک رویداد مهم در برنامه می‌باشد که می‌بایست حتما handle شود، در غیر این صورت برنامه قادر به انجام دستورات نخواهد بود.
+
+اما گاهی اعلام یک رویداد آنقدر مهم نیست که بخواهد روند اجرای برنامه تهدید کند. بلکه صرفا یک هشدار برای توجه بیشتر یا اصلاح رفتار برای نسخه‌های بعدی خواهد بود که **بیشتر کاربرد آن برای توسعه‌دهندگان برنامه می‌باشد تا کاربرانی که به نوعی مصرف‌کنندگان آن برنامه محسوب می‌شوند**. در زبان برنامه‌نویسی پایتون، ماژول ``warnings`` [`اسناد پایتون <https://docs.python.org/3/library/warnings.html>`__] را برای استفاده در چنین زمان‌هایی فراهم آورده شده است [`PEP 230 <https://www.python.org/dev/peps/pep-0230>`__].
+
+
+پیش از مراجعه به این ماژول از کتابخانه استاندارد زبان برنامه‌نویسی پایتون لازم است نگاهی دوباره به انتهای فهرست سلسله‌مراتب وراثت Exceptionها که در درس پیش آن را بررسی کردیم بیاندازیم، در انتهای این فهرست کلاس‌هایی با پسوند Warning قراردارند [`Exception hierarchy <https://docs.python.org/3/library/exceptions.html#exception-hierarchy>`__]:
+
+
+.. image:: /_static/l24-python-exception-hierarchy-warnings.png
+    :align: center
+    :alt: Exception Hierarchy در پایتون به همراه warnings
+
+همان‌طور که مشاهده می‌شود، تمام این کلاس‌ها از کلاسی با نام ``Warning`` ارث‌بری دارند که خود این کلاس نیز از کلاس ``Exception`` ارث‌بری دارد. 
+
+این‌ها Warning هستند، Exceptionهایی که هدف از توسعه آنها اعلام یک هشدار می‌باشد و نه اعتراضی که تنبیه آن توقف برنامه باشد. با این حال به نمونه کد زیر توجه نمایید:
+
+.. code-block:: python
+    :linenos:
+
+    def sum_int(a, b):
+        raise DeprecationWarning('"sum_int" will be removed in version 2.0')
+        sum = a + b
+        print(sum)
+
+
+    sum_int(6, 5)
+    print('Done.')
+
+::
+
+    Traceback (most recent call last):
+      File "sample.py", line 7, in <module>
+        sum_int(6, 5)
+      File "sample.py", line 2, in sum_int
+        raise DeprecationWarning('"sum_int" will be removed in version 2.0')
+    DeprecationWarning: "sum_int" will be removed in version 2.0
+
+ساختار سلسله‌مراتب به ما گفته بود که Warningها در اصل Exception هستند و زمانی که یک Exception به اصطلاح raise شود، حتما می‌بایست یک handler برای آن پیش‌بینی شده باشد. در واقع اگر برای بروز یک Warning از دستور ``raise`` استفاده شود، دستور ``raise`` همان کاری را با Warning انجام می‌دهد که با هر نوع Exception دیگری انجام خواهد داد.
+
+
+تابع ``warnings.warn``
+---------------------------
+
+
+اگر بخواهیم بروز یک Exception به صورتی هشدارگونه باشد، می‌بایست به سراغ ماژول ``warnings`` برویم. اکنون اگر نمونه کد قبل را با کمک این ماژول بازنویسی نماییم، نتیجه زیر حاصل می‌گردد:
+
+.. code-block:: python
+    :linenos:
+
+    import warnings
+
+    def sum_int(a, b):
+        warnings.warn('"sum_int" will be removed in version 2.0', DeprecationWarning)
+        sum = a + b
+        print(sum)
+
+
+    sum_int(6, 5)
+    print('Done.')
+
+::
+
+    sample.py:4: DeprecationWarning: "sum_int" will be removed in version 2.0
+      warnings.warn('"sum_int" will be removed in version 2.0', DeprecationWarning)
+    11
+    Done.
+
+همان‌طور که مشاهده می‌شود تنها یک پیام هشدار در خروجی چاپ (print) می‌شود و دیگر خبری از Traceback نیست و برنامه بدون هیچ اخلالی باموفقیت تا خط پایان به اجرای خود ادامه داده است. 
+
+
+برای اعلام یک هشدار از تابع ``warn`` در ماژول ``warnings`` استفاده می‌شود [`اسناد پایتون <https://docs.python.org/3/library/warnings.html#warnings.warn>`__] که تعریف آن به شکل زیر می‌باشد::
+
+    warn(message, category=None, stacklevel=1, source=None)
+
+بر اساس تعریف، این تابع یک پارامتر اجباری (``message``) و سه پارامتر اختیاری دارد.
+
+* **message**: می‌بایست یک شی ``str`` باشد و متن هشداری است که می‌خواهیم نمایش داده شود.
+
+* **category**: نوع Warning را مشخص می‌کند که می‌بایست **نام یک subclass از کلاس** ``Warning`` باشد. برای مشاهده انواع Warningهای از پیش آماده در پایتون می‌توانید به `Warning Categories <https://docs.python.org/3/library/warnings.html#warning-categories>`__ مراجعه نمایید. ارسال آرگومان برای این پارامتر اختیاری است و در صورت عدم ارسال، نوع ``UserWarning`` به صورت پیش‌فرض در نظر گرفته خواهد شد. 
+
+* **stacklevel**: اگر دقت کرده باشید متن هشدار شامل اطلاعاتی از محل بروز آن می‌باشد. این پارامتر یک عدد از نوع ``int`` و بزرگتر یا مساوی از ``1`` را دریافت و تعیین می‌کند که این اطلاعات مربوط به کدام سطح از  فراخوانی کد و رسیدن به این هشدار باشد. به این صورت که: عدد ``1`` (مقدار پیش‌فرض) به محل دقیق بروز هشدار، عدد ``2`` به یک مرحله قبل‌تر از محل بروز هشدار و ...
+
+  .. code-block:: python
+      :linenos:
+
+
+      import warnings
+
+      def sum_int(a, b):
+          print('-' * 30,  'stacklevel=1')
+          warnings.warn('"sum_int" will be removed in version 2.0', stacklevel=1)
+          print('-' * 30,  'stacklevel=2')
+          warnings.warn('"sum_int" will be removed in version 2.0', stacklevel=2)
+          print('-' * 30,  'stacklevel=3')
+          warnings.warn('"sum_int" will be removed in version 2.0', stacklevel=3)
+          print('-' * 30,  'stacklevel=4')
+          warnings.warn('"sum_int" will be removed in version 2.0', stacklevel=4)
+          print('-' * 30,  'stacklevel=5')
+          warnings.warn('"sum_int" will be removed in version 2.0', stacklevel=5)
+          print('-' * 30)
+          sum = a + b
+          print(sum)
+
+
+      def action(a, b):
+         sum_int(6, 5)
+
+
+      action(6, 5)
+      print('Done.')
+
+  ::
+
+      ------------------------------ stacklevel=1
+      sample.py:5: UserWarning: "sum_int" will be removed in version 2.0
+        warnings.warn('"sum_int" will be removed in version 2.0', stacklevel=1)
+      ------------------------------ stacklevel=2
+      sample.py:20: UserWarning: "sum_int" will be removed in version 2.0
+        sum_int(6, 5)
+      ------------------------------ stacklevel=3
+      sample.py:23: UserWarning: "sum_int" will be removed in version 2.0
+        action(6, 5)
+      ------------------------------ stacklevel=4
+      sys:1: UserWarning: "sum_int" will be removed in version 2.0
+      ------------------------------ stacklevel=5
+      ------------------------------
+      11
+      Done.
+
+Warnings Filter
+----------------------
+
+حالتی را تصور کنید که برنامه شما پر از Warningهای متنوع می‌باشد. Warnings Filter امکانی است برای اینکه مشخص کنیم کدام نوع Warning نادیده گرفته شود یا کدام نوع نمایش داده شود یا کدام نوع همچون یک Exception واقعی رفتار کند. برای این منظور از از تابع ``simplefilter`` در ماژول ``warnings`` استفاده می‌شود [`اسناد پایتون <https://docs.python.org/3/library/warnings.html#warnings.simplefilter>`__] که تعریف آن به شکل زیر می‌باشد::
+
+    simplefilter(action, category=Warning, lineno=0, append=False)
+
+بر اساس تعریف، این تابع یک پارامتر اجباری (``action``) و سه پارامتر اختیاری دارد.
+
+
+* **action**: از نوع ``str`` بوده و می‌تواند یکی از مقادیر پایین باشد. این مشخص می‌کند که چه عملیاتی می‌بایست بر روی Warningها اعمال شود:
+
+  .. container:: table
+
+	  ======================  ===================================================================
+	  مقدار                   توضیحات
+	  ======================  ===================================================================
+	  ``'default'``           حالت پیش‌فرض، هر Warning به ازای سطری که در آن قرار دارد یکبار چاپ شود
+	  ``'error'``             تبدیل رفتار Warning به Exception واقعی - بروز خطا
+	  ``'ignore'``            نادیده گرفتن Warning
+	  ``'always'``            Warning هر بار چاپ شود
+	  ``'module'``            هر Warning به ازای هر ماژول تنها یکبار چاپ شود
+	  ``'once'``              هر Warning به ازای کل برنامه تنها یکبار چاپ شود
+	  ======================  ===================================================================
+
+* **category**: نوع Warning را مشخص می‌کند که می‌بایست **نام یک subclass از کلاس** ``Warning`` باشد. ارسال آرگومان برای این پارامتر اختیاری است و در صورت عدم ارسال، عمل مشخص شده توسط پارامتر action برای تمام انواع Warningها در برنامه اعمال می‌گردد. 
+
+به نمونه کدهای زیر توجه نمایید:
+
+.. code-block:: python
+    :linenos:
+
+    import warnings
+    warnings.simplefilter('ignore')
+    # $ python3 -Wi sample.py
+    # $ python3 -Wignore sample.py
+
+
+    print('-------Before #01-------')
+    warnings.warn('#01')
+    print('-------After  #01-------')
+
+::
+
+    -------Before #01-------
+    -------After  #01-------
+
+
+.. code-block:: python
+    :linenos:
+
+    import warnings
+    warnings.simplefilter('ignore', DeprecationWarning)
+    # $ python3 -Wignore::DeprecationWarning sample.py
+    # $ python3 -Wi::DeprecationWarning sample.py
+
+
+    print('-------Before #02-------')
+    warnings.warn('#02')
+    print('-------After  #02-------')
+
+    print('-------Before #03-------')
+    warnings.warn('#03', DeprecationWarning)
+    print('-------After  #03-------')
+
+::
+
+    -------Before #02-------
+    sample.py:8: UserWarning: #02
+      warnings.warn('#02')
+    -------After  #02-------
+    -------Before #03-------
+    -------After  #03-------
+
+
+.. code-block:: python
+    :linenos:
+
+    import warnings
+    warnings.simplefilter('error')
+    # $ python3 -We sample.py
+    # $ python3 -Werror sample.py
+
+
+    print('-------Before #04-------')
+    warnings.warn('#04')
+    print('-------After  #04-------')
+
+
+::
+
+      -------Before #04-------
+      Traceback (most recent call last):
+        File "sample.py", line 8, in <module>
+          warnings.warn('#04')
+      UserWarning: #04
+
+
+.. tip:: 
+
+   اعمال Filter در زمان اجرای اسکریپت نیز با استفاده از کلید ``W-`` ممکن می‌باشد [`اسناد پایتون <https://docs.python.org/3/using/cmdline.html#cmdoption-w>`__] که در هر نمونه کد، معادل دستور اجرای پایتون نیز به صورت کامنت درج شده است.
+
+
+.. tip:: 
+
+  همانند Exceptionها می‌توانید انواع Warning خود را ایجاد نمایید. برای این منظور تنها کافی است یک کلاس ایجاد نمایید که از کلاس ``Warning`` یا یکی از subclassهای آن ارث‌بری داشته باشد.
+
+.. note:: 
+
+  این بخش به دلیل وابستگی مبحث Warning با مبحث مهم Exception در زبان‌برنامه‌نویسی پایتون و صرفا به منظور آشنایی خوانندگان با همچنین قابلیتی در این زبان تهیه شده است. ماژول ``warnings`` امکانات گسترده‌تری را فراهم می‌آورد که پرداختن به تمام آن‌ها خارج از حوصله این درس می‌بود، بنابراین علاقه‌مندان برای مطالعه بیشتر می‌توانند به مستندات رسمی پایتون مراجعه نمایند.
 
 
 
