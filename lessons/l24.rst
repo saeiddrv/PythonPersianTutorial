@@ -156,6 +156,85 @@
 ایجاد Exception
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+در زبان برنامه‌نویسی پایتون با ایجاد یک کلاس و ارث‌بری از ``Exception`` یا یکی از subclassهای آن می‌توان یک Exception جدید ایجاد نمود:
+
+.. code-block:: python
+    :linenos:
+    
+    class NegativeNumberError(Exception):
+        """Raised when the input value is negative number"""
+        pass
+
+
+    def plus(num):
+        if num < 0:
+            raise NegativeNumberError(f'{num} is a negative number!')
+            
+        return num + num
+
+
+    try:
+        print(plus(10))
+        print('*' * 30)
+        print(plus(-5))
+    
+    except NegativeNumberError as err:
+        print(str(err))
+    
+    except:
+        print('Something bad happened!')
+        
+::
+
+   20
+   ******************************
+   -5 is a negative number!
+
+بدیهی است که می‌توان کلاس‌های Exception خود را مطابق با میل خود پیاده‌سازی نمود:
+
+.. code-block:: python
+    :linenos:
+    
+    class NegativeNumberError(Exception):
+        """Raised when the input value is negative number"""
+    
+        def __init__(self, number, message="Number must be positive"):
+            self.number = number
+            self.message = message
+            super().__init__(self.message)
+
+        def __str__(self):
+            return f'ERROR[{self.number}] -> {self.message}'
+
+
+    def plus(num):
+        if num < 0:
+            raise NegativeNumberError(num)
+            
+        return num + num
+
+
+    try:
+        print(plus(10))
+        print('*' * 30)
+        print(plus(-5))
+    
+    except NegativeNumberError as err:
+        print(str(err))
+    
+    except:
+        print('Something bad happened!')
+        
+::
+
+   20
+   ******************************
+   ERROR[-5] -> Number must be positive
+
+
+.. note::
+  در  زبان‌برنامه‌نویسی پایتون پیشنهاد می‌شود که اگر هدف از ایجاد Exception نمایش یک خطا باشد، در انتهای نام کلاس از واژه Error استفاده گردد.
+
 
 Context Manager و ``with``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
