@@ -759,7 +759,7 @@ Context Manager و دستور ``with/as``
     with context_expression [as target]:
         with_statement_body
 
-در این ساختار بخش ``as`` اختیاری بوده و تنها زمانی که در داخل بدنه دستور ``with`` به شی ``context_expression`` نیاز داشته باشیم، استفاده می‌گردد؛ در این صورت یک ارجاع از شی مورد نیاز به نام دلخواه ``target`` ایجاد و در دسترس قرار می‌گیرد. ``context_expression`` نیز معرف یک شی‌ای است که توانایی مدیریت یا handle کردن دو وضعیت «ورود به» (entry into) و «خروج از» (exit from) را داشته باشد. برای ایجاد همچین شی‌ای می‌بایست دو متد خاص ``__enter__`` 	[`اسناد پایتون <https://docs.python.domainunion.de/3/reference/datamodel.html#object.__enter__>`__] و ``__exit__`` [`اسناد پایتون <https://docs.python.domainunion.de/3/reference/datamodel.html#object.__exit__>`__] را در کلاس مورد نظر خود پیاده‌سازی کنیم:
+در این ساختار بخش ``as`` اختیاری بوده و تنها زمانی که در داخل بدنه دستور ``with`` به شی تولید شده توسط ``context_expression`` نیاز داشته باشیم، استفاده می‌گردد؛ در این صورت یک ارجاع از شی مورد نیاز به نام دلخواه ``target`` ایجاد و در دسترس قرار می‌گیرد. ``context_expression`` نیز معرف یک شی‌ای است که توانایی مدیریت یا handle کردن دو وضعیت «ورود به» (entry into) و «خروج از» (exit from) را داشته باشد. برای ایجاد همچین شی‌ای می‌بایست دو متد خاص ``__enter__`` 	[`اسناد پایتون <https://docs.python.domainunion.de/3/reference/datamodel.html#object.__enter__>`__] و ``__exit__`` [`اسناد پایتون <https://docs.python.domainunion.de/3/reference/datamodel.html#object.__exit__>`__] را در کلاس مورد نظر خود پیاده‌سازی کنیم:
 
 .. code-block:: python
     :linenos:
@@ -786,9 +786,9 @@ Context Manager و دستور ``with/as``
 
 اگر بخواهیم کمی عمیق‌تر به ماجرا نگاه کنیم:
 
-* اجرای متد ``__enter__`` زمانی است که خط اجرای برنامه به اصطلاح می‌خواهد وارد runtime context شود و خروجی این متد می‌بایست شی‌ای باشد که می‌خواهیم در طول اجرای دستور  ``with`` یا به اصطلاح context، با آن کار کنیم. البته خروجی می‌تواند ``None`` باشد ولی باید توجه داشت که خروجی این متد است که توسط دستور ``as`` به نام ``target`` ارجاع می‌خورد!
+* اجرای متد ``__enter__`` زمانی است که خط اجرای برنامه می‌خواهد وارد اجرای دستورات داخل ``with`` یا به اصطلاح  وارد runtime context شود و خروجی این متد می‌بایست شی‌ای باشد که می‌خواهیم در طول اجرای دستور  ``with`` یا به اصطلاح context، با آن کار کنیم. البته خروجی می‌تواند ``None`` باشد ولی باید توجه داشت که خروجی این متد است که توسط دستور ``as`` به نام ``target`` ارجاع می‌خورد!
 
-* اجرای متد ``__exit__`` زمانی است که کار یا اجرای context به پایان رسیده است. این متد در واقع  فرصتی برای تمیزکاری یا به اصطلاح clean up کردن آثار اجرای context می‌باشد. به مانند پاک کردن فایل‌هایی که موقت ایجاد شده‌اند، حذف اشیای اضافی باقی‌مانده یا انجام عمل بستن یک فایل یا پایان دادن یک ارتباط (Connection) یا...
+* اجرای متد ``__exit__`` زمانی است که انجام کار دستورات ``with`` یا اجرای context به پایان رسیده است. این متد در واقع  فرصتی برای تمیزکاری یا به اصطلاح clean up کردن آثار اجرای context می‌باشد. به مانند پاک کردن فایل‌هایی که موقت ایجاد شده‌اند، حذف اشیای اضافی باقی‌مانده یا انجام عمل بستن یک فایل یا پایان دادن یک ارتباط (Connection) یا...
 
 برای آشنایی بیشتر در نمونه کد زیر یک Wrapper برای شی فایل ایجاد کرده‌ایم:
 
@@ -820,6 +820,92 @@ Context Manager و دستور ``with/as``
     ====== OPEN FILE ======
     Inside context manager!
     ====== CLOSE FILE ======
+
+به متد ``__exit__`` برگردیم، براساس مستندات پایتون تعریف کامل این متد به شکل زیر است::
+
+    __exit__(self, exc_type, exc_value, traceback)
+
+سه پارامتر انتهایی در صورت بروز Exception هنگام اجرای context (دستورات داخل بدنه ``with``) دارای مقدار غیر ``None`` و در غیر این صورت برابر با مقدار ``None`` خواهند بود. وجود این مقادیر به معنی عدم پایان صحیح context می‌باشد که ممکن است بتواند در گرفتن تصمیم شما در زمان خروج از context تاثیر داشته باشد.
+
+.. code-block:: python
+    :linenos:
+
+    class SampleContextManager:
+        def __enter__(self):
+            print('---> Entered into context manager!')
+
+        def __exit__(self, exc_type, exc_value, traceback):
+            print('exc_type:', exc_type)
+            print('exc_value:', exc_value)
+            print('traceback:', traceback)
+            print('<--- Exiting from context manager!')
+
+
+    with SampleContextManager():
+        print('|||||||||Inside context manager! - Top')
+        a = 8 / 0
+        print('|||||||||Inside context manager! - Bottom')
+
+
+    print('***FINISH***')
+
+::
+
+     ---> Entered into context manager!
+     |||||||||Inside context manager! - Top
+     exc_type: <class 'ZeroDivisionError'>
+     exc_value: division by zero
+     traceback: <traceback object at 0x7f1c8aebd0c8>
+     <--- Exiting from context manager!
+     Traceback (most recent call last):
+       File "sample.py", line 14, in <module>
+         a = 8 / 0
+     ZeroDivisionError: division by zero
+
+
+همان‌طور که از نمونه کد بالا قابل مشاهده است، در زمان اجرای دستورات context یک خطای (تقسیم بر صفر) ``ZeroDivisionError`` رخ داده است. نکته قابل توجه این است که حتی با وجود بروز خطا و ناتمام ماندن اجرای context، ولی بدنه متد ``__exit__`` به صورت کامل اجرا شده است. در واقع مفسر پایتون اعلام Exception را که می‌تواند منجر به توقف کل برنامه شود را به صورت موقت تا پایان اجرا ``__exit__`` معلق نگه می‌دارد.
+
+در چنین حالتی اگر متد ``__exit__`` مقدار ``True`` را برگرداند، مفسر پایتون از بروز Exception خودداری خواهد کرد:
+
+.. code-block:: python
+    :linenos:
+
+    class SampleContextManager:
+        def __enter__(self):
+            print('---> Entered into context manager!')
+
+        def __exit__(self, exc_type, exc_value, traceback):
+            print('exc_type:', exc_type)
+            print('exc_value:', exc_value)
+            print('traceback:', traceback)
+            print('<--- Exiting from context manager!')
+            return True
+
+
+    with SampleContextManager():
+        print('|||||||||Inside context manager! - Top')
+        a = 8 / 0
+        print('|||||||||Inside context manager! - Bottom')
+
+
+    print('***FINISH***')
+
+::
+
+    ---> Entered into context manager!
+    |||||||||Inside context manager! - Top
+    exc_type: <class 'ZeroDivisionError'>
+    exc_value: division by zero
+    traceback: <traceback object at 0x7f4b3d520048>
+    <--- Exiting from context manager!
+    ***FINISH***
+
+یادآوری:‌ می‌دانیم که خروجی هر تابع یا متد به صورت پیش‌فرض برای ``None`` می‌باشد و این مقدار در مقام ارزش‌سنجی بولین، ارزشی برابر با مقدار ``False`` دارد.
+
+*در طی دروس آینده به مبحث Exception و مدیریت آن خواهیم پرداخت.*
+
+ 
+
 
 
 |
