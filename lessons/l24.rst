@@ -484,6 +484,119 @@ Warnings Filter
 دستور ``assert``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+ادعا یا Assertion در برنامه‌نویسی به عبارت‌های ساده از شرط‌های بولی گفته می‌شود که درستی یک «وضعیت» یا یک «حقیقت» در کد را بررسی می‌کنند. باید توجه داشت Assertion در واقع یک ابزار برای کمک به توسعه برنامه می‌باشد که کاربرد آن در ایجاد تست کد در زمان تست‌نویسی و دیباگ (Debug) برنامه در محیط توسعه می‌باشد و نه در محیط اجرای برنامه به عنوان محصول.
+
+
+فلوچارت یک Assertion به صورت زیر ترسیم می‌شود:
+
+.. image:: /_static/l24-python-assertion-flowchart.png
+    :align: center
+    :width: 450
+    :alt: دستور ``assert`` در پایتون - فلوچارت Assertion
+
+
+در زبان برنامه‌نویسی پایتون Assertion با استفاده از دستور ``assert`` پیاده‌سازی می‌گردد [`اسناد پایتون <https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement>`__] و با یکی از دو سینتکس زیر قابل پیاده‌سازی می‌باشد::
+
+    assert condition_expression 
+
+::
+
+    assert condition_expression, 'error_message'
+
+
+به نمونه کد زیر توجه نمایید:
+
+.. code-block:: python
+    :linenos:
+
+    def average(numbers):
+        assert len(numbers) != 0
+        return sum(numbers)/len(numbers)
+
+    numbers = [1, 2, 3, 4, 5]
+    print(f'Average of {numbers}: {average(numbers)}')
+
+    print('-' * 30)
+
+    numbers = []
+    print(f'Average of {numbers}: {average(numbers)}')
+
+::
+
+    Average of [1, 2, 3, 4, 5]: 3.0
+    ------------------------------
+    Traceback (most recent call last):
+      File "sample.py", line 11, in <module>
+        print(f'Average of {numbers}: {average(numbers)}')
+      File "sample.py", line 2, in average
+        assert len(numbers) != 0
+    AssertionError
+
+
+فرض توسعه‌دهنده تابع ``average`` مثال قبل این بوده که به این تابع نباید داده‌ای با طول صفر ارسال نمی‌گردد، ولی اگر در زمان تست یا ادامه مراحل توسعه برنامه این مقدار ارسال گردد، باید یک فکری برای اصلاح آن کرد! چرا که این تابع آمادگی تبدیل شدن به یک باگ در برنامه را خواهد داشت.
+
+می‌توان برای دستور ``assert`` یک پیام خطا نیز اختصاص داد:
+
+
+.. code-block:: python
+    :linenos:
+
+    def average(numbers):
+        assert len(numbers) != 0, 'List[numbers] is empty.'
+        return sum(numbers)/len(numbers)
+
+    numbers = []
+    print(f'Average of {numbers}: {average(numbers)}')
+
+::
+
+    Traceback (most recent call last):
+      File "sample.py", line 6, in <module>
+        print(f'Average of {numbers}: {average(numbers)}')
+      File "sample.py", line 2, in average
+        assert len(numbers) != 0, 'List[numbers] is empty.'
+    AssertionError: List[numbers] is empty.
+
+
+همانطور پیش‌تر بیان شده دستورهای ``assert`` یک قابلیت برای زمان توسعه می‌باشند بنابراین باید توجه داشت که تمامی این دستورات هنگامی که برنامه با کلید بهینه‌سازی (Optimization - درس چهارم) یعنی ``O-`` یا ``OO-`` اجرا گردد، در زمان کامپیال به بایت‌کد حذف خواهند شد::
+
+    $ python -O script.py
+
+
+این شرایط مشابه حالتی است که بجای دستور ``assert``، مستقیم از دستور ``raise`` به شکل زیر استفاده نماییم::
+
+    if __debug__:
+        if not condition_expression: raise AssertionError()
+
+::
+
+    if __debug__:
+        if not condition_expression: raise AssertionError('error_message')
+
+``__debug__`` یک متغیر داخلی در محیط اجرای پایتون با مقدار پیش‌فرض ``True`` می‌باشد [`اسناد پایتون <https://docs.python.org/3/library/constants.html#__debug__>`__]. مقدار این متغیر در تمام طول مدت اجرای برنامه ثابت خواهد بود و تنها زمانی که برنامه با کلید بهینه‌سازی اجرا گردد، مقدار آن به ``False`` تغییر می‌یابد. بنابراین دستور ``raise AssertionError`` هیچگاه اجرا نخواهد شد.
+
+
+همچنین نباید فراموش کرد که ``AssertionError`` یکی از Exceptionهای آماده پایتون می‌باشد [`اسناد پایتون <https://docs.python.org/3/library/exceptions.html#AssertionError>`__]. بنابراین هنگام بروز ممکن است توسط دستور ``try``، به صورت ناخواسته handle شود:
+
+.. code-block:: python
+    :linenos:
+
+    def average(numbers):
+        assert len(numbers) != 0, 'List[numbers] is empty.'
+        return sum(numbers)/len(numbers)
+
+    try:
+
+        numbers = []
+        print(f'Average of {numbers}: {average(numbers)}')
+
+    except Exception as err: # or except:
+        print('Something bad happened!')
+
+::
+
+    Something bad happened!
+
 
 
 |
