@@ -38,7 +38,7 @@ $( document ).ready(function() {
     $("div[class^='first highlight-']").wrap( "<div class='h-scroll'></div>");
     $("table.docutils").addClass("table table-bordered");
     $("img").addClass("img-responsive");
-    $("table").wrap("<div class='table-responsive'></div>");
+    $("table").parent().wrap("<div class='table-responsive'></div>");
 
     $("table.hlist").unwrap();
     $("table.docutils.footnote").unwrap();
