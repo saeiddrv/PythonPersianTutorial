@@ -677,6 +677,7 @@
     ******************************
     --------> Finished!
 
+
 روند انتشار Exception
 ----------------------------
 
@@ -718,13 +719,58 @@
 در نمونه کد بالا همانطور که مشخص است تمام Exceptionها در داخل تابع ``print_sum_div_first`` رخ می‌دهد ولی از آنجا که این تابع فاقد handler می‌باشد، Exceptionها به یک مرحله قبل‌تر یعنی تابع ``action`` تحویل می‌گردند، ولی این تابع تنها یک handler برای ``ZeroDivisionError`` داشته پس تمامی Exceptionهای احتمالی دیگر از جمله ``TypeError`` به یک مرحله قبل‌تر تحویل و خوشبختانه در آن‌جا handle می‌شوند!
 
 
-
 مدیریت خطای تودرتو (Nested Exception Handling)
 ---------------------------------------------------
 
 به صورت کلی بدنه هر یک از دستورهای ``try`` ، ``except`` ، ``else`` ، ``finally`` به خودی‌خود می‌توانند شامل یک دستور ``try/except/else/finally`` دیگر باشد. هر جا که کدی نوشته شود آنجا نیز احتمال بروز Exception وجود دارد و هر جا که احتمال بروز Exception وجود داشته باشد به یک handler برای آن نیاز است.
 
 البته از آنجا که در یکی از بندهای فلسفه پایتون آمده: `PEP 20: Flat is better than nested <https://www.python.org/dev/peps/pep-0020/>`__ انجام این‌کار چندان پایتونی نمی‌باشد و برنامه‌نویس احتمالا می‌تواند با کمی دقت بیشر از ساختار تودرتو پرهیز کند و کدی به مراتب خواناتر توسعه دهد. به هر حال امکان این کار در زبان برنامه‌نویسی پایتون برای برنامه‌نویس محفوظ نگه‌داشته شده است.
+
+
+
+مدیریت خطا و دستور ``with``
+--------------------------------------
+
+از درس بیست و یکم با مفهوم Context Manager و ارتباط آن با دستور ``with`` آشنا هستیم. اینکه مدیریت خطا برای این ساختار چگونه باشد به این بستگی دارد که می‌خواهیم در کدام نقطه Exception احتمالی را handle کنیم. بر اساس مفهوم Context Manager، در چند نقطه زیر احتمال بروز Exception وجود دارد:
+
+* داخل متد ``__init__`` کلاس ContextManager
+* داخل متد ``__enter__`` کلاس ContextManager
+* داخل بدنه دستور ``with``
+* داخل متد ``__exit__`` کلاس ContextManager
+
+
+اگر برایمان مهم نباشد می‌توانیم به صورت زیر یک handler برای بروز Exceptionهای احتمالی در تمام حالات بالا پیاده‌سازی نماییم::
+
+
+    try:
+        with ContextManager():
+            do_something()
+    except Exception as err:
+        pass
+
+
+در غیر این صورت می‌توانید مشابه نمونه کد زیر عمل نمایید::
+
+    try:
+        context_manager = ContextManager()
+
+    except Exception as err:
+        # Handler for: '__init__'
+
+    else:
+        try:
+            with context_manager:
+                try:
+                    do_something()
+
+                except Exception as err:
+                    # Handler for: 'with' body
+
+        except Exception as err:
+            # Handler for: '__enter__' and '__exit__'
+
+
+[`PEP 343 - Specification: The 'with' Statement <https://www.python.org/dev/peps/pep-0343/#specification-the-with-statement>`__]
 
 
 کارایی (Performance)
