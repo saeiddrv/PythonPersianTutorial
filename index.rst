@@ -50,6 +50,7 @@
    lessons/l22
    lessons/l23
    lessons/l24
+   lessons/l25
    log
    donate-report
    python-interactive
