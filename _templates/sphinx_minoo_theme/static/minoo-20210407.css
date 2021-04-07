@@ -12,7 +12,7 @@ box[note,attention[body:90CAF9,title:42A5F5]-tip,important[body:80CBC4,title:26A
 @font-face{font-family:"Inconsolata";font-style:normal;font-weight:400;src:local("Inconsolata"),url(fonts/Inconsolata.ttf) format("truetype")}@font-face{font-family:"Inconsolata";font-style:normal;font-weight:700;src:local("Inconsolata Bold"),local("Inconsolata-Bold"),url(fonts/Inconsolata-Bold.ttf) format("truetype")}@font-face{font-family:"Lato";font-style:normal;font-weight:400;src:local("Lato Regular"),local("Lato-Regular"),url(fonts/Lato-Regular.ttf) format("truetype")}@font-face{font-family:"Lato";font-style:normal;font-weight:700;src:local("Lato Bold"),local("Lato-Bold"),url(fonts/Lato-Bold.ttf) format("truetype")}@font-face{font-family:"Roboto Slab";font-style:normal;font-weight:400;src:local("Roboto Slab Regular"),local("RobotoSlab-Regular"),url(fonts/RobotoSlab-Regular.ttf) format("truetype")}@font-face{font-family:"Roboto Slab";font-style:normal;font-weight:700;src:local("Roboto Slab Bold"),local("RobotoSlab-Bold"),url(fonts/RobotoSlab-Bold.ttf) format("truetype")}
 
 /* HTML elements */
-body{font-family:'Behdad',"Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;font-weight:normal;color:#212121;min-height:100%;font-size:16px;overflow-x:hidden}
+body{font-family:'Samim',"Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;font-weight:normal;color:#212121;min-height:100%;font-size:16px;overflow-x:hidden}
 html{height:100%}
 a,ul>li>a,ol>li>a{text-decoration:none!important;color:#5C6BC0;padding:0}
 a:hover,ul>li>a:hover,ol>li>a:hover{color:#66BB6A}
@@ -235,7 +235,6 @@ ul li{text-align:justify}
 .emoji-size{font-size:20px;color:#E65100}
 p,blockquote{text-align:justify}
 body{font-size:16px}
-@font-face{font-family:'IranianSans';src:url('fonts/IranianSansWeb-Regular.woff');font-weight:normal;font-style:normal}
 .table-ltr{direction:ltr !important;text-align:center;margin-bottom: -24px !important;}
 .table-ltr th{text-align:center !important}
 .reportmenufield{background-color:#ec407a !important}
@@ -243,11 +242,11 @@ body{font-size:16px}
 .exercisesmenufield{background-color:#ef5350 !important}
 .exercisesmenufield:hover{border-right:5px #ef9a9a solid !important}
 @font-face {
-  font-family: 'Behdad';
-  src: url('fonts/Behdad-Regular.otf'),
-       url('fonts/Behdad-Regular.woff2') format('woff2'),
-       url('fonts/Behdad-Regular.woff') format('woff'),
-       url('fonts/Behdad-Regular.ttf') format('truetype');
+  font-family: 'Samim';
+  src: url('fonts/Samim.eot'),
+       url('fonts/Samim.woff2') format('woff2'),
+       url('fonts/Samim.woff') format('woff'),
+       url('fonts/Samim.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

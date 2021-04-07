@@ -27,7 +27,7 @@
 * `Python <https://www.python.org>`_ 
 * `Sphinx <http://www.sphinx-doc.org>`_ 
 * `Minoo Theme <https://github.com/saeiddrv/SphinxMinooTheme>`_ 
-* `Behdad Font <https://github.com/font-store/font-behdad>`_ 
+* `Samim Font <https://github.com/rastikerdar/samim-font>`_ 
 * `GitHub <https://github.com>`_ 
 * `Read the Docs <https://readthedocs.org>`_ 
 
