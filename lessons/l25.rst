@@ -55,6 +55,74 @@
 کلاس ``datetime.date``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+این کلاس نمایش ایجاد یک شی تاریخ در زبان برنامه‌نویسی پایتون می‌باشد. در ادامه این بخش به بررسی چگونگی ایجاد شی و اجزای آن خواهیم پرداخت.
+
+ایجاد شی تاریخ
+------------------
+
+**۱- با استفاده از نمونه‌سازی**::
+
+    >>> import datetime
+
+    >>> date = datetime.date(2021, 4, 7)
+
+
+یا ::
+
+
+    >>> import datetime
+
+    >>> date = datetime.date(year=2021, month=4, day=7)
+
+که::
+
+    >>> date
+    datetime.date(2021, 4, 7)
+
+    >>> type(date)
+    <class 'datetime.date'>
+
+::
+
+    >>> date.year
+    2021
+    >>> date.month
+    4
+    >>> date.day
+    7
+
+برای نمونه‌سازی از کلاس ``datetime.date`` می‌بایست سه Instance attribute آن را مقداردهی نماییم. این سه attribute عبارتند از:
+
+* ``year``: از نوع ``int`` می‌باشد و مقداری برابر با سال مورد نظر خواهد داشت. این مقدار می‌بایست کمتر یا برابر ``datetime.MAXYEAR`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.MAXYEAR>`__] و همچنین بیشتر یا برابر ``datetime.MINYEAR`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.MINYEAR>`__] باشد (``MINYEAR <= year <= MAXYEAR``). 
+
+* ``month``: از نوع ``int`` می‌باشد و مقداری برابر با ماه مورد نظر خواهد داشت که می‌بایست عددی از بین اعداد ``1`` تا ``12`` باشد.
+
+* ``day``: از نوع ``int`` می‌باشد و مقداری برابر با روزی مشخص در ماه ذکر شده خواهد داشت.
+
+
+
+  ::
+
+      >>> datetime.MINYEAR
+      1
+      >>> datetime.MAXYEAR
+      9999
+
+      >>> datetime.MINYEAR <= date.year <= datetime.MAXYEAR
+      True
+      >>> 1 <= date.month <= 12
+      True
+      >>> 1 <= date.day <= 31
+      True
+
+باید توجه داشت که مقدار این سه attribute پس از نمونه‌سازی قابل تغییر نخواهد بود و به اصطلاح read-only هستند::
+
+    >>> date.year = 2022
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    AttributeError: attribute 'year' of 'datetime.date' objects is not writable
+
+
 
 کلاس ``datetime.time``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

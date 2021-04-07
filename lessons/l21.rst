@@ -745,6 +745,39 @@ property@
 .. tip:: 
 
   از ``property@`` تنها برای Instance Attributeها می‌توان استفاده کرد.
+
+
+یک کاربرد پنهان در استفاده از ``property@``، امکان ایجاد Attributeهای **read-only** و غیرقابل تغییر پس از نمونه‌سازی شی خواهد بود. برای این منظور تنها کافی است از پیاده‌سازی متد setter صرف‌نظر کنیم! به نمونه کد پایین توجه نمایید:
+
+
+.. code-block:: python
+    :linenos:
+
+    class StaticNumber:
+
+        def __init__(self, number):
+            self._number = number
+
+        @property
+        def number(self):
+            return self._number
+
+
+
+    obj = StaticNumber(number='000111')
+
+    obj.number = '000222'
+
+::
+
+    Traceback (most recent call last):
+      File "sample.py", line 14, in <module>
+        obj.number = '000222'
+    AttributeError: can't set attribute
+
+
+
+
   
   
 Context Manager و دستور ``with/as``
