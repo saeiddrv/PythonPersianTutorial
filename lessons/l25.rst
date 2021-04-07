@@ -55,7 +55,7 @@
 کلاس ``datetime.date``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-این کلاس نمایش ایجاد یک شی تاریخ در زبان برنامه‌نویسی پایتون می‌باشد. در ادامه این بخش به بررسی چگونگی ایجاد شی و اجزای آن خواهیم پرداخت.
+این کلاس نمایش ایجاد یک شی تاریخ بر اساس گاه‌شماری میلادی (Gregorian calendar) در زبان برنامه‌نویسی پایتون می‌باشد. در ادامه این بخش به بررسی چگونگی ایجاد شی و اجزای آن خواهیم پرداخت.
 
 ایجاد شی تاریخ
 ------------------
@@ -121,6 +121,67 @@
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     AttributeError: attribute 'year' of 'datetime.date' objects is not writable
+
+**۲- با استفاده از کلاس متد** ``fromisoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat>`__] از کلاس ``datetime.date`` (البته از نسخه 3.7 پایتون به بعد)، در تعریف این متد یک پارامتر از نوع ``str`` قرار داده شده است که یک تاریخ را براساس قالب استاندارد ISO 8601 [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_8601>`__] دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. این قالب برابر ``YYYY-MM-DD`` می‌باشد که از سمت چپ معرف چهار رقم سال، یک خط تیره، دو رقم ماه، یک خط تیره و دو رقم روز ماه می‌باشد؛ همانند: ``07-04-2020``::
+
+    >>> import datetime
+
+    >>> d = datetime.date.fromisoformat('2021-04-07')
+
+یا::
+
+    >>> from datetime import date
+
+    >>> d = date.fromisoformat('2021-04-07')
+
+که::
+
+    >>> d
+    datetime.date(2021, 4, 7)
+
+    >>> type(d)
+    <class 'datetime.date'>
+
+::
+
+    >>> d.year
+    2021
+    >>> d.month
+    4
+    >>> d.day
+    7
+
+**۳- با استفاده از کلاس متد** ``fromordinal`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromordinal>`__] از کلاس ``datetime.date``، در تعریف این متد یک پارامتر از نوع ``int`` قرار داده شده است که معادل یک proleptic Gregorian ordinal [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar>`__] را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. این مقدار برابر شمارش تعداد روزها از تاریخ یکم ژانویه سال یک میلادی تا تاریخ مورد نظر می‌باشد::
+
+
+    >>> import datetime
+
+    >>> d = datetime.date.fromordinal(737887)
+
+یا::
+
+    >>> from datetime import date
+
+    >>> d = date.fromordinal(737887)
+
+که::
+
+    >>> d
+    datetime.date(2021, 4, 7)
+
+    >>> type(d)
+    <class 'datetime.date'>
+
+::
+
+    >>> d.year
+    2021
+    >>> d.month
+    4
+    >>> d.day
+    7
+
+
 
 
 
