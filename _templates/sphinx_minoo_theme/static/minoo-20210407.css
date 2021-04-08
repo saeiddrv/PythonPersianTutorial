@@ -8,11 +8,13 @@ list[purple:[title:AB47BC,sub:CE93D8]-green:[title:66BB6A,sub:A5D6A7]-blue[title
 box[note,attention[body:90CAF9,title:42A5F5]-tip,important[body:80CBC4,title:26A69A]-hint,warning[body:FFAB91,title:FF7043]-error,danger[body:EF9A9A,title:EF5350]-caution[body:C5E1A5,title:9CCC65]-admonition[body:B0BEC5,title:78909C]]
 */
 
+
+
 /* sphinx_rtd_theme fonts  */
 @font-face{font-family:"Inconsolata";font-style:normal;font-weight:400;src:local("Inconsolata"),url(fonts/Inconsolata.ttf) format("truetype")}@font-face{font-family:"Inconsolata";font-style:normal;font-weight:700;src:local("Inconsolata Bold"),local("Inconsolata-Bold"),url(fonts/Inconsolata-Bold.ttf) format("truetype")}@font-face{font-family:"Lato";font-style:normal;font-weight:400;src:local("Lato Regular"),local("Lato-Regular"),url(fonts/Lato-Regular.ttf) format("truetype")}@font-face{font-family:"Lato";font-style:normal;font-weight:700;src:local("Lato Bold"),local("Lato-Bold"),url(fonts/Lato-Bold.ttf) format("truetype")}@font-face{font-family:"Roboto Slab";font-style:normal;font-weight:400;src:local("Roboto Slab Regular"),local("RobotoSlab-Regular"),url(fonts/RobotoSlab-Regular.ttf) format("truetype")}@font-face{font-family:"Roboto Slab";font-style:normal;font-weight:700;src:local("Roboto Slab Bold"),local("RobotoSlab-Bold"),url(fonts/RobotoSlab-Bold.ttf) format("truetype")}
 
 /* HTML elements */
-body{font-family:'Samim',"Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;font-weight:normal;color:#212121;min-height:100%;font-size:16px;overflow-x:hidden}
+body{font-family:vazir, sans-serif;font-weight:normal;color:#252525;min-height:100%;font-size:1.5rem;overflow-x:hidden}
 html{height:100%}
 a,ul>li>a,ol>li>a{text-decoration:none!important;color:#5C6BC0;padding:0}
 a:hover,ul>li>a:hover,ol>li>a:hover{color:#66BB6A}
@@ -20,7 +22,7 @@ i{vertical-align:middle}
 h1,h2,h3,h4,h5,h6{font-weight:bold;color:#000000;display:inline-block}
 h1,h2,h3{padding:10px 15px 10px 0}
 h1{background-color:#5C6BC0;color:#FFFFFF;line-height:26px;border-right:5px #E8EAF6 solid}
-p{line-height:24px;margin:0;font-size:16px}
+p{line-height:24px;margin:0;font-size:1.5rem}
 h1{font-size:150%}
 h2{font-size:125%}
 h3{font-size:115%}
@@ -37,8 +39,8 @@ code,kbd,pre,samp{background-color:#E8EAF6;border-radius:0;border:none;direction
 code,kbd,samp{padding:2px 6px;white-space:pre}
 code{color:#212121}
 pre{margin:0;overflow-wrap:normal;text-align:left}
-ul,ol{padding-right:24px;font-size:16px}
-ul li{list-style:disc;font-size:16px}
+ul,ol{padding-right:24px;font-size:1.5rem}
+ul li{list-style:disc;font-size:1.5rem}
 dl dt{font-weight:bold}
 dl dd{margin:0 24px 12px 0}
 
@@ -80,7 +82,7 @@ box-shadow: 0px 0px 1px 1px rgba(66,66,66,1);}
 #body-donate{width:100%;height:auto;display:inline-block;color:#fff;margin-bottom:24px;margin-top:2px;position:relative;}
 #body-top>a{display:inline-block;height:auto;vertical-align:bottom;height:auto}
 #body-top>a:hover{color:#66BB6A}
-#body-top>span{width:auto;height:28px;line-height:16px;display:inline-block;vertical-align:bottom}
+#body-top>span{width:auto;height:28px;line-height:1.5rem;display:inline-block;vertical-align:bottom}
 #body-top>a>i,#body-top>span>i{display:inline-block}
 #top-src{float:left}
 .top-src{float:left;margin-right:24px}
@@ -234,22 +236,13 @@ ul li{text-align:justify}
 .red{color:#E65100}
 .emoji-size{font-size:20px;color:#E65100}
 p,blockquote{text-align:justify}
-body{font-size:16px}
+body{font-size:1.5rem}
 .table-ltr{direction:ltr !important;text-align:center;margin-bottom: -24px !important;}
 .table-ltr th{text-align:center !important}
 .reportmenufield{background-color:#ec407a !important}
 .reportmenufield:hover{border-right:5px #f48fb1 solid !important}
 .exercisesmenufield{background-color:#ef5350 !important}
 .exercisesmenufield:hover{border-right:5px #ef9a9a solid !important}
-@font-face {
-  font-family: 'Samim';
-  src: url('fonts/Samim.eot'),
-       url('fonts/Samim.woff2') format('woff2'),
-       url('fonts/Samim.woff') format('woff'),
-       url('fonts/Samim.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 h1 a.toc-backref, h2 a.toc-backref{color:#fff !important}
 
 
@@ -279,7 +272,7 @@ color: #fff !important;
 display: block;
     width: 100%;
     float: none;
-    padding: 16px;
+    padding: 1.5rem;
     background-color: #4CAF50;
     color: #fff;
     font-weight: 800;
