@@ -37,7 +37,7 @@
 ماژول datetime
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-این ماژول [`اسناد پایتون <https://docs.python.org/3/library/datetime.html>`__] از کتابخانه استاندارد زبان برنامه‌نویسی پایتون چند نوع یا کلاس برای کار با زمان (ساعت و تاریخ) را در اختیار برنامه‌نویس قرا می‌دهد:
+این ماژول [`اسناد پایتون <https://docs.python.org/3/library/datetime.html>`__] از کتابخانه استاندارد زبان برنامه‌نویسی پایتون چند نوع یا کلاس برای کار با زمان (ساعت و تاریخ) را در اختیار برنامه‌نویس قرار می‌دهد:
 
 * **کلاس** ``date``: مناسب برای ایجاد شی تاریخ در پایتون می‌باشد که اشیا آن هیچ آگاهی نسبت به ساعت و منطقه زمانی (Time zone) [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Time_zone>`__] نخواهند داشت و تنها مربوط به روزی خاص بر اساس گاه‌شماری میلادی (Gregorian calendar) [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Gregorian_calendar>`__] می‌باشند.
 
@@ -52,6 +52,11 @@
   در زبان برنامه‌نویسی پایتون اشیای مرتبط با زمان براساس توانایی آگاهی آن‌ها از منطقه زمانی (Time zone) به دو دسته **«آگاه» (aware)** و **«ساده» (naive)** تقسیم‌بندی می‌شوند. بر همین اساس اشیای کلاس ``date`` از نوع naive و اشیای دو کلاس ``time`` و ``datetime`` می‌توانند برحسب شرایط  aware یا naive باشند.
 
 
+کلاس ``datetime.timedelta``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 کلاس ``datetime.date``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -60,36 +65,46 @@
 ایجاد شی تاریخ
 ------------------
 
-**۱- با استفاده از نمونه‌سازی**::
-
-    >>> import datetime
-
-    >>> date = datetime.date(2021, 4, 7)
-
-
-یا ::
-
-
-    >>> import datetime
-
-    >>> date = datetime.date(year=2021, month=4, day=7)
-
-که::
-
-    >>> date
-    datetime.date(2021, 4, 7)
-
-    >>> type(date)
-    <class 'datetime.date'>
+به پنج شیوه زیر می‌توان یک شی تاریخ از نوع ``datetime.date`` ایجاد کرد:
 
 ::
 
-    >>> date.year
-    2021
-    >>> date.month
-    4
-    >>> date.day
-    7
+     >>> import datetime
+
+     >>> # Wednesday, April 7, 2021
+
+     >>> d = datetime.date(2021, 4, 7)
+     >>> d = datetime.date.fromisoformat('2021-04-07')  # Python 3.7
+     >>> d = datetime.date.fromordinal(737887)
+     >>> d = datetime.date.fromtimestamp(1617737400)
+     >>> d = datetime.date.fromisocalendar(2021, 14, 3) # Python 3.8
+
+     >>> d
+     datetime.date(2021, 4, 7)
+     >>> type(d)
+     <class 'datetime.date'>
+
+     >>> d.year
+     2021
+     >>> d.month
+     4
+     >>> d.day
+     7
+
+
+
+**۱- با استفاده از نمونه‌سازی**::
+
+    >>> import datetime
+    >>> d = datetime.date(2021, 4, 7)
+
+
+::
+
+
+    >>> import datetime
+    >>> d = datetime.date(year=2021, month=4, day=7)
+
 
 برای نمونه‌سازی از کلاس ``datetime.date`` می‌بایست سه Instance attribute آن را مقداردهی نماییم. این سه attribute عبارتند از:
 
@@ -115,74 +130,71 @@
       >>> 1 <= date.day <= 31
       True
 
-باید توجه داشت که مقدار این سه attribute پس از نمونه‌سازی قابل تغییر نخواهد بود و به اصطلاح read-only هستند::
+  باید توجه داشت که مقدار این سه attribute پس از نمونه‌سازی قابل تغییر نخواهد بود و به اصطلاح read-only هستند::
 
     >>> date.year = 2022
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     AttributeError: attribute 'year' of 'datetime.date' objects is not writable
 
-**۲- با استفاده از کلاس متد** ``fromisoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat>`__] از کلاس ``datetime.date`` (البته از نسخه 3.7 پایتون به بعد)، در تعریف این متد یک پارامتر از نوع ``str`` قرار داده شده است که یک تاریخ را براساس قالب استاندارد ISO 8601 [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_8601>`__] دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. این قالب برابر ``YYYY-MM-DD`` می‌باشد که از سمت چپ معرف چهار رقم سال، یک خط تیره، دو رقم ماه، یک خط تیره و دو رقم روز ماه می‌باشد؛ همانند: ``07-04-2020``::
+|
+
+**۲- با استفاده از کلاس متد** ``fromisoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat>`__] از کلاس ``datetime.date`` (البته از نسخه 3.7 پایتون به بعد)، در تعریف این متد یک پارامتر از نوع ``str`` قرار داده شده است که در واقع این متد یک تاریخ را براساس قالب استاندارد ISO 8601 [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_8601>`__] دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. این قالب برابر ``YYYY-MM-DD`` می‌باشد که از سمت چپ معرف چهار رقم سال، یک خط تیره، دو رقم ماه، یک خط تیره و دو رقم روز ماه می‌باشد؛ همانند: ``07-04-2020``::
 
     >>> import datetime
-
     >>> d = datetime.date.fromisoformat('2021-04-07')
 
-یا::
-
-    >>> from datetime import date
-
-    >>> d = date.fromisoformat('2021-04-07')
-
-که::
-
-    >>> d
-    datetime.date(2021, 4, 7)
-
-    >>> type(d)
-    <class 'datetime.date'>
-
 ::
 
-    >>> d.year
-    2021
-    >>> d.month
-    4
-    >>> d.day
-    7
+    >>> from datetime import date
+    >>> d = date.fromisoformat('2021-04-07')
 
-**۳- با استفاده از کلاس متد** ``fromordinal`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromordinal>`__] از کلاس ``datetime.date``، در تعریف این متد یک پارامتر از نوع ``int`` قرار داده شده است که معادل یک proleptic Gregorian ordinal [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar>`__] را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. این مقدار برابر شمارش تعداد روزها از تاریخ یکم ژانویه سال یک میلادی تا تاریخ مورد نظر می‌باشد::
+|
+
+**۳- با استفاده از کلاس متد** ``fromordinal`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromordinal>`__] از کلاس ``datetime.date``، در تعریف این متد یک پارامتر از نوع ``int`` قرار داده شده است که در واقع این متد معادل یک proleptic Gregorian ordinal [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. این مقدار برابر شمارش تعداد روزها از تاریخ یکم ژانویه سال یک میلادی تا تاریخ مورد نظر می‌باشد::
 
 
     >>> import datetime
-
     >>> d = datetime.date.fromordinal(737887)
-
-یا::
-
-    >>> from datetime import date
-
-    >>> d = date.fromordinal(737887)
-
-که::
-
-    >>> d
-    datetime.date(2021, 4, 7)
-
-    >>> type(d)
-    <class 'datetime.date'>
 
 ::
 
-    >>> d.year
-    2021
-    >>> d.month
-    4
-    >>> d.day
-    7
+    >>> from datetime import date
+    >>> d = date.fromordinal(737887)
 
 
 
+|
+
+**۴- با استفاده از کلاس متد** ``fromtimestamp`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromtimestamp>`__] از کلاس ``datetime.date``، در تعریف این متد یک پارامتر از نوع ``int`` قرار داده شده است که در واقع این متد معادل POSIX timestamp [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Unix_time>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. این مقدار برابر شمارش تعداد ثانیه‌ها به منطقه زمانی UTC از ساعت ۰۰:۰۰:۰۰ یکم ژانویه سال ۱۹۷۰ میلادی تا تاریخ مورد نظر می‌باشد::
+
+
+    >>> import datetime
+    >>> d = datetime.date.fromtimestamp(1617737400)
+
+::
+
+    >>> from datetime import date
+    >>> d = date.fromtimestamp(1617737400)
+
+توجه داشته باشید ممکن است این متد از سال ۲۰۳۸ باعث بروز خطا گردد. چرا که این متد از تابع localtime در زبان برنامه‌نویسی C استفاده می‌کند که در آن سال مقدار timestamp از نوع signed 32-bit integer در این زبان، Overflow خواهد داشت! [`ویکی‌پدیا: Year 2038 problem <https://en.wikipedia.org/wiki/Year_2038_problem>`__]
+
+
+|
+
+**۵- با استفاده از کلاس متد** ``fromisocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromisocalendar>`__] از کلاس ``datetime.date`` (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. در این استاندارد، یک سال شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد::
+
+    date.fromisocalendar(year, week, day)
+
+::
+
+    >>> import datetime
+    >>> d = datetime.date.fromisocalendar(2021, 14, 3) # Wednesday, April 7, 2021
+
+::
+
+    >>> from datetime import date
+    >>> d = date.fromisocalendar(2021, 14, 3) # Wednesday, April 7, 2021
 
 
 کلاس ``datetime.time``
