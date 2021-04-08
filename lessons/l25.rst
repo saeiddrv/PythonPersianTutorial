@@ -55,6 +55,122 @@
 کلاس ``datetime.timedelta``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+پیش از بررسی کلاس‌های یاد شده لازم است با کلاسی دیگر از ماژول datetime آشنا شویم. در زبان برنامه‌نویسی پایتون از اشیای کلاس ``timedelta`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#timedelta-objects>`__] برای بیان «مدت زمان» (duration) مشخص یا اختلاف بین دو تاریخ یا ساعت استفاده می‌شود. الگوی نمونه‌سازی از این کلاس به شکل زیر است::
+
+    td = timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+
+با نمونه‌سازی از این کلاس و ارسال آرگومان‌های دلخواه، براساس تمام واحدهای پرتکرار از زمان یا حتی ترکیبی از آن‌ها می‌توانیم یک مدت‌زمان در سیستم زمانی پایتون ایجاد کنیم؛ هفته (weeks)، روز (days)، ساعت (hours)، دقیقه (minutes)، ثانیه (seconds)، میلی‌ثانیه (milliseconds یا همان 0.001 ثانیه) و میکروثانیه (microseconds یا همان 0.000001 ثانیه). تمامی این مقادیر اختیاری و با مقدار پیش‌فرض ``0`` هستند که می‌توانند از نوع ``int`` یا ``float``، مثبت یا منفی باشند
+
+::
+
+    >>> from datetime import timedelta
+
+
+::
+
+    >>> no_duration = timedelta()
+    >>> no_duration
+    datetime.timedelta(0)
+
+    >>> no_duration.total_seconds()
+    0.0
+
+::
+
+    >>> delta = timedelta(
+    ...     days=50,
+    ...     seconds=27,
+    ...     microseconds=10,
+    ...     milliseconds=29000,
+    ...     minutes=5,
+    ...     hours=8,
+    ...     weeks=2
+    ... )
+    >>> # Only days, seconds, and microseconds remain
+    >>> delta
+    datetime.timedelta(days=64, seconds=29156, microseconds=10)
+
+    >>> delta.total_seconds()
+    5558756.00001
+
+::
+
+    >>> one_half_days = timedelta(days=1.5)
+    >>> one_half_days
+    datetime.timedelta(days=1, seconds=43200)
+
+    >>> one_half_days.total_seconds()
+    129600.0
+
+
+
+توجه داشته باشید که از تمام انواع آرگومانی که ارسال می‌کنید این تنها ``seconds`` ،``days`` و ``microseconds`` هستند که دارای attribute متناظر بوده و قابل دسترس می‌باشند. در واقع تمامی مقادیر ارسالی در زمان نمونه‌سازی با یکدیگر ترکیب شده و در نهایت به این سه attribute تبدیل می‌شوند. به مقداردهی در زمان نمونه‌سازی و نیز به خروجی سطر پایانی از نمونه کدهای بالا توجه نمایید.
+
+همچنین از نسخه 3.2 پایتون می‌توانید با استفاده از متد ``total_seconds`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.timedelta.total_seconds>`__] کل مدت زمان ذخیره شده در شی timedelta را در واحد ثانیه دریافت نمایید::
+
+    >>> delta = timedelta(microseconds=1)
+    >>> delta.total_seconds()
+    1e-06
+
+دو شی ``datetime.timedelta`` پایتون قابلیت شرکت در محاسبات ریاضی را دارند::
+
+
+    >>> from datetime import timedelta
+
+    >>> year = timedelta(days=365)
+
+    >>> ten_years = 10 * year
+    >>> ten_years
+    datetime.timedelta(days=3650)
+
+    >>> ten_years.days // 365
+    10
+
+    >>> nine_years = ten_years - year
+    >>> nine_years
+    datetime.timedelta(days=3285)
+
+    >>> three_years = nine_years // 3
+    >>> three_years
+    datetime.timedelta(days=1095)
+
+    >>> three_years.days // 365
+    3
+
+::
+
+    >>> day = timedelta(days=1)
+    >>> negative_day = timedelta(days=-1)
+
+    >>> negative_day
+    datetime.timedelta(days=-1)
+
+    >>> day + negative_day
+    datetime.timedelta(0)
+
+    >>> day - negative_day
+    datetime.timedelta(days=2)
+
+
+
+همچنین دو شی ``datetime.timedelta`` پایتون قابلیت مقایسه با یکدیگر را دارند::
+
+    >>> from datetime import timedelta
+    >>> year = timedelta(days=365)
+    >>> three_years = timedelta(days=1095)
+
+    >>> year == year
+    True
+    >>> year == three_years
+    False
+    >>> year > three_years
+    False
+    >>> year < three_years
+    True
+    >>> year * 3  == three_years
+    True
+
+در ادامه به همراه بخش‌های بعدی این درس با کاربرد اصلی اشیای ``datetime.timedelta`` آشنا خواهیم شد.
 
 
 کلاس ``datetime.date``
