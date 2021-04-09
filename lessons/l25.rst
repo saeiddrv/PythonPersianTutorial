@@ -298,7 +298,7 @@
 
 |
 
-**۵- با استفاده از کلاس متد** ``fromisocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromisocalendar>`__] از کلاس ``datetime.date`` (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. در این استاندارد، یک سال شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد::
+**۵- با استفاده از کلاس متد** ``fromisocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromisocalendar>`__] از کلاس ``datetime.date`` (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. در این استاندارد، یک سال شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد (دوشنبه:۱، سه‌شنبه:۲، ... یکشنبه:۷)::
 
     date.fromisocalendar(year, week, day)
 
@@ -311,6 +311,114 @@
 
     >>> from datetime import date
     >>> d = date.fromisocalendar(2021, 14, 3) # Wednesday, April 7, 2021
+
+
+مقایسه دو شی تاریخ
+----------------------------
+دو شی ``datetime.date`` پایتون قابلیت مقایسه با یکدیگر را دارند. همچنین می‌توان با استفاده از یک شی ``datetime.timedelta`` مقدار یک شی تاریخ را به جلو یا عقب هدایت کرد:
+
+
+::
+
+    >>> from datetime import date, timedelta
+
+    >>> today = date(2021, 4, 9)
+
+    >>> yesterday = today - timedelta(days=1)
+    >>> yesterday
+    datetime.date(2021, 4, 8)
+
+    >>> today > yesterday
+    True
+    >>> today == today
+    True
+    >>> today < yesterday
+    False
+    >>> today == yesterday + timedelta(days=1)
+    True
+
+    >>> today - yesterday
+    datetime.timedelta(days=1)
+
+توجه داشته باشید حاصل تفاضل دو شی تاریخ پایتون یک شی از نوع ``datetime.timedelta`` خواهد بود!
+
+
+متدهای شی تاریخ
+----------------------------
+
+برخی از Instance methodهای یک شی تاریخ پایتون به شرح زیر هستند:
+
+
+* **متد** ``toordinal`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.toordinal>`__]: معادل proleptic Gregorian ordinal از مقدار تاریخ شی را برمی‌گرداند::
+
+    >>> from datetime import date
+
+    >>> today = date(2021, 4, 9)
+    >>> today.toordinal()
+    737889
+
+
+
+* **متد** ``isoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.isoformat>`__]: معادل مقدار تاریخ شی را در قالب استاندارد ISO 8601 برمی‌گرداند::
+
+    >>> from datetime import date
+
+    >>> today = date(2021, 4, 9)
+    >>> today.isoformat()
+    '2021-04-09'
+
+
+* **متد** ``isocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.isocalendar>`__]: معادل ISO calendar از مقدار تاریخ شی را برمی‌گرداند::
+
+    >>> from datetime import date
+
+    >>> today = date(2021, 4, 9) # Friday, April 9, 2021
+    >>> today.isocalendar()
+    (2021, 14, 5)
+
+  از پایتون نسخه 3.9 نوع خروجی این متد به صورت زیر تغییر کرده است::
+
+
+    >>> today.isocalendar()
+    datetime.IsoCalendarDate(year=2021, week=14, weekday=5)
+
+
+
+* **متد** ``weekday`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.isocalendar>`__]: شماره روز از هفته جاری را برمی‌گرداند. دوشنبه:صفر، سه‌شنبه:۱ ... یک‌شنبه:۶::
+
+    >>> from datetime import date
+
+    >>> today = date(2021, 4, 9) # Friday, April 9, 2021
+    >>> today.weekday()
+    4
+
+
+
+* **متد** ``isoweekday`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.isoweekday>`__]: شماره روز از هفته جاری را بر اساس استاندارد ISO calendar برمی‌گرداند. دوشنبه:۱، سه‌شنبه:۲ ... یک‌شنبه:۷::
+
+    >>> from datetime import date
+
+    >>> today = date(2021, 4, 9) # Friday, April 9, 2021
+    >>> today.isoweekday()
+    5
+
+
+
+
+* **متد** ``replace`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.replace>`__]: با استفاده از این متد می‌توان یک شی تاریخ جدید همانند شی جاری ایجاد کرد ولی با کمی تغییرات::
+
+    replace(year, month, day)
+
+  ::
+
+    >>> from datetime import date
+
+    >>> today = date(2021, 4, 9)
+
+    >>> another_day = today.replace(day=22)
+    >>> another_day
+    datetime.date(2021, 4, 22)
+
 
 
 کلاس ``datetime.time``
