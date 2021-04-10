@@ -52,6 +52,7 @@
   در زبان برنامه‌نویسی پایتون اشیای مرتبط با زمان براساس توانایی آگاهی آن‌ها از منطقه زمانی (Time zone) به دو دسته **«آگاه» (aware)** و **«ساده» (naive)** تقسیم‌بندی می‌شوند. بر همین اساس اشیای کلاس ``date`` از نوع naive و اشیای دو کلاس ``time`` و ``datetime`` می‌توانند برحسب شرایط  aware یا naive باشند.
 
 
+
 کلاس ``datetime.timedelta``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -171,6 +172,44 @@
     True
 
 در ادامه به همراه بخش‌های بعدی این درس با کاربرد اصلی اشیای ``datetime.timedelta`` آشنا خواهیم شد.
+
+
+
+کلاس ``datetime.tzinfo``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+هر وقت که صحبت از ساعت و زمان باشد، «منطقه زمانی» (Time zone) نیز جزئی از گفتگو خواهد بود. در زبان برنامه‌نویسی پایتون کلاس ``tzinfo`` از ماژول کلاس ``datetime`` امکان ایجاد منطقه زمانی را فراهم آورده است [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.tzinfo>`__]. ``tzinfo`` در واقع یک کلاس Abstract (درس نوزدهم) می‌باشد که نمی‌توان از آن نمونه‌سازی و شی ایجاد کرد ولی می‌توان به کمک آن کلاس منطقه زمانی دلخواه خود را ایجاد نماییم. برای مشاهده اجزا و نکات مربوط به پیاده‌سازی منطقه زمانی دلخواه می‌توانید به مستندات زبان برنامه‌نویسی پایتون مراجعه نمایید. 
+
+اشتباه نکنید، در اکثر مواقع نیازی به پیاده‌سازی یک کلاس منطقه زمانی در پایتون نمی‌باشد. چرا که از قبل کلاس ``timezone`` از ماژول ``datetime`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#timezone-objects>`__] توسط این زبان فراهم آورده شده است. این کلاس یک subclass از ``datetime.tzinfo`` بوده و مبنای محاسبه منطقه زمانی در آن UTC [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Coordinated_Universal_Time>`__] می‌باشد. این کلاس به تنهایی تمامی نیازهای معمول ما نسبت به ثبت منطقه زمانی در پایتون را برطرف می‌سازد. در سراسر ایران منطقه زمانی یکسان می‌باشد و به صورت استاندارد از مبنای UTC محاسبه می‌گردد؛ به این صورت که در شش ماه نخست سال برابر ``UTC+4:30`` و در شش ماه دوم از سال این مقدار برابر ``UTC+3:30`` خواهد بود [`ویکی‌پدیا Iran Standard Time (IRST) <https://en.wikipedia.org/wiki/Iran_Standard_Time>`__].
+
+
+کلاس ``datetime.timezone``
+------------------------------
+
+الگوی نمونه‌سازی از این کلاس به صورت زیر است::
+
+
+    timezone(offset, name=None)
+
+که در آن پارامتر ``offset`` یک شی از نوع ``datetime.timedelta`` می‌باشد که می‌بایست حاوی فاصله منطقه زمانی مورد نظر ما از مبدا UTC باشد (مثبت یا منفی) و ``name`` نیز یک نام دلخواه و اختیاری برای شناسایی منطقه زمانی ایجاد شده می‌باشد::
+
+    >>> from datetime import timedelta, timezone
+
+    >>> tz = timezone(timedelta(hours=4, minutes=30), 'Asia/Tehran')
+
+    >>> tz
+    datetime.timezone(datetime.timedelta(seconds=16200), 'Asia/Tehran')
+
+    >>> type(tz)
+    <class 'datetime.timezone'>
+
+شی ``tz`` ایجاد شده در نمونه کد بالا، بیانگر منطقه زمانی ``UTC+4:30`` می‌باشد. به عنوان مثالی دیگر، ایجاد شی برای منطقه زمانی ``UTC-05:00`` به صورت زیر می‌باشد::
+
+
+    >>> tz = timezone(timedelta(hours=-5), 'Eastern Time Zone')
+
+
+
 
 
 کلاس ``datetime.date``
@@ -512,44 +551,44 @@
     
 ::
 
-    >>> t = datetime.time.fromisoformat('04')
+    >>> t = datetime.time.fromisoformat('04') # 'HH'
     >>> t
     datetime.time(4, 0)
 
 ::
 
-    >>> t = datetime.time.fromisoformat('04:23')
+    >>> t = datetime.time.fromisoformat('04:23') # 'HH:MM'
     >>> t
     datetime.time(4, 23)
 
 ::
 
 
-    >>> t = datetime.time.fromisoformat('04:23:01')
+    >>> t = datetime.time.fromisoformat('04:23:01') # 'HH:MM:SS'
     >>> t
     datetime.time(4, 23, 1)
     
 ::
 
-    >>> t = datetime.time.fromisoformat('04:23:01.000384')
+    >>> t = datetime.time.fromisoformat('04:23:01.000384') # 'HH:MM:SS.ffffff'
     >>> t
     datetime.time(4, 23, 1, 384)
 
 ::
 
-    >>> t = datetime.time.fromisoformat('04:23:01+04:30')
+    >>> t = datetime.time.fromisoformat('04:23:01+04:30') # 'HH:MM:SS+HH:MM'
     >>> t
     datetime.time(4, 23, 1, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
 
 ::
 
-    >>> t = datetime.time.fromisoformat('04:23:01.000384+04:30')
+    >>> t = datetime.time.fromisoformat('04:23:01.000384+04:30') # 'HH:MM:SS.ffffff+HH:MM'
     >>> t
     datetime.time(4, 23, 1, 384, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
 
 ::
 
-    >>> t = datetime.time.fromisoformat('04+04:30')
+    >>> t = datetime.time.fromisoformat('04+04:30') # 'HH+HH:MM'
     >>> t
     datetime.time(4, 0, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
 
@@ -596,6 +635,41 @@
     >>> t_20 = t_22.replace(hour=20, minute=20)
     >>> t_20
     datetime.time(20, 20, 22)
+
+
+
+* **متد** ``isoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.time.isoformat>`__]: معادل مقدار ساعت شی را در قالب استاندارد ISO 8601 برمی‌گرداند::
+
+    
+    isoformat(timespec='auto')
+
+  این متد یک پارامتر اختیاری دارد که می‌تواند یکی از مقادیر ``milliseconds`` ``minutes`` ``hours`` ``auto`` ``microseconds`` را دریافت کند. مقدار این پارامتر قالب خروجی را مشخص می‌کند:
+
+  ::
+
+    >>> from datetime import time
+
+    >>> t = time(hour=22, minute=4, second=30, microsecond=300)
+
+    >>> t.isoformat()
+    '22:04:30.000300'
+
+    >>> t.isoformat('auto')
+    '22:04:30.000300'
+
+    >>> t.isoformat('hours')
+    '22'
+
+    >>> t.isoformat('minutes')
+    '22:04'
+
+    >>> t.isoformat('milliseconds')
+    '22:04:30.000'
+
+    >>> t.isoformat('microseconds')
+    '22:04:30.000300'
+
+
 
 
 
