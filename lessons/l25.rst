@@ -176,7 +176,7 @@
 کلاس ``datetime.date``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-این کلاس نمایش ایجاد یک شی تاریخ بر اساس گاه‌شماری میلادی (Gregorian calendar) در زبان برنامه‌نویسی پایتون می‌باشد. در ادامه این بخش به بررسی چگونگی ایجاد شی و اجزای آن خواهیم پرداخت.
+این کلاس [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#date-objects>`__] نمایش ایجاد یک شی تاریخ بر اساس گاه‌شماری میلادی (Gregorian calendar) در زبان برنامه‌نویسی پایتون می‌باشد. در ادامه این بخش به بررسی چگونگی ایجاد شی و اجزای آن خواهیم پرداخت.
 
 ایجاد شی تاریخ
 ------------------
@@ -239,16 +239,16 @@
       >>> datetime.MAXYEAR
       9999
 
-      >>> datetime.MINYEAR <= date.year <= datetime.MAXYEAR
+      >>> datetime.MINYEAR <= d.year <= datetime.MAXYEAR
       True
-      >>> 1 <= date.month <= 12
+      >>> 1 <= d.month <= 12
       True
-      >>> 1 <= date.day <= 31
+      >>> 1 <= d.day <= 31
       True
 
   باید توجه داشت که مقدار این سه attribute پس از نمونه‌سازی قابل تغییر نخواهد بود و به اصطلاح read-only هستند::
 
-    >>> date.year = 2022
+    >>> d.year = 2022
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     AttributeError: attribute 'year' of 'datetime.date' objects is not writable
@@ -423,6 +423,123 @@
 
 کلاس ``datetime.time``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+این کلاس [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#time-objects>`__] نمایش ایجاد یک شی ساعت مشخص از روز در زبان برنامه‌نویسی پایتون می‌باشد. در ادامه این بخش به بررسی چگونگی ایجاد شی و اجزای آن خواهیم پرداخت.
+
+ایجاد شی ساعت
+------------------
+
+به دو شیوه زیر می‌توان یک شی ساعت از نوع ``datetime.time`` ایجاد کرد:
+
+::
+
+     >>> import datetime
+
+     >>> t = datetime.time(hour=10, minute=4, second=30)
+     >>> t = datetime.time.fromisoformat('10:04:30')  # Python 3.7
+
+     >>> t
+     datetime.time(10, 4, 30)
+     >>> type(t)
+     <class 'datetime.time'>
+
+     >>> t.hour
+     10
+     >>> t.minute
+     4
+     >>> t.second
+     30
+     >>> t.microsecond
+     0
+     >>> print(t.tzinfo)
+     None
+     >>> t.fold
+     0
+
+
+
+**۱- با استفاده از نمونه‌سازی**::
+
+    time(hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
+
+::
+
+
+    >>> import datetime
+    >>> t = datetime.time(22, 4, 30)
+
+
+
+همانطور که از تعریف این کلاس مشخص است، برای نمونه‌سازی از کلاس ``datetime.time`` می‌توان  شش Instance attribute آن را مقداردهی نماییم. این شش attribute که همگی اختیاری و دارای مقدار پیش‌فرض هستند عبارتند از:
+
+* ``hour``: از نوع ``int`` می‌باشد و مقداری برابر با ساعت مورد نظر خواهد داشت. این مقدار می‌بایست  عددی از بین اعداد ``0`` تا ``24`` باشد (``range(24)``). 
+
+* ``minute``: از نوع ``int`` می‌باشد و مقداری برابر با دقیقه مورد نظر خواهد داشت که می‌بایست عددی از بین اعداد ``0`` تا ``60`` باشد (``range(60)``).
+
+* ``second``: از نوع ``int`` می‌باشد و مقداری برابر با ثانیه مورد نظر خواهد داشت که می‌بایست عددی از بین اعداد ``0`` تا ``60`` باشد (``range(60)``).
+
+* ``microsecond``: از نوع ``int`` می‌باشد و مقداری برابر با میکروثانیه مورد نظر خواهد داشت که می‌بایست عددی از بین اعداد ``0`` تا ``1000000`` باشد (``range(1000000)``). هر میکروثانیه برابر با 0.000001 ثانیه می‌باشد.
+
+* ``tzinfo``: معرف منطقه زمانی (Time zone) است که مقدار پیش‌فرض آن ``None`` می‌باشد و می‌تواند یک شی از  زیرکلاس‌های (subclass) کلاس ``tzinfo`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.tzinfo>`__] را بپذیرد.
+
+* ``fold``: از نسخه 3.6 پایتون به بعد اضافه شده است و تنها با استفاده از شیوه نام=مقدار قابل مقداردهی می‌باشد. 
+
+  باید توجه داشت که مقدار این شش attribute پس از نمونه‌سازی قابل تغییر نخواهد بود و به اصطلاح read-only هستند::
+
+    >>> t.hour = 14
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    AttributeError: attribute 'hour' of 'datetime.time' objects is not writable
+
+|
+
+**۲- با استفاده از کلاس متد** ``fromisoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.time.fromisoformat>`__] از کلاس ``datetime.time`` (البته از نسخه 3.7 پایتون به بعد)، در تعریف این متد یک پارامتر از نوع ``str`` قرار داده شده است که در واقع این متد یک ساعت را براساس قالب کلی استاندارد ISO 8601 [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_8601>`__] دریافت و یک شی معادل از کلاس ``datetime.time`` را برمی‌گرداند. این قالب معمولا برابر ``hh:mm:ss`` می‌باشد که از سمت چپ معرف دو رقم ساعت، دونقطه (colon)، دو رقم دقیقه، دونقطه (colon) و دو رقم ثانیه می‌باشد؛ همانند: ``04:23:01``::
+
+    >>> import datetime
+    
+::
+
+    >>> t = datetime.time.fromisoformat('04')
+    >>> t
+    datetime.time(4, 0)
+
+::
+
+    >>> t = datetime.time.fromisoformat('04:23')
+    >>> t
+    datetime.time(4, 23)
+
+::
+
+
+    >>> t = datetime.time.fromisoformat('04:23:01')
+    >>> t
+    datetime.time(4, 23, 1)
+    
+::
+
+    >>> t = datetime.time.fromisoformat('04:23:01.000384')
+    >>> t
+    datetime.time(4, 23, 1, 384)
+
+::
+
+    >>> t = datetime.time.fromisoformat('04:23:01+04:30')
+    >>> t
+    datetime.time(4, 23, 1, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
+
+::
+
+    >>> t = datetime.time.fromisoformat('04:23:01.000384+04:30')
+    >>> t
+    datetime.time(4, 23, 1, 384, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
+
+::
+
+    >>> t = datetime.time.fromisoformat('04+04:30')
+    >>> t
+    datetime.time(4, 0, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
+
 
 
 کلاس ``datetime.datetime``
