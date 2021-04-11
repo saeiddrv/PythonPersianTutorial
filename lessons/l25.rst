@@ -12,7 +12,8 @@
     :align: center
     :alt: زمان در پایتون: ماژول‌ datetime
 
-    Photo by `Ales Krivec <https://unsplash.com/photos/ZMZHcvIVgbg>`__
+    Photo by `Jon Tyson <https://unsplash.com/photos/dm9EHhIZm-k>`__
+  
 
   
   
