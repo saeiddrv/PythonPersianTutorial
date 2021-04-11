@@ -253,6 +253,12 @@
     <class 'datetime.timezone'>
 
 
+.. note::
+
+  به منظور شفاف‌سازی بیشتر و درک اهمیت منطقه زمانی، اگر فرض کنیم ساعت در یک لحظه به وقت ``UTC`` برابر ``12:00`` است آنگاه همان لحظه ساعت به وقت ``UTC-05:00`` برابر ``07:00`` و به وقت ``UTC+04:30`` برابر ``16:30`` خواهد بود.
+
+
+
 کلاس ``datetime.date``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -653,7 +659,32 @@
     >>> t_22 < t_20
     False
 
-توجه داشته باشید که نمی‌توان از عملگرهایی همچون ``-`` یا ``+`` برای یک شی از نوع ``datetime.time`` استفاده کرد.
+به مثالی دیگر توجه نمایید::
+
+    >>> from datetime import timedelta, timezone, time
+
+    >>> tz_et = timezone(timedelta(hours=-5), 'Eastern Time Zone')
+    >>> tz_ir = timezone(timedelta(hours=4, minutes=30), 'Asia/Tehran')
+
+    >>> t_et = time(12, 0, 0, tzinfo=tz_et)
+    >>> t_ir = time(12, 0, 0, tzinfo=tz_ir)
+
+    >>> t_et == t_ir
+    False
+    >>> t_et > t_ir
+    True
+    >>> t_et < t_ir
+    False
+
+    >>> t_ir_new = time(21, 30, 0, tzinfo=tz_ir)
+
+    >>> t_et == t_ir_new
+    True
+
+
+در کد بالا درست است که هر دو شی ``t_et`` و ``t_ir`` حاوی ساعت دوازده می‌باشند ولی باید به این نکته توجه داشت، در حالی ``t_et`` ساعت دوازده را نمایش می‌دهد که نسبت به منطقه زمانی مبنا (UTC) پنج ساعت عقب‌تر است؛ در واقع نه ساعت و سی دقیقه بعد، ``t_ir`` به زمانی خواهد رسید که ``t_et`` اکنون آن را نمایش می‌دهد!
+
+همچنین توجه داشته باشید که نمی‌توان از عملگرهایی همچون ``-`` یا ``+`` برای اشیای ``datetime.time`` استفاده کرد.
 
 
 متدهای شی ساعت
@@ -676,6 +707,22 @@
     >>> t_20 = t_22.replace(hour=20, minute=20)
     >>> t_20
     datetime.time(20, 20, 22)
+
+  به مثالی دیگر توجه نمایید::
+
+      >>> from datetime import timedelta, timezone, time
+
+      >>> tz = timezone(timedelta(hours=-5), 'Eastern Time Zone')
+      >>> t = time(hour=22, minute=22, second=22, tzinfo=tz)
+      >>> t
+      datetime.time(22, 22, 22, tzinfo=datetime.timezone(datetime.timedelta(days=-1, seconds=68400), 'Eastern Time Zone'))
+
+
+      >>> tz_teh = timezone(timedelta(hours=4, minutes=30), 'Asia/Tehran')
+      >>> t.replace(tzinfo=tz_teh)
+      datetime.time(22, 22, 22, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200), 'Asia/Tehran'))
+
+  باید توجه داشت که با تغییر منطقه زمانی یک شی ``datetime.time``، اطلاعات مربوط به ساعت، در آن تغییری نخواهند داشت. چرا که تغییر ساعت بر اساس منطقه زمانی می‌تواند منجر به تغییر تاریخ گردد و این شی هیچ اطلاعاتی از تاریخ ندارد.
 
 
 
