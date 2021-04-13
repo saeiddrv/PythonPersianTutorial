@@ -791,10 +791,88 @@ naive / aware
 کلاس ``datetime.datetime``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+اشیای این کلاس پرکاربردترین و رایج‌ترین نوع از ماژول datetime هستند چرا که به طور هم زمان نسبت به ساعت (Time) و تاریخ (Date) آگاهی دارند [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime-objects>`__]. اساس محاسبه تاریخ در این کلاس نیز همانند ``datetime.date`` بر اساس گاه‌شماری میلادی (Gregorian calendar) و اساس محاسبه ساعت نیز همانند کلاس ``datetime.time`` به ازای هر شبانه‌روز دقیقا برابر ``24*3600`` ثانیه می‌باشد.
 
 
 
+ایجاد شی ``datetime``
+---------------------------
 
+به شیوه‌ها زیر می‌توان یک شی تاریخ از نوع ``datetime.datetime`` ایجاد کرد:
+
+
+
+**۱- با استفاده از نمونه‌سازی**:
+
+الگوی ایجاد شی از این کلاس به صورت زیر است که پارامترهای موجود آن دقیقا برابر پارامترهای دو کلاس ``datetime.date`` و ``datetime.time`` می‌باشند::
+
+        datetime(year, 
+                 month, 
+                 day, 
+                 hour=0, 
+                 minute=0, 
+                 second=0, 
+                 microsecond=0, 
+                 tzinfo=None, *, fold=0)
+
+
+::
+
+
+    >>> import datetime
+    >>> dt = datetime.datetime(year=2021, month=4, day=7, hour=23, minute=18)
+    >>> dt
+    datetime.datetime(2021, 4, 7, 23, 18)
+
+|
+
+**۲- با استفاده از کلاس متد** ``today`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.today>`__]، این متد زمان لحظه جاری را بدون در نظر گرفتن منطقه طمانی برمی‌گرداند (``tzinfo=None``)::
+
+
+    >>> import datetime
+
+    >>> datetime.datetime.today()
+    datetime.datetime(2021, 4, 13, 21, 2, 0, 485083)
+
+|
+
+**۳- با استفاده از کلاس متد** ``(tz=None)now`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.now>`__]، عملکرد این متد نیز همانند ``today`` می‌باشد با این تفاوت که می‌توان یک شی منطقه زمانی نیز به صورت آرگومان به آن ارسال نمود::
+
+
+    >>> import datetime
+
+    >>> datetime.datetime.now()
+    datetime.datetime(2021, 4, 13, 21, 2, 0, 485083)
+
+::
+
+    >>> import datetime
+ 
+    >>> tz = datetime.timezone(datetime.timedelta(hours=4, minutes=30))
+    >>> datetime.datetime.now(tz)
+    datetime.datetime(2021, 4, 13, 21, 2, 0, 485083, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
+
+
+
+|
+
+**۴- با استفاده از کلاس متد** ``utcnow`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcnow>`__]، خروجی این متد همانند خروجی ``datetime.now(timezone.utc)`` می‌باشد. یعنی زمان لحظه جاری را بر اساس منطقه زمانی UTC برمی‌گرداند ولی با این تفاوت که مقدار پارامتر ``tzinfo`` آن برابر ``None`` خواهد بود::
+
+
+    >>> import datetime
+
+    >>> datetime.datetime.now()
+    datetime.datetime(2021, 4, 13, 21, 15, 33, 635410)
+
+    >>> datetime.datetime.now(datetime.timezone.utc)
+    datetime.datetime(2021, 4, 13, 16, 45, 33, 635410, tzinfo=datetime.timezone.utc)
+
+::
+
+    >>> import datetime
+
+    >>> datetime.datetime.utcnow()
+    datetime.datetime(2021, 4, 13, 16, 45, 33, 635410)
 
 
 
