@@ -798,7 +798,7 @@ naive / aware
 ایجاد شی ``datetime``
 ---------------------------
 
-به شیوه‌ها زیر می‌توان یک شی تاریخ از نوع ``datetime.datetime`` ایجاد کرد:
+به ده شیوه زیر می‌توان یک شی از نوع ``datetime.datetime`` ایجاد کرد:
 
 
 
@@ -826,7 +826,7 @@ naive / aware
 
 |
 
-**۲- با استفاده از کلاس متد** ``today`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.today>`__]، این متد زمان لحظه جاری را بدون در نظر گرفتن منطقه طمانی برمی‌گرداند (``tzinfo=None``)::
+**۲- با استفاده از کلاس متد** ``today`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.today>`__]، این متد زمان لحظه جاری را بدون در نظر گرفتن منطقه زمانی برمی‌گرداند (``tzinfo=None``)::
 
 
     >>> import datetime
@@ -873,6 +873,100 @@ naive / aware
 
     >>> datetime.datetime.utcnow()
     datetime.datetime(2021, 4, 13, 16, 45, 33, 635410)
+
+
+
+|
+
+**۵- با استفاده از کلاس متد** ``(timestamp, tz=None)fromtimestamp`` [`اسناد پایتون <hhttps://docs.python.org/3/library/datetime.html#datetime.datetime.fromtimestamp>`__]، در تعریف این متد یک پارامتر اختیاری (tz) از نوع ``tzinfo`` و یک پارامتر اجباری (timestamp) از نوع ``int`` قرار داده شده است. این متد معادل POSIX timestamp [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Unix_time>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را برمی‌گرداند. این مقدار برابر شمارش تعداد ثانیه‌ها به منطقه زمانی UTC از ساعت ۰۰:۰۰:۰۰ یکم ژانویه سال ۱۹۷۰ میلادی تا تاریخ مورد نظر می‌باشد. ::
+
+
+    >>> import datetime
+    >>> datetime.datetime.fromtimestamp(1617737400)
+    datetime.datetime(2021, 4, 7, 0, 0)
+
+::
+
+    >>> import datetime
+    >>> datetime.datetime.fromtimestamp(1617737400, datetime.timezone.utc)
+    datetime.datetime(2021, 4, 6, 19, 30, tzinfo=datetime.timezone.utc)
+
+توجه داشته باشید استفاده از این متد تنها محدود به سال‌های مابین ۱۹۷۰ تا ۲۰۳۸ می‌باشد. چرا که این متد از تابع localtime یا gmtime در زبان برنامه‌نویسی C استفاده می‌کند که از سال ۲۰۳۸ به بعد مقدار timestamp از نوع signed 32-bit integer در این زبان، Overflow خواهد داشت! [`ویکی‌پدیا: Year 2038 problem <https://en.wikipedia.org/wiki/Year_2038_problem>`__]
+
+
+
+
+|
+
+**۶- با استفاده از کلاس متد** ``(timestamp)utcfromtimestamp`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcfromtimestamp>`__]، خروجی این متد همانند ``fromtimestamp(timestamp, datetime.timezone.utc)`` بوده و معادل POSIX timestamp یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را بر مبنای منطقه زمانی UTC برمی‌گرداند. ولی با این تفاوت که مقدار پارامتر ``tzinfo`` آن برابر ``None`` خواهد بود::
+
+
+    >>> import datetime
+    >>> datetime.datetime.utcfromtimestamp(1617737400)
+    datetime.datetime(2021, 4, 6, 19, 30)
+
+توجه داشته باشید استفاده از این متد تنها محدود به سال‌های مابین ۱۹۷۰ تا ۲۰۳۸ می‌باشد. چرا که این متد از تابع localtime یا gmtime در زبان برنامه‌نویسی C استفاده می‌کند که از سال ۲۰۳۸ به بعد مقدار timestamp از نوع signed 32-bit integer در این زبان، Overflow خواهد داشت! [`ویکی‌پدیا: Year 2038 problem <https://en.wikipedia.org/wiki/Year_2038_problem>`__]
+
+
+|
+
+**۷- با استفاده از کلاس متد** ``fromordinal`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.fromordinal>`__]، در تعریف این متد یک پارامتر از نوع ``int`` قرار داده شده است که در واقع این متد معادل یک proleptic Gregorian ordinal [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را برمی‌گرداند. این مقدار برابر شمارش تعداد روزها از تاریخ یکم ژانویه سال یک میلادی تا تاریخ مورد نظر می‌باشد. باید توجه داشت مقادیر مربوط به ساعت همانند minute ،hour یا ``tzinfo`` شی ایجاد شده برابر ``None`` خواهد بود::
+
+
+    >>> import datetime
+    >>> datetime.datetime.fromordinal(737887)
+    datetime.datetime(2021, 4, 7, 0, 0)
+
+
+|
+
+**۸- با استفاده از کلاس متد** ``fromisocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisocalendar>`__] (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. در این استاندارد، یک سال شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد (دوشنبه:۱، سه‌شنبه:۲، ... یکشنبه:۷). باید توجه داشت مقادیر مربوط به ساعت همانند minute ،hour یا ``tzinfo`` شی ایجاد شده برابر ``None`` خواهد بود::
+
+    datetime.fromisocalendar(year, week, day)
+
+::
+
+    >>> import datetime
+    >>> datetime.datetime.fromisocalendar(2021, 14, 3) # Wednesday, April 7, 2021
+    datetime.datetime(2021, 4, 7, 0, 0)
+
+
+|
+
+**۹- با استفاده از کلاس متد** ``combine`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.combine>`__]، در تعریف این متد سه پارامتر قرار داده شده است که از سمت چپ به ترتیب از نوع ``datetime.time`` ،``datetime.date`` و ``datetime.tzinfo`` می‌باشند. در واقع این متد یک شی ``datetime.date`` و ``datetime.time`` جداگانه را دریافت و با یکدیگر ترکیب و یک شی ``datetime.datetime`` تولید می‌کند. پارامتر ``tzinfo`` اختیاری بوده و از نسخه 3.6 پایتون به این متد اضافه گردیده است که در صورت ارسال آرگومان متناظر به آن، این مقدار به عنوان منطقه زمانی شی خروجی در نظر گرفته خواهد شد؛ در غیر این صورت از منطقه زمانی شی ``datetime.time`` استفاده خواهد شد::
+
+    datetime.combine(date, time, tzinfo)
+
+::
+
+    >>> import datetime
+
+    >>> d = datetime.date(2021, 4, 7)
+    >>> t = datetime.time(hour=22, minute=4, second=30, tzinfo=datetime.timezone.utc)
+
+    >>> datetime.datetime.combine(d, t)
+    datetime.datetime(2021, 4, 7, 22, 4, 30, tzinfo=datetime.timezone.utc)
+
+|
+
+**۱۰- با استفاده از کلاس متد** ``fromisoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisoformat>`__] (البته از نسخه 3.7 پایتون به بعد)، در تعریف این متد یک پارامتر از نوع ``str`` قرار داده شده است که در واقع این متد یک زمان مشخص را بر اساس قالب استاندارد ISO 8601 [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_8601>`__] دریافت و یک شی معادل از کلاس ``datetime.datetime`` را برمی‌گرداند::
+
+    YYYY-MM-DD[*HH[:MM[:SS[.fff[fff]]]][+HH:MM[:SS[.ffffff]]]]
+
+الگوی بالا حالت‌های قابل پذیرش از قالب استاندارد ISO 8601 را برای این متد نمایش می‌دهد. به چند نمونه کد زیر توجه نمایید: 
+
+::
+
+    >>> import datetime
+    >>> d = datetime.datetime.fromisoformat('2021-04-07')
+
+
+
+
+
+
+
+
 
 
 
