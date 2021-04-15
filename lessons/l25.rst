@@ -516,6 +516,9 @@
     datetime.date(2021, 4, 10)
 
 
+* **متد** ``(format)strftime`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.strftime>`__]: این متد بسیار پرکاربرد است و عملکرد آن به این صورت می‌باشد که یک قالب (format) را دریافت و معادل ``str`` از شی مورد نظر را بر اساس ساختار آن قالب برمی‌گردادند. ساختار قالب در اینجا با آنچه توسط استاندارد ISO 8601 مطرح شده است کمی متفاوت می‌باشد که در انتهای این درس مورد بررسی قرار خواهد گرفت.
+
+
 
 
 
@@ -722,8 +725,7 @@
       >>> t.replace(tzinfo=tz_teh)
       datetime.time(22, 22, 22, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200), 'Asia/Tehran'))
 
-  باید توجه داشت که با تغییر منطقه زمانی یک شی ``datetime.time``، اطلاعات مربوط به ساعت، در آن تغییری نخواهند داشت. چرا که تغییر ساعت بر اساس منطقه زمانی می‌تواند منجر به تغییر تاریخ گردد و این شی هیچ اطلاعاتی از تاریخ ندارد.
-
+  باید توجه داشت که با تغییر منطقه زمانی یک شی ``datetime.time``، اطلاعات مربوط به ساعت، در آن تغییری نخواهند داشت. چرا که وظیفه این متد تنها جایگزینی مقادیر می‌باشد و با جایگزینی منطقه زمانی، تغییری در زمان ثبت شده ایجاد نمی‌گردد. 
 
 
 * **متد** ``isoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.time.isoformat>`__]: معادل مقدار ساعت شی را در قالب استاندارد ISO 8601 برمی‌گرداند::
@@ -774,6 +776,8 @@
     >>> t.tzname()
     'Asia/Tehran'
 
+
+* **متد** ``(format)strftime`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.time.strftime>`__]: این متد بسیار پرکاربرد است و عملکرد آن به این صورت می‌باشد که یک قالب (format) را دریافت و معادل ``str`` از شی مورد نظر را بر اساس ساختار آن قالب برمی‌گردادند. ساختار قالب در اینجا با آنچه توسط استاندارد ISO 8601 مطرح شده است کمی متفاوت می‌باشد که در انتهای این درس مورد بررسی قرار خواهد گرفت.
 
 
 naive / aware
@@ -1043,6 +1047,202 @@ naive / aware
 ----------------------------
 
 برخی از Instance methodهای یک شی ``datetime.datetime`` پایتون به شرح زیر هستند:
+
+
+* **متد** ``date`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.date>`__]: بخش تاریخ از شی مورد نظر را در قالب یک شی ``datetime.date`` برمی‌گرداند::
+
+    >>> import datetime
+    >>> dt = datetime.datetime(2021, 4, 15, 12, 0, 0, tzinfo=datetime.timezone.utc)
+    >>> dt.date()
+    datetime.date(2021, 4, 15)
+
+
+* **متد** ``time`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.time>`__]: بخش ساعت از شی مورد نظر را در قالب یک شی ``datetime.time``، بدون مقدار ``tzinfo`` برمی‌گرداند::
+
+    >>> import datetime
+    >>> dt = datetime.datetime(2021, 4, 15, 12, 0, 0, tzinfo=datetime.timezone.utc)
+    >>> dt.time()
+    datetime.time(12, 0)
+
+    >>> print(dt.time().tzinfo)
+    None
+
+
+* **متد** ``timetz`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.timetz>`__]: بخش ساعت از شی مورد نظر را در قالب یک شی ``datetime.time``، به همراه مقدار ``tzinfo`` برمی‌گرداند::
+
+    >>> import datetime
+    >>> dt = datetime.datetime(2021, 4, 15, 12, 0, 0, tzinfo=datetime.timezone.utc)
+    >>> dt.timetz()
+    datetime.time(12, 0, tzinfo=datetime.timezone.utc)
+
+    >>> print(dt.timetz().tzinfo)
+    UTC
+
+
+
+* **متد** ``astimezone(tz=None)`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.astimezone>`__]: با استفاده از این متد می‌توان منطقه زمانی شی مورد نظر را تغییر و به صورت یک شی جدید ``datetime.datetime`` دریافت کرد::
+
+    >>> import datetime
+    >>> dt = datetime.datetime(2021, 4, 15, 12, 0, 0, tzinfo=datetime.timezone.utc)
+    >>> dt
+    datetime.datetime(2021, 4, 15, 12, 0, tzinfo=datetime.timezone.utc)
+
+    >>> tz_ir = datetime.timezone(timedelta(hours=4, minutes=30), 'Asia/Tehran')
+    >>> dt.astimezone(tz_ir)
+    datetime.datetime(2021, 4, 15, 16, 30, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200), 'Asia/Tehran'))
+
+
+* **متد** ``utcoffset`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcoffset>`__]: اگر پارامتر ``tzinfo`` برابر ``None`` باشد، مقدار ``None`` و در غیر این صورت مقدار ``self.tzinfo.utcoffset(None)`` را برمی‌گرداند.
+
+* **متد** ``tzname`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.tzname>`__]: اگر پارامتر ``tzinfo`` برابر ``None`` باشد، مقدار ``None`` و در غیر این صورت مقدار ``self.tzinfo.tzname(None)`` را برمی‌گرداند.
+
+::
+
+    >>> from datetime import timedelta, timezone, datetime
+
+    >>> tz = timezone(timedelta(hours=4, minutes=30), 'Asia/Tehran')
+    >>> dt = datetime(year=2021, month=4, day=15, hour=12, minute=0, tzinfo=tz)
+
+    >>> dt.utcoffset()
+    datetime.timedelta(seconds=16200)
+
+    >>> dt.tzname()
+    'Asia/Tehran'
+
+
+
+* **متد** ``timestamp`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp>`__]: معادل POSIX timestamp از زمان شی مورد نظر را در قالب یک شی ``float`` برمی‌گرداند::
+
+    >>> import datetime
+
+    >>> today = datetime.datetime(2021, 4, 15, 12, 0)
+    >>> today.timestamp()
+    1618471800.0
+
+  توجه داشته باشید استفاده از این متد تنها محدود به سال‌های مابین ۱۹۷۰ تا ۲۰۳۸ می‌باشد. چرا که این متد از تابع localtime یا gmtime در زبان برنامه‌نویسی C استفاده می‌کند که از سال ۲۰۳۸ به بعد مقدار timestamp از نوع signed 32-bit integer در این زبان، Overflow خواهد داشت! [`ویکی‌پدیا: Year 2038 problem <https://en.wikipedia.org/wiki/Year_2038_problem>`__]
+
+
+* **متد** ``toordinal`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.toordinal>`__]: معادل proleptic Gregorian ordinal از شی مورد نظر را برمی‌گرداند::
+
+    >>> import datetime
+
+    >>> today = datetime.datetime(2021, 4, 15, 12, 0)
+    >>> today.toordinal()
+    737895
+
+
+
+* **متد** ``weekday`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.isocalendar>`__]: شماره روز از هفته جاری را برمی‌گرداند. دوشنبه:صفر، سه‌شنبه:۱ ... یک‌شنبه:۶::
+
+    >>> import datetime
+
+    >>> today = datetime.datetime(2021, 4, 15, 12, 0) # Thursday, April 15, 2021
+    >>> today.weekday()
+    3
+
+
+
+* **متد** ``isoweekday`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.isoweekday>`__]: شماره روز از هفته جاری را بر اساس استاندارد ISO calendar برمی‌گرداند. دوشنبه:۱، سه‌شنبه:۲ ... یک‌شنبه:۷::
+
+    >>> import datetime
+
+    >>> today = datetime.datetime(2021, 4, 15, 12, 0) # Thursday, April 15, 2021
+    >>> today.isoweekday()
+    4
+
+
+* **متد** ``isocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.isocalendar>`__]: معادل ISO calendar از مقدار تاریخ شی مورد نظر را برمی‌گرداند::
+
+    >>> import datetime
+
+    >>> today = datetime.datetime(2021, 4, 15, 12, 0) # Thursday, April 15, 2021
+    >>> today.isocalendar()
+    (2021, 15, 4)
+
+
+
+  از پایتون نسخه 3.9 نوع خروجی این متد به صورت زیر تغییر کرده است::
+
+
+    >>> today.isocalendar()
+    datetime.IsoCalendarDate(year=2021, week=14, weekday=5)
+
+
+* **متد** ``isoformat`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.isoformat>`__]: معادل مقدار زمان ثبت شده در شی مورد نظر را در قالب استاندارد ISO 8601 برمی‌گرداند::
+
+    >>> import datetime
+
+    >>> today = datetime.datetime(2021, 4, 15, 12, 0)
+    >>> today.isoformat()
+    '2021-04-15T12:00:00'
+
+  ::
+
+      >>> today = datetime.datetime(2021, 4, 15, 12, 0, tzinfo=datetime.timezone.utc)
+      >>> today.isoformat()
+      '2021-04-15T12:00:00+00:00'
+
+
+
+* **متد** ``replace`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.replace>`__]: با استفاده از این متد می‌توان یک شی ``datetime.datetime`` جدید همانند شی جاری ایجاد کرد ولی با کمی تغییرات::
+
+     replace(year, 
+                 month, 
+                 day, 
+                 hour=0, 
+                 minute=0, 
+                 second=0, 
+                 microsecond=0, 
+                 tzinfo=None, *, fold=0)
+
+  ::
+
+    >>> import datetime
+    >>> today = datetime.datetime(2021, 4, 15, 12, 0)
+
+    >>> another_day = today.replace(day=22)
+    >>> another_day
+    datetime.datetime(2021, 4, 22, 12, 0)
+
+
+  به مثالی دیگر توجه نمایید::
+
+      >>> from datetime import timedelta, timezone, datetime
+
+      >>> tz = timezone(timedelta(hours=-5), 'Eastern Time Zone')
+      >>> dt = datetime(2021, 4, 15, 12, 0, tzinfo=tz)
+      >>> dt
+      datetime.datetime(2021, 4, 15, 12, 0, tzinfo=datetime.timezone(datetime.timedelta(days=-1, seconds=68400), 'Eastern Time Zone'))
+
+
+      >>> tz_teh = timezone(timedelta(hours=4, minutes=30), 'Asia/Tehran')
+      >>> dt.replace(tzinfo=tz_teh)
+      datetime.datetime(2021, 4, 15, 12, 0, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200), 'Asia/Tehran'))
+
+
+  توجه داشته باشید که وظیفه این متد تنها جایگزینی مقادیر می‌باشد و با جایگزینی منطقه زمانی، تغییری در زمان ثبت شده ایجاد نمی‌گردد. 
+
+
+
+* **متد** ``(format)strftime`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.strftime>`__]: این متد بسیار پرکاربرد است و عملکرد آن به این صورت می‌باشد که یک قالب (format) را دریافت و معادل ``str`` از شی مورد نظر را بر اساس ساختار آن قالب برمی‌گردادند. ساختار قالب در اینجا با آنچه توسط استاندارد ISO 8601 مطرح شده است کمی متفاوت می‌باشد که در انتهای این درس مورد بررسی قرار خواهد گرفت.
+
+
+
+
+naive / aware
+----------------------------
+
+یک شی ``datetime.datetime`` (به عنوان مثال متغیر:‌ ``dt``) از نوع aware خواهد بود اگر دو شرط زیر برای آن درست باشد:
+
+
+* مقدار پارامتر ``dt.zinfo`` مخالف ``None`` باشد.
+* حاصل ``dt.tzinfo.utcoffset(dt)`` مخالف ``None`` باشد.
+
+
+
+متدهای ``strftime`` و ``strptime``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 
 
