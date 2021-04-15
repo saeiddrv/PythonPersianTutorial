@@ -403,7 +403,7 @@
 ----------------------------
 دو شی ``datetime.date`` پایتون قابلیت مقایسه با یکدیگر را دارند. همچنین می‌توان با استفاده از یک شی ``datetime.timedelta`` مقدار یک شی تاریخ را به جلو یا عقب هدایت کرد:
 
-
+ 
 ::
 
     >>> from datetime import date, timedelta
@@ -986,7 +986,63 @@ naive / aware
 
 مقایسه دو شی ``datetime``
 ----------------------------
+دو شی ``datetime.datetime`` پایتون قابلیت مقایسه با یکدیگر را دارند. همچنین می‌توان با استفاده از یک شی ``datetime.timedelta`` مقدار یک شی ``datetime`` را به جلو یا عقب هدایت کرد:
 
+ 
+::
+
+    >>> from datetime import datetime, timedelta
+
+    >>> today = datetime(2021, 4, 15, 8, 20)
+
+    >>> yesterday = today - timedelta(days=1)
+    >>> yesterday
+    datetime.datetime(2021, 4, 14, 8, 20)
+
+    >>> today == today
+    True
+    >>> today > yesterday
+    True
+    >>> today < yesterday
+    False
+    >>> today == yesterday + timedelta(days=1)
+    True
+
+    >>> today - yesterday
+    datetime.timedelta(days=1)
+
+توجه داشته باشید حاصل تفاضل دو شی ``datetime`` پایتون یک شی از نوع ``datetime.timedelta`` خواهد بود!
+
+به مثالی دیگر توجه نمایید::
+
+    >>> from datetime import timedelta, timezone, datetime
+
+    >>> tz_et = timezone(timedelta(hours=-5), 'Eastern Time Zone')
+    >>> tz_ir = timezone(timedelta(hours=4, minutes=30), 'Asia/Tehran')
+
+    >>> dt_et = datetime(2021, 4, 15, 12, 0, 0, tzinfo=tz_et)
+    >>> dt_ir = datetime(2021, 4, 15, 12, 0, 0, tzinfo=tz_ir)
+
+    >>> dt_et == dt_ir
+    False
+    >>> dt_et > dt_ir
+    True
+    >>> dt_et < dt_ir
+    False
+
+    >>> dt_ir_new = datetime(2021, 4, 15, 21, 30, 0, tzinfo=tz_ir)
+
+    >>> dt_et == dt_ir_new
+    True
+
+
+در کد بالا درست است که هر دو شی ``t_et`` و ``t_ir`` حاوی یک تاریخ و یک ساعت (``12:00:00 15-04-2021``) می‌باشند ولی باید به این نکته توجه داشت، در حالی ``t_et`` ساعت دوازده را نمایش می‌دهد که نسبت به منطقه زمانی مبنا (UTC) پنج ساعت عقب‌تر است؛ در واقع نه ساعت و سی دقیقه بعد، ``t_ir`` به زمانی خواهد رسید که ``t_et`` اکنون آن را نمایش می‌دهد!
+
+
+متدهای شی ``datetime``
+----------------------------
+
+برخی از Instance methodهای یک شی ``datetime.datetime`` پایتون به شرح زیر هستند:
 
 
 
