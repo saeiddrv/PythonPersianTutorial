@@ -798,7 +798,7 @@ naive / aware
 ایجاد شی ``datetime``
 ---------------------------
 
-به ده شیوه زیر می‌توان یک شی از نوع ``datetime.datetime`` ایجاد کرد:
+به یازده شیوه زیر می‌توان یک شی از نوع ``datetime.datetime`` ایجاد کرد که بنابر شرایط می‌توانید از آن‌ها بهره بگیرید:
 
 
 
@@ -816,7 +816,7 @@ naive / aware
                  tzinfo=None, *, fold=0)
 
 
-::
+یک نمونه استفاده::
 
 
     >>> import datetime
@@ -826,7 +826,7 @@ naive / aware
 
 |
 
-**۲- با استفاده از کلاس متد** ``today`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.today>`__]، این متد زمان لحظه جاری را بدون در نظر گرفتن منطقه زمانی برمی‌گرداند (``tzinfo=None``)::
+**۲- با استفاده از کلاس متد** ``today`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.today>`__]، این متد زمان لحظه جاری سیستم را بدون امکان ثبت منطقه زمانی (``tzinfo=None``) در قالب یک شی از کلاس ``datetime.datetime`` برمی‌گرداند::
 
 
     >>> import datetime
@@ -836,7 +836,7 @@ naive / aware
 
 |
 
-**۳- با استفاده از کلاس متد** ``(tz=None)now`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.now>`__]، عملکرد این متد نیز همانند ``today`` می‌باشد با این تفاوت که می‌توان یک شی منطقه زمانی نیز به صورت آرگومان به آن ارسال نمود::
+**۳- با استفاده از کلاس متد** ``(tz=None)now`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.now>`__]، عملکرد این متد نیز همانند ``today`` می‌باشد با این تفاوت که می‌توان یک شی منطقه زمانی نیز به صورت آرگومان به آن ارسال و ثبت نمود::
 
 
     >>> import datetime
@@ -853,10 +853,12 @@ naive / aware
     datetime.datetime(2021, 4, 13, 21, 2, 0, 485083, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
 
 
+توجه داشته باشید ارسال شی منطقه زمانی (``tz``) در نمونه کد بالا باعث تغییر در زمان نشد. علت این امر نیز مربوط به منطقه زمانی سیستمی است که برنامه بر روی آن اجرا می‌شود، در این سیستم منطقه زمانی بر روی ``04:30+UTC`` (وقت ساعت تابستانی، تهران) تنظیم بوده که کاملا برابر با مقدار ``tz`` ارسال شده می‌باشد.
+
 
 |
 
-**۴- با استفاده از کلاس متد** ``utcnow`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcnow>`__]، خروجی این متد همانند خروجی ``datetime.now(timezone.utc)`` می‌باشد. یعنی زمان لحظه جاری را بر اساس منطقه زمانی UTC برمی‌گرداند ولی با این تفاوت که مقدار پارامتر ``tzinfo`` آن برابر ``None`` خواهد بود::
+**۴- با استفاده از کلاس متد** ``utcnow`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcnow>`__]، خروجی این متد همانند خروجی ``datetime.now(timezone.utc)`` می‌باشد. یعنی زمان لحظه جاری سیستم را بر اساس منطقه زمانی UTC برمی‌گرداند ولی با این تفاوت که مقدار پارامتر ``tzinfo`` آن برابر ``None`` خواهد بود::
 
 
     >>> import datetime
@@ -898,7 +900,7 @@ naive / aware
 
 |
 
-**۶- با استفاده از کلاس متد** ``(timestamp)utcfromtimestamp`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcfromtimestamp>`__]، خروجی این متد همانند ``fromtimestamp(timestamp, datetime.timezone.utc)`` بوده و معادل POSIX timestamp یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را بر مبنای منطقه زمانی UTC برمی‌گرداند. ولی با این تفاوت که مقدار پارامتر ``tzinfo`` آن برابر ``None`` خواهد بود::
+**۶- با استفاده از کلاس متد** ``(timestamp)utcfromtimestamp`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcfromtimestamp>`__]، خروجی این متد نیز همانند خروجی کلاس متد ``fromtimestamp(timestamp, datetime.timezone.utc)`` بوده و معادل POSIX timestamp یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را بر مبنای منطقه زمانی UTC برمی‌گرداند. ولی با این تفاوت که مقدار پارامتر ``tzinfo`` آن برابر ``None`` خواهد بود::
 
 
     >>> import datetime
@@ -920,7 +922,7 @@ naive / aware
 
 |
 
-**۸- با استفاده از کلاس متد** ``fromisocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisocalendar>`__] (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. در این استاندارد، یک سال شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد (دوشنبه:۱، سه‌شنبه:۲، ... یکشنبه:۷). باید توجه داشت مقادیر مربوط به ساعت همانند minute ،hour یا ``tzinfo`` شی ایجاد شده برابر ``None`` خواهد بود::
+**۸- با استفاده از کلاس متد** ``fromisocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisocalendar>`__] (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را برمی‌گرداند. در این استاندارد، یک سال تقریبا شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد (دوشنبه:۱، سه‌شنبه:۲، ... یکشنبه:۷). باید توجه داشت مقادیر مربوط به ساعت همانند minute ،hour یا ``tzinfo`` شی ایجاد شده برابر ``None`` خواهد بود::
 
     datetime.fromisocalendar(year, week, day)
 
@@ -953,17 +955,37 @@ naive / aware
 
     YYYY-MM-DD[*HH[:MM[:SS[.fff[fff]]]][+HH:MM[:SS[.ffffff]]]]
 
-الگوی بالا حالت‌های قابل پذیرش از قالب استاندارد ISO 8601 را برای این متد نمایش می‌دهد. به چند نمونه کد زیر توجه نمایید: 
+الگوی بالا حالت‌های قابل پذیرش از قالب استاندارد ISO 8601 را برای این متد نمایش می‌دهد که در این الگو به جای ``*`` هر کاراکتری می‌تواند قرار بگیرد و بخش‌های داخل براکت (``[]``) اختیاری هستند. به چند نمونه کد زیر نیز توجه نمایید: 
 
 ::
 
-    >>> import datetime
-    >>> d = datetime.datetime.fromisoformat('2021-04-07')
+    >>> from datetime import datetime
+
+    >>> datetime.fromisoformat('2011-11-04T00:05:23') # YYYY-MM-DDTHH:MM:SS
+    datetime.datetime(2011, 11, 4, 0, 5, 23)
+
+    >>> datetime.fromisoformat('2011-11-04 00:05:23') # YYYY-MM-DD HH:MM:SS
+    datetime.datetime(2011, 11, 4, 0, 5, 23)
+
+    >>> datetime.fromisoformat('2011-11-04 00:05:23.283+00:00') # YYYY-MM-DD HH:MM:SS.fff+HH:MM
+    datetime.datetime(2011, 11, 4, 0, 5, 23, 283000, tzinfo=datetime.timezone.utc)
+
+    >>> datetime.fromisoformat('2011-11-04 00:05:23.283+04:30') # YYYY-MM-DD HH:MM:SS.fff+HH:MM
+    datetime.datetime(2011, 11, 4, 0, 5, 23, 283000, tzinfo=datetime.timezone(datetime.timedelta(seconds=16200)))
 
 
 
+|
+
+**۱۱- با استفاده از کلاس متد** ``strptime`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime>`__]، تعریف این متد به صورت زیر می‌باشد::
+
+    datetime.strptime(date_string, format)
+
+این متد بسیار پرکاربرد بوده و عملکرد آن به این صورت می‌باشد که یک زمان مشخص را از نوع ``str`` به همراه قالب آن زمان دریافت و یک شی از کلاس ``datetime.datetime`` برمی‌گرداند. ساختار قالب در اینجا با آنچه توسط استاندارد ISO 8601 مطرح شده است کمی متفاوت می‌باشد که در انتهای این درس مورد بررسی قرار خواهد گرفت.
 
 
+مقایسه دو شی ``datetime``
+----------------------------
 
 
 
