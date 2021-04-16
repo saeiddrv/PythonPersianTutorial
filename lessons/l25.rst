@@ -1,7 +1,7 @@
 .. role:: emoji-size
 
 .. meta::
-   :description: کتاب آموزش زبان برنامه نویسی پایتون به فارسی، مدیریت خطا در پایتون، datetime در پایتون، time در پایتون، calendar پایتون
+   :description: کتاب آموزش زبان برنامه نویسی پایتون به فارسی، datetime در پایتون، time در پایتون، calendar پایتون، timezone پایتون، timedelta پایتون، tzinfo پایتون
    :keywords:  آموزش, آموزش پایتون, آموزش برنامه نویسی, پایتون, کتابخانه, پایتون, datetime در پایتون
 
 
