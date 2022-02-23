@@ -12,6 +12,7 @@
 .. figure:: /_static/pages/01-python-introduction.jpg
     :align: center
     :alt: آشنایی با زبان برنامه نویسی پایتون
+    :class: page-image
 
     Photo by `Michael Olsen <https://unsplash.com/photos/-djS1aPrSr4>`__
   
