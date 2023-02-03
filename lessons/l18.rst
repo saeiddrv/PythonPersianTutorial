@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/18-python-object-oriented-programming-inheritance-mro-mixin.jpg
     :align: center
     :alt: شی گرایی (OOP) در پایتون: وراثت (Inheritance)، Association و Mixin
+    :class: page-image
 
     Photo by `Vidar Nordli-Mathisen <https://unsplash.com/photos/s-vhziQHngM>`__
 

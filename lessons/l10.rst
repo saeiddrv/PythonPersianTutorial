@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/10-python-input-output-file.jpg
     :align: center
     :alt: فایل، ورودی و خروجی در پایتون - input, print, file
+    :class: page-image
 
     Photo by `Mr Cup / Fabien Barral <https://unsplash.com/photos/o6GEPQXnqMY>`__
   

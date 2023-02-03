@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/15-python-regex-1.jpg
     :align: center
     :alt: عبارات با قاعده (Regular Expression) یا RegEx در پایتون
+    :class: page-image
 
     Photo by `Ehud Neuhaus <https://unsplash.com/photos/RZaR1yos2NM>`__
 

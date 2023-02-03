@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/07-python-built-in-data-types-1.jpg
     :align: center
     :alt: انواع داده یا شی در پایتون: عددی و رشته
+    :class: page-image
 
     Photo by `Kristian Strand <https://unsplash.com/photos/p8gzCnZf39k>`__
 

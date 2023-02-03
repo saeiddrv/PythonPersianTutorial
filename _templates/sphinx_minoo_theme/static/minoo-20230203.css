@@ -230,7 +230,6 @@ div[class^='highlight']{width:100%;display:inline-block}
 td{font-size:14px}
 tr.row-even{background-color:#F5F5F5;}
 
-
 /* custome style */
 ul li{text-align:justify}
 .red{color:#E65100}
@@ -243,167 +242,51 @@ body{font-size:1.5rem}
 .reportmenufield:hover{border-right:5px #f48fb1 solid !important}
 .exercisesmenufield{background-color:#ef5350 !important}
 .exercisesmenufield:hover{border-right:5px #ef9a9a solid !important}
-h1 a.toc-backref, h2 a.toc-backref{color:#fff !important}
-
-
-
-.footer-donate {
-    color: #fff !important;
-    background-color: #616161 !important;
-    padding:32px;
-    display: block;
-    width: 100%;
-    text-align:center;
-}
-
-.footer-donate h3 {
-        border: none !important;
-    background: transparent;
-color: #fff !important;
-}
-
-.footer-donate p {
-    margin: 0 !important;
-    text-align: center !important;
-    font-size:14px;
-}
-
-.footer-donate a.donate-box {
-display: block;
-    width: 100%;
-    float: none;
-    padding: 1.5rem;
-    background-color: #4CAF50;
-    color: #fff;
-    font-weight: 800;
-    text-align: center;
-    font-size: 20px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    height: auto;
-}
-
-.footer-donate i {
-	font-size: 35px;
-}
-
-i {
-    vertical-align: bottom !important;
-}
-
-
-.top-fixed .top-banner {
-    position: fixed;
-    background: #fff;
-    z-index: 9;
-    right: 0;
-    top: 0;
-    left: 0;
-    right: 18%;
-   
-    max-width: 772px;
-}
-
-.top-banner {
-
-transition:all .2s ease;
-}
-
-.top-fixed #body-donate {
-    margin-bottom:0;
-}
-
-.top-fixed .text-content {
-margin-top:100px;
-}
-
-.donate-badge{
-    position: fixed;
-    bottom: 12px;
-    z-index: 999999;
-    left: 40px;
-    display:none;
-    transition:all .2s ease;
-}
-
-.donate-badge.active  {
-    display:block;
-}
-
-#sidebar-bottom-list ul li {
-    font-size: 12px;
-text-align: inherit;
-}
-
-.toctree-wrapper ul li {
-text-align: inherit;
-}
-
-.side-top-link {
-    color: #fff;
-    text-align: center;
-    display: block;
-    padding: 8px;
-    position: fixed;
-    bottom: 38px;
-    background: #5C6BC0;
-    width: 300px;
-    right: -300px;
-    font-size: 85%;
-}
+h1 a.toc-backref h2 a.toc-backref{color:#fff !important}
+.footer-donate {color:#fff !important;background-color:#616161 !important;padding:32px;display:block;width:100%;text-align:center;}
+.footer-donate h3{border:none !important;background:transparent;color:#fff !important;}
+.footer-donate p{margin:0 !important;text-align:center !important;font-size:14px;}
+.footer-donate a.donate-box{display:block;width:100%;float:none;padding:1.5rem;background-color:#4CAF50;color:#fff;font-weight:800;text-align:center;font-size:20px;box-shadow:0px 8px 15px rgba(0, 0, 0, 0.1);height:auto;}
+.footer-donate i{font-size:35px;}
+i{vertical-align:bottom !important;}
+.top-fixed .top-banner{position:fixed;background:#fff;z-index:9;right:0;top: 0;left:0;right:18%;max-width:772px;}
+.top-banner{transition:all .2s ease;}
+.top-fixed #body-donate{margin-bottom:0;}
+.top-fixed .text-content{margin-top:100px;}
+.donate-badge{position:fixed;bottom: 12px;z-index: 999999;left:40px;display:none;transition:all .2s ease;}
+.donate-badge.active{display:block;}
+#sidebar-bottom-list ul li{font-size:12px;text-align:inherit;}
+.toctree-wrapper ul li{text-align:inherit;}
+.side-top-link{color:#fff;text-align:center;display:block;padding:8px;position:fixed;bottom:38px;background:#5C6BC0;width:300px;right:-300px;font-size:85%;}
 #page.toggled .side-top-link{right:0}
+.top-links{display:inline-block;float:left;height:32px;width:auto;}
+.top-links a{display:block;height:32px;width:auto;padding:2px 10px;cursor:pointer;color:#fff;}
+.top-red a{background-color:#b41474;}
+.top-green a{background-color:#4CAF50;margin:0px 2px;}
+.top-blue a{background-color:#009ca7;}
+.top-red a:hover,.top-green a:hover,.top-blue a:hover{color:#000;}
+ul li p:last-child{margin-bottom: 24px !important;}
+a.side-donate{background-color:#66BB6A;margin:0px 2px;color:white;padding:2px 10px;}
+a.hover{background-color:#4CAF50;}
+@media screen and (max-width:768px){.top-red{display:none !important;}}
+.page-image{max-height:100%;max-width:100%;height:auto;display:inline-block;}
 
-
-
-.top-links {
-	display:inline-block;float:left;height:32px;width:auto;
-}
-.top-links a {
-	display:block;height:32px;width:auto;padding:2px 10px;cursor:pointer;color:#fff;
-}
-.top-red a {
-	background-color:#b41474;
-}
-.top-green a {
-	background-color:#4CAF50;
-	margin:0px 2px;
-}
-.top-blue a {
-	background-color:#009ca7;
-}
-.top-red a:hover, .top-green a:hover, .top-blue a:hover{color:#000;}
-@media screen and (max-width: 768px) {
-	.top-red{display:none !important;}
-}
-
-ul li p:last-child {margin-bottom: 24px !important;}
-
-a.side-donate{
-    background-color: #66BB6A;
-    margin: 0px 2px;
-    color: white;
-    padding: 2px 10px;
-}
-
-a.hover{
-    background-color: #4CAF50;
-}
 /* -------- make other colors -------- */
+.toctree-wrapper li.make-red >a{background-color:#ec407a;}
+.toctree-wrapper .make-red >a:hover{border-right:5px #f48fb1 solid;}
+.toctree-wrapper li.make-red.toctree-l1 i{color:#f48fb1!important;}
+.toctree-wrapper li.make-red>ul>li>a{background-color:#f48fb1;}
+.toctree-wrapper li.make-red>ul>li>a:hover{border-right:5px #ec407a solid;}
 
-.toctree-wrapper li.make-red >a {background-color: #ec407a;}
-.toctree-wrapper .make-red >a:hover {border-right: 5px #f48fb1 solid;}
-.toctree-wrapper li.make-red.toctree-l1 i {color: #f48fb1!important;}
-.toctree-wrapper li.make-red>ul>li>a {background-color: #f48fb1;}
-.toctree-wrapper li.make-red>ul>li>a:hover {border-right: 5px #ec407a solid;}
+.toctree-wrapper li.make-green >a{background-color:#00695c;}
+.toctree-wrapper .make-green >a:hover{border-right:5px #4db6ac solid;}
+.toctree-wrapper li.make-green.toctree-l1 i{color:#4db6ac!important;}
+.toctree-wrapper li.make-green>ul>li>a{background-color:#4db6ac;}
+.toctree-wrapper li.make-green>ul>li>a:hover{border-right:5px #00695c solid;}
 
-.toctree-wrapper li.make-green >a {background-color: #00695c;}
-.toctree-wrapper .make-green >a:hover {border-right: 5px #4db6ac solid;}
-.toctree-wrapper li.make-green.toctree-l1 i {color: #4db6ac!important;}
-.toctree-wrapper li.make-green>ul>li>a {background-color: #4db6ac;}
-.toctree-wrapper li.make-green>ul>li>a:hover {border-right: 5px #00695c solid;}
-
-.toctree-wrapper li.make-black >a {background-color: #37474f;}
-.toctree-wrapper .make-black >a:hover {border-right: 5px #90a4ae solid;}
-.toctree-wrapper li.make-black.toctree-l1 i {color: #90a4ae!important;}
-.toctree-wrapper li.make-black>ul>li>a {background-color: #90a4ae;}
-.toctree-wrapper li.make-black>ul>li>a:hover {border-right: 5px #37474f solid;}
+.toctree-wrapper li.make-black >a{background-color:#37474f;}
+.toctree-wrapper .make-black >a:hover{border-right:5px #90a4ae solid;}
+.toctree-wrapper li.make-black.toctree-l1 i{color:#90a4ae!important;}
+.toctree-wrapper li.make-black>ul>li>a{background-color:#90a4ae;}
+.toctree-wrapper li.make-black>ul>li>a:hover{border-right:5px #37474f solid;}
 

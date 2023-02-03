@@ -12,6 +12,7 @@
 .. figure:: /_static/pages/05-python-object-oriented-programming-concept.jpg
     :align: center
     :alt: مفهوم شی گرایی (Object-Oriented Programming)
+    :class: page-image
 
     Photo by `Lucas Benjamin <https://unsplash.com/photos/wQLAGv4_OYs>`__
 

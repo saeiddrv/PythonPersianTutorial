@@ -12,6 +12,7 @@
 .. figure:: /_static/pages/06-python-syntax.jpg
     :align: center
     :alt: سینتکس یا دستور نحو زبان پایتون
+    :class: page-image
 
     Photo by `Tim J <https://unsplash.com/photos/gM6k0JmHIBE>`__
   

@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/09-python-if-else-for-while.jpg
     :align: center
     :alt: دستورهای کنترلی در پایتون
+    :class: page-image
 
     Photo by `Lynda Sanchez <https://unsplash.com/photos/GCbGxU4mBu0>`__
   

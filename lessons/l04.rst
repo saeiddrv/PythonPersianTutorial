@@ -13,6 +13,7 @@
 .. figure:: /_static/pages/04-python-interactive-mode.jpg
     :align: center
     :alt: برنامه‌نویسی تعاملی با پایتون (interactive)
+    :class: page-image
 
     Photo by `Anton Maksimov juvnsky <https://unsplash.com/photos/3jDZM3rgpz8>`__
   
