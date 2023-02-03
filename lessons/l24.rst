@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/24-python-raise-exception-warning-assertion.jpg
     :align: center
     :alt: مدیریت خطا در پایتون:Warning ،raise Exception و Assertion
+    :class: page-image
 
     Photo by `Sandy Manoa <https://unsplash.com/photos/DnuC3-ZNBPQ>`__
   

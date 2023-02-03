@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/08-python-built-in-data-types-2.jpg
     :align: center
     :alt: انواع داده یا شی در پایتون: set ،dict ،tuple، list و None
+    :class: page-image
 
     Photo by `Natalia Y <https://unsplash.com/photos/Oxl_KBNqxGA>`__
   

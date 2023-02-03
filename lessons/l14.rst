@@ -12,6 +12,7 @@
 .. figure:: /_static/pages/14-python-function-recursive-memoization.jpg
     :align: center
     :alt: تابع در پایتون: تابع بازگشتی (Recursive) و Memoization
+    :class: page-image
 
     Photo by `Dan Freeman <https://unsplash.com/photos/WHPsxhB4mWQ>`__
 

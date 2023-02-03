@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/17-python-object-oriented-programming-class-object.jpg
     :align: center
     :alt: شی گرایی (OOP) در پایتون: تعریف کلاس و ایجاد شی
+    :class: page-image
 
     Photo by `Sarah Kilian <https://unsplash.com/photos/aObrctw3B7o>`__
 

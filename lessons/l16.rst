@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/16-python-regex-re.jpg
     :align: center
     :alt: کتابخانه استاندارد پایتون: re
+    :class: page-image
 
     Photo by `Markus Winkler <https://unsplash.com/photos/afW1hht0NSs>`__
 

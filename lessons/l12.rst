@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/12-python-function.jpg
     :align: center
     :alt: تابع در پایتون: تعریف، ارسال و تطابق آرگومان‌ها
+    :class: page-image
 
     Photo by `Josue Isai Ramos Figueroa <https://unsplash.com/photos/qvBYnMuNJ9A>`__
 

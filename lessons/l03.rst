@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/03-python-project-structure.jpg
     :align: center
     :alt: چگونگی ایجاد و اجرای یک پروژه پایتون
+    :class: page-image
 
     Photo by `Sam Moqadam <https://unsplash.com/photos/UkwbRZkt8zM>`__
 

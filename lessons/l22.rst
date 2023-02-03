@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/22-python-object-oriented-programming-type-hinting-data-class.jpg
     :align: center
     :alt: شی گرایی (OOP) در پایتون: Type Hinting و دیتا کلاس (Data Class)
+    :class: page-image
 
     Photo by `Stefan Widua <https://unsplash.com/photos/vdds_nsH-FE>`__
 

@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/21-python-object-oriented-programming-property-descriptors.jpg
     :align: center
     :alt: شی گرایی (OOP) در پایتون: __Descriptors ، Context Manager ،Decorator ،__slots و property@
+    :class: page-image
 
     Photo by `Mathyas Kurmann <https://unsplash.com/photos/fb7yNPbT0l8>`__
   

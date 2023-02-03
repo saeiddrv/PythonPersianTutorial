@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/25-python-date-time-calendar.jpg
     :align: center
     :alt: زمان در پایتون: ماژول‌ datetime و timezone, timedelta, tzinfo
+    :class: page-image
 
     Photo by `Niloofar Kanani <https://unsplash.com/photos/a-dep2gUeRI>`__
   

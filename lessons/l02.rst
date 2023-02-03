@@ -12,6 +12,7 @@
 .. figure:: /_static/pages/02-python-setup.jpg
     :align: center
     :alt: نصب و راه‌اندازی پایتون
+    :class: page-image
 
     Photo by `Bermix Studio <https://unsplash.com/photos/8tQ7rBFgPu8>`__
 

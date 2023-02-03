@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/11-python-os-path-math.jpg
     :align: center
     :alt: کتابخانه استاندارد پایتون: math و os
+    :class: page-image
 
     Photo by `Yousef Espanioly <https://unsplash.com/photos/L6g30JaQ5Tc>`__
 

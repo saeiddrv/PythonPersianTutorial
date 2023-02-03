@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/20-python-object-oriented-programming-polymorphism-encapsulation.jpg
     :align: center
     :alt: شی گرایی (OOP) در پایتون: Encapsulation و چندریختی (Polymorphism)
+    :class: page-image
 
     Photo by `sanjiv nayak <https://unsplash.com/photos/yTR70oYHEQw>`__
 

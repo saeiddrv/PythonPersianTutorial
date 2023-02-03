@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/23-python-exception-error-warning-try.jpg
     :align: center
     :alt: مدیریت خطا در پایتون: Exception ،Traceback و Exception Handling و try/except/else/finally
+    :class: page-image
 
     Photo by `krakenimages <https://unsplash.com/photos/8RXmc8pLX_I>`__
   

@@ -11,6 +11,7 @@
 .. figure:: /_static/pages/13-python-function-decorator-generator-coroutine-lambda.jpg
     :align: center
     :alt: تابع در پایتون: Coroutine ،Generator ،Decorator‌ و lambda
+    :class: page-image
 
     Photo by `Bill Oxford <https://unsplash.com/photos/-fGqsewtsJY>`__
 
