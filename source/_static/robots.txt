@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: 
+
+Sitemap: https://python.coderz.ir/_static/sitemap-index.xml
+
+
