@@ -16,11 +16,11 @@ This is an open-source and online book that provides a comprehensive tutorial on
 - Debugging techniques
 - Date and Time
 
-This book is designed for Persian-speaking learners who have no prior experience with programming languages. The book covers all the essential topics, from basic to intermediate programming, and each chapter includes code examples to help learners reinforce their understanding of the material.
+This book is designed for Persian-speaking learners without prior experience with programming languages. The book covers all the essential topics, from basic to intermediate programming, and each chapter includes code examples to help learners understand the material.
 
 ## Getting Started
 
-To get started with the book:
+To get started with this book, you can:
 
 - Simply visit [python.coderz.ir](https://python.coderz.ir/) and start reading. 
 
@@ -31,8 +31,8 @@ To get started with the book:
   
   $ pip install -U pip
   $ pip install virtualenv
-  $ python -m virtualenv .pypr-venv
-  $ source .pypr-venv/bin/activate
+  $ python -m virtualenv .venv
+  $ source .venv/bin/activate
   
   $ cd PythonPersianTutorial
   $ pip install -r requirements.txt
@@ -40,10 +40,11 @@ To get started with the book:
   $ make html
   
   $ cd ./build/html
-  $ python -m http.server
+  $ python -m http.server 8000
   ```
+  then visit http://127.0.0.1:8000:
   
-- Download the source code from GitHub and run it with Docker:
+- Download the source code from GitHub and run it in Docker:
   
   ```
   $ git clone https://github.com/saeiddrv/PythonPersianTutorial.git
@@ -53,6 +54,7 @@ To get started with the book:
   $ docker build -t pypersian .
   $ docker run -d --name pypersian -p 80:8000 pypersian
   ```
+  then visit http://127.0.0.1
  
 
 ## Contributions
@@ -61,11 +63,11 @@ If you'd like to contribute to the book, you can fork the repository on GitHub a
 
 ## Credits
 
-This book was authored by **Saeid Darvish**.
+This book was authored by [**Saeid Darvish**](https://saeiddrv.github.io).
 
 ## License
 
-This book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](http://creativecommons.org/licenses/by-nc/4.0/) International Public License, which means you can use, copy, modify, merge, publish, distribute of the book for non-commercial purposes.
+This book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License, which means you are free to use, copy, modify, merge, publish, and distribute the book for non-commercial purposes. Please see the [license](https://creativecommons.org/licenses/by-nc-sa/4.0/) for more details.
 
 ## Acknowledgments
 
