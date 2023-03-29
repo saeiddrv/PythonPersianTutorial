@@ -42,7 +42,7 @@ To get started with this book, you can:
   $ cd ./build/html
   $ python -m http.server 8000
   ```
-  then visit http://127.0.0.1:8000:
+  then visit http://127.0.0.1:8000
   
 - Download the source code from GitHub and run it in Docker:
   
