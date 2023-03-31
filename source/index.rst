@@ -29,7 +29,7 @@
 
    preface
    lessons/l01-introduction-to-python
-   lessons/l02
+   lessons/l02-setup-python
    lessons/l03
    lessons/l04
    lessons/l05
