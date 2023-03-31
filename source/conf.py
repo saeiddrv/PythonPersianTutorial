@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'PythonPersianTutorial'
+project = 'پایتون به پارسی'
 copyright = '2015, Saeid Darvish'
 author = 'Saeid Darvish'
 
