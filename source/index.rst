@@ -28,7 +28,7 @@
    :maxdepth: 6
 
    preface
-   lessons/l01
+   lessons/l01-introduction-to-python
    lessons/l02
    lessons/l03
    lessons/l04

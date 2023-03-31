@@ -27,4 +27,6 @@ master_doc = 'index'
 
 html_theme = 'sphinx_minoo_theme'
 html_theme_path = ["_templates"]
+html_title = 'کتاب ' + project
+
 html_static_path = ['_static']
