@@ -31,7 +31,7 @@
    lessons/l01-introduction-to-python
    lessons/l02-setup-python
    lessons/l03-create-and-run-a-python-project
-   lessons/l04
+   lessons/l04-python-interactive-mode
    lessons/l05
    lessons/l06
    lessons/l07
