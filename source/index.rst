@@ -33,7 +33,7 @@
    lessons/l03-create-and-run-a-python-project
    lessons/l04-python-interactive-mode
    lessons/l05-object-oriented-programming
-   lessons/l06
+   lessons/l06-python-syntax
    lessons/l07
    lessons/l08
    lessons/l09
