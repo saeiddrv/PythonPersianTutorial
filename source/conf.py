@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'PythonPersianTutorial'
+project = 'پایتون به پارسی'
 copyright = '2015, Saeid Darvish'
 author = 'Saeid Darvish'
 
@@ -27,4 +27,6 @@ master_doc = 'index'
 
 html_theme = 'sphinx_minoo_theme'
 html_theme_path = ["_templates"]
+html_title = 'کتاب ' + project
+
 html_static_path = ['_static']

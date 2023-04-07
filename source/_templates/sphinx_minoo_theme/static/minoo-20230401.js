@@ -152,6 +152,13 @@ $( document ).ready(function() {
     $('#sidebar-bottom').animate({scrollTop: pos.top - 232 }, "slow");
 
 
+    // Fixing the lists
+    // $("ul li p").each(function(){
+    //     var value = $(this).html();
+    //     $(this).replaceWith(value);
+    // });
+
+
 });
 
 $( window ).resize(function() {
