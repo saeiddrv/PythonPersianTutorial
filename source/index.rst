@@ -34,7 +34,8 @@
    lessons/l04-python-interactive-mode
    lessons/l05-object-oriented-programming
    lessons/l06-python-syntax
-   lessons/l07
+   lessons/l07-numeric-types-in-python
+   lessons/l07-string-in-python
    lessons/l08
    lessons/l09
    lessons/l10
