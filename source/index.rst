@@ -36,7 +36,8 @@
    lessons/l06-python-syntax
    lessons/l07-numeric-types-in-python
    lessons/l07-string-in-python
-   lessons/l08
+   lessons/l08-list-and-tuple-in-python
+   lessons/l08-set-and-dict-in-python
    lessons/l09
    lessons/l10
    lessons/l11
