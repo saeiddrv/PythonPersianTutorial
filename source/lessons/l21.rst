@@ -271,7 +271,7 @@ __slots__
     TypeError: multiple bases have instance lay-out conflict
 
 
-بهتر است superclassها حاوی یک ``__slots__`` خالی (شی تاپل خالی) باشند و هر subclass خود محتوای ``__slots__`` خود را تعریف نماید:
+بهتر است superclassها حاوی یک ``__slots__`` خالی (شی توپِل خالی) باشند و هر subclass خود محتوای ``__slots__`` خود را تعریف نماید:
 
 .. code-block:: python
     :linenos: 

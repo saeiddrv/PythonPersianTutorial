@@ -681,7 +681,7 @@ Type Hinting
 تابع ``field`` و ``fields``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-تابع ``fields`` از ماژول ``dataclasses`` یک شی از دیتا کلاس یا خود دیتا کلاس را از ورودی دریافت و یک تاپل حاوی تمام فیلد‌های آن بر می‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/dataclasses.html#dataclasses.fields>`__]:
+تابع ``fields`` از ماژول ``dataclasses`` یک شی از دیتا کلاس یا خود دیتا کلاس را از ورودی دریافت و یک توپِل حاوی تمام فیلد‌های آن بر می‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/dataclasses.html#dataclasses.fields>`__]:
 
 .. code-block:: python
     :linenos:
