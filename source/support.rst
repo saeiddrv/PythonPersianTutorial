@@ -60,7 +60,9 @@
     :align: center
     :width: 256
 
-* ``bc1q8sdd2zarj4swalx2f895y2v3exk53rh7t8jzve``
+::
+
+    bc1q8sdd2zarj4swalx2f895y2v3exk53rh7t8jzve
 
 
 .. _support-eth: 
@@ -72,7 +74,9 @@
     :align: center
     :width: 256
 
-* ``0x7218D1c2c9614e5f3c9959c1b9D2f36592aAa4c7``
+:: 
+
+    0x7218D1c2c9614e5f3c9959c1b9D2f36592aAa4c7
 
 
 .. _support-ltc: 
@@ -84,7 +88,9 @@
     :align: center
     :width: 256
 
-* ``ltc1qsw63lq9a6c9r8ukufrk6rkg4lge5tn528k2qwd``
+::
+
+    ltc1qsw63lq9a6c9r8ukufrk6rkg4lge5tn528k2qwd
 
 
 .. _support-doge: 
@@ -96,7 +102,9 @@
     :align: center
     :width: 256
 
-* ``DNWR6VJMXV7HwMyj28WVHTMJSCKEr6mKvz``
+:: 
+
+    DNWR6VJMXV7HwMyj28WVHTMJSCKEr6mKvz
 
 
 .. _support-non: 
