@@ -132,6 +132,9 @@ $( document ).ready(function() {
         if ($(this).text().indexOf("گزارش حمایت‌های مالی")>=0) {
            $(this).parent().addClass('make-red');
         }
+        if ($(this).text().indexOf("حمایت مالی")>=0) {
+           $(this).parent().addClass('make-red');
+        }
         if ($(this).text().indexOf("بهترین منابع آموزش پایتون") >= 0) {
            $(this).parent().addClass('make-green');
         }

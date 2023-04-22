@@ -55,8 +55,9 @@
    lessons/l23
    lessons/l24
    lessons/l25
-   log
-   donate-report
+   changelog
+   support
+   support-report
    python-interactive
    python-resources
    
