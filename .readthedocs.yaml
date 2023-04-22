@@ -10,11 +10,10 @@ build:
     python: "3.11"
 
 python:
-   install:
-   - requirements: requirements.txt
-   - method: pip
+  install:
+  - requirements: requirements.txt
 
 sphinx:
-   builder: html
-   configuration: source/conf.py
-   fail_on_warning: true
+  builder: html
+  configuration: source/conf.py
+  fail_on_warning: true
