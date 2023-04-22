@@ -14,6 +14,14 @@
 
 .. raw:: html
 
+    <p class="rubric" id="00133" ><a class="reference external" href="#00133">00133</a> - شنبه ۲ اردیبهشت ۱۴۰۲</p>
+
+* صفحه «حمایت مالی» ایجاد گردید. [`Issue #63 <https://github.com/saeiddrv/PythonPersianTutorial/issues/63>`__]
+
+----
+
+.. raw:: html
+
     <p class="rubric" id="00132" ><a class="reference external" href="#00132">00132</a> - شنبه ۲ اردیبهشت ۱۴۰۲</p>
 
 * نام فایل «درس هفتم/بخش دوم» تغییر داده شد.
