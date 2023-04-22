@@ -35,7 +35,7 @@
    lessons/l05-object-oriented-programming
    lessons/l06-python-syntax
    lessons/l07-numeric-types-in-python
-   lessons/l07-string-in-python
+   lessons/l07-string-and-bytes-in-python
    lessons/l08-list-and-tuple-in-python
    lessons/l08-set-and-dict-in-python
    lessons/l09
@@ -69,7 +69,7 @@
     :scale: 60 %
     :alt: بروز شده با نسخه 3.11
 
-**شروع:**  فروردین ۱۳۹۴ **و**  **آخرین بروزرسانی:** فروردین ۱۴۰۲ [`گزارش توسعه <log.html>`__] - **در حال بروزرسانی با نسخه ۳.۱۱ پایتون**
+**شروع:**  فروردین ۱۳۹۴ **و**  **آخرین بروزرسانی:** اردیبهشت ۱۴۰۲ [`گزارش توسعه <log.html>`__] - **در حال بروزرسانی با نسخه ۳.۱۱ پایتون**
 
 
 
