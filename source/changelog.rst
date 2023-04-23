@@ -66,7 +66,7 @@
 
 .. raw:: html
 
-    <p class="rubric" id="00129" ><a class="reference external" href="00129">00129</a> - پنج‌شنبه ۲۴ فروردین ۱۴۰۲</p>
+    <p class="rubric" id="00129" ><a class="reference external" href="#00129">00129</a> - پنج‌شنبه ۲۴ فروردین ۱۴۰۲</p>
 
 * بنابر تذکر آقای «محمد درویشی» متن زیر از درس دهم اصلاح گردید:
 
