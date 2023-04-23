@@ -14,6 +14,18 @@
 
 .. raw:: html
 
+    <p class="rubric" id="00134" ><a class="reference external" href="#00134">00134</a> - یک‌شنبه ۳ اردیبهشت ۱۴۰۲</p>
+
+* درس نهم ویرایش و بروزرسانی گردید.
+* شرح دستور ``match/case`` به درس نهم اضافه شد.
+* [`Issue #59 <https://github.com/saeiddrv/PythonPersianTutorial/issues/59>`__]
+
+
+
+----
+
+.. raw:: html
+
     <p class="rubric" id="00133" ><a class="reference external" href="#00133">00133</a> - شنبه ۲ اردیبهشت ۱۴۰۲</p>
 
 * صفحه «حمایت مالی» ایجاد گردید. [`Issue #63 <https://github.com/saeiddrv/PythonPersianTutorial/issues/63>`__]

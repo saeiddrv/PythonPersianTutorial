@@ -40,7 +40,7 @@
    lessons/l07-string-and-bytes-in-python
    lessons/l08-list-and-tuple-in-python
    lessons/l08-set-and-dict-in-python
-   lessons/l09-control-flow-in-python
+   lessons/l09-control-flow-statements-in-python
    lessons/l10
    lessons/l11
    lessons/l12
