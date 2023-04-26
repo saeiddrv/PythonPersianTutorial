@@ -41,7 +41,7 @@
    lessons/l08-list-and-tuple-in-python
    lessons/l08-set-and-dict-in-python
    lessons/l09-control-flow-statements-in-python
-   lessons/l10
+   lessons/l10-input-file-json-and-serialization-in-python
    lessons/l11
    lessons/l12
    lessons/l13
