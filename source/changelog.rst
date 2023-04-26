@@ -14,6 +14,18 @@
 
 .. raw:: html
 
+    <p class="rubric" id="00135" ><a class="reference external" href="#00135">00135</a> - ]چهارشنبه ۶ اردیبهشت ۱۴۰۲</p>
+
+* درس دهم ویرایش و بروزرسانی گردید.
+* بخش «ساختارهای ذخیره و تبادل داده» به درس دهم اضافه شد.
+* [`Issue #60 <https://github.com/saeiddrv/PythonPersianTutorial/issues/60>`__]
+
+
+----
+
+
+.. raw:: html
+
     <p class="rubric" id="00134" ><a class="reference external" href="#00134">00134</a> - یک‌شنبه ۳ اردیبهشت ۱۴۰۲</p>
 
 * درس نهم ویرایش و بروزرسانی گردید.
