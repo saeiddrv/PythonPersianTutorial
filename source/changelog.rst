@@ -14,6 +14,16 @@
 
 .. raw:: html
 
+    <p class="rubric" id="00136" ><a class="reference external" href="#00136">00136</a> - پنج‌شنبه ۷ اردیبهشت ۱۴۰۲</p>
+
+* درس یازدهم ویرایش و بروزرسانی گردید.
+* [`Issue #61 <https://github.com/saeiddrv/PythonPersianTutorial/issues/61>`__]
+
+
+----
+
+.. raw:: html
+
     <p class="rubric" id="00135" ><a class="reference external" href="#00135">00135</a> - چهارشنبه ۶ اردیبهشت ۱۴۰۲</p>
 
 * درس دهم ویرایش و بروزرسانی گردید.
