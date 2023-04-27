@@ -42,7 +42,7 @@
    lessons/l08-set-and-dict-in-python
    lessons/l09-control-flow-statements-in-python
    lessons/l10-input-print-and-files-in-python
-   lessons/l11
+   lessons/l11-python-standard-library
    lessons/l12
    lessons/l13
    lessons/l14
