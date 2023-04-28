@@ -43,20 +43,20 @@
    lessons/l09-control-flow-statements-in-python
    lessons/l10-input-print-and-files-in-python
    lessons/l11-python-standard-library
-   lessons/l12
-   lessons/l13
-   lessons/l14
-   lessons/l15
-   lessons/l16
-   lessons/l17
-   lessons/l18
-   lessons/l19
-   lessons/l20
-   lessons/l21
-   lessons/l22
-   lessons/l23
-   lessons/l24
-   lessons/l25
+   lessons/l12-function-in-python
+   lessons/l13-decorator-generator-and-lambda-with-python-functions
+   lessons/l14-recursive-functions-and-memoization-in-python
+   lessons/l15-regular-expression-in-python
+   lessons/l16-python-module-re
+   lessons/l17-object-oriented-programming-with-python
+   lessons/l18-inheritance-and-association-in-python
+   lessons/l19-metaclass-and-abstraction-in-python
+   lessons/l20-encapsulation-polymorphism-in-python
+   lessons/l21-descriptors-and-context-manager-in-python
+   lessons/l22-type-hinting-and-data-class-in-python
+   lessons/l23-traceback-and-exception-handling-in-python
+   lessons/l24-raise-exception-warning-and-assertion-in-python
+   lessons/l25-python-module-datetime
    changelog
    support
    support-report
@@ -72,7 +72,7 @@
     :scale: 60 %
     :alt: بروز شده با نسخه 3.11
 
-**شروع:**  فروردین ۱۳۹۴ **و**  **آخرین بروزرسانی:** اردیبهشت ۱۴۰۲ [`گزارش توسعه <changelog.html>`__] - **در حال بروزرسانی با نسخه ۳.۱۱ پایتون**
+**شروع:**  فروردین ۱۳۹۴ **و**  **آخرین بروزرسانی:** اردیبهشت ۱۴۰۲ [`گزارش توسعه <changelog.html>`__] - **بروز شده با نسخه ۳.۱۱ پایتون**
 
 
 
