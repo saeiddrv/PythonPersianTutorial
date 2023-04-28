@@ -43,7 +43,7 @@
 * **base class** یا **superclass**: کلاس اصلی یا کلاسی می‌خواهیم کلاس یا کلاس‌های دیگری آن را به ارث ببرند و صفات و رفتارهای آن به دیگر کلاس(ها) سرایت پیدا کند.
 * **derived class** یا **subclass**: کلاس یا کلاس‌هایی که از superclass ارث‌بری خواهند داشت.
 
-.. image:: /_static/l18-python-oop-inheritance.jpg
+.. image:: /_static/lessons/l18-python-oop-inheritance.jpg
     :align: center
 
 تصویر بالا یک نمونه ساده از ساختار وراثت را نمایش می‌دهد. در برنامه ما قرار است یک کلاس گنجشک (Sparrow) و سگ (Dog) ایجاد گردد، از آنجا که برخی از رفتارهای این دو کلاس یکسان است مانند راه رفتن (Walk) یا نفس کشیدن (Breathe)، یک superclass کلاس برای آن‌ها با نام Animal ایجاد می‌کنیم که شامل صفات و رفتارهای مشترک دو کلاس نام برده باشد - پیاده‌سازی پایتونی تصویر بالا به صورت نمونه کد زیر خواهد بود:
@@ -496,7 +496,7 @@ Method Resolution Order
 
 اکنون برای پی بردن به چگونگی ایجاد حاصل ``__Class.__mro`` و درک عملکرد الگوریتم C3 linearization دو مثال معروف در این زمینه را بررسی خواهیم کرد. نخست ساختار الماس (Diamond):
 
-.. image:: /_static/l18-python-mro-diamond.png
+.. image:: /_static/lessons/l18-python-mro-diamond.png
     :align: center
 
 .. code-block:: python
@@ -561,7 +561,7 @@ Method Resolution Order
 
 اکنون مثال پیچیده‌تری را بررسی می‌کنیم. برگرفته شده از [`اینجا <https://www.wikiwand.com/en/C3_linearization>`__]  و [`اینجا <https://www.python.org/download/releases/2.3/mro>`__] :
 
-.. image:: /_static/l18-python-mro-example.png
+.. image:: /_static/lessons/l18-python-mro-example.png
     :align: center
 
 .. code-block:: python

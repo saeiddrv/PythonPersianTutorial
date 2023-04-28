@@ -248,7 +248,7 @@
 پیش از مراجعه به این ماژول از کتابخانه استاندارد زبان برنامه‌نویسی پایتون لازم است نگاهی دوباره به انتهای فهرست سلسله‌مراتب وراثت Exceptionها که در درس پیش آن را بررسی کردیم بیاندازیم، در انتهای این فهرست کلاس‌هایی با پسوند Warning قراردارند [`Exception hierarchy <https://docs.python.org/3/library/exceptions.html#exception-hierarchy>`__]:
 
 
-.. image:: /_static/l24-python-exception-hierarchy-warnings.png
+.. image:: /_static/lessons/l24-python-exception-hierarchy-warnings.png
     :align: center
     :alt: Exception Hierarchy در پایتون به همراه warnings
 
@@ -490,7 +490,7 @@ Warnings Filter
 
 فلوچارت یک Assertion به صورت زیر ترسیم می‌شود:
 
-.. image:: /_static/l24-python-assertion-flowchart.png
+.. image:: /_static/lessons/l24-python-assertion-flowchart.png
     :align: center
     :width: 450
     :alt: دستور ``assert`` در پایتون - فلوچارت Assertion

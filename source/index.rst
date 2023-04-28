@@ -43,9 +43,9 @@
    lessons/l09-control-flow-statements-in-python
    lessons/l10-input-print-and-files-in-python
    lessons/l11-python-standard-library
-   lessons/l12
-   lessons/l13
-   lessons/l14
+   lessons/l12-function-in-python
+   lessons/l13-decorator-generator-and-lambda-with-python-functions
+   lessons/l14-recursive-functions-and-memoization-in-python
    lessons/l15
    lessons/l16
    lessons/l17

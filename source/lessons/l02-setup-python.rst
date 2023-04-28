@@ -62,7 +62,7 @@
 
 در هنگام نصب نسخه‌‌ای که قصد دارید از آن به صورت نسخه‌ پیش‌فرض پایتون خود استفاده نمایید، به این نکته توجه داشته باشید که در مرحله‌ سفارشی‌سازی (Customize) گزینه‌ افزودن خودکار مسیر مفسر پایتون به متغیر Path ویندوز را فعال نمایید (همانند تصویر پایین). در این صورت با وارد کردن دستور ``python`` در خط فرمان ویندوز، مفسر پایتون (این نسخه) فراخوانی می‌شود. برای شروع، با وارد کردن دستور ``python –V`` یا ``python --version`` می‌توانید از نسخه‌ پایتون نصب شده آگاهی یابید:
 
-.. image:: /_static/l02-install-python-on-windows.png
+.. image:: /_static/lessons/l02-install-python-on-windows.png
     :align: center
 
 .. code::
@@ -88,7 +88,7 @@
 مسیر Control Panel > System > Advanced system settings > Advanced را طی کرده و سپس با کلیک بر روی Environment Variables پنجره‌ جدیدی باز می‌گردد که در قسمت System variables آن Path را پیدا و انتخاب نمایید. بر روی Edit در پایین همان پنجره کلیک کرده و عبارت ``;C:\Python34;C:\Python34\Scripts`` (برای نسخه 3.4) را به ابتدای متن موجود در قسمت Variable value پنجره‌ جدید وارد و سپس بر روی دکمه‌ OK کلیک نمایید. :)
 
 
-.. image:: /_static/l02-add-path-on-windows.png
+.. image:: /_static/lessons/l02-add-path-on-windows.png
     :align: center
 
 .. caution::
