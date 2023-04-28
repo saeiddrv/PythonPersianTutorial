@@ -1,19 +1,29 @@
-# Python in Persian
+
+# Python in Persian (Updated with Python 3.11)
 
 [![Documentation Status](https://readthedocs.org/projects/pythonpersiantutorial/badge/?version=latest)](https://readthedocs.org/projects/pythonpersiantutorial/?badge=latest)
+
+<p align="center">
+    <img height="300" src="https://python.coderz.ir/_images/python-3-11.png">
+</p>
 
 This is an open-source and online book that provides a comprehensive tutorial on the Python programming language in Persian. The book is available at [python.coderz.ir](https://python.coderz.ir/) and covers a wide range of topics, including:
 
 - Introduction
 - Setup and starting a new project
-- Data types
+- Interactive mode
+- Data types and data structures
 - Control flow statements
-- Functions
-- Object-oriented programming
-- Exception handling
 - File handling
+- Standard library
+- Functions
+- Decorator‌, Generator and lambda
 - Regular expressions
-- Debugging techniques
+- Object-oriented programming
+- Descriptors and Context Manager
+- Type hinting and Data class
+- Exception and Exception handling
+- Warning and Assertion
 - Date and Time
 
 This book is designed for Persian-speaking learners without prior experience with programming languages. The book covers all the essential topics, from basic to intermediate programming, and each chapter includes code examples to help learners understand the material.
