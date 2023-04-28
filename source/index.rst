@@ -46,8 +46,8 @@
    lessons/l12-function-in-python
    lessons/l13-decorator-generator-and-lambda-with-python-functions
    lessons/l14-recursive-functions-and-memoization-in-python
-   lessons/l15
-   lessons/l16
+   lessons/l15-regular-expression-in-python
+   lessons/l16-python-module-re
    lessons/l17
    lessons/l18
    lessons/l19
