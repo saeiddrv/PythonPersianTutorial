@@ -14,6 +14,15 @@
 
 .. raw:: html
 
+    <p class="rubric" id="00137" ><a class="reference external" href="#00137">00137</a> - جمعه ۸ اردیبهشت ۱۴۰۲</p>
+
+* دروس دوازدهم تا بیست و پنجم ویرایش و بروزرسانی گردید.
+
+
+----
+
+.. raw:: html
+
     <p class="rubric" id="00136" ><a class="reference external" href="#00136">00136</a> - پنج‌شنبه ۷ اردیبهشت ۱۴۰۲</p>
 
 * درس یازدهم ویرایش و بروزرسانی گردید.
