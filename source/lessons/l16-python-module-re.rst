@@ -52,8 +52,9 @@
 تابع ``search``
 ~~~~~~~~~~~~~~~~~~~~~~
 
+::
 
-``search(pattern, string, flags=0)``
+   search(pattern, string, flags=0)
 
 تابع ``search`` به دنبال اولین انطباق pattern در string می‌گردد، در صورت موفقیت یک شی ``Match`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#match-objects>`__] و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.search>`__]::
 
@@ -104,7 +105,9 @@
 در ادامه به بررسی برخی از متدهای مهم این شی می‌پردازیم:
   
 
- * ``Match.group([group1, ...])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.group>`__]
+ * ``Match.group`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.group>`__]::
+
+     Match.group([group1, ...])
 
   این متد از شی ``Match``، گروه (های) تطبیق داده شده بر اساس الگو مورد نظر را برمی‌گرداند. این متد می‌تواند یک یا چند آرگومان عددی دریافت کند که معرف اندیس گروه مورد نظر می‌باشد. در حالت فراخوانی بدون آرگومان تمامی گروه‌های تطبیق داده شده به صورت یک مقدار رشته برگردانده می‌شود و در صورتی تنها یک مقدار به آن ارسال گردد، گروه تطبیق داده شده متناظر با آن اندیس (شمارش اندیس‌ها از یک است) در قالب یک شی رشته برگردانده می‌شود و در صورتی که بیش از یک اندیس به عنوان آرگومان ارسال گردد یک شی توپِل محتوی گروه‌های تطبیق داده شده برگردانده خواهد شد. چنانچه آرگومان ارسالی عددی منفی باشد یا اندیسی بالاتر از تعداد گروه‌های تطبیق داده شده باشد، یک استثنا ``IndexError`` رخ خواهد داد::
 
@@ -138,7 +141,9 @@
 
 
 
-  * ``Match.groups(default=None)`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.groups>`__]
+  * ``Match.groups`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.groups>`__]::
+
+       Match.groups(default=None)
 
   این متد تمام گروه‌های تطبیق داده شده بر اساس الگو مورد نظر را در قالب یک شی توپِل برمی‌گرداند. این متد می‌تواند یک آرگومان بپذیرد که معرف مقدار پیش‌فرض برای جایگذاری گروه‌هایی است که در رشته ورودی تطبیق داده نشده‌اند، در حالت عادی (بدون ارسال آرگومان) این مقدار برابر با ``None`` است::
 
@@ -163,7 +168,9 @@
       ()
 
 
-  * ``Match.groupdict(default=None)`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.groupdict>`__]
+  * ``Match.groupdict`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.groupdict>`__]::
+
+      Match.groupdict(default=None)
 
     این متد یک شی دیکشنری (dict) حاوی حاصل تطابق تمام گروه‌های بانام (Named Groups) موجود در الگو را برمی‌گرداند::
 
@@ -201,7 +208,9 @@
 
 
 
-  * ``Match.expand(template)`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.expand>`__]
+  * ``Match.expand`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.expand>`__]::
+
+       Match.expand(template)
 
     این متد حاصل انطباق را در قالب ``template`` جایگذاری کرده و یک شی رشته جدید برمی‌گرداند. قالب در اینجا یک رشته است که در آن می‌توان به حاصل انطباق گروهبندی‌های موجود در الگو ارجاع داد به این صورت کرد که می‌توان گروه‌های بی‌نام موجود در الگو را با استفاده از ارجاع عددی به شماره اندیس آن‌ها به مانند ``1\``، ``2\``  یا ``<g<1\`` و گروه‌های بانام را با استفاده از نام گروه به مانند ``<g<name\`` در قالب موجود جایگذاری کرد. Escape character‌های موجود در قالب به کاراکترهای مناسب خود در متن خروجی تبدیل می‌شوند و از **نسخه 3.5 پایتون** گروه‌هایی که هیچ انطباقی نداشته‌اند با هیچی (empty string) جایگذاری می‌شوند::
 
@@ -292,7 +301,11 @@
 
   * ``Match.span([group])`` [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.Match.span>`__]
 
-  این متد یک شی توپِل دوتایی از خروجی دو متد ``start``  و ``end``  را بر می‌گرداند و همانند آنها نیز یک آرگومان اختیاری دارد - نمونه خروجی: ``(m.start(group), m.end(group))``::
+  این متد یک شی توپِل دوتایی از خروجی دو متد ``start``  و ``end``  را بر می‌گرداند و همانند آنها نیز یک آرگومان اختیاری دارد - نمونه خروجی::
+
+    (m.start(group), m.end(group))
+
+  ::
 
     >>> match = re.search(r"(\d+)\.(\d+)", "24.1632")
     >>> match.span()
@@ -337,8 +350,9 @@
 تابع ``match``
 ~~~~~~~~~~~~~~~~~~~~~~
 
+::
 
-``match(pattern, string, flags=0)``
+     match(pattern, string, flags=0)
 
 تابع ``match`` از ابتدای string انطباق pattern را انجام می‌دهد، در صورت موفقیت یک شی ``Match`` و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.match>`__]::
 
@@ -410,8 +424,9 @@
 تابع ``fullmatch``
 ~~~~~~~~~~~~~~~~~~~~~~
 
+::
 
-``fullmatch(pattern, string, flags=0)``
+    fullmatch(pattern, string, flags=0)
 
 این تابع (``fullmatch``) چنانچه تمام string با pattern انطباق داشته باشد یک شی ``Match`` و در غیر این صورت ``None`` برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.fullmatch>`__] - این تابع از **پایتون نسخه 3.4** به بعد در دسترس است::
 
@@ -457,7 +472,9 @@
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-``findall(pattern, string, flags=0)``
+::
+
+     findall(pattern, string, flags=0)
 
 این تابع (``findall``) حاصل تمام انطباق‌های ممکن pattern در string را در قالب یک لیست از رشته‌ها (نتایج) برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.findall>`__]::
 
@@ -504,8 +521,9 @@
 تابع ``finditer``
 ~~~~~~~~~~~~~~~~~~~~~~
 
+:: 
 
-``finditer(pattern, string, flags=0)``
+    finditer(pattern, string, flags=0)
 
 خروجی این تابع (``finditer``) یک شی ``iterator`` (شی تکرارکننده - درس نهم) است و حاصل هر بار پیمایش آن یک شی ``Match`` می‌باشد که همانند تابع ``findall`` از سمت چپ string شروع به دنبال انطباق pattern در آن می‌گردد و نتایج را به ترتیب برمی‌گرداند. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.finditer>`__]::
 
@@ -583,7 +601,9 @@
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-``sub(pattern, repl, string, count=0, flags=0)``
+::
+
+    sub(pattern, repl, string, count=0, flags=0)
 
 این تابع (``sub``) حاصل انطباق‌های ممکن pattern در string را در repl جایگذاری می‌کند. این تابع همچنین دو پارامتر اختیاری دارد (flags و count)، پیش‌تر در مورد flags صحبت کردیم (که از نسخه 3.1 پایتون به این تابع اضافه شده است) و count نیز بیانگر ماکزیمم تعداد انطباقی است که می‌خواهیم در repl جایگذاری شود - این مقدار می‌بایست یک عدد مثبت باشد و مقدار صفر (مقدار پیش‌فرض) برای آن به معنی هر تعداد (نامحدود) خواهد بود. پارامتر repl در این تابع می‌تواند از نوع رشته یا تابع باشد، ابتدا حالت رشته را بررسی می‌کنیم [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.sub>`__]::
 
@@ -693,8 +713,9 @@
 تابع ``subn``
 ~~~~~~~~~~~~~~~~~~~~~~
 
+::
 
-``subn(pattern, repl, string, count=0, flags=0)``
+    subn(pattern, repl, string, count=0, flags=0)
 
 عملکرد این تابع (``subn``) همانند تابع ``sub`` است. تنها تفاوت در خروجی آن‌هاست، تابع ``subn`` یک شی توپِل محتوی نتیجه و تعداد عملیات جایگذاری را برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.subn>`__]::
 
@@ -735,8 +756,9 @@
 تابع ``split``
 ~~~~~~~~~~~~~~~~~~~~~~
 
+::
 
-``split(pattern, string, maxsplit=0, flags=0)``
+   split(pattern, string, maxsplit=0, flags=0)
 
 این تابع (``split``) محتوای متن string را بر اساس الگو pattern جدا (split) می‌کند و خروجی آن یک شی لیست از رشته‌ها خواهد بود. این تابع همچنین علاوه بر پارامتر flags (که از نسخه 3.1 پایتون به این تابع اضافه شده است) یک پارامتر اختیاری دیگر نیز با نام maxsplit دارد که تعیین کننده ماکزیمم تعداد جداسازی خواهد بود - این مقدار می‌بایست یک عدد مثبت باشد و مقدار صفر (مقدار پیش‌فرض) برای آن به معنی هر تعداد (نامحدود) خواهد بود. [`اسناد پایتون <https://docs.python.org/3/library/re.html#re.split>`__]::
 

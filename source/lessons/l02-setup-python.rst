@@ -85,7 +85,11 @@
 
 البته امکان دستکاری Path در هر زمانی وجود دارد:
 
-مسیر Control Panel > System > Advanced system settings > Advanced را طی کرده و سپس با کلیک بر روی Environment Variables پنجره‌ جدیدی باز می‌گردد که در قسمت System variables آن Path را پیدا و انتخاب نمایید. بر روی Edit در پایین همان پنجره کلیک کرده و عبارت ``;C:\Python34;C:\Python34\Scripts`` (برای نسخه 3.4) را به ابتدای متن موجود در قسمت Variable value پنجره‌ جدید وارد و سپس بر روی دکمه‌ OK کلیک نمایید. :)
+مسیر Control Panel > System > Advanced system settings > Advanced را طی کرده و سپس با کلیک بر روی Environment Variables پنجره‌ جدیدی باز می‌گردد که در قسمت System variables آن Path را پیدا و انتخاب نمایید. بر روی Edit در پایین همان پنجره کلیک کرده و عبارت زیر (برای نسخه 3.4) را به ابتدای متن موجود در قسمت Variable value پنجره‌ جدید وارد و سپس بر روی دکمه‌ OK کلیک نمایید. :)
+
+::
+
+        C:\Python34;C:\Python34\Scripts;
 
 
 .. image:: /_static/lessons/l02-add-path-on-windows.png
@@ -352,7 +356,9 @@ pip از زمان انتشار نسخه‌ 3.4 به بسته‌ نصبی پای�
 
   برای بروز رسانی خود pip نیز از همین الگو استفاده می‌شود: ``pip install --upgrade pip``
 
-  البته در ویندوز می‌بایست از دستور ``python -m pip install -U pip`` استفاده نمایید.
+  البته در ویندوز می‌بایست از دستور زیر استفاده نمایید::
+
+          python -m pip install -U pip
 
   به جای ``upgrade--`` می توانید از ``U-`` نیز استفاده نمایید.
 

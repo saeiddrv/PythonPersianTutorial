@@ -543,11 +543,15 @@
 
   نمونه دستور اجرای اسکریپت:
 
-  ``python script.py "Hideyoshi Nagachika" 19``
+  ::
+
+        python script.py "Hideyoshi Nagachika" 19
 
   نمونه خروجی اسکریپت:
 
-  ``Name: Hideyoshi Nagachika - Age: 19`` 
+  ::
+
+        Name: Hideyoshi Nagachika - Age: 19 
 
 
 .. _lesson-04-footer: 
