@@ -313,7 +313,11 @@ Function Attributes
 
   function_name.attribute_name = attribute_value
 
-همچنین برای این منظور می‌توان از تابع آماده ``(setattr(object, name, value`` استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#setattr>`__]. این تابع سه آرگومان دریافت می‌کند؛ شی‌ای که می‌خواهید یک Attribute به آن اضافه کنید (در اینجا تابع)، نام (از نوع رشته - string) و مقدار Attribute مورد نظر::
+همچنین برای این منظور می‌توان از تابع آماده ``setattr`` استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#setattr>`__]. این تابع سه آرگومان دریافت می‌کند؛ شی‌ای که می‌خواهید یک Attribute به آن اضافه کنید (در اینجا تابع)، نام (از نوع رشته - string) و مقدار Attribute مورد نظر::
+
+          setattr(object, name, value)
+
+::
 
   >>> setattr(foo, 'name', 'Saeid')
   >>> setattr(foo, 'age', 32)
@@ -328,7 +332,12 @@ Function Attributes
   >>> foo.__dict__
   {'is_done': True, 'name': 'Saeid', 'age': 32}
 
-برای دریافت مقدار یک Attribute مشخص می‌توانید از تابع آماده ``([getattr(object, name[, default`` نیز استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#getattr>`__]. این تابع دو پارامتر اجباری (``object`` و ``name``) و یک پارامتر اختیاری (``default``) دارد. در صورتی که شی مورد نظر (در اینجا تابع) فاقد صفت مورد نظر باشد مقدار default (در صورت ارسال) برگردانده خواهد شد::
+برای دریافت مقدار یک Attribute مشخص می‌توانید از تابع آماده ``getattr`` نیز استفاده کرد [`اسناد پایتون <https://docs.python.org/3/library/functions.html#getattr>`__]. این تابع دو پارامتر اجباری (``object`` و ``name``) و یک پارامتر اختیاری (``default``) دارد. در صورتی که شی مورد نظر (در اینجا تابع) فاقد صفت مورد نظر باشد مقدار default (در صورت ارسال) برگردانده خواهد شد::
+
+
+   getattr(object, name[, default])
+
+::
 
   >>> getattr(foo, 'is_done')
   True
@@ -402,7 +411,12 @@ eval
   >>> eval('math.sin(3.5+x) + 7.2')
   6.494459674429608
 
-بر اساس تعریف موجود در اسناد پایتون ``([[eval(object[, globals[, locals``، این تابع شامل دو پارامتر  ``globals`` و ``locals`` نیز می‌شود که ارسال آرگومان به آن‌ها اختیاری است. هر دو از نوع دیکشنری (dict) هستند که Scope یا حوزه‌های global و  local کدی که باید اجرا شود (پارامتر یکم تابع) را  ارايه می‌دهند::
+بر اساس تعریف موجود در اسناد پایتون ``eval``، این تابع شامل دو پارامتر  ``globals`` و ``locals`` نیز می‌شود که ارسال آرگومان به آن‌ها اختیاری است. هر دو از نوع دیکشنری (dict) هستند که Scope یا حوزه‌های global و  local کدی که باید اجرا شود (پارامتر یکم تابع) را  ارايه می‌دهند::
+
+
+    eval(object[, globals[, locals]])
+
+::
 
   >>> globals_env = {'x': 7, 'y': 10, 'birds': ['Parrot', 'Swallow', 'Albatross']}
   >>> locals_env = {}
@@ -432,11 +446,6 @@ exec
   3
   4
 
-.. note::
-    ``exec`` در پایتون نسخه 2x به صورت تابع تعریف نشده است و به صورت یک دستور به کار می‌رود [`اسناد پایتون <https://docs.python.org/2.7/reference/simple_stmts.html#exec>`__]::
-
-      >>> exec 'import math; x=2; print(math.sin(3.5+x) + 7.2)'
-      6.49445967443
 
 این تابع همانند ``eval`` شامل دو پارامتر  ``globals`` و ``locals`` نیز می‌شود::
 
@@ -449,12 +458,6 @@ exec
   Swallow
   Albatross
 
-که البته در نسخه‌های 2x از سینتکس ``[[exec code[ in globals[,locals`` پیروی می‌شود::
-
-  >>> exec "for b in birds: print b" in globals_env, locals_env
-  Parrot
-  Swallow
-  Albatross
 
 
 compile

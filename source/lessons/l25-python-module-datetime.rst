@@ -317,7 +317,9 @@
 
 برای نمونه‌سازی از کلاس ``datetime.date`` می‌بایست سه Instance attribute آن را مقداردهی نماییم. این سه attribute عبارتند از:
 
-* ``year``: از نوع ``int`` می‌باشد و مقداری برابر با سال مورد نظر خواهد داشت. این مقدار می‌بایست کمتر یا برابر ``datetime.MAXYEAR`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.MAXYEAR>`__] و همچنین بیشتر یا برابر ``datetime.MINYEAR`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.MINYEAR>`__] باشد (``MINYEAR <= year <= MAXYEAR``). 
+* ``year``: از نوع ``int`` می‌باشد و مقداری برابر با سال مورد نظر خواهد داشت. این مقدار می‌بایست کمتر یا برابر ``datetime.MAXYEAR`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.MAXYEAR>`__] و همچنین بیشتر یا برابر ``datetime.MINYEAR`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.MINYEAR>`__] باشد::
+
+    MINYEAR <= year <= MAXYEAR
 
 * ``month``: از نوع ``int`` می‌باشد و مقداری برابر با ماه مورد نظر خواهد داشت که می‌بایست عددی از بین اعداد ``1`` تا ``12`` باشد.
 
@@ -391,7 +393,11 @@
 
 |
 
-**۵- با استفاده از کلاس متد** ``fromisocalendar(year, week, day)`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromisocalendar>`__] از کلاس ``datetime.date`` (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. در این استاندارد، یک سال تقریبا شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد (دوشنبه:۱، سه‌شنبه:۲، ... یکشنبه:۷)::
+**۵- با استفاده از کلاس متد** ``fromisocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.date.fromisocalendar>`__] از کلاس ``datetime.date`` (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.date`` را برمی‌گرداند. در این استاندارد، یک سال تقریبا شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد (دوشنبه:۱، سه‌شنبه:۲، ... یکشنبه:۷)::
+
+     fromisocalendar(year, week, day)
+
+::
 
 
     >>> import datetime
@@ -776,9 +782,13 @@
     >>> t.isoformat('microseconds')
     '22:04:30.000300'
 
-* **متد** ``utcoffset`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.time.utcoffset>`__]: اگر پارامتر ``tzinfo`` برابر ``None`` باشد، مقدار ``None`` و در غیر این صورت مقدار ``self.tzinfo.utcoffset(None)`` را برمی‌گرداند.
+* **متد** ``utcoffset`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.time.utcoffset>`__]: اگر پارامتر ``tzinfo`` برابر ``None`` باشد، مقدار ``None`` و در غیر این صورت مقدار زیر را برمی‌گرداند::
 
-* **متد** ``tzname`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.time.tzname>`__]: اگر پارامتر ``tzinfo`` برابر ``None`` باشد، مقدار ``None`` و در غیر این صورت مقدار ``self.tzinfo.tzname(None)`` را برمی‌گرداند.
+        self.tzinfo.utcoffset(None)
+
+* **متد** ``tzname`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.time.tzname>`__]: اگر پارامتر ``tzinfo`` برابر ``None`` باشد، مقدار ``None`` و در غیر این صورت مقدار زیر را برمی‌گرداند::
+
+     self.tzinfo.tzname(None)
 
 ::
 
@@ -911,7 +921,13 @@ naive / aware
 
 |
 
-**۵- با استفاده از کلاس متد** ``(timestamp, tz=None)fromtimestamp`` [`اسناد پایتون <hhttps://docs.python.org/3/library/datetime.html#datetime.datetime.fromtimestamp>`__]، در تعریف این متد یک پارامتر اختیاری (tz) از نوع ``tzinfo`` و یک پارامتر اجباری (timestamp) از نوع ``int`` قرار داده شده است. این متد معادل POSIX timestamp [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Unix_time>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را برمی‌گرداند. این مقدار برابر شمارش تعداد ثانیه‌ها به منطقه زمانی UTC از ساعت ۰۰:۰۰:۰۰ یکم ژانویه سال ۱۹۷۰ میلادی تا تاریخ مورد نظر می‌باشد. ::
+**۵- با استفاده از کلاس متد** ``fromtimestamp`` [`اسناد پایتون <hhttps://docs.python.org/3/library/datetime.html#datetime.datetime.fromtimestamp>`__]، در تعریف این متد یک پارامتر اختیاری (tz) از نوع ``tzinfo`` و یک پارامتر اجباری (timestamp) از نوع ``int`` قرار داده شده است. این متد معادل POSIX timestamp [`ویکی‌پدیا <https://en.wikipedia.org/wiki/Unix_time>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را برمی‌گرداند. این مقدار برابر شمارش تعداد ثانیه‌ها به منطقه زمانی UTC از ساعت ۰۰:۰۰:۰۰ یکم ژانویه سال ۱۹۷۰ میلادی تا تاریخ مورد نظر می‌باشد. ::
+
+
+      fromtimestamp(timestamp, tz=None)
+
+
+::
 
 
     >>> import datetime
@@ -931,7 +947,12 @@ naive / aware
 
 |
 
-**۶- با استفاده از کلاس متد** ``(timestamp)utcfromtimestamp`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcfromtimestamp>`__]، خروجی این متد نیز همانند خروجی کلاس متد ``fromtimestamp(timestamp, datetime.timezone.utc)`` بوده و معادل POSIX timestamp یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را بر مبنای منطقه زمانی UTC برمی‌گرداند. ولی با این تفاوت که مقدار پارامتر ``tzinfo`` آن برابر ``None`` خواهد بود::
+**۶- با استفاده از کلاس متد** ``(timestamp)utcfromtimestamp`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.utcfromtimestamp>`__]، خروجی این متد نیز همانند خروجی کلاس متد زیر بوده و معادل POSIX timestamp یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را بر مبنای منطقه زمانی UTC برمی‌گرداند. ولی با این تفاوت که مقدار پارامتر ``tzinfo`` آن برابر ``None`` خواهد بود::
+
+
+      fromtimestamp(timestamp, datetime.timezone.utc)
+
+::
 
 
     >>> import datetime
@@ -953,7 +974,12 @@ naive / aware
 
 |
 
-**۸- با استفاده از کلاس متد** ``fromisocalendar(year, week, day)`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisocalendar>`__] (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را برمی‌گرداند. در این استاندارد، یک سال تقریبا شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد (دوشنبه:۱، سه‌شنبه:۲، ... یکشنبه:۷). باید توجه داشت مقادیر مربوط به ساعت همانند minute ،hour یا ``tzinfo`` شی ایجاد شده برابر ``None`` خواهد بود::
+**۸- با استفاده از کلاس متد** ``fromisocalendar`` [`اسناد پایتون <https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisocalendar>`__] (البته از نسخه 3.8 پایتون به بعد)، در تعریف این متد سه پارامتر از نوع ``int`` قرار داده شده است که از سمت چپ به ترتیب معرف سال، شماره هفته در سال و شماره روز از هفته مورد نظر می‌باشند. در واقع این متد معادل ISO calendar [`ویکی‌پدیا <https://en.wikipedia.org/wiki/ISO_week_date>`__] یک تاریخ مشخص را دریافت و یک شی معادل از کلاس ``datetime.datetime`` را برمی‌گرداند. در این استاندارد، یک سال تقریبا شامل ۵۲ هفته می‌باشد که روزهای هر هفته نیز از روز دوشنبه (Monday) با شماره یک محاسبه می‌گردد (دوشنبه:۱، سه‌شنبه:۲، ... یکشنبه:۷). باید توجه داشت مقادیر مربوط به ساعت همانند minute ،hour یا ``tzinfo`` شی ایجاد شده برابر ``None`` خواهد بود::
+
+
+      fromisocalendar(year, week, day)
+
+::
 
     >>> import datetime
     >>> datetime.datetime.fromisocalendar(2021, 14, 3) # Wednesday, April 7, 2021
