@@ -768,6 +768,23 @@
 برخی از متدهای کاربردی یک شی رشته
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+* ``()strip`` [`اسناد پایتون <https://docs.python.org/3/library/stdtypes.html#str.strip>`__] - یک کپی از رشته که کارکترهای فضای خالی (whitespace) را از ابتدا و انتهای رشته حذف شده است را بر می‌گرداند::
+
+    >>> a = "      python string methods           "
+    >>> a.strip()
+    'python string methods'
+
+
+  همچنین می‌توان با استفاده از این متد، کاراکترهای دیگری نیز بنابر نیاز خود از ابتدا یا انتهای یک رشته حذف کنیم::
+
+        >>> a = "python string methods"
+        >>> a.strip('sdyp')
+        'thon string metho'
+
+  دو متد [`lstrip <https://docs.python.org/3/library/stdtypes.html#str.lstrip>`__] و [`rstrip <https://docs.python.org/3/library/stdtypes.html#str.rstrip>`__] نیز عملکردی مشابه دارند با این تفاوت که عملیات حذف را تنها در سمت چپ (left) یا راست (right) به انجام می‌رسانند.
+
+
 * ``()capitalize`` [`اسناد پایتون <http://docs.python.org/3/library/stdtypes.html#str.capitalize>`__] - یک کپی از رشته که نخستین حرف آن به صورت بزرگ (Capital) نوشته شده است را برمی‌گرداند::
 
     >>> a = "python string methods"

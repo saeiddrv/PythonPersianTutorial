@@ -2,7 +2,7 @@
 
 .. meta::
    :description: پایتون به پارسی - کتاب آنلاین و آزاد آموزش زبان برنامه‌نویسی پایتون - صفحه نخست
-   :keywords: پایتون, آموزش, آموزش برنامه نویسی, آموزش پایتون, برنامه نویسی, کتاب آموزش, آموزش فارسی, کتاب آزاد, پایتون نسخه 
+   :keywords: پایتون, آموزش, آموزش برنامه نویسی, آموزش پایتون, برنامه نویسی, کتاب آموزش, آموزش فارسی, کتاب آزاد 
 
 
 .. _home-page: 
@@ -43,6 +43,7 @@
    lessons/l09-control-flow-statements-in-python
    lessons/l10-input-print-and-files-in-python
    lessons/l11-python-standard-library
+   challenges/python-code-challenges-basic
    lessons/l12-function-in-python
    lessons/l13-decorator-generator-and-lambda-with-python-functions
    lessons/l14-recursive-functions-and-memoization-in-python
