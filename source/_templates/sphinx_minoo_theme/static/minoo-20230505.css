@@ -290,3 +290,6 @@ a.hover{background-color:#4CAF50;}
 .toctree-wrapper li.make-black>ul>li>a,.toctree-wrapper li.make-black>ul>li>ul>li>a{background-color:#90a4ae;}
 .toctree-wrapper li.make-black>ul>li>a:hover,.toctree-wrapper li.make-black>ul>li>ul>li>a:hover{border-right:5px #37474f solid;}
 
+.gist-container{position:relative;overflow:hidden;filter:blur(3px);transition:filter 0.3s ease-in-out;}
+.gist-container.active{filter:none;}
+.gist-container:hover{filter:none;cursor: pointer;}

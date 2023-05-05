@@ -129,6 +129,9 @@ $( document ).ready(function() {
         if ($(this).text().indexOf("پیش‌گفتار")>=0) {
            $(this).parent().addClass('make-red');
         }
+        if ($(this).text().indexOf("چالش")>=0) {
+           $(this).parent().addClass('make-black');
+        }
         if ($(this).text().indexOf("گزارش حمایت‌های مالی")>=0) {
            $(this).parent().addClass('make-red');
         }
