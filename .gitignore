@@ -1,6 +1,7 @@
 # sphinx build folder
 _build
 build
+.venv
 
 # Compiled source #
 ###################

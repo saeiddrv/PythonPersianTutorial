@@ -42,7 +42,7 @@ math
 ------
 این ماژول حاوی ثابت‌ها (Constants) و تابع‌های ریاضی است [`اسناد پایتون <https://docs.python.org/3/library/math.html>`__] که برخی از آن‌ها به شرح پایین است:
 
-* ``math.pi``: ثابتی حاوی عدد π (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Pi>`__) است [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.pi>`__]::
+* ``math.pi``: ثابتی حاوی عدد π (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Pi>`__) است [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.pi>`__]::
 
     >>> import math
 
@@ -50,7 +50,7 @@ math
     3.141592653589793
     >>> 
 
-* ``math.e``: ثابتی حاوی عدد e (`ویکی‌پدیا <https://en.wikipedia.org/wiki/E_(mathematical_constant)>`__) است [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.e>`__]::
+* ``math.e``: ثابتی حاوی عدد e (`ویکی‌پدیا <https://en.wikipedia.org/wiki/E_(mathematical_constant)>`__) است [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.e>`__]::
 
     >>> import math
 
@@ -60,7 +60,7 @@ math
 
 * ``math.inf``: (از نسخه 3.5 به بعد) - ثابتی حاوی مقدار مثبت بی‌نهایت (Positive infinity) است که این مقدار برابر با خروجی تابع ``('float('inf`` می‌باشد. ``math.inf -`` نیز برابر منفی بی‌نهایت است [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.inf>`__].
 
-  برای بررسی inf بودن (مثبت یا منفی) از تابع ``(math.isinf(x`` [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.isinf>`__] استفاده می‌شود::
+  برای بررسی inf بودن (مثبت یا منفی) از تابع ``(math.isinf(x`` [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.isinf>`__] استفاده می‌شود::
 
       >>> import math
 
@@ -88,7 +88,7 @@ math
 
 * ``math.nan``: از نسخه 3.5 به بعد - ثابتی حاوی مقدار «تعریف نشده» یا NaN - اختصار Not a Number (`ویکی‌پدیا <https://en.wikipedia.org/wiki/NaN>`__) - می‌باشد که این مقدار برابر با خروجی تابع ``('float('nan`` است [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.nan>`__].
 
-  برای بررسی nan بودن از تابع ``(math.isnan(x`` [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.isnan>`__] استفاده می‌شود::
+  برای بررسی nan بودن از تابع ``(math.isnan(x`` [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.isnan>`__] استفاده می‌شود::
 
       >>> import math
 
@@ -130,7 +130,7 @@ math
     4
     >>> 
 
-* ``(math.fabs(x``: همانند تابع آماده ``()abs`` [`اسناد پایتون <http://docs.python.org/3/library/functions.html#abs>`__] مقدار قدر مطلق (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Absolute_value>`__) عدد ``x`` را برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.fabs>`__].
+* ``(math.fabs(x``: همانند تابع آماده ``()abs`` [`اسناد پایتون <https://docs.python.org/3/library/functions.html#abs>`__] مقدار قدر مطلق (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Absolute_value>`__) عدد ``x`` را برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.fabs>`__].
 
  تابع آماده ``abs`` بدون نیاز به import همواره قابل استفاده است و خروجی آن بر اساس نوع داده ورودی می‌تواند صحیح یا ممیز شناور باشد. ولی 
  تابع ``(math.fabs(x`` برای کار با داده های float طراحی شده است و خروجی آن همواره یک عدد ممیز شناور است::
@@ -145,7 +145,7 @@ math
     4.0
     >>> 
 
-* ``(math.factorial(x``: مقدار فاکتوریل (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Factorial>`__) عدد x را برمی‌گرداند [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.factorial>`__]::
+* ``(math.factorial(x``: مقدار فاکتوریل (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Factorial>`__) عدد x را برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.factorial>`__]::
 
     >>> import math
 
@@ -153,7 +153,7 @@ math
     120
     >>>
 
-* ``(math.exp(x``: حاصل ``e**x`` (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Exponential_function>`__) را برمی‌گرداند [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.exp>`__]::
+* ``(math.exp(x``: حاصل ``e**x`` (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Exponential_function>`__) را برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.exp>`__]::
 
     >>> import math
 
@@ -161,7 +161,7 @@ math
     20.085536923187668
     >>> 
 
-* ``(math.log(x[, base]``: حاصل لگاریتم (Logarithm) عدد x در پایه base را برمی‌گرداند؛ آرگومان base اختیاری است و چنانچه ذکر نگردد به صورت پیش‌فرض حاصل لگاریتم عدد x در پایه عدد e یا همان لگاریتم طبیعی (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Natural_logarithm>`__) برگردانده می‌شود [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.log>`__]::
+* ``(math.log(x[, base]``: حاصل لگاریتم (Logarithm) عدد x در پایه base را برمی‌گرداند؛ آرگومان base اختیاری است و چنانچه ذکر نگردد به صورت پیش‌فرض حاصل لگاریتم عدد x در پایه عدد e یا همان لگاریتم طبیعی (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Natural_logarithm>`__) برگردانده می‌شود [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.log>`__]::
 
     >>> import math
 
@@ -183,7 +183,7 @@ math
       0.30102999566398114
       >>> 
 
-  برای سادگی استفاده در محاسبه‌های ریاضی دو تابع ``(log10(x`` [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.log10>`__] - محاسبه لگاریتم عدد x در پایه عدد 10 - و ``(log2(x`` [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.log2>`__] - محاسبه لگاریتم عدد x در پایه عدد 2؛ که از **نسخه 3.3** به بعد اضافه شده است - نیز در دسترس هستند::
+  برای سادگی استفاده در محاسبه‌های ریاضی دو تابع ``(log10(x`` [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.log10>`__] - محاسبه لگاریتم عدد x در پایه عدد 10 - و ``(log2(x`` [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.log2>`__] - محاسبه لگاریتم عدد x در پایه عدد 2؛ که از **نسخه 3.3** به بعد اضافه شده است - نیز در دسترس هستند::
 
       >>> math.log10(100)
       2.0
@@ -192,7 +192,7 @@ math
       >>> 
 
 
-* ``(math.sqrt(x``:  ریشه دوم (Square root) یا همان جذر (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Square_root>`__)‌ عدد x را برمی‌گرداند [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.sqrt>`__]::
+* ``(math.sqrt(x``:  ریشه دوم (Square root) یا همان جذر (`ویکی‌پدیا <https://en.wikipedia.org/wiki/Square_root>`__)‌ عدد x را برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.sqrt>`__]::
 
 
     >>> import math
@@ -201,14 +201,14 @@ math
     2.0
     >>>
 
-* ``(math.pow(x, y``: عدد x را به توان عدد y می‌رساند و حاصل را برمی‌گرداند [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.pow>`__]::
+* ``(math.pow(x, y``: عدد x را به توان عدد y می‌رساند و حاصل را برمی‌گرداند [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.pow>`__]::
 
     >>> import math
 
     >>> math.pow(3, 2)
     9.0
 
-  این تابع هر دو آرگومان خود را به نوع float تبدیل می‌کند؛ چنانچه می‌خواهید با اعداد صحیح کار کنید، از عملگر ``**`` یا تابع آماده ``()pow`` [`اسناد پایتون <http://docs.python.org/3/library/functions.html#pow>`__] استفاده نمایید::
+  این تابع هر دو آرگومان خود را به نوع float تبدیل می‌کند؛ چنانچه می‌خواهید با اعداد صحیح کار کنید، از عملگر ``**`` یا تابع آماده ``()pow`` [`اسناد پایتون <https://docs.python.org/3/library/functions.html#pow>`__] استفاده نمایید::
 
     >>> 3**2
     9
@@ -216,7 +216,7 @@ math
     9
 
 
-* توابع مثلثاتی (Trigonometric functions) [`اسناد پایتون <http://docs.python.org/3/library/math.html#trigonometric-functions>`__]:  ``(cos(x`` و ``(sin(x`` و ``(tan(x`` و ``(acos(x`` و ``(asin(x`` و ``(atan(x`` که در تمام آن‌ها زاویه x بر حسب **رادیان (Radian)** است::
+* توابع مثلثاتی (Trigonometric functions) [`اسناد پایتون <https://docs.python.org/3/library/math.html#trigonometric-functions>`__]:  ``(cos(x`` و ``(sin(x`` و ``(tan(x`` و ``(acos(x`` و ``(asin(x`` و ``(atan(x`` که در تمام آن‌ها زاویه x بر حسب **رادیان (Radian)** است::
 
     >>> import math
 
@@ -228,14 +228,14 @@ math
     0.0
     >>> 
 
-* ``(math.degrees(x``: زاویه x را از رادیان به **درجه** تبدیل می‌کند [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.degrees>`__]::
+* ``(math.degrees(x``: زاویه x را از رادیان به **درجه** تبدیل می‌کند [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.degrees>`__]::
 
     >>> import math
 
     >>> math.degrees(0)
     0.0
 
-* ``(math.radians(x``: زاویه x را از درجه به **رادیان** تبدیل می‌کند [`اسناد پایتون <http://docs.python.org/3/library/math.html#math.radians>`__]::
+* ``(math.radians(x``: زاویه x را از درجه به **رادیان** تبدیل می‌کند [`اسناد پایتون <https://docs.python.org/3/library/math.html#math.radians>`__]::
 
     >>> import math
 
@@ -249,16 +249,16 @@ math
       >>> math.sin(math.radians(90))
       1.0
 
-* توابع هذلولی (Hyperbolic functions) [`اسناد پایتون <http://docs.python.org/3/library/math.html#hyperbolic-function>`__]:  ``(cosh(x`` و ``(sinh(x`` و ``(tanh(x`` و ``(acosh(x`` و ``(asinh(x`` و ``(atanh(x``.
+* توابع هذلولی (Hyperbolic functions) [`اسناد پایتون <https://docs.python.org/3/library/math.html#hyperbolic-function>`__]:  ``(cosh(x`` و ``(sinh(x`` و ``(tanh(x`` و ``(acosh(x`` و ``(asinh(x`` و ``(atanh(x``.
 
 
 .. _python-os: 
 
 os
 -----
-این ماژول امکان استفاده از برخی قابلیت‌های وابسته به سیستم عامل را فراهم می‌آورد؛ مانند گرفتن مسیر دایرکتوری برنامه [`اسناد پایتون <http://docs.python.org/3/library/os.html>`_]. برخی از تابع‌های موجود در این ماژول به شرح پایین است:
+این ماژول امکان استفاده از برخی قابلیت‌های وابسته به سیستم عامل را فراهم می‌آورد؛ مانند گرفتن مسیر دایرکتوری برنامه [`اسناد پایتون <https://docs.python.org/3/library/os.html>`_]. برخی از تابع‌های موجود در این ماژول به شرح پایین است:
 
-* ``os.environ``: یک شی از نوع نگاشت - مانند نوع دیکشنری [به درس هشتم رجوع شود] - است که حاوی متغیرهای محیطی سیستم عامل می‌باشد [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.environ>`__]
+* ``os.environ``: یک شی از نوع نگاشت - مانند نوع دیکشنری [به درس هشتم رجوع شود] - است که حاوی متغیرهای محیطی سیستم عامل می‌باشد [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.environ>`__]
 
   باید توجه داشت که مقدار این دستور متناسب با لحظه‌ای از سیستم عامل است که ماژول ``os`` به اسکریپت import شده است و شامل متغیرهایی که پس از این لحظه ایجاد شده باشند نمی‌شود.
 
@@ -281,7 +281,7 @@ os
       'en_US.UTF-8'
 
 
-* ``()os.getcwd``: مسیر دایرکتوری جاری (Current Working Directory)‌ را برمی‌گرداند. خروجی این تابع برابر با دستور ``pwd`` در خط فرمان گنولینوکس یا ``%echo %CD`` در خط فرمان ویندوز می‌باشد. [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.getcwd>`__]::
+* ``()os.getcwd``: مسیر دایرکتوری جاری (Current Working Directory)‌ را برمی‌گرداند. خروجی این تابع برابر با دستور ``pwd`` در خط فرمان گنولینوکس یا ``%echo %CD`` در خط فرمان ویندوز می‌باشد. [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.getcwd>`__]::
 
     # Python 3.x, GNU/Linux
 
@@ -297,7 +297,7 @@ os
     >>>
 
 
-* ``(os.chdir(path``: مسیر دایرکتوری جاری را به مسیر آرگومان دریافتی path تغییر می‌دهد. عملکرد این تابع برابر با دستور ``cd`` در خط فرمان‌های گنولینوکس و ویندوز است. [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.chdir>`__]::
+* ``(os.chdir(path``: مسیر دایرکتوری جاری را به مسیر آرگومان دریافتی path تغییر می‌دهد. عملکرد این تابع برابر با دستور ``cd`` در خط فرمان‌های گنولینوکس و ویندوز است. [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.chdir>`__]::
 
     >>> import os
 
@@ -309,14 +309,14 @@ os
     >>> os.getcwd()
     '/etc'
 
-* ``(os.listdir(path``: یک شی لیست که شامل محتویات درون دایرکتوری path است را برمی‌گرداند. چنانچه آرگومان path ارسال نشود به صورت پیش‌فرض مسیر دایرکتوری جاری در نظر گرفته می‌شود. [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.listdir>`__] ::
+* ``(os.listdir(path``: یک شی لیست که شامل محتویات درون دایرکتوری path است را برمی‌گرداند. چنانچه آرگومان path ارسال نشود به صورت پیش‌فرض مسیر دایرکتوری جاری در نظر گرفته می‌شود. [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.listdir>`__] ::
 
     >>> import os
     >>> os.listdir('/home/saeid/Pictures')
     ['scan0001.jpg', 'smplayer_screenshots', 'GNU.png', 'Wallpapers']
 
 
-* ``(os.mkdir(path``: یک دایرکتوری که نام کامل آن توسط آرگومان path تعیین شده است را ایجاد می‌کند. در صورتی که این دایرکتوری از قبل موجود باشد یک استثنا ``FileExistsError`` رخ می‌دهد. [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.mkdir>`__]::
+* ``(os.mkdir(path``: یک دایرکتوری که نام کامل آن توسط آرگومان path تعیین شده است را ایجاد می‌کند. در صورتی که این دایرکتوری از قبل موجود باشد یک استثنا ``FileExistsError`` رخ می‌دهد. [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.mkdir>`__]::
 
     >>> import os
     >>> os.mkdir('dir1')
@@ -346,7 +346,7 @@ os
       FileNotFoundError: [Errno 2] No such file or directory: '/home/saeid/Documents/dir3/dir4'
 
 
-* ``(os.makedirs(path``: همانند ``(os.mkdir(path`` است ولی با این تفاوت که تمامی دایرکتوری‌های میانی مورد نیاز را هم ایجاد می‌کند. [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.makedirs>`__]
+* ``(os.makedirs(path``: همانند ``(os.mkdir(path`` است ولی با این تفاوت که تمامی دایرکتوری‌های میانی مورد نیاز را هم ایجاد می‌کند. [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.makedirs>`__]
 
   *در نمونه کد پایین برای ایجاد دایرکتوری dir5 دایرکتوری‌های dir3 و dir4 - که البته وجود ندارند - نیز ایجاد می‌گردند.*
 
@@ -355,23 +355,23 @@ os
     >>> import os
     >>> os.makedirs('/home/saeid/Documents/dir3/dir4/dir5')
 
-* ``(os.rmdir(path``: دایرکتوری مشخص شده توسط آرگومان path را حذف می‌کند. این دایرکتوری می‌بایست خالی باشد در غیر این صورت یک استثنا ``OSError`` رخ می‌دهد. [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.rmdir>`__]
+* ``(os.rmdir(path``: دایرکتوری مشخص شده توسط آرگومان path را حذف می‌کند. این دایرکتوری می‌بایست خالی باشد در غیر این صورت یک استثنا ``OSError`` رخ می‌دهد. [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.rmdir>`__]
 
 
-  البته برای حذف کامل یک دایرکتوری به همراه تمام محتویات آن می‌توانید از تابع ``(rmtree(path`` درون ماژول ``shutil`` [`اسناد پایتون <http://docs.python.org/3/library/shutil.html#shutil.rmtree>`__] استفاده نمایید::
+  البته برای حذف کامل یک دایرکتوری به همراه تمام محتویات آن می‌توانید از تابع ``(rmtree(path`` درون ماژول ``shutil`` [`اسناد پایتون <https://docs.python.org/3/library/shutil.html#shutil.rmtree>`__] استفاده نمایید::
 
     >>> import shutil
     >>> shutil.rmtree("/home/saeid/Documents/dir1")
 
 
-* ``(os.removedirs(path``: همانند ``(os.rmdir(path`` است ولی با این تفاوت که عملکردی بازگشتی دارد و تا زمانی که خطایی رخ نداده دایرکتوری‌های مشخص شده در آرگومان path را یکی یکی حذف می‌کند. [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.removedirs>`__] ::
+* ``(os.removedirs(path``: همانند ``(os.rmdir(path`` است ولی با این تفاوت که عملکردی بازگشتی دارد و تا زمانی که خطایی رخ نداده دایرکتوری‌های مشخص شده در آرگومان path را یکی یکی حذف می‌کند. [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.removedirs>`__] ::
 
     >>> import os
     >>> os.removedirs('/home/dir1/dir2/dir3')
 
   در نمونه کد بالا ابتدا دایرکتوری dir3 (با مسیر ``'home/dir1/dir2/dir3/'``) حذف می‌شود - البته اگر خالی باشد - و بعد از آن برای حذف دایرکتوری dir2 (با مسیر ``'home/dir1/dir2/'``) تلاش می‌شود که اگر آن‌هم خالی باشد و حذف گردد، روند حذف به همین شکل برای باقی مسیر ادامه می‌یابد.
 
-* ``(os.rename(src, dst``: این تابع برای تغییر نام یک فایل یا دایرکتوری کاربرد دارد. آرگومان ``src`` نام اصلی و آرگومان ``dst`` نیز نام جدید برای فایل یا دایرکتوری مورد نظر می‌باشند [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.rename>`__]::
+* ``(os.rename(src, dst``: این تابع برای تغییر نام یک فایل یا دایرکتوری کاربرد دارد. آرگومان ``src`` نام اصلی و آرگومان ``dst`` نیز نام جدید برای فایل یا دایرکتوری مورد نظر می‌باشند [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.rename>`__]::
 
     >>> import os
     >>> os.getcwd()
@@ -404,7 +404,7 @@ os
   در گنولینوکس چنانچه بخواهیم نام **فایلی** به یک نام از پیش موجود تغییر داده شود؛‌ [در صورتی که کاربر نیز اجازه دسترسی (Permission) لازم را داشته باشد] یک عمل جایگزینی (Replace) صورت می‌گیرد، ولی برای چنین مواقعی در سیستم عامل ویندوز یک خطای ``OSError`` رخ خواهد داد. رویداد این ماجرا در هنگام تغییر نام یک **دایرکتوری**، باعث بروز خطای ``OSError`` در هر دو سیستم عامل می‌شود.
 
 
-* ``(os.renames(old, new``: عملکردی مشابه با تابع ``()rename`` دارد با این تفاوت که اگر دایرکتورهای میانی از مسیر آرگومان ``new``، وجود نداشته باشند، آن‌ها را نیز ایجاد می‌کند [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.renames>`__]::
+* ``(os.renames(old, new``: عملکردی مشابه با تابع ``()rename`` دارد با این تفاوت که اگر دایرکتورهای میانی از مسیر آرگومان ``new``، وجود نداشته باشند، آن‌ها را نیز ایجاد می‌کند [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.renames>`__]::
 
     >>> import os
     >>> os.getcwd()
@@ -418,7 +418,7 @@ os
     ['index.html', 'css', '_fonts', 'js']
 
 
-* ``(os.walk(rootdirpath``: مسیر یک دایرکتوری را به عنوان دایرکتوری ریشه پیمایش می‌کند و مسیر هر دایرکتوری را که می‌بیند به همراه نام دایرکتوری‌ها و فایل‌های درون آن برمی‌گرداند. [`اسناد پایتون <http://docs.python.org/3/library/os.html#os.walk>`__]::
+* ``(os.walk(rootdirpath``: مسیر یک دایرکتوری را به عنوان دایرکتوری ریشه پیمایش می‌کند و مسیر هر دایرکتوری را که می‌بیند به همراه نام دایرکتوری‌ها و فایل‌های درون آن برمی‌گرداند. [`اسناد پایتون <https://docs.python.org/3/library/os.html#os.walk>`__]::
 
     dir1
     ├── dir2

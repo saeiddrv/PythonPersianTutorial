@@ -4,10 +4,11 @@
 [![Documentation Status](https://readthedocs.org/projects/pythonpersiantutorial/badge/?version=latest)](https://readthedocs.org/projects/pythonpersiantutorial/?badge=latest)
 
 <p align="center">
-    <img height="300" src="https://python.coderz.ir/_images/python-3-11.png">
+    <img height="300" src="https://python.coderz.club/_images/python-in-persian-book-cover.png">
+    <img height="300" src="https://python.coderz.club/_images/python-3-11.png">
 </p>
 
-This is an open-source and online book that provides a comprehensive tutorial on the Python programming language in Persian. The book is available at [python.coderz.ir](https://python.coderz.ir/) and covers a wide range of topics, including:
+This is an open-source and online book that provides a comprehensive tutorial on the Python programming language in Persian. The book is available at [python.coderz.club](https://python.coderz.club/) and covers a wide range of topics, including:
 
 - Introduction
 - Setup and starting a new project
@@ -32,7 +33,7 @@ This book is designed for Persian-speaking learners without prior experience wit
 
 To get started with this book, you can:
 
-- Simply visit [python.coderz.ir](https://python.coderz.ir/) and start reading. 
+- Simply visit [python.coderz.club](https://python.coderz.club/) and start reading. 
 
 - Download the source code from GitHub and run it on your local machine:
 
@@ -73,7 +74,7 @@ If you'd like to contribute to the book, you can fork the repository on GitHub a
 
 ## Credits
 
-This book was authored by [**Saeid Darvish**](https://saeiddrv.github.io).
+This book was authored by [**Saeid Darvish**](https://saeiddrv.com).
 
 ## License
 

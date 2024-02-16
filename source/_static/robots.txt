@@ -2,6 +2,6 @@ User-agent: *
 
 Disallow: 
 
-Sitemap: https://python.coderz.ir/_static/sitemap-index.xml
+Sitemap: https://python.coderz.club/_static/sitemap-index.xml
 
 
