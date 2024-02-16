@@ -17,7 +17,10 @@ box[note,attention[body:90CAF9,title:42A5F5]-tip,important[body:80CBC4,title:26A
 body{font-family:vazir, sans-serif;font-weight:normal;color:#252525;min-height:100%;font-size:1.5rem;overflow-x:hidden}
 html{height:100%}
 a,ul>li>a,ol>li>a{text-decoration:none!important;color:#5C6BC0;padding:0}
+a,ul>li>p>a,ol>li>p>a{text-decoration:none!important;color:#5C6BC0;padding:0}
 a:hover,ul>li>a:hover,ol>li>a:hover{color:#66BB6A}
+a:hover,ul>li>p>a:hover,ol>li>p>a:hover{color:#66BB6A}
+li>p{margin:0px !important}
 i{vertical-align:middle}
 h1,h2,h3,h4,h5,h6{font-weight:bold;color:#000000;display:inline-block}
 h1,h2,h3{padding:10px 15px 10px 0}
@@ -140,17 +143,21 @@ table.field-list th,table.field-list td{width:auto!important}
 table.docutils.citation tr td,table.docutils.footnote tr td{border:none}
 table.docutils.footnote td,table.docutils.footnote th,table.docutils.citation td,table.docutils.citation th,table.field-list th,table.field-list td{margin:0;padding:3px 12px!important;font-size:90%;overflow:visible;width:100%}
 table.docutils.footnote{white-space:normal}
-.toctree-wrapper li,#sidebar-bottom-list #tree-toc ul li,.contents.topic ul li{list-style:none}
+.toctree-wrapper li,#sidebar-bottom-list #tree-toc ul li,.contents.topic ul li,.contents ul li{list-style:none}
 .toctree-wrapper li>ul{padding:0;margin:0 24px 0 0}
 .toctree-wrapper li>a{background-color:#AB47BC;color:#FFFFFF;line-height:26px;border-right:0}
 .toctree-wrapper li>ul>li>a{background-color:#CE93D8}
 .toctree-wrapper li>a:hover{border-right:5px #CE93D8 solid}
 .toctree-wrapper li>ul>li>a:hover{border-right:5px #AB47BC solid}
-.toctree-wrapper li>a:hover,.contents.topic li>a:hover{color:#FFFFFF}
+.toctree-wrapper li>a:hover,.contents.topic li>a:hover,.contents li>p>a:hover{color:#FFFFFF}
 .contents.topic li>a{background-color:#5C6BC0;color:#FFFFFF;padding:3px 10px;line-height:26px;border-right:0}
 .contents.topic li>ul>li>a{background-color:#9FA8DA}
 .contents.topic li>a:hover{border-right:5px #9FA8DA solid}
 .contents.topic li>ul>li>a:hover{border-right:5px #5C6BC0 solid}
+.contents li>p>a{background-color:#5C6BC0;color:#FFFFFF;padding:3px 10px;line-height:26px;border-right:0;display:inline-block;}
+.contents li>ul>li>p>a{background-color:#9FA8DA}
+.contents li>p>a:hover{border-right:5px #9FA8DA solid}
+.contents li>ul>li>p>a:hover{border-right:5px #5C6BC0 solid}
 #sidebar-bottom-list #tree-toc{margin-top:10px;margin-bottom:20px;width:280px;min-height:100%}
 #sidebar-bottom-list #tree-toc ul{padding:0;margin:0 24px 0 0}
 #sidebar-bottom-list #tree-toc ul li>a,#sidebar-bottom-list #tree-toc ul li.current>a{line-height:20px;border-right:0}
@@ -164,7 +171,7 @@ h3{border-right:5px #66BB6A solid !important}
 #sidebar-bottom-list #tree-toc ul li>ul>li>a:hover{border-right:5px #E8EAF6 solid;color:#FFFFFF}
 #sidebar-bottom-list #tree-toc ul li.current>ul>li>a:hover{color:#FFFFFF}
 #sidebar-bottom-list #tree-toc li a,.toctree-wrapper li>a,.contents.topic li>a{display:inline-block;margin:0;padding:2px 10px}
-#sidebar-bottom-list #tree-toc li,.toctree-wrapper li,.contents.topic li{margin-top:1px}
+#sidebar-bottom-list #tree-toc li,.toctree-wrapper li,.contents.topic li,.contents li{margin-top:1px}
 #sidebar-bottom-list #tree-toc li.toctree-l1 i,.toctree-wrapper li.toctree-l1 i{margin-right:-24px; margin-left:9px;display:inline-block;vertical-align:top;padding-top:5px;cursor:pointer;color:#E8EAF6}
 .toctree-wrapper li.toctree-l1 i{position:absolute}
 .toctree-wrapper li.toctree-l1 i{color:#CE93D8!important}
@@ -265,7 +272,6 @@ i{vertical-align:bottom !important;}
 .top-green a{background-color:#4CAF50;margin:0px 2px;}
 .top-blue a{background-color:#009ca7;}
 .top-red a:hover,.top-green a:hover,.top-blue a:hover{color:#000;}
-ul li p:last-child{margin-bottom: 24px !important;}
 a.side-donate{background-color:#66BB6A;margin:0px 2px;color:white;padding:2px 10px;}
 a.hover{background-color:#4CAF50;}
 @media screen and (max-width:768px){.top-red{display:none !important;}}
