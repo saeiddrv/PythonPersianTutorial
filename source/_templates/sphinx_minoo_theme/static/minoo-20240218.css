@@ -20,6 +20,8 @@ a,ul>li>a,ol>li>a{text-decoration:none!important;color:#5C6BC0;padding:0}
 a,ul>li>p>a,ol>li>p>a{text-decoration:none!important;color:#5C6BC0;padding:0}
 a:hover,ul>li>a:hover,ol>li>a:hover{color:#66BB6A}
 a:hover,ul>li>p>a:hover,ol>li>p>a:hover{color:#66BB6A}
+h1 a:hover{color:#66BB6A}
+h2 a:hover{color:#ffffff !important}
 li>p{margin:0px !important}
 i{vertical-align:middle}
 h1,h2,h3,h4,h5,h6{font-weight:bold;color:#000000;display:inline-block}
