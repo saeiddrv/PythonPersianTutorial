@@ -64,6 +64,14 @@
 
 
 
+.. _support-buy-me-a-coffee: 
+
+Buy me a coffee
+------------------
+
+چنانچه امکان پرداخت ارزی از درگاه‌های بین‌الملی برایتان میسر است. می‌توانید از سرویس  Buy me a coffee استفاده نمایید. [`buymeacoffee.com/saeiddrv <https://www.buymeacoffee.com/saeiddrv>`__]
+
+
 .. _support-paypal: 
 
 PayPal
