@@ -42,15 +42,22 @@
 -----
 
 .. contents:: میان‌بر
-    :depth: 2
+    :depth: 3
 
 -----
+
+
+.. _support-rials: 
+
+پرداخت ریالی
+--------------
+
 
 
 .. _support-c2c: 
 
 کارت به کارت
---------------------
+~~~~~~~~~~~~~~~~~~~
 
 در این روش کمی کارمزد نیز از شما کسر خواهد شد.
 
@@ -62,28 +69,46 @@
 
 
 
+پرداخت ارزی
+--------------
 
 
 .. _support-buy-me-a-coffee: 
 
 Buy me a coffee
-------------------
+~~~~~~~~~~~~~~~~~~~
 
-چنانچه امکان پرداخت ارزی از درگاه‌های بین‌الملی برایتان میسر است. می‌توانید از سرویس  Buy me a coffee استفاده نمایید. [`buymeacoffee.com/saeiddrv <https://www.buymeacoffee.com/saeiddrv>`__]
+ `buymeacoffee.com/saeiddrv <https://www.buymeacoffee.com/saeiddrv>`__
 
 
 .. _support-paypal: 
 
 PayPal
----------
+~~~~~~~~~~~~~~~~~~~
 
-چنانچه امکان پرداخت ارزی از درگاه‌های بین‌الملی برایتان میسر است. می‌توانید از درگاه PayPal استفاده نمایید. [`paypal.me/saeiddrv <https://paypal.me/saeiddrv>`__]
+`paypal.me/saeiddrv <https://www.paypal.com/donate/?hosted_button_id=KDHDDPKUGBDKC>`__
+
+.. image:: /_static/PayPal-QR.png
+    :align: center
+    :width: 200
+
+
+
+.. _support-github: 
+
+GitHub
+~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+
+  <iframe src="https://github.com/sponsors/saeiddrv/card" title="Sponsor saeiddrv" height="225" width="100%" style="border: 0;"></iframe>
+
 
 .. _support-cryptocurrency: 
 
 رمزارز
 ---------
-اگر با رمزارزها آشنایی دارید:
 
 
 .. _support-btc: 
