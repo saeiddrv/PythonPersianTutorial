@@ -31,11 +31,11 @@
 
     لطفا پس از حمایت نقدی، اطلاعات مربوط به آن را از طریق لینک زیر با دیگران به اشتراک بگذارید.
 
-    [`PythonInPersian, Donation Information <https://docs.google.com/spreadsheets/d/1wzwUf2RfFfqpCI_LQxb9zxUOP3XjmLZYWdMQiiPgHts/edit?usp=sharing>`__]
+    [`PythonInPersian, Donation Information <https://1drv.ms/x/s!AsKHN_wEbUSfbelxbWUK3P-xsXs?e=w8XxA9>`__]
 
-    اطاعات از طریق یک فایل اکسل به اشتراک گذاشته شده، جمع‌آوری می‌گردد. تاریخ تغییرات نگهداری می‌شود اما در صورت تمایل می‌توانید از منوی `Data` و سپس گزینه `Protected sheets & ranges` سطر مربوط به خود را قفل و از تغییرات ناخواسته محافظت نمایید!
+    اطاعات از طریق یک فایل اکسل به اشتراک گذاشته شده، جمع‌آوری می‌گردد. تاریخ تغییرات نگهداری می‌شود.
 
-    برای طرح هرگونه سوال یا نظر، لطفا با ایمیل ``inbox@saeiddrv.com`` تماس حاصل بفرمایید. 
+    برای طرح هرگونه سوال یا نظر، لطفا با ایمیل ``python@saeiddrv.com`` تماس حاصل بفرمایید. 
 
 
 
