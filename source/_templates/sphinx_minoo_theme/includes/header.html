@@ -38,8 +38,10 @@
 {% if theme_direction == "ltr" %}
     <link rel="stylesheet" type=text/css href="{{ pathto('_static/minoo-ltr.css', 1) }}">
 {% else %}
-    <link rel="stylesheet" type=text/css href="{{ pathto('_static/minoo-20240224.css', 1) }}">
+    <link rel="stylesheet" type="text/css" href="{{ pathto('_static/minoo-20240224.css', 1) }}">
 {% endif %}
+
+    <link id="dark-style" rel="stylesheet" type="text/css" href="{{ pathto('_static/minoo-dark.css', 1) }}" disabled>
 
 {%- block linktags %}
     {%- if hasdoc('about') %}
@@ -99,3 +101,15 @@
 <script type="text/javascript" src="{{ pathto('_static/modernizr.min.js', 1) }}"></script>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<script>
+  const darkThemeLink = document.getElementById('dark-style');
+  function applySystemThemePreference() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    darkThemeLink.disabled = !prefersDark;
+  }
+  // Initial check
+  applySystemThemePreference();
+  // Listen for changes to system theme
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applySystemThemePreference);
+</script>

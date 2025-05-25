@@ -1,0 +1,224 @@
+/* Base Layout */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+a, ul>li>a, ol>li>a {
+  color: #81D4FA;
+}
+a:hover, ul>li>a:hover, ol>li>a:hover {
+  color: #66BB6A;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+h1 {
+  background-color: #303F9F;
+  border-color: #1A237E;
+}
+h2, h3 {
+  background-color: #1A237E;
+  border-color: #303F9F !important;
+}
+
+/* Tables and Lines */
+thead, caption {
+  background-color: #1A237E;
+  color: #ffffff;
+}
+hr {
+  border-top: 1px solid #333;
+}
+.table-striped > tbody > tr:nth-of-type(odd),
+tr.row-even {
+  background-color: #1E1E1E;
+}
+.table-bordered th, .table-bordered td {
+  border-color: #424242;
+}
+
+/* Code Blocks */
+code, kbd, pre, samp {
+  background-color: #1E1E1E;
+  color: #ECEFF1;
+}
+.linenodiv pre {
+  background-color: #303F9F;
+  color: #ECEFF1;
+}
+
+/* Highlighting */
+.highlighted {
+  background-color: #FBC02D;
+  color: #212121;
+}
+
+/* Sidebar and Navigation */
+#page-sidebar,
+#sidebar-top,
+#wrapper-page-sidebar,
+#wrapper-sidebar-bottom,
+#sidebar-bottom,
+#sidebar-bottom-versions {
+  background-color: #263238;
+  color: #ffffff;
+}
+#sidebar-top-title a,
+#sidebar-top-links a {
+  color: #B3E5FC;
+}
+#sidebar-top-title a:hover,
+#sidebar-top-links a:hover {
+  color: #80CBC4;
+}
+#navigation-toggle {
+  background-color: #263238;
+}
+#input-search {
+  color: #e0e0e0;
+  box-shadow: inset 0 -1px 0 #80CBC4;
+}
+
+/* Top and Footer */
+#body-top {
+  color: #90CAF9;
+  border-bottom-color: #333;
+}
+#body-btn a {
+  background-color: #303F9F;
+}
+#body-btn a:hover {
+  background-color: #66BB6A;
+}
+#body-footer {
+  background-color: #1A237E;
+  color: #e0e0e0;
+}
+
+/* Back to Top */
+.back-to-top {
+  color: #90CAF9;
+}
+
+/* Sidebar Block */
+.sidebar {
+  background-color: #263238;
+  border-color: #37474F;
+}
+.sidebar .sidebar-title {
+  background-color: #303F9F;
+}
+
+/* Contents Tree Navigation */
+.contents.topic li > a,
+.toctree-wrapper li > a {
+  background-color: #37474F;
+  color: #ffffff;
+}
+.contents.topic li > a:hover,
+.toctree-wrapper li > a:hover {
+  background-color: #546E7A;
+}
+.contents.topic li > ul > li > a,
+.toctree-wrapper li > ul > li > a {
+  background-color: #455A64;
+  color: #ffffff;
+}
+.contents.topic li > ul > li > a:hover,
+.toctree-wrapper li > ul > li > a:hover {
+  background-color: #546E7A;
+}
+
+/* Selection */
+::selection {
+  background-color: #3949AB;
+  color: #FAFAFA;
+}
+
+/* === Admonitions (Dark Theme Adjusted) === */
+.admonition {
+  background-color: #263238;
+  color: #e0e0e0;
+}
+.admonition .admonition-title {
+  color: #ffffff;
+}
+
+/* NOTE & ATTENTION */
+.admonition.note,
+.admonition.attention {
+  background-color: #263238;
+}
+.admonition.note .admonition-title,
+.admonition.attention .admonition-title {
+  background-color: #42A5F5;
+}
+
+/* TIP & IMPORTANT */
+.admonition.tip,
+.admonition.important {
+  background-color: #263238;
+}
+.admonition.tip .admonition-title,
+.admonition.important .admonition-title {
+  background-color: #26A69A;
+}
+
+/* HINT & WARNING */
+.admonition.hint,
+.admonition.warning {
+  background-color: #263238;
+}
+.admonition.hint .admonition-title,
+.admonition.warning .admonition-title {
+  background-color: #F57C00;
+}
+
+/* ERROR & DANGER */
+.admonition.error,
+.admonition.danger {
+  background-color: #263238;
+}
+.admonition.error .admonition-title,
+.admonition.danger .admonition-title {
+  background-color: #E53935;
+}
+
+/* CAUTION */
+.admonition.caution {
+  background-color: #263238;
+}
+.admonition.caution .admonition-title {
+  background-color: #C0CA33;
+}
+
+/* Generic fallback */
+.admonition:not(
+  .note,
+  .attention,
+  .tip,
+  .important,
+  .hint,
+  .warning,
+  .error,
+  .danger,
+  .caution
+) {
+  background-color: #37474F;
+}
+.admonition:not(
+  .note,
+  .attention,
+  .tip,
+  .important,
+  .hint,
+  .warning,
+  .error,
+  .danger,
+  .caution
+) .admonition-title {
+  background-color: #78909C;
+}

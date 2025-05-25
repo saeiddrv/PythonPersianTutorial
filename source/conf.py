@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'پایتون به پارسی'
-copyright = '2015, Saeid Darvish'
-author = 'Saeid Darvish'
+copyright = '2015, Saeid Darvishghazvini'
+author = 'Saeid Darvishghazvini'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
