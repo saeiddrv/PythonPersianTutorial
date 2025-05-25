@@ -5,182 +5,182 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://python.coderz.club/</loc>
+  <loc>https://pythonpersian.com/</loc>
   <lastmod>2021-03-17T17:10:23+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/preface.html</loc>
+  <loc>https://pythonpersian.com/preface.html</loc>
   <lastmod>2021-03-17T17:10:24+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l01-introduction-to-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l01-introduction-to-python.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l02-setup-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l02-setup-python.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l03-create-and-run-a-python-project.html</loc>
+  <loc>https://pythonpersian.com/lessons/l03-create-and-run-a-python-project.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l04-python-interactive-mode.html</loc>
+  <loc>https://pythonpersian.com/lessons/l04-python-interactive-mode.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l05-object-oriented-programming.html</loc>
+  <loc>https://pythonpersian.com/lessons/l05-object-oriented-programming.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l06-python-syntax.html</loc>
+  <loc>https://pythonpersian.com/lessons/l06-python-syntax.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l07-numeric-types-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l07-numeric-types-in-python.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l07-string-and-bytes-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l07-string-and-bytes-in-python.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l08-list-and-tuple-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l08-list-and-tuple-in-python.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l08-set-and-dict-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l08-set-and-dict-in-python.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l09-control-flow-statements-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l09-control-flow-statements-in-python.html</loc>
   <lastmod>2023-03-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l10-input-print-and-files-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l10-input-print-and-files-in-python.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l11-python-standard-library.html</loc>
+  <loc>https://pythonpersian.com/lessons/l11-python-standard-library.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l12-function-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l12-function-in-python.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l13-decorator-generator-and-lambda-with-python-functions.html</loc>
+  <loc>https://pythonpersian.com/lessons/l13-decorator-generator-and-lambda-with-python-functions.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l14-recursive-functions-and-memoization-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l14-recursive-functions-and-memoization-in-python.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l15-regular-expression-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l15-regular-expression-in-python.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l16-python-module-re.html</loc>
+  <loc>https://pythonpersian.com/lessons/l16-python-module-re.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l17-object-oriented-programming-with-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l17-object-oriented-programming-with-python.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l18-inheritance-and-association-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l18-inheritance-and-association-in-python.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l19-metaclass-and-abstraction-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l19-metaclass-and-abstraction-in-python.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l20-encapsulation-polymorphism-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l20-encapsulation-polymorphism-in-python.html</loc>
   <lastmod>2023-04-18T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l21-descriptors-and-context-manager-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l21-descriptors-and-context-manager-in-python.html</loc>
   <lastmod>2023-04-19T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l22-type-hinting-and-data-class-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l22-type-hinting-and-data-class-in-python.html</loc>
   <lastmod>2023-04-19T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l23-traceback-and-exception-handling-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l23-traceback-and-exception-handling-in-python.html</loc>
   <lastmod>2023-04-29T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l24-raise-exception-warning-and-assertion-in-python.html</loc>
+  <loc>https://pythonpersian.com/lessons/l24-raise-exception-warning-and-assertion-in-python.html</loc>
   <lastmod>2023-04-01T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/lessons/l25-python-module-datetime.html</loc>
+  <loc>https://pythonpersian.com/lessons/l25-python-module-datetime.html</loc>
   <lastmod>2023-04-15T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/changelog.html</loc>
+  <loc>https://pythonpersian.com/changelog.html</loc>
   <lastmod>2023-04-17T17:10:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/support.html</loc>
+  <loc>https://pythonpersian.com/support.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/support-report.html</loc>
+  <loc>https://pythonpersian.com/support-report.html</loc>
   <lastmod>2023-04-17T17:10:25+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/python-interactive.html</loc>
+  <loc>https://pythonpersian.com/python-interactive.html</loc>
   <lastmod>2021-04-17T17:10:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/python-resources.html</loc>
+  <loc>https://pythonpersian.com/python-resources.html</loc>
   <lastmod>2021-04-20T17:10:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/index.html</loc>
+  <loc>https://pythonpersian.com/index.html</loc>
   <lastmod>2021-04-17T17:10:23+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://python.coderz.club/challenges/python-code-challenges-basic.html</loc>
+  <loc>https://pythonpersian.com/challenges/python-code-challenges-basic.html</loc>
   <lastmod>2023-05-05T17:10:23+00:00</lastmod>
   <priority>0.64</priority>
 </url>

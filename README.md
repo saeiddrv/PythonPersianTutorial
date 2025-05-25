@@ -4,8 +4,8 @@
 [![Documentation Status](https://readthedocs.org/projects/pythonpersiantutorial/badge/?version=latest)](https://readthedocs.org/projects/pythonpersiantutorial/?badge=latest)
 
 <p align="center">
-    <img height="300" src="https://python.coderz.club/_images/python-in-persian-book-cover.png">
-    <img height="300" src="https://python.coderz.club/_images/python-3-11.png">
+    <img height="300" src="https://pythonpersian.com/_images/python-in-persian-book-cover.png">
+    <img height="300" src="https://pythonpersian.com/_images/python-3-11.png">
 </p>
 
 This is an open-source and online book that provides a comprehensive tutorial on the Python programming language in Persian. The book is available at [PythonPersian.com](https://pythonpersian.com/) and covers a wide range of topics, including:
