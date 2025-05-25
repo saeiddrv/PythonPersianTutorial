@@ -74,7 +74,7 @@ If you'd like to contribute to the book, you can fork the repository on GitHub a
 
 ## Credits
 
-This book was authored by [**Saeid Darvish**](https://saeiddrv.com).
+This book was authored by [**Saeid Darvishghazvini**](https://saeiddrv.com).
 
 ## License
 
