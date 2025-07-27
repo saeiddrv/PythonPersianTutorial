@@ -16,7 +16,7 @@
 
 .. note::
 
-    برای مشاهده گزارش پرداخت‌های جدیدتر از بهمن ماه ۱۴۰۲، لطفا به نشانی روبرو مراجعه نمایید:‌ [`PythonInPersian, Donation Information <https://1drv.ms/x/s!AsKHN_wEbUSfbelxbWUK3P-xsXs?e=w8XxA9>`__]
+    برای مشاهده گزارش پرداخت‌های جدیدتر از بهمن ماه ۱۴۰۲، لطفا به نشانی روبرو مراجعه نمایید:‌ [`PythonInPersian, Donation Information <https://1drv.ms/x/c/9f446d04fc3787c2/ESTkCKJLXrxIgIVCKPa3PTsBTtFxGPd9PxXu9YcMwTwnzQ?e=g4RIg6>`__]
 
 
     برای طرح هرگونه سوال یا اعلام مغایرت، لطفا با ایمیل ``python@saeiddrv.com`` تماس حاصل بفرمایید. 

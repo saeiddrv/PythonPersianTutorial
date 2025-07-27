@@ -31,7 +31,7 @@
 
     لطفا پس از حمایت نقدی، اطلاعات مربوط به آن را از طریق لینک زیر با دیگران به اشتراک بگذارید.
 
-    [`PythonInPersian, Donation Information <https://1drv.ms/x/s!AsKHN_wEbUSfbelxbWUK3P-xsXs?e=w8XxA9>`__]
+    [`PythonInPersian, Donation Information <https://forms.office.com/r/MQBfUtZQdk>`__]
 
     اطاعات از طریق یک فایل اکسل به اشتراک گذاشته شده، جمع‌آوری می‌گردد. تاریخ تغییرات نگهداری می‌شود.
 
@@ -122,49 +122,7 @@ GitHub
 
 ::
 
-    bc1q8sdd2zarj4swalx2f895y2v3exk53rh7t8jzve
-
-
-.. _support-eth: 
-
-اتریوم (ETH)
-~~~~~~~~~~~~~~~~~~~
-
-.. image:: /_static/cryptocurrency/saeiddrv-eth.jpg
-    :align: center
-    :width: 256
-
-:: 
-
-    0x7218D1c2c9614e5f3c9959c1b9D2f36592aAa4c7
-
-
-.. _support-ltc: 
-
-لایت کوین (LTC)
-~~~~~~~~~~~~~~~~~~~
-
-.. image:: /_static/cryptocurrency/saeiddrv-ltc.jpg
-    :align: center
-    :width: 256
-
-::
-
-    ltc1qsw63lq9a6c9r8ukufrk6rkg4lge5tn528k2qwd
-
-
-.. _support-doge: 
-
-دوج (DOGE)
-~~~~~~~~~~~~~~~~~~~
-
-.. image:: /_static/cryptocurrency/saeiddrv-doge.jpg
-    :align: center
-    :width: 256
-
-:: 
-
-    DNWR6VJMXV7HwMyj28WVHTMJSCKEr6mKvz
+    bc1qm79cv4awm65l366mmzy5sggcj9ejy6mel9rmx5
 
 
 .. _support-non: 
