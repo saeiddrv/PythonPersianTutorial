@@ -222,3 +222,15 @@ code, kbd, pre, samp {
 ) .admonition-title {
   background-color: #78909C;
 }
+
+/* Inspirational Quote */
+.inspirational-quote {
+  background-color: #1E1E1E;
+  border-right-color: #81D4FA;
+  color: #e0e0e0;
+}
+
+.inspirational-quote cite {
+  color: #81D4FA;
+}
+

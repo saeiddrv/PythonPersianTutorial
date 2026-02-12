@@ -302,3 +302,22 @@ a.hover{background-color:#4CAF50;}
 .gist-container{position:relative;overflow:hidden;filter:blur(3px);transition:filter 0.3s ease-in-out;}
 .gist-container.active{filter:none;}
 .gist-container:hover{filter:none;cursor: pointer;}
+
+/* Inspirational Quote */
+.inspirational-quote {
+  margin: 0 0 24px 0;
+  padding: 15px;
+  border-right: 5px solid #5C6BC0;
+  background-color: #E8EAF6;
+  font-style: italic;
+  text-align: center;
+  color: #333;
+}
+
+.inspirational-quote cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: bold;
+  color: #5C6BC0;
+}
