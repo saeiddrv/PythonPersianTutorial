@@ -25,10 +25,10 @@
 {% endif %}
 
 {% for cssfile in css_files %}
-    <link rel="stylesheet" href="{{ pathto(cssfile.filename, 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto(cssfile.filename if cssfile.filename is defined else cssfile, 1) }}" type="text/css" />
 {% endfor %}
 {% for cssfile in extra_css_files %}
-    <link rel="stylesheet" href="{{ pathto(cssfile.filename, 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto(cssfile.filename if cssfile.filename is defined else cssfile, 1) }}" type="text/css" />
 {% endfor %}
 
 <link rel="stylesheet" type=text/css href="{{ pathto('_static/font-awesome.min.css', 1) }}">
@@ -83,7 +83,7 @@
     {% set script_files = script_files + ['_static/searchtools.js'] %}
 
     {%- for scriptfile in script_files %}
-        <script type="text/javascript" src="{{ pathto(scriptfile.filename, 1) }}"></script>
+        <script type="text/javascript" src="{{ pathto(scriptfile.filename if scriptfile.filename is defined else scriptfile, 1) }}"></script>
     {%- endfor %}
 {% endif %}
 
