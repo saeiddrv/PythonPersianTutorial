@@ -25,10 +25,10 @@
 {% endif %}
 
 {% for cssfile in css_files %}
-    <link rel="stylesheet" type=text/css href="{{ pathto(cssfile, 1) }}">
+    <link rel="stylesheet" href="{{ pathto(cssfile.filename, 1) }}" type="text/css" />
 {% endfor %}
 {% for cssfile in extra_css_files %}
-    <link rel="stylesheet" type=text/css href="{{ pathto(cssfile, 1) }}">
+    <link rel="stylesheet" href="{{ pathto(cssfile.filename, 1) }}" type="text/css" />
 {% endfor %}
 
 <link rel="stylesheet" type=text/css href="{{ pathto('_static/font-awesome.min.css', 1) }}">
